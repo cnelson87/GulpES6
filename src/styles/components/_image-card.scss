@@ -1,0 +1,50 @@
+//
+// Image Card
+// -----------------------------------------------------
+
+
+.image-card {
+	position: relative;
+
+	a.thumb-img {
+		display: block;
+
+		&:focus, &:hover {
+			opacity: 0.7;
+		}
+
+		> img {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+
+	}
+
+	.image-card--content {
+		background: $white;
+		padding: 10px;
+
+		p {
+			margin: 0;
+		}
+
+	}
+
+	.screen {
+		display: block;
+		background-color: $black;
+		opacity: 0.5;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+	}
+
+}
+
+.is-active .image-card .screen,
+.image-card.is-active .screen {
+	display: none;
+}

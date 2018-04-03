@@ -1,0 +1,48 @@
+//
+// Videos Page View
+// -----------------------------------------------------
+
+
+#videospage {
+
+	.responsive-iframe {
+		margin-bottom: 10px;
+	}
+
+	.primary-video {
+		margin-bottom: $mobile-vertical-spacing;
+	}
+
+	// Tablet+
+	@media (min-width: $tablet-breakpoint-min) {
+		.primary-video {
+			margin-bottom: $tablet-vertical-spacing;
+		}
+	}
+
+	// Desktop+
+	@media (min-width: $desktop-breakpoint-min) {
+		.primary-video {
+			margin-bottom: $desktop-vertical-spacing;
+		}
+	}
+
+	.videos-grid {
+
+		// Tablet+
+		@media (min-width: $tablet-breakpoint-min) {
+
+			h3 {
+				min-height: 2.0em;
+			}
+
+			p {
+				height: 6.0em;
+				overflow: hidden;
+			}
+
+		}
+
+	}
+
+}

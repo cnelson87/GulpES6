@@ -1,0 +1,113 @@
+//
+// Config Vars
+// -----------------------------------------------------
+
+
+// Color Definitions
+$black: #000;
+$white: #fff;
+$near-black: #1a1a1a;
+$near-white: #efefef;
+$gray-dark: #333;
+$gray-med: #999;
+$gray-light: #ccc;
+$gray-xlight: #dedede;
+$gray-xlight-alt: #cdcdcd;
+$red1: #900;
+$red2: #c00;
+$green1: #9c3;
+$green2: #693;
+$light-blue: #69c;
+$dark-blue: #036;
+$transparent: rgba(0,0,0,0); //iOS friendly transparent
+// Color Usage
+$body-bg: $near-white;
+$text-color: $near-black;
+$link-color: $green1;
+$link-hover-color: $green2;
+$border-color-dark: $gray-dark;
+$border-color-med: $gray-med;
+$border-color-light: $gray-light;
+$border-color-xlight: $gray-xlight;
+$error-color: $red1;
+
+
+// Fonts
+$main-font: Arial, sans-serif;
+$alt-font: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+$serif-font: 'Arvo', Georgia, Times, serif;
+
+
+// Paths
+$image-path: '../images';
+$font-path: '../fonts';
+
+
+// Animation
+$slow-anim-speed:  0.8s;
+$animation-speed:  0.4s;
+$transition-speed: 0.2s;
+
+
+// Z-Indexes
+$spinner-zindex: 10;
+$tooltip-zindex: 90;
+$modal-zindex:  100;
+
+
+// Misc
+$border-radius-sm:  4px;
+$border-radius-lg: 10px;
+
+
+// Media Queries
+$mobile-breakpoint-wide: 540px;
+$mobile-breakpoint-max:  767px;
+$tablet-breakpoint-min:  768px;
+$tablet-breakpoint-wide: 920px;
+$tablet-breakpoint-max:  1024px;
+$desktop-breakpoint-min: 1025px;
+$desktop-breakpoint-wide: 1360px;
+$desktop-breakpoint-xwide: 1920px;
+//background stretch
+$max-background-width-breakpoint: 2560px;
+
+
+// Container Sizes
+$min-width: 320px;
+$max-fluid-width: 1280px;
+$mobile-container-max-width: 640px;
+$tablet-container-width: 740px;
+$desktop-container-width: 1000px;
+$desktop-wide-container-width: 1280px;
+$mobile-header-height: 136px;
+$mobile-footer-height: 136px;
+$tablet-header-height: 94px;
+$tablet-footer-height: 94px;
+$desktop-header-height: 100px;
+$desktop-footer-height: 100px;
+
+
+// Grid System
+$mobile-gutter-width: 20px;
+$tablet-gutter-width: 30px;
+$desktop-gutter-width: 40px;
+$mobile-gutter-half-width: $mobile-gutter-width / 2;
+$tablet-gutter-half-width: $tablet-gutter-width / 2;
+$desktop-gutter-half-width: $desktop-gutter-width / 2;
+$mobile-gutter-double-width: $mobile-gutter-width * 2;
+$tablet-gutter-double-width: $tablet-gutter-width * 2;
+$desktop-gutter-double-width: $desktop-gutter-width * 2;
+$mobile-vertical-spacing: 20px;
+$tablet-vertical-spacing: 40px;
+$desktop-vertical-spacing: 60px;
+$mobile-vertical-half-spacing: $mobile-vertical-spacing / 2;
+$tablet-vertical-half-spacing: $tablet-vertical-spacing / 2;
+$desktop-vertical-half-spacing: $desktop-vertical-spacing / 2;
+$mobile-vertical-double-spacing: $mobile-vertical-spacing * 2;
+$tablet-vertical-double-spacing: $tablet-vertical-spacing * 2;
+$desktop-vertical-double-spacing: $desktop-vertical-spacing * 2;
+
+
+// iPad address & tab bars
+$tablet-chrome-height: 102;

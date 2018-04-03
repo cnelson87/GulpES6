@@ -1,0 +1,50 @@
+{
+	"name": "gulp-es6",
+	"version": "0.1.0",
+	"title": "Gulp ES6",
+	"description": "A Gulp ES6 sandbox.",
+	"namespace": "gulpes6",
+	"main": "Gulpfile.js",
+	"readmeFilename": "README.md",
+	"portNumber": 8376,
+	"livereloadPortNum": 30376,
+	"scripts": {
+		"start": "gulp --dev",
+		"build": "gulp"
+	},
+	"dependencies": {
+		"babel-polyfill": "^6.26.0"
+	},
+	"devDependencies": {
+		"gulp": "^3.9.1",
+		"autoprefixer": "^8.2.0",
+		"babel-core": "^6.26.0",
+		"babel-preset-env": "^1.6.1",
+		"babelify": "^8.0.0",
+		"browserify": "^16.1.1",
+		"gulp-autoprefixer": "^5.0.0",
+		"gulp-concat": "^2.6.1",
+		"gulp-cssmin": "^0.2.0",
+		"gulp-eslint": "^4.0.2",
+		"gulp-file-include": "^2.0.1",
+		"gulp-if": "^2.0.2",
+		"gulp-livereload": "^3.8.1",
+		"gulp-postcss": "^7.0.1",
+		"gulp-sass": "^3.2.1",
+		"gulp-sass-lint": "^1.3.4",
+		"gulp-sourcemaps": "^2.6.4",
+		"gulp-uglify": "^3.0.0",
+		"handlebars": "^4.0.11",
+		"hbsfy": "^2.8.1",
+		"node-sass": "^4.8.3",
+		"vinyl-buffer": "^1.0.1",
+		"vinyl-source-stream": "^2.0.0",
+		"yargs": "^11.0.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/cnelson87/GulpES6"
+	},
+	"author": "Chris Nelson <cnelson87@gmail.com>",
+	"license": "MIT"
+}

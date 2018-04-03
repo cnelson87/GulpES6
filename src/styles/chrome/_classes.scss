@@ -1,0 +1,209 @@
+//
+// Global Classes
+// -----------------------------------------------------
+
+
+// Helper utilities
+
+.align-center, .centered {
+	text-align: center;
+}
+
+.align-left {
+	text-align: left;
+}
+
+.align-right {
+	text-align: right;
+}
+
+.block {
+	display: block;
+}
+
+.clear {
+	clear: both;
+}
+
+.nowrap {
+	white-space: nowrap;
+}
+
+.no-margin {
+	margin: 0;
+}
+
+.pull-left {
+	float: left;
+}
+
+.pull-right {
+	float: right;
+}
+
+.accelerate {
+	@include accelerate;
+}
+
+.center-block {
+	@include center-block;
+}
+
+.clearfix {
+	@include clearfix;
+}
+
+.hidden {
+	@include hidden;
+}
+
+.offscreen {
+	@include offscreen;
+}
+
+.text-hide {
+	@include text-hide;
+}
+
+.visible {
+	@include visible();
+}
+
+.flex-box {
+	display: flex;
+
+	// .flex-box-child {
+	//
+	// }
+}
+
+
+// Lists
+
+nav ul, nav ol {list-style: none;}
+
+ul.disc-list {list-style-type: disc;}
+ul.circle-list {list-style-type: circle;}
+ul.square-list {list-style-type: square;}
+ol.numbered-list {list-style: decimal;}
+ol.lower-alpha {list-style: lower-alpha;}
+ol.upper-alpha {list-style: upper-alpha;}
+ol.lower-roman {list-style: lower-roman;}
+ol.upper-roman {list-style: upper-roman;}
+
+ul.plain, ol.plain {list-style: none;}
+
+ul.inline, ol.inline {
+	list-style: none;
+	> li {
+		display: inline-block;
+		margin: 0 0.2em;
+	}
+}
+
+
+// Images
+
+img.block {
+	display: block;
+	margin: 0 0 1.0em;
+}
+
+img.inline {
+	display: inline;
+	margin: 0 0.2em;
+	vertical-align: bottom;
+}
+
+img.inset-left {
+	float: left;
+	margin: 0 20px 1.0em 0;
+}
+
+img.inset-right {
+	float: right;
+	margin: 0 0 1.0em 20px;
+}
+
+
+// Misc styles
+
+script[type='text/template'] {
+	@include hidden;
+}
+
+.alert, .error, .important, .required {
+	color: $error-color;
+	font-weight: bold;
+}
+
+.intro, .lead {
+	font-size: 1.2em;
+	margin-bottom: 1.5em;
+}
+
+
+// Responsive utilities
+
+.show-ios-block,
+.show-ios-inline,
+.show-ios-inline-block,
+.show-android-block,
+.show-android-inline,
+.show-android-inline-block,
+.show-mobile-block,
+.show-mobile-inline,
+.show-mobile-inline-block,
+.show-tablet-block,
+.show-tablet-inline,
+.show-tablet-inline-block,
+.show-desktop-block,
+.show-desktop-inline,
+.show-desktop-inline-block {
+	@include hidden;
+}
+// iOS
+html.ios {
+	.hide-ios {@include hidden;}
+	.show-ios-block {@include visible(block);}
+	.show-ios-inline {@include visible(inline);}
+	.show-ios-inline-block {@include visible(inline-block);}
+}
+// Android
+html.android {
+	.hide-android {@include hidden;}
+	.show-android-block {@include visible(block);}
+	.show-android-inline {@include visible(inline);}
+	.show-android-inline-block {@include visible(inline-block);}
+}
+// Mobile
+@media (max-width: $mobile-breakpoint-max) {
+	.hide-mobile {@include hidden;}
+	.show-mobile-block {@include visible(block);}
+	.show-mobile-inline {@include visible(inline);}
+	.show-mobile-inline-block {@include visible(inline-block);}
+	//overriding display for mobile only, NOT hiding from tablet or desktop.
+	.mobile-only-block {
+		display: block;
+	}
+	.mobile-only-inline {
+		display: inline;
+	}
+	.mobile-only-inline-block {
+		display: inline-block;
+	}
+}
+// Tablet
+@media (min-width: $tablet-breakpoint-min) and (max-width: $tablet-breakpoint-max) {
+	.hide-tablet {@include hidden;}
+	.show-tablet-block {@include visible(block);}
+	.show-tablet-inline {@include visible(inline);}
+	.show-tablet-inline-block {@include visible(inline-block);}
+}
+// Desktop
+@media (min-width: $desktop-breakpoint-min) {
+	.hide-desktop {@include hidden;}
+	.show-desktop-block {@include visible(block);}
+	.show-desktop-inline {@include visible(inline);}
+	.show-desktop-inline-block {@include visible(inline-block);}
+}

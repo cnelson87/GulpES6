@@ -1,0 +1,126 @@
+//
+// Base Typography
+// -----------------------------------------------------
+
+
+body {
+	color: $text-color;
+	font-family: $main-font;
+	// uncomment appropriate line to set default type size
+	font-size: 100%; //16px
+	// font-size: 87.5%; //14px
+	// font-size: 75.0%; //12px
+	// font-size: 62.5%; //10px
+	line-height: 1.5; //24px
+
+	// Tablet+
+	@media (min-width: $tablet-breakpoint-min) {
+		font-size: 112.5%; //18px
+		line-height: 1.5; //27px
+	}
+
+	// Desktop+
+	@media (min-width: $desktop-breakpoint-min) {
+		font-size: 125%; //20px
+		line-height: 1.5; //30px
+	}
+
+}
+
+a {
+	@include base-transition();
+	color: $link-color;
+	text-decoration: none;
+}
+a:active, a:focus, a:hover {
+	color: $link-hover-color;
+	text-decoration: underline;
+}
+
+p, ul, ol, dl, table, address {
+	margin-bottom: 1.5em;
+}
+li {
+	margin-bottom: 0.2em;
+}
+dt {
+	font-weight: bold;
+	margin-bottom: 0.2em;
+}
+dd {
+	margin-bottom: 0.5em;
+}
+th {
+	font-weight: bold;
+	text-align: left;
+	vertical-align: bottom;
+}
+td {
+	vertical-align: top;
+}
+
+nav ul, nav ol {
+	margin: 0;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+	color: $gray-dark;
+	font-family: $alt-font;
+	font-weight: normal;
+	line-height: 1.0;
+}
+h1, .h1 {
+	font-size: 2.0em;
+	margin-bottom: 20px;
+}
+h2, .h2 {
+	font-size: 1.5em;
+	margin-bottom: 15px;
+}
+h3, .h3 {
+	font-size: 1.2em;
+	margin-bottom: 10px;
+}
+h4, .h4, h5, .h5, h6, .h6 {
+	font-weight: bold;
+	line-height: 1.0;
+	margin-bottom: 0.2em;
+}
+h4, .h4 {
+	font-size: 1.1em;
+}
+h5, .h5 {
+	font-size: 1.0em;
+}
+h6, .h6 {
+	font-size: 1.0em;
+	font-weight: normal;
+}
+
+big, .big {font-size: 1.2em;}
+
+small, .small {font-size: 0.85em;}
+
+blockquote {
+	// Note: must not leave any whitespace at the beginning of a
+	// blockquote in markup - Safari will render it.
+	color: $gray-dark;
+	font-size: 20px;
+	font-family: $serif-font;
+	font-weight: normal;
+	line-height: 1.0;
+	margin-bottom: 20px;
+	padding: 0 20px;
+}
+
+hr {
+	border-top: 2px solid $gray-light;
+	margin: 1.5em 0;
+}
+
+// uncomment for testing
+// h1, h2, h3, h4, h5, h6, p, ul, ol, dl, table {
+// 	&:focus {
+// 		background-color: $error-color;
+// 	}
+// }

@@ -1,0 +1,15 @@
+//
+// Print
+// -----------------------------------------------------
+
+@import 'utils/variables';
+
+* {
+	background: none;
+	color: $black;
+}
+
+.site-header,
+.site-footer {
+	display: none;
+}

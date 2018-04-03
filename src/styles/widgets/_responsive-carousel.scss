@@ -1,0 +1,61 @@
+//
+// Responsive Carousel
+// -----------------------------------------------------
+
+/******************************************************************
+	Assumes 10 items in carousel, 1 visible item in all views.
+	JS will re-calculate widths based on actual length of items.
+******************************************************************/
+
+.responsive-carousel {
+	width: calc(100% - 80px);
+	height: auto;
+	margin: 1.5em auto;
+	position: relative;
+
+	.arrow-nav {
+		position: absolute;
+		top: calc(50% - 20px);
+		&.nav-prev {left: -40px;}
+		&.nav-next {right: -40px;}
+	}
+
+	.carousel--outer-mask {
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		position: relative;
+		left: 0;
+		top: 0;
+	}
+
+	.carousel--inner-track {
+		@include clearfix;
+		display: block;
+		width: calc(100% * 10);
+		height: 100%;
+		position: relative;
+		left: 0;
+		top: 0;
+	}
+
+	.carousel--panel {
+		@include clearfix;
+		float: left;
+		width: calc(100% / 10);
+		height: auto;
+		position: relative;
+
+		> .carousel--panel-content {
+			@include clearfix;
+			width: 100%;
+			height: auto;
+			position: relative;
+
+			&.padded {
+				padding: 0 5px;
+			}
+		}
+	}
+
+}

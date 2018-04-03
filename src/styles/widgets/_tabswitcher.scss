@@ -1,0 +1,81 @@
+//
+// Tab Switcher
+// -----------------------------------------------------
+
+
+.tabswitcher {
+	margin: 1.5em 0;
+	position: relative;
+
+	.tabswitcher--tabnav {
+		margin-bottom: 1.0em;
+		position: relative;
+
+		> ul {
+			list-style: none;
+			margin: 0;
+
+			> li {
+				display: inline-block;
+				margin: 0;
+
+				> a {
+					display: block;
+					color: $near-black;
+					text-decoration: none;
+					background: $near-white;
+					padding: 0.5em 1.0em;
+
+					&:hover, &:focus {
+						background: $gray-light;
+					}
+
+					&.is-active {
+						color: $white;
+						background: $gray-dark;
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+	.tabswitcher--panels-container {
+		border-top: 2px solid $border-color-dark;
+		border-bottom: 2px solid $border-color-dark;
+		position: relative;
+	}
+
+	.tabswitcher--panel {
+		@include clearfix;
+		overflow: hidden;
+
+		&:not(.is-active) {
+			opacity: 0;
+			position: absolute;
+			left: 0;
+			top: 0;
+			z-index: -1;
+			transform: scale(0.95);
+		}
+
+		&.is-active {
+			opacity: 1.0;
+			position: relative;
+			z-index: 3;
+			transform: scale(1.0);
+			transition: opacity $animation-speed, transform $animation-speed;
+		}
+
+		> .tabswitcher--panel-content {
+			@include clearfix;
+			padding: 1.5em;
+			position: relative;
+		}
+
+	}
+
+}

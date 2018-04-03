@@ -1,0 +1,28 @@
+//
+// Buttons
+// -----------------------------------------------------
+
+//use either <a>, <button>, or <input> tags
+.button {
+	@include base-transition();
+	display: inline-block;
+	cursor: pointer;
+	min-width: 120px;
+	color: $text-color;
+	font-family: $main-font;
+	font-size: 16px; //1.0em;
+	font-weight: bold;
+	line-height: 1.2;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	background: $gray-light;
+	border: 1px solid $border-color-dark;
+	border-radius: $border-radius-sm;
+	outline: 0;
+	padding: 4px 12px;
+
+	&:hover, &:focus {
+		background: $gray-xlight;
+	}
+}

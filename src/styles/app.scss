@@ -1,0 +1,53 @@
+//
+// Application
+// -----------------------------------------------------
+
+// 3rd party
+@import 'vendor/font-awesome';
+@import 'vendor/jquery-ui';
+@import 'vendor/nouislider.custom';
+
+// configuration
+@import 'utils/variables';
+@import 'utils/mixins';
+@import 'utils/animations';
+@import 'utils/flex-grid';
+@import 'utils/grid';
+
+// global styles
+@import 'chrome/reset';
+@import 'chrome/breakpoint-indicator';
+@import 'chrome/typography';
+@import 'chrome/forms';
+@import 'chrome/classes';
+@import 'chrome/layout';
+
+// common re-usable styles
+@import 'common/arrow-link';
+@import 'common/arrow-nav';
+@import 'common/buttons';
+@import 'common/btn-closeX';
+@import 'common/responsive-iframe';
+
+// components used for a specific purpose
+@import 'components/hero';
+@import 'components/mediablock';
+@import 'components/image-card';
+@import 'components/datepicker';
+
+// JS widgets
+@import 'widgets/loader-spinner';
+@import 'widgets/infinite-carousel';
+@import 'widgets/responsive-carousel';
+@import 'widgets/tab-carousel';
+@import 'widgets/accordion';
+@import 'widgets/tabswitcher';
+@import 'widgets/horizordion';
+@import 'widgets/modal-window';
+@import 'widgets/range-slider';
+
+// unique views
+@import 'views/homepage';
+@import 'views/flexboxpage';
+@import 'views/gridspage';
+@import 'views/videospage';

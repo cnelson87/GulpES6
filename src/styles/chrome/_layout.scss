@@ -1,0 +1,103 @@
+//
+// Base Layout
+// -----------------------------------------------------
+
+
+html, body {
+	width: 100vw;
+	min-width: $min-width;
+	// min-height: 100vh;
+	max-width: 100vw;
+	overflow-x: hidden;
+	position: relative;
+}
+
+body {
+	@include clearfix;
+	background: $body-bg url($image-path+'/bg-main-mobi.jpg') no-repeat fixed center top;
+	background-size: cover;
+	@media (min-width: $tablet-breakpoint-min) {
+		background-image: url($image-path+'/bg-main-tabt.jpg');
+	}
+	@media (min-width: $desktop-breakpoint-min) {
+		background-image: url($image-path+'/bg-main-desk.jpg');
+	}
+}
+
+#main {
+	min-height: calc(100vh - #{$mobile-header-height + $mobile-footer-height});
+	padding: $mobile-vertical-spacing 0;
+	overflow-x: hidden;
+	position: relative;
+	@media (min-width: $tablet-breakpoint-min) {
+		min-height: calc(100vh - #{$tablet-header-height + $tablet-footer-height});
+		padding: $tablet-vertical-spacing 0;
+	}
+	@media (min-width: $desktop-breakpoint-min) {
+		min-height: calc(100vh - #{$desktop-header-height + $desktop-footer-height});
+		padding: $desktop-vertical-spacing 0;
+	}
+}
+
+#header,
+#footer,
+.content {
+	@include clearfix;
+	background: $white;
+	position: relative;
+
+	.content-container {
+		@include clearfix;
+		margin: 0 auto;
+		padding: $mobile-vertical-spacing $mobile-gutter-width;
+		position: relative;
+		@media (max-width: $mobile-breakpoint-max) {
+			max-width: $mobile-container-max-width;
+		}
+		@media (min-width: $tablet-breakpoint-min) {
+			width: $tablet-container-width;
+			padding: $mobile-vertical-spacing $tablet-gutter-width;
+		}
+		@media (min-width: $desktop-breakpoint-min) {
+			width: $desktop-container-width;
+			padding: $mobile-vertical-spacing $desktop-gutter-width;
+		}
+		@media (min-width: $desktop-breakpoint-wide) {
+			width: $desktop-wide-container-width;
+		}
+	}
+
+}
+
+#header,
+#footer {
+	background-color: $gray-dark;
+	color: $white;
+}
+
+.content {
+	border-top: 2px solid $gray-dark;
+	border-bottom: 2px solid $gray-dark;
+
+	.content-container {
+		@media (min-width: $tablet-breakpoint-min) {
+			padding-top: $tablet-vertical-spacing;
+			padding-bottom: $tablet-vertical-spacing;
+		}
+		@media (min-width: $desktop-breakpoint-min) {
+			padding-top: $desktop-vertical-spacing;
+			padding-bottom: $desktop-vertical-spacing;
+		}
+	}
+
+}
+
+.content + .content {
+	margin-top: $mobile-vertical-spacing;
+	@media (min-width: $tablet-breakpoint-min) {
+		margin-top: $tablet-vertical-spacing;
+	}
+	@media (min-width: $desktop-breakpoint-min) {
+		margin-top: $desktop-vertical-spacing;
+	}
+}

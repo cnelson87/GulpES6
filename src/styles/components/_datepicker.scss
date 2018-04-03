@@ -1,0 +1,13 @@
+//
+// Datepicker
+// -----------------------------------------------------
+
+
+.datepicker-container {
+	position: relative;
+
+	input.datepicker {
+		background: $transparent url($image-path+'/icon-calendar.png') no-repeat calc(100% - 4px) center;
+	}
+
+}
