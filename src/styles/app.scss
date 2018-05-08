@@ -8,19 +8,19 @@
 @import 'vendor/nouislider.custom';
 
 // configuration
-@import 'utils/variables';
-@import 'utils/mixins';
-@import 'utils/animations';
-@import 'utils/flex-grid';
-@import 'utils/grid';
+@import 'config/variables';
+@import 'config/mixins';
+@import 'config/animations';
+@import 'config/flex-grid';
+@import 'config/grid';
 
-// global styles
-@import 'chrome/reset';
-@import 'chrome/breakpoint-indicator';
-@import 'chrome/typography';
-@import 'chrome/forms';
-@import 'chrome/classes';
-@import 'chrome/layout';
+// base styles
+@import 'base/reset';
+@import 'base/breakpoint-indicator';
+@import 'base/typography';
+@import 'base/forms';
+@import 'base/classes';
+@import 'base/layout';
 
 // common re-usable styles
 @import 'common/arrow-link';
