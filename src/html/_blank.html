@@ -1,29 +1,15 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-<head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-	<title>Gulp ES6</title>
-	<meta name="description" content="" />
-	<meta name="keywords" content="" />
-
-	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Arvo:400,400italic,700,700italic|Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" />
-	<link rel="stylesheet" href="/_assets/styles/app.css" />
-	<link rel="stylesheet" href="/_assets/styles/print.css" media="print" />
-
-	<script src="/_assets/scripts/vendor.js"></script>
-	<script src="/_assets/scripts/app.js"></script>
-</head>
+@@include('./_includes/head.html', {
+	"title": "Gulp ES6",
+	"description": "description description description",
+	"keywords": "keywords keywords keywords"
+})
 <body class="" id="">
 
 	<div class="page-container">
 
-		<header class="site-header" id="header">
-			<div class="content-container">
-				<span>header</span>
-			</div>
-		</header>
+@@include('./_includes/header.html' {})
 
 		<main class="site-main" id="main">
 			<section class="content">
@@ -33,11 +19,7 @@
 			</section>
 		</main>
 
-		<footer class="site-footer" id="footer">
-			<div class="content-container">
-				<span>footer</span>
-			</div>
-		</footer>
+@@include('./_includes/footer.html' {})
 
 	</div>
 

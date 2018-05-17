@@ -2,7 +2,8 @@ var PATHS = {
 	SRC: {
 		ASSETS: 'src/assets/**/*',
 		DATA: 'src/data/**/*',
-		HTML: 'src/html/**/*',
+		HTML: 'src/html/**/*.html',
+		HTML_INCLUDES: 'src/html/_includes/**/*.html',
 		SCRIPTS: 'src/scripts/**/*.js',
 		SCRIPTS_ENTRY: [
 			'./src/scripts/initialize.js'

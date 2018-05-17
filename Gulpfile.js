@@ -70,8 +70,11 @@ gulp.task('data', function() {
 });
 
 gulp.task('html', function() {
-	//TODO: create task to compile HTML from partials
-	return gulp.src(SRC.HTML)
+	return gulp.src([SRC.HTML, '!'+SRC.HTML_INCLUDES])
+		.pipe(fileinclude({
+			prefix: '@@',
+			basepath: '@file'
+		}))
 		.pipe(out());
 });
 
