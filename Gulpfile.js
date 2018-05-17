@@ -10,6 +10,7 @@ const buffer = require('vinyl-buffer');
 const concat = require('gulp-concat');
 const cssmin = require('gulp-cssmin');
 const eslint = require('gulp-eslint');
+const fileinclude = require('gulp-file-include');
 const gulpif = require('gulp-if');
 const hbsfy = require('hbsfy');
 const livereload = require('gulp-livereload');
