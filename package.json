@@ -24,6 +24,7 @@
 		"browserify": "^16.2.2",
 		"gulp-autoprefixer": "^5.0.0",
 		"gulp-concat": "^2.6.1",
+		"gulp-connect": "^5.5.0",
 		"gulp-cssmin": "^0.2.0",
 		"gulp-eslint": "^4.0.2",
 		"gulp-file-include": "^2.0.1",

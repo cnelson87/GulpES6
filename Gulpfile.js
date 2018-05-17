@@ -19,6 +19,7 @@ const sasslint = require('gulp-sass-lint');
 const source = require('vinyl-source-stream');
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
+const connect = require('gulp-connect');
 
 //
 // CONSTANTS
@@ -75,7 +76,8 @@ gulp.task('html', function() {
 			prefix: '@@',
 			basepath: '@file'
 		}))
-		.pipe(out());
+		.pipe(out())
+		.pipe(gulpif(isDev(), livereload()))
 });
 
 gulp.task('eslint', function() {
@@ -131,6 +133,17 @@ gulp.task('vendor', function() {
 		.pipe(out(DEST.SCRIPTS))
 });
 
+gulp.task('server', function() {
+	connect.server({
+		root: './' + getSiteRoot(),
+		port: PORT,
+		livereload: {
+			enable: true,
+			port: LIVERELOAD_PORT
+		},
+	});
+});
+
 gulp.task('watch', function() {
 	livereload.listen({ port: LIVERELOAD_PORT });
 	gulp.watch(SRC.ASSETS, ['assets']);
@@ -144,7 +157,7 @@ gulp.task('watch', function() {
 // build task
 let buildTasks = [ 'assets', 'data', 'html', 'eslint', 'scripts', 'sasslint', 'styles', 'vendor' ];
 if (isDev()) {
-	// buildTasks.push('connect');
+	buildTasks.push('server');
 	buildTasks.push('watch');
 }
 gulp.task('build', buildTasks, function() {
