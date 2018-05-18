@@ -14,14 +14,14 @@
 	}
 
 	// Tablet+
-	@media (min-width: $tablet-breakpoint-min) {
+	@media (min-width: $breakpoint-tablet-min) {
 		.primary-video {
 			margin-bottom: $tablet-vertical-spacing;
 		}
 	}
 
 	// Desktop+
-	@media (min-width: $desktop-breakpoint-min) {
+	@media (min-width: $breakpoint-desktop-min) {
 		.primary-video {
 			margin-bottom: $desktop-vertical-spacing;
 		}
@@ -30,7 +30,7 @@
 	.videos-grid {
 
 		// Tablet+
-		@media (min-width: $tablet-breakpoint-min) {
+		@media (min-width: $breakpoint-tablet-min) {
 
 			h3 {
 				min-height: 2.0em;

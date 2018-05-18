@@ -177,7 +177,7 @@ html.android {
 	.show-android-inline-block {@include visible(inline-block);}
 }
 // Mobile
-@media (max-width: $mobile-breakpoint-max) {
+@media (max-width: $breakpoint-mobile-max) {
 	.hide-mobile {@include hidden;}
 	.show-mobile-block {@include visible(block);}
 	.show-mobile-inline {@include visible(inline);}
@@ -194,14 +194,14 @@ html.android {
 	}
 }
 // Tablet
-@media (min-width: $tablet-breakpoint-min) and (max-width: $tablet-breakpoint-max) {
+@media (min-width: $breakpoint-tablet-min) and (max-width: $breakpoint-tablet-max) {
 	.hide-tablet {@include hidden;}
 	.show-tablet-block {@include visible(block);}
 	.show-tablet-inline {@include visible(inline);}
 	.show-tablet-inline-block {@include visible(inline-block);}
 }
 // Desktop
-@media (min-width: $desktop-breakpoint-min) {
+@media (min-width: $breakpoint-desktop-min) {
 	.hide-desktop {@include hidden;}
 	.show-desktop-block {@include visible(block);}
 	.show-desktop-inline {@include visible(inline);}

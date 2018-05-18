@@ -9,7 +9,7 @@
 	position: relative;
 
 	// Tablet+Desktop+
-	@media (min-width: $tablet-breakpoint-min) {
+	@media (min-width: $breakpoint-tablet-min) {
 		display: flex;
 		// flex-flow: row nowrap;
 		align-items: stretch;
@@ -22,7 +22,7 @@
 		position: relative;
 
 		// Tablet+Desktop+
-		@media (min-width: $tablet-breakpoint-min) {
+		@media (min-width: $breakpoint-tablet-min) {
 			flex: 1;
 			// flex-grow: 1;
 			// flex-shrink: 1;
@@ -54,7 +54,7 @@
 			@include hidden;
 
 			// Tablet+Desktop+
-			@media (min-width: $tablet-breakpoint-min) {
+			@media (min-width: $breakpoint-tablet-min) {
 				@include visible();
 				width: 40px;
 				height: 100%;
@@ -65,7 +65,7 @@
 				> a {
 					@include text-hide;
 					display: block;
-					background: rgba($black, 0.2);
+					background: rgba($color-black, 0.2);
 					width: 100%;
 					height: 100%;
 
@@ -76,7 +76,7 @@
 						height: 30px;
 						background: url($image-path+'/action-icons.png') no-repeat 0 -30px;
 						background-origin: border-box;
-						border: 2px solid $near-black;
+						border: 2px solid $color-near-black;
 						border-radius: 50%;
 						position: absolute;
 						right: 5px;
@@ -84,11 +84,11 @@
 					}
 
 					&:hover, &:focus {
-						background: rgba($black, 0.1);
+						background: rgba($color-black, 0.1);
 					}
 
 					&.is-active {
-						background: rgba($black, 0.1);
+						background: rgba($color-black, 0.1);
 
 						&::after {
 							background-position: 0 0;
@@ -108,7 +108,7 @@
 			// transition: opacity $animation-speed;
 
 			// Tablet+Desktop+
-			@media (min-width: $tablet-breakpoint-min) {
+			@media (min-width: $breakpoint-tablet-min) {
 				width: calc(100% - 40px); //minus tab width
 			}
 

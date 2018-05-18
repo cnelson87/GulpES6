@@ -22,7 +22,7 @@
 	}
 
 	.image-card--content {
-		background: $white;
+		background: $color-white;
 		padding: 10px;
 
 		p {
@@ -33,7 +33,7 @@
 
 	.screen {
 		display: block;
-		background-color: $black;
+		background-color: $color-black;
 		opacity: 0.5;
 		position: absolute;
 		left: 0;

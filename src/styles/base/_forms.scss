@@ -24,7 +24,7 @@ legend {
 
 label, span.label {
 	display: inline-block;
-	color: $gray-dark;
+	color: $color-gray-dark;
 	font-size: 16px; //1.0em;
 	font-weight: bold;
 	line-height: 1.2;
@@ -35,13 +35,13 @@ label, span.label {
 		font-weight: normal;
 	}
 	&.disabled {
-		color: $gray-light;
+		color: $color-gray-light;
 	}
 }
 
 output {
 	display: inline-block;
-	color: $gray-dark;
+	color: $color-gray-dark;
 	font-size: 16px; //1.0em;
 	font-weight: bold;
 	line-height: 1.2;
@@ -50,7 +50,7 @@ output {
 
 input, select, textarea, button {
 	display: inline-block;
-	color: $gray-dark;
+	color: $color-gray-dark;
 	font-family: $main-font;
 	font-size: 16px; //1.0em;
 	line-height: 1.2;
@@ -75,19 +75,19 @@ textarea:invalid {
 }
 
 ::-webkit-input-placeholder {
-	color: $gray-med;
+	color: $color-gray-med;
 	opacity: 1;
 }
 ::-moz-placeholder {
-	color: $gray-med;
+	color: $color-gray-med;
 	opacity: 1;
 }
 :-ms-input-placeholder {
-	color: $gray-med;
+	color: $color-gray-med;
 	opacity: 1;
 }
 ::placeholder {
-	color: $gray-med;
+	color: $color-gray-med;
 	opacity: 1;
 }
 :focus::-webkit-input-placeholder {
@@ -143,11 +143,11 @@ textarea {
 	width: 100%;
 	height: calc(3.6em + 6px); // 1.2 line-height x 3, + 6px padding & border
 	resize: none;
-	@media (max-width: $mobile-breakpoint-max) {
+	@media (max-width: $breakpoint-mobile-max) {
 		// display: block;
 		max-width: $long-input-width;
 	}
-	@media (min-width: $tablet-breakpoint-min) {
+	@media (min-width: $breakpoint-tablet-min) {
 		width: $long-input-width;
 	}
 }
@@ -181,7 +181,7 @@ input[type='url'].disabled,
 input[type='search'].disabled,
 select[disabled], select.disabled,
 textarea[disabled], textarea.disabled {
-	color: $gray-light;
+	color: $color-gray-light;
 	border-color: $border-color-xlight;
 }
 
@@ -236,21 +236,21 @@ select.input-auto {
 
 textarea.textarea-med {
 	height: calc(4.8em + 6px); // 1.2 line-height x 4, + 6px padding & border
-	@media (max-width: $mobile-breakpoint-max) {
+	@media (max-width: $breakpoint-mobile-max) {
 		// display: block;
 		max-width: $xlong-input-width;
 	}
-	@media (min-width: $tablet-breakpoint-min) {
+	@media (min-width: $breakpoint-tablet-min) {
 		width: $xlong-input-width;
 	}
 }
 textarea.textarea-lrg {
 	height: calc(7.2em + 6px); // 1.2 line-height x 6, + 6px padding & border
-	@media (max-width: $mobile-breakpoint-max) {
+	@media (max-width: $breakpoint-mobile-max) {
 		// display: block;
 		max-width: $xxlong-input-width;
 	}
-	@media (min-width: $tablet-breakpoint-min) {
+	@media (min-width: $breakpoint-tablet-min) {
 		width: $xxlong-input-width;
 	}
 }
@@ -277,7 +277,7 @@ input[type='radio'] {
 		cursor: default;
 
 		& + label {
-			color: $gray-light;
+			color: $color-gray-light;
 		}
 
 	}
@@ -330,13 +330,13 @@ button {
 // 	text-decoration: none;
 // 	text-transform: uppercase;
 // 	vertical-align: middle;
-// 	background: $gray-light;
+// 	background: $color-gray-light;
 // 	border: 1px solid $border-color-dark;
 // 	border-radius: $border-radius-sm;
 // 	padding: 4px 12px;
 //
 // 	&:focus, &:hover {
-// 		background: $gray-xlight;
+// 		background: $color-gray-xlight;
 // 		outline: none;
 // 	}
 // }
@@ -344,13 +344,13 @@ button {
 // TODO: move .btn styles to separate scss stylesheet
 // input.btn, input.sm-btn,
 // button.btn, button.sm-btn {
-// 	color: $white;
+// 	color: $color-white;
 // 	background: $link-color;
 // }
 // input.alt-btn, input.sm-alt-btn,
 // button.alt-btn, button.sm-alt-btn {
 // 	color: $link-color;
-// 	background: $white;
+// 	background: $color-white;
 // 	border-color: $link-color;
 // }
 // input.sm-btn, input.sm-alt-btn,
@@ -370,9 +370,9 @@ button {
 // input.sm-alt-btn:focus, input.sm-alt-btn:hover
 // button.alt-btn:focus, button.alt-btn:hover,
 // button.sm-alt-btn:focus, button.sm-alt-btn:hover {
-// 	color: $gray-dark;
-// 	background: $white;
-// 	border-color: $gray-dark;
+// 	color: $color-gray-dark;
+// 	background: $color-white;
+// 	border-color: $color-gray-dark;
 // }
 
 //
@@ -385,11 +385,11 @@ button {
 .form-message,
 .form-note {
 	display: block;
-	color: $gray-med;
+	color: $color-gray-med;
 	font-size: 12px;
 	line-height: 16px;
 }
-@media (min-width: $tablet-breakpoint-min) {
+@media (min-width: $breakpoint-tablet-min) {
 	// note next to an input field
 	.form-note {
 		display: inline-block;

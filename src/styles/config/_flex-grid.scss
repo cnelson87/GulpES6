@@ -11,12 +11,12 @@
 	position: relative;
 
 	// Tablet+
-	@media (min-width: $tablet-breakpoint-min) {
+	@media (min-width: $breakpoint-tablet-min) {
 		margin: 0 -#{$tablet-gutter-half-width};
 	}
 
 	// Desktop+
-	@media (min-width: $desktop-breakpoint-min) {
+	@media (min-width: $breakpoint-desktop-min) {
 		margin: 0 -#{$desktop-gutter-half-width};
 	}
 }
@@ -27,12 +27,12 @@
 	position: relative;
 
 	// Tablet+
-	@media (min-width: $tablet-breakpoint-min) {
+	@media (min-width: $breakpoint-tablet-min) {
 		padding: 0 $tablet-gutter-half-width;
 	}
 
 	// Desktop+
-	@media (min-width: $desktop-breakpoint-min) {
+	@media (min-width: $breakpoint-desktop-min) {
 		padding: 0 $desktop-gutter-half-width;
 	}
 }
@@ -75,7 +75,7 @@
 .flex-col-sm-11-12 {@include width-percentage(11,12);}
 
 // Tablet+
-@media (min-width: $tablet-breakpoint-min) {
+@media (min-width: $breakpoint-tablet-min) {
 	.flex-col-md-1-1 {width: 100%;}
 	.flex-col-md-1-2 {@include width-percentage(1,2);}
 	.flex-col-md-1-3 {@include width-percentage(1,3);}
@@ -103,7 +103,7 @@
 }
 
 // Desktop+
-@media (min-width: $desktop-breakpoint-min) {
+@media (min-width: $breakpoint-desktop-min) {
 	.flex-col-lg-1-1 {width: 100%;}
 	.flex-col-lg-1-2 {@include width-percentage(1,2);}
 	.flex-col-lg-1-3 {@include width-percentage(1,3);}
@@ -160,7 +160,7 @@
 .flex-grid-sm-11-12 .flex-column {@include width-percentage(11,12);}
 
 // Tablet+
-@media (min-width: $tablet-breakpoint-min) {
+@media (min-width: $breakpoint-tablet-min) {
 	.flex-grid-md-1-1 .flex-column {width: 100%;}
 	.flex-grid-md-1-2 .flex-column {@include width-percentage(1,2);}
 	.flex-grid-md-1-3 .flex-column {@include width-percentage(1,3);}
@@ -188,7 +188,7 @@
 }
 
 // Desktop+
-@media (min-width: $desktop-breakpoint-min) {
+@media (min-width: $breakpoint-desktop-min) {
 	.flex-grid-lg-1-1 .flex-column {width: 100%;}
 	.flex-grid-lg-1-2 .flex-column {@include width-percentage(1,2);}
 	.flex-grid-lg-1-3 .flex-column {@include width-percentage(1,3);}

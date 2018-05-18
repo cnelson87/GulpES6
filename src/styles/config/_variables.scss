@@ -4,32 +4,32 @@
 
 
 // Color Definitions
-$black: #000;
-$white: #fff;
-$near-black: #1a1a1a;
-$near-white: #efefef;
-$gray-dark: #333;
-$gray-med: #999;
-$gray-light: #ccc;
-$gray-xlight: #dedede;
-$gray-xlight-alt: #cdcdcd;
-$red1: #900;
-$red2: #c00;
-$green1: #9c3;
-$green2: #693;
-$light-blue: #69c;
-$dark-blue: #036;
-$transparent: rgba(0,0,0,0); //iOS friendly transparent
+$color-black: #000;
+$color-white: #fff;
+$color-near-black: #1a1a1a;
+$color-near-white: #efefef;
+$color-gray-dark: #333;
+$color-gray-med: #999;
+$color-gray-light: #ccc;
+$color-gray-xlight: #dedede;
+$color-gray-xlight-alt: #cdcdcd;
+$color-red1: #900;
+$color-red2: #c00;
+$color-green1: #9c3;
+$color-green2: #693;
+$color-light-blue: #69c;
+$color-dark-blue: #036;
 // Color Usage
-$body-bg: $near-white;
-$text-color: $near-black;
-$link-color: $green1;
-$link-hover-color: $green2;
-$border-color-dark: $gray-dark;
-$border-color-med: $gray-med;
-$border-color-light: $gray-light;
-$border-color-xlight: $gray-xlight;
-$error-color: $red1;
+$body-bg: $color-near-white;
+$text-color: $color-near-black;
+$link-color: $color-green1;
+$link-hover-color: $color-green2;
+$border-color-dark: $color-gray-dark;
+$border-color-med: $color-gray-med;
+$border-color-light: $color-gray-light;
+$border-color-xlight: $color-gray-xlight;
+$error-color: $color-red1;
+$transparent: rgba(0,0,0,0); //iOS friendly transparent
 
 
 // Fonts
@@ -39,8 +39,8 @@ $serif-font: 'Arvo', Georgia, Times, serif;
 
 
 // Paths
-$image-path: '../images';
-$font-path: '../fonts';
+$image-path: '/_assets/images';
+$font-path: '/_assets/fonts';
 
 
 // Animation
@@ -61,31 +61,25 @@ $border-radius-lg: 10px;
 
 
 // Media Queries
-$mobile-breakpoint-wide: 540px;
-$mobile-breakpoint-max:  767px;
-$tablet-breakpoint-min:  768px;
-$tablet-breakpoint-wide: 920px;
-$tablet-breakpoint-max:  1024px;
-$desktop-breakpoint-min: 1025px;
-$desktop-breakpoint-wide: 1360px;
-$desktop-breakpoint-xwide: 1920px;
+$breakpoint-mobile-wide: 540px;
+$breakpoint-mobile-max:  767px;
+$breakpoint-tablet-min:  768px;
+$breakpoint-tablet-wide: 920px;
+$breakpoint-tablet-max:  1024px;
+$breakpoint-desktop-min: 1025px;
+$breakpoint-desktop-wide: 1360px;
+$breakpoint-desktop-xwide: 1920px;
 //background stretch
-$max-background-width-breakpoint: 2560px;
+$breakpoint-max-background-width: 2560px;
 
 
 // Container Sizes
 $min-width: 320px;
-$max-fluid-width: 1280px;
+$max-width: 1280px;
 $mobile-container-max-width: 640px;
 $tablet-container-width: 740px;
 $desktop-container-width: 1000px;
-$desktop-wide-container-width: 1280px;
-$mobile-header-height: 136px;
-$mobile-footer-height: 136px;
-$tablet-header-height: 94px;
-$tablet-footer-height: 94px;
-$desktop-header-height: 100px;
-$desktop-footer-height: 100px;
+$desktop-wide-container-width: $max-width;
 
 
 // Grid System

@@ -4,100 +4,105 @@
 
 
 html, body {
-	width: 100vw;
+	max-width: 100%;
 	min-width: $min-width;
-	// min-height: 100vh;
-	max-width: 100vw;
 	overflow-x: hidden;
-	position: relative;
+	width: 100%;
 }
 
 body {
 	@include clearfix;
 	background: $body-bg url($image-path+'/bg-main-mobi.jpg') no-repeat fixed center top;
 	background-size: cover;
-	@media (min-width: $tablet-breakpoint-min) {
+	@media (min-width: $breakpoint-tablet-min) {
 		background-image: url($image-path+'/bg-main-tabt.jpg');
 	}
-	@media (min-width: $desktop-breakpoint-min) {
+	@media (min-width: $breakpoint-desktop-min) {
 		background-image: url($image-path+'/bg-main-desk.jpg');
 	}
 }
 
-#main {
-	min-height: calc(100vh - #{$mobile-header-height + $mobile-footer-height});
-	padding: $mobile-vertical-spacing 0;
-	overflow-x: hidden;
+.page-container {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	min-width: $min-width;
 	position: relative;
-	@media (min-width: $tablet-breakpoint-min) {
-		min-height: calc(100vh - #{$tablet-header-height + $tablet-footer-height});
+	width: 100%;
+}
+
+.site-header,
+.site-footer,
+.site-main,
+.container,
+.container-fluid,
+.content {
+	@include clearfix;
+	position: relative;
+}
+
+.site-main {
+	flex-grow: 1;
+	padding: $mobile-vertical-spacing 0;
+	@media (min-width: $breakpoint-tablet-min) {
 		padding: $tablet-vertical-spacing 0;
 	}
-	@media (min-width: $desktop-breakpoint-min) {
-		min-height: calc(100vh - #{$desktop-header-height + $desktop-footer-height});
+	@media (min-width: $breakpoint-desktop-min) {
 		padding: $desktop-vertical-spacing 0;
 	}
 }
 
-#header,
-#footer,
-.content {
-	@include clearfix;
-	background: $white;
-	position: relative;
-
-	.content-container {
-		@include clearfix;
-		margin: 0 auto;
-		padding: $mobile-vertical-spacing $mobile-gutter-width;
-		position: relative;
-		@media (max-width: $mobile-breakpoint-max) {
-			max-width: $mobile-container-max-width;
-		}
-		@media (min-width: $tablet-breakpoint-min) {
-			width: $tablet-container-width;
-			padding: $mobile-vertical-spacing $tablet-gutter-width;
-		}
-		@media (min-width: $desktop-breakpoint-min) {
-			width: $desktop-container-width;
-			padding: $mobile-vertical-spacing $desktop-gutter-width;
-		}
-		@media (min-width: $desktop-breakpoint-wide) {
-			width: $desktop-wide-container-width;
-		}
+.content-container,
+.content-container-fluid {
+	margin: 0 auto;
+	padding: $mobile-vertical-spacing $mobile-gutter-width;
+	@media (min-width: $breakpoint-tablet-min) {
+		padding: $mobile-vertical-spacing $tablet-gutter-width;
 	}
-
+	@media (min-width: $breakpoint-desktop-min) {
+		padding: $mobile-vertical-spacing $desktop-gutter-width;
+	}
 }
 
-#header,
-#footer {
-	background-color: $gray-dark;
-	color: $white;
+.content-container {
+	@media (max-width: $breakpoint-mobile-max) {
+		max-width: $mobile-container-max-width;
+	}
+	@media (min-width: $breakpoint-tablet-min) {
+		width: $tablet-container-width;
+	}
+	@media (min-width: $breakpoint-desktop-min) {
+		width: $desktop-container-width;
+	}
+	@media (min-width: $breakpoint-desktop-wide) {
+		width: $desktop-wide-container-width;
+	}
 }
 
+.content-container-fluid {
+	max-width: $max-width;
+	width: 100%;
+}
+
+.site-header,
+.site-footer {
+	background-color: $color-gray-dark;
+	color: $color-white;
+}
+
+// TEMP content style
 .content {
-	border-top: 2px solid $gray-dark;
-	border-bottom: 2px solid $gray-dark;
-
-	.content-container {
-		@media (min-width: $tablet-breakpoint-min) {
-			padding-top: $tablet-vertical-spacing;
-			padding-bottom: $tablet-vertical-spacing;
-		}
-		@media (min-width: $desktop-breakpoint-min) {
-			padding-top: $desktop-vertical-spacing;
-			padding-bottom: $desktop-vertical-spacing;
-		}
-	}
-
+	background-color: $color-white;
+	border-top: 2px solid $color-gray-dark;
+	border-bottom: 2px solid $color-gray-dark;
 }
 
 .content + .content {
 	margin-top: $mobile-vertical-spacing;
-	@media (min-width: $tablet-breakpoint-min) {
+	@media (min-width: $breakpoint-tablet-min) {
 		margin-top: $tablet-vertical-spacing;
 	}
-	@media (min-width: $desktop-breakpoint-min) {
+	@media (min-width: $breakpoint-desktop-min) {
 		margin-top: $desktop-vertical-spacing;
 	}
 }

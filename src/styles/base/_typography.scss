@@ -14,13 +14,13 @@ body {
 	line-height: 1.5; //24px
 
 	// Tablet+
-	@media (min-width: $tablet-breakpoint-min) {
+	@media (min-width: $breakpoint-tablet-min) {
 		font-size: 112.5%; //18px
 		line-height: 1.5; //27px
 	}
 
 	// Desktop+
-	@media (min-width: $desktop-breakpoint-min) {
+	@media (min-width: $breakpoint-desktop-min) {
 		font-size: 125%; //20px
 		line-height: 1.5; //30px
 	}
@@ -64,7 +64,7 @@ nav ul, nav ol {
 }
 
 h1, .h1, h2, .h2, h3, .h3 {
-	color: $gray-dark;
+	color: $color-gray-dark;
 	font-family: $alt-font;
 	font-weight: normal;
 	line-height: 1.0;
@@ -104,7 +104,7 @@ small, .small {font-size: 0.85em;}
 blockquote {
 	// Note: must not leave any whitespace at the beginning of a
 	// blockquote in markup - Safari will render it.
-	color: $gray-dark;
+	color: $color-gray-dark;
 	font-size: 20px;
 	font-family: $serif-font;
 	font-weight: normal;
@@ -114,7 +114,7 @@ blockquote {
 }
 
 hr {
-	border-top: 2px solid $gray-light;
+	border-top: 2px solid $color-gray-light;
 	margin: 1.5em 0;
 }
 

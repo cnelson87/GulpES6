@@ -80,12 +80,12 @@
 
 // Styling;
 .noUi-target {
-	background: $white;
+	background: $color-white;
 	border-radius: $border-radius-sm;
-	border: 1px solid $gray-dark;
+	border: 1px solid $color-gray-dark;
 }
 .noUi-connect {
-	background: $light-blue;
+	background: $color-light-blue;
 	border-radius: $border-radius-sm;
 	transition: background-color $transition-speed;
 }
@@ -98,13 +98,13 @@
 	cursor: ns-resize;
 }
 .noUi-handle {
-	background: $gray-light;
-	border: 1px solid $gray-dark;
+	background: $color-gray-light;
+	border: 1px solid $color-gray-dark;
 	border-radius: $border-radius-sm;
 	cursor: default;
 }
 .noUi-active {
-	background: $gray-xlight;
+	background: $color-gray-xlight;
 }
 
 // Handle stripes;
@@ -115,7 +115,7 @@
 // 	position: absolute;
 // 	height: 14px;
 // 	width: 1px;
-// 	background: $near-white;
+// 	background: $color-near-white;
 // 	left: 14px;
 // 	top: 6px;
 // }
@@ -135,7 +135,7 @@
 
 // Disabled state;
 [disabled] .noUi-connect {
-	background: $gray-light;
+	background: $color-gray-light;
 }
 [disabled].noUi-target,
 [disabled].noUi-handle,
@@ -151,7 +151,7 @@
 }
 .noUi-pips {
 	position: absolute;
-	color: $gray-med;
+	color: $color-gray-med;
 }
 
 // Values;
@@ -161,20 +161,20 @@
 	text-align: center;
 }
 .noUi-value-sub {
-	color: $gray-light;
+	color: $color-gray-light;
 	font-size: 10px;
 }
 
 // Markings;
 .noUi-marker {
 	position: absolute;
-	background: $gray-light;
+	background: $color-gray-light;
 }
 .noUi-marker-sub {
-	background: $gray-med;
+	background: $color-gray-med;
 }
 .noUi-marker-large {
-	background: $gray-med;
+	background: $color-gray-med;
 }
 
 // Horizontal layout;
@@ -225,10 +225,10 @@
 .noUi-tooltip {
 	display: block;
 	position: absolute;
-	border: 1px solid $gray-light;
+	border: 1px solid $color-gray-light;
 	border-radius: $border-radius-sm;
-	background: $white;
-	color: $black;
+	background: $color-white;
+	color: $color-black;
 	padding: 5px;
 	text-align: center;
 	white-space: nowrap;

@@ -9,14 +9,14 @@
 	display: inline-block;
 	width: 30px;
 	height: 30px;
-	background: $white url($image-path+'/action-icons.png') no-repeat 0 0;
+	background: $color-white url($image-path+'/action-icons.png') no-repeat 0 0;
 	background-origin: border-box;
 	border: 1px solid $border-color-light;
 	border-radius: $border-radius-sm;
 	padding: 0;
 
 	&:focus, &:hover {
-		background-color: $gray-dark;
+		background-color: $color-gray-dark;
 		background-position: 0 -180px;
 		border-color: $border-color-dark;
 	}

@@ -21,18 +21,18 @@
 
 				> a {
 					display: block;
-					color: $near-black;
+					color: $color-near-black;
 					text-decoration: none;
-					background: $near-white;
+					background: $color-near-white;
 					padding: 0.5em 1.0em;
 
 					&:hover, &:focus {
-						background: $gray-light;
+						background: $color-gray-light;
 					}
 
 					&.is-active {
-						color: $white;
-						background: $gray-dark;
+						color: $color-white;
+						background: $color-gray-dark;
 					}
 
 				}

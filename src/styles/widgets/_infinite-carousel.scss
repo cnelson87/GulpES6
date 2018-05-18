@@ -13,7 +13,7 @@
 	.stretch-background {
 		width: 100vw;
 		height: 100%;
-		background-color: $gray-light;
+		background-color: $color-gray-light;
 		position: absolute;
 		left: calc(50% - 50vw);
 		right: calc(50% - 50vw);
@@ -59,7 +59,7 @@
 
 
 // Tablet+
-@media (min-width: $tablet-breakpoint-min) {
+@media (min-width: $breakpoint-tablet-min) {
 	.infinite-carousel {
 		min-height: 408px;
 		padding: 40px 0 4px;
@@ -90,7 +90,7 @@
 }
 
 // Desktop+
-@media (min-width: $desktop-breakpoint-min) {
+@media (min-width: $breakpoint-desktop-min) {
 	.infinite-carousel {
 		min-height: 418px;
 	}

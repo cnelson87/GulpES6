@@ -10,13 +10,13 @@
 		padding-top: 0.5em;
 		padding-bottom: 0.5em;
 		&:nth-child(3n+1) {
-			background-color: rgba($gray-light, 0.6);
+			background-color: rgba($color-gray-light, 0.6);
 		}
 		&:nth-child(3n+2) {
-			background-color: rgba($gray-light, 0.4);
+			background-color: rgba($color-gray-light, 0.4);
 		}
 		&:nth-child(3n+3) {
-			background-color: rgba($gray-light, 0.2);
+			background-color: rgba($color-gray-light, 0.2);
 		}
 	}
 

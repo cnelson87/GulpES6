@@ -27,7 +27,7 @@
 	animation-fill-mode: forwards;
 	width: 100%;
 	height: 100%;
-	background: rgba($black, 0.8);
+	background: rgba($color-black, 0.8);
 	position: absolute;
 	left: 0;
 	right: 0;
@@ -55,13 +55,13 @@
 	}
 
 	// Tablet+
-	@media (min-width: $tablet-breakpoint-min) {
+	@media (min-width: $breakpoint-tablet-min) {
 		width: $tablet-container-width - $tablet-gutter-width;
 		padding: $tablet-gutter-width;
 	}
 
 	// Desktop+
-	@media (min-width: $desktop-breakpoint-min) {
+	@media (min-width: $breakpoint-desktop-min) {
 		width: $desktop-container-width - $desktop-gutter-width;
 		padding: $desktop-gutter-width;
 	}
@@ -78,11 +78,11 @@
 	flex-direction: column;
 	width: 100%;
 	height: 100%;
-	background: $white;
+	background: $color-white;
 	position: relative;
 
 	// Tablet+
-	@media (min-width: $tablet-breakpoint-min) {
+	@media (min-width: $breakpoint-tablet-min) {
 		height: auto;
 		max-height: 100%;
 		min-height: 50%;
@@ -119,13 +119,13 @@
 		// sass-lint:enable no-misspelled-properties
 
 		// Tablet+
-		@media (min-width: $tablet-breakpoint-min) {
+		@media (min-width: $breakpoint-tablet-min) {
 			padding-left: $tablet-gutter-width;
 			padding-right: $tablet-gutter-width;
 		}
 
 		// Desktop+
-		@media (min-width: $desktop-breakpoint-min) {
+		@media (min-width: $breakpoint-desktop-min) {
 			padding-left: $desktop-gutter-width;
 			padding-right: $desktop-gutter-width;
 		}

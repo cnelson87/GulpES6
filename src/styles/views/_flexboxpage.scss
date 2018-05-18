@@ -8,10 +8,10 @@
 	.flex-grid {
 		&.shaded {
 			.flex-column:nth-child(odd) {
-				background-color: $gray-xlight;
+				background-color: $color-gray-xlight;
 			}
 			.flex-column:nth-child(even) {
-				background-color: $gray-xlight-alt;
+				background-color: $color-gray-xlight-alt;
 			}
 		}
 	}

@@ -16,13 +16,13 @@
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
-	background: $gray-light;
+	background: $color-gray-light;
 	border: 1px solid $border-color-dark;
 	border-radius: $border-radius-sm;
 	outline: 0;
 	padding: 4px 12px;
 
 	&:hover, &:focus {
-		background: $gray-xlight;
+		background: $color-gray-xlight;
 	}
 }

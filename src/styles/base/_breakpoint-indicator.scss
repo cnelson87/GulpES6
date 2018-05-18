@@ -14,12 +14,12 @@
 	z-index: 1;
 
 	// Tablet+
-	@media (min-width: $tablet-breakpoint-min) {
+	@media (min-width: $breakpoint-tablet-min) {
 		z-index: 2;
 	}
 
 	// Desktop+
-	@media (min-width: $desktop-breakpoint-min) {
+	@media (min-width: $breakpoint-desktop-min) {
 		z-index: 3;
 	}
 

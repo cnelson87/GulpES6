@@ -20,7 +20,7 @@
 		width: 100%;
 		height: auto;
 		min-height: 80px;
-		background: rgba($black, 0.4);
+		background: rgba($color-black, 0.4);
 		padding: 12px;
 		position: absolute;
 		left: 0;
@@ -30,11 +30,11 @@
 		transition: opacity 0.1s;
 
 		h3, p {
-			color: $white;
+			color: $color-white;
 			margin: 0;
 		}
 		a {
-			color: $white;
+			color: $color-white;
 		}
 
 	}

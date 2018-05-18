@@ -8,9 +8,9 @@
 	display: flex;
 	align-items: center;
 	min-height: 56.25vw; //16x9 ratio
-	background: $white no-repeat center top;
+	background: $color-white no-repeat center top;
 	background-size: cover;
-	border-color: $black;
+	border-color: $color-black;
 
 	&.bottom-angle {
 		border-bottom: 0;
