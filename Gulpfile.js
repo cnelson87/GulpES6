@@ -135,12 +135,13 @@ gulp.task('vendor', function() {
 
 gulp.task('server', function() {
 	connect.server({
+		host: '0',
 		root: './' + getSiteRoot(),
 		port: PORT,
 		livereload: {
 			enable: true,
 			port: LIVERELOAD_PORT
-		},
+		}
 	});
 });
 
