@@ -9,38 +9,38 @@
 	"portNumber": 8376,
 	"livereloadPortNum": 30376,
 	"scripts": {
-		"start": "gulp --dev",
-		"build": "gulp"
+		"start": "clear && gulp --dev",
+		"build": "clear && gulp"
 	},
 	"dependencies": {
 		"babel-polyfill": "^6.26.0"
 	},
 	"devDependencies": {
 		"gulp": "^3.9.1",
-		"autoprefixer": "^9.1.1",
+		"autoprefixer": "^9.1.5",
 		"babel-core": "^6.26.3",
 		"babel-preset-env": "^1.7.0",
 		"babelify": "^8.0.0",
 		"browserify": "^16.2.2",
-		"gulp-autoprefixer": "^5.0.0",
+		"gulp-autoprefixer": "^6.0.0",
 		"gulp-concat": "^2.6.1",
-		"gulp-connect": "^5.5.0",
+		"gulp-connect": "^5.6.1",
 		"gulp-cssmin": "^0.2.0",
 		"gulp-eslint": "^5.0.0",
 		"gulp-file-include": "^2.0.1",
 		"gulp-if": "^2.0.2",
-		"gulp-livereload": "^3.8.1",
+		"gulp-livereload": "^4.0.0",
 		"gulp-postcss": "^8.0.0",
 		"gulp-sass": "^4.0.1",
 		"gulp-sass-lint": "^1.4.0",
 		"gulp-sourcemaps": "^2.6.4",
 		"gulp-uglify": "^3.0.1",
-		"handlebars": "^4.0.11",
+		"handlebars": "^4.0.12",
 		"hbsfy": "^2.8.1",
 		"node-sass": "^4.9.3",
 		"vinyl-buffer": "^1.0.1",
 		"vinyl-source-stream": "^2.0.0",
-		"yargs": "^12.0.1"
+		"yargs": "^12.0.2"
 	},
 	"repository": {
 		"type": "git",
