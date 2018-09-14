@@ -10,14 +10,16 @@ const resizeStartStopEvents = function() {
 	let timer;
 	let timeoutTime = 100;
 	window.addEventListener('resize', function(event) {
+		let customResizeStartEvent = new Event(AppEvents.WINDOW_RESIZE_START);
+		let customResizeStopEvent = new Event(AppEvents.WINDOW_RESIZE_STOP);
 		if (timer) {
 			clearTimeout(timer);
 		} else {
-			$.event.trigger(AppEvents.WINDOW_RESIZE_START);
+			window.dispatchEvent(customResizeStartEvent);
 		}
 		timer = setTimeout(function() {
 			timer = null;
-			$.event.trigger(AppEvents.WINDOW_RESIZE_STOP);
+			window.dispatchEvent(customResizeStopEvent);
 		}, timeoutTime);
 	});
 };

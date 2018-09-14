@@ -240,21 +240,19 @@ const Application = {
 	},
 
 	_addEventListeners: function() {
-		this.$window
-			.on(AppEvents.WINDOW_RESIZE_START, this.onWindowResizeStart.bind(this))
-			.on(AppEvents.WINDOW_RESIZE_STOP, this.onWindowResizeStop.bind(this))
-			.on(AppEvents.WINDOW_SCROLL_START, this.onWindowScrollStart.bind(this))
-			.on(AppEvents.WINDOW_SCROLL_STOP, this.onWindowScrollStop.bind(this))
-			.on(AppEvents.BREAKPOINT_CHANGE, this.onBreakpointChange.bind(this));
+		window.addEventListener(AppEvents.WINDOW_RESIZE_START, this.onWindowResizeStart.bind(this));
+		window.addEventListener(AppEvents.WINDOW_RESIZE_STOP, this.onWindowResizeStop.bind(this));
+		window.addEventListener(AppEvents.WINDOW_SCROLL_START, this.onWindowScrollStart.bind(this));
+		window.addEventListener(AppEvents.WINDOW_SCROLL_STOP, this.onWindowScrollStop.bind(this));
+		window.addEventListener(AppEvents.BREAKPOINT_CHANGE, this.onBreakpointChange.bind(this));
 	},
 
 	_removeEventListeners: function() {
-		this.$window
-			.off(AppEvents.WINDOW_RESIZE_START, this.onWindowResizeStart.bind(this))
-			.off(AppEvents.WINDOW_RESIZE_STOP, this.onWindowResizeStop.bind(this))
-			.off(AppEvents.WINDOW_SCROLL_START, this.onWindowScrollStart.bind(this))
-			.off(AppEvents.WINDOW_SCROLL_STOP, this.onWindowScrollStop.bind(this))
-			.off(AppEvents.BREAKPOINT_CHANGE, this.onBreakpointChange.bind(this));
+		window.removeEventListener(AppEvents.WINDOW_RESIZE_START, this.onWindowResizeStart.bind(this));
+		window.removeEventListener(AppEvents.WINDOW_RESIZE_STOP, this.onWindowResizeStop.bind(this));
+		window.removeEventListener(AppEvents.WINDOW_SCROLL_START, this.onWindowScrollStart.bind(this));
+		window.removeEventListener(AppEvents.WINDOW_SCROLL_STOP, this.onWindowScrollStop.bind(this));
+		window.removeEventListener(AppEvents.BREAKPOINT_CHANGE, this.onBreakpointChange.bind(this));
 	},
 
 	onWindowResizeStart: function() {

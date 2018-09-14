@@ -10,14 +10,16 @@ const scrollStartStopEvents = function() {
 	let timer;
 	let timeoutTime = 100;
 	window.addEventListener('scroll', function(event) {
+		let customScrollStartEvent = new Event(AppEvents.WINDOW_SCROLL_START);
+		let customScrollStopEvent = new Event(AppEvents.WINDOW_SCROLL_STOP);
 		if (timer) {
 			clearTimeout(timer);
 		} else {
-			$.event.trigger(AppEvents.WINDOW_SCROLL_START);
+			window.dispatchEvent(customScrollStartEvent);
 		}
 		timer = setTimeout(function() {
 			timer = null;
-			$.event.trigger(AppEvents.WINDOW_SCROLL_STOP);
+			window.dispatchEvent(customScrollStopEvent);
 		}, timeoutTime);
 	});
 };
