@@ -10,20 +10,20 @@
 	}
 
 	.primary-video {
-		margin-bottom: $mobile-vertical-spacing;
+		margin-bottom: $vertical-pad-mobile;
 	}
 
 	// Tablet+
 	@media (min-width: $breakpoint-tablet-min) {
 		.primary-video {
-			margin-bottom: $tablet-vertical-spacing;
+			margin-bottom: $vertical-pad-tablet;
 		}
 	}
 
 	// Desktop+
 	@media (min-width: $breakpoint-desktop-min) {
 		.primary-video {
-			margin-bottom: $desktop-vertical-spacing;
+			margin-bottom: $vertical-pad-desktop;
 		}
 	}
 

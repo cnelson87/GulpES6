@@ -74,7 +74,7 @@ $breakpoint-max-background-width: 2560px;
 
 
 // Container Sizes
-$min-width: 320px;
+$min-width: 360px;
 $max-width: 1280px;
 $mobile-container-max-width: 640px;
 $tablet-container-width: 740px;
@@ -83,24 +83,24 @@ $desktop-wide-container-width: $max-width;
 
 
 // Grid System
-$mobile-gutter-width: 20px;
-$tablet-gutter-width: 30px;
-$desktop-gutter-width: 40px;
-$mobile-gutter-half-width: $mobile-gutter-width / 2;
-$tablet-gutter-half-width: $tablet-gutter-width / 2;
-$desktop-gutter-half-width: $desktop-gutter-width / 2;
-$mobile-gutter-double-width: $mobile-gutter-width * 2;
-$tablet-gutter-double-width: $tablet-gutter-width * 2;
-$desktop-gutter-double-width: $desktop-gutter-width * 2;
-$mobile-vertical-spacing: 20px;
-$tablet-vertical-spacing: 40px;
-$desktop-vertical-spacing: 60px;
-$mobile-vertical-half-spacing: $mobile-vertical-spacing / 2;
-$tablet-vertical-half-spacing: $tablet-vertical-spacing / 2;
-$desktop-vertical-half-spacing: $desktop-vertical-spacing / 2;
-$mobile-vertical-double-spacing: $mobile-vertical-spacing * 2;
-$tablet-vertical-double-spacing: $tablet-vertical-spacing * 2;
-$desktop-vertical-double-spacing: $desktop-vertical-spacing * 2;
+$gutter-width-mobile: 20px;
+$gutter-width-tablet: 30px;
+$gutter-width-desktop: 40px;
+$gutter-half-width-mobile: $gutter-width-mobile / 2;
+$gutter-half-width-tablet: $gutter-width-tablet / 2;
+$gutter-half-width-desktop: $gutter-width-desktop / 2;
+$gutter-double-width-mobile: $gutter-width-mobile * 2;
+$gutter-double-width-tablet: $gutter-width-tablet * 2;
+$gutter-double-width-desktop: $gutter-width-desktop * 2;
+$vertical-pad-mobile: 20px;
+$vertical-pad-tablet: 40px;
+$vertical-pad-desktop: 60px;
+$vertical-half-pad-mobile: $vertical-pad-mobile / 2;
+$vertical-half-pad-tablet: $vertical-pad-tablet / 2;
+$vertical-half-pad-desktop: $vertical-pad-desktop / 2;
+$vertical-double-pad-mobile: $vertical-pad-mobile * 2;
+$vertical-double-pad-tablet: $vertical-pad-tablet * 2;
+$vertical-double-pad-desktop: $vertical-pad-desktop * 2;
 
 
 // iPad address & tab bars

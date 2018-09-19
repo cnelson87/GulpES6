@@ -7,33 +7,33 @@
 	display: flex;
 	flex-flow: row wrap;
 	align-items: stretch;
-	margin: 0 -#{$mobile-gutter-half-width};
+	margin: 0 -#{$gutter-half-width-mobile};
 	position: relative;
 
 	// Tablet+
 	@media (min-width: $breakpoint-tablet-min) {
-		margin: 0 -#{$tablet-gutter-half-width};
+		margin: 0 -#{$gutter-half-width-tablet};
 	}
 
 	// Desktop+
 	@media (min-width: $breakpoint-desktop-min) {
-		margin: 0 -#{$desktop-gutter-half-width};
+		margin: 0 -#{$gutter-half-width-desktop};
 	}
 }
 
 @mixin flex-column {
 	min-height: 1px;
-	padding: 0 $mobile-gutter-half-width;
+	padding: 0 $gutter-half-width-mobile;
 	position: relative;
 
 	// Tablet+
 	@media (min-width: $breakpoint-tablet-min) {
-		padding: 0 $tablet-gutter-half-width;
+		padding: 0 $gutter-half-width-tablet;
 	}
 
 	// Desktop+
 	@media (min-width: $breakpoint-desktop-min) {
-		padding: 0 $desktop-gutter-half-width;
+		padding: 0 $gutter-half-width-desktop;
 	}
 }
 

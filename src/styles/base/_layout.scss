@@ -43,24 +43,24 @@ body {
 
 .site-main {
 	flex-grow: 1;
-	padding: $mobile-vertical-spacing 0;
+	padding: $vertical-pad-mobile 0;
 	@media (min-width: $breakpoint-tablet-min) {
-		padding: $tablet-vertical-spacing 0;
+		padding: $vertical-pad-tablet 0;
 	}
 	@media (min-width: $breakpoint-desktop-min) {
-		padding: $desktop-vertical-spacing 0;
+		padding: $vertical-pad-desktop 0;
 	}
 }
 
 .content-container,
 .content-container-fluid {
 	margin: 0 auto;
-	padding: $mobile-vertical-spacing $mobile-gutter-width;
+	padding: $vertical-pad-mobile $gutter-width-mobile;
 	@media (min-width: $breakpoint-tablet-min) {
-		padding: $mobile-vertical-spacing $tablet-gutter-width;
+		padding: $vertical-pad-mobile $gutter-width-tablet;
 	}
 	@media (min-width: $breakpoint-desktop-min) {
-		padding: $mobile-vertical-spacing $desktop-gutter-width;
+		padding: $vertical-pad-mobile $gutter-width-desktop;
 	}
 }
 
@@ -98,11 +98,11 @@ body {
 }
 
 .content + .content {
-	margin-top: $mobile-vertical-spacing;
+	margin-top: $vertical-pad-mobile;
 	@media (min-width: $breakpoint-tablet-min) {
-		margin-top: $tablet-vertical-spacing;
+		margin-top: $vertical-pad-tablet;
 	}
 	@media (min-width: $breakpoint-desktop-min) {
-		margin-top: $desktop-vertical-spacing;
+		margin-top: $vertical-pad-desktop;
 	}
 }

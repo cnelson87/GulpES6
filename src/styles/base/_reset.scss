@@ -18,14 +18,14 @@ form, fieldset, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
+main, menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	border: 0;
 	margin: 0;
 	padding: 0;
 	outline: 0;
-	font-size: 100%;
 	font: inherit;
+	font-size: 100%;
 	vertical-align: baseline;
 }
 
@@ -40,6 +40,7 @@ audio, canvas, video {
 
 body {
 	line-height: 1;
+	-webkit-font-smoothing: antialiased;
 	//prevent mobile font scaling
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
