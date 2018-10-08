@@ -53,8 +53,12 @@
 	@include clearfix;
 }
 
-.hidden {
-	@include hidden;
+.absolute-window {
+	@include absolute-window;
+}
+
+.fixed-window {
+	@include fixed-window;
 }
 
 .offscreen {
@@ -65,8 +69,14 @@
 	@include text-hide;
 }
 
+.hide,
+.hidden {
+	@include hidden;
+}
+
+.show,
 .visible {
-	@include visible();
+	@include visible;
 }
 
 .flex-box {

@@ -1,6 +1,6 @@
 /**
- * Application
- * @author: Chris Nelson <cnelson87@gmail.com>
+ * @module Application
+ * @author Chris Nelson <cnelson87@gmail.com>
  */
 
 import AppConfig from './config/AppConfig';

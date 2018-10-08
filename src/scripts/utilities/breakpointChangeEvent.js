@@ -1,7 +1,7 @@
 /**
- * breakpointChangeEvent
- * @author: Chris Nelson <cnelson87@gmail.com>
- * @description: Broadcasts pseudo 'breakpointChange' event
+ * @module breakpointChangeEvent
+ * @author Chris Nelson <cnelson87@gmail.com>
+ * @description Broadcasts pseudo 'breakpointChange' event
  */
 
 import AppConfig from '../config/AppConfig';

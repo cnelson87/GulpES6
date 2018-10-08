@@ -10,29 +10,17 @@
 
 // containing element for modal
 .modal-window {
-	width: 100%;
-	height: 100%;
+	@include fixed-window;
 	overflow: hidden;
-	position: fixed;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
 	z-index: $modal-zindex;
 }
 
 // background element
 .modal-overlay {
+	@include absolute-window;
 	animation: fadeOutToNone $animation-speed;
 	animation-fill-mode: forwards;
-	width: 100%;
-	height: 100%;
 	background: rgba($color-black, 0.8);
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
 
 	&.is-active {
 		animation: fadeInFromNone $animation-speed;

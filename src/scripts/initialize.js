@@ -1,5 +1,5 @@
 /**
- * initialize
+ * @module initialize
  */
 
 // is it still necessary to include 'babel-polyfill'

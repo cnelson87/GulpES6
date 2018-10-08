@@ -1,7 +1,7 @@
 /**
- * scrollStartStopEvents
- * @author: Chris Nelson <cnelson87@gmail.com>
- * @description: Broadcasts pseudo 'scrollStart' and 'scrollStop' events
+ * @module scrollStartStopEvents
+ * @author Chris Nelson <cnelson87@gmail.com>
+ * @description Broadcasts pseudo 'scrollStart' and 'scrollStop' events
  */
 
 import AppEvents from '../config/AppEvents';

@@ -1,9 +1,9 @@
 /**
- * ajaxPost
- * @author: Chris Nelson <cnelson87@gmail.com>
- * @description: Returns an Ajax POST response using deferred.
+ * @module ajaxPost
+ * @author Chris Nelson <cnelson87@gmail.com>
+ * @description Returns an Ajax POST response using deferred.
  * @param: url & data are required, contentType & dataType are optional.
- * @return: json, html, text
+ * @return: json, html, or text
  */
 
 const ajaxPost = function(url, data, contentType, dataType) {

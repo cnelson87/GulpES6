@@ -16,19 +16,18 @@ body {
 	// Tablet+
 	@media (min-width: $breakpoint-tablet-min) {
 		font-size: 112.5%; //18px
-		line-height: 1.5; //27px
+		// line-height: 1.5; //27px
 	}
 
 	// Desktop+
 	@media (min-width: $breakpoint-desktop-min) {
 		font-size: 125%; //20px
-		line-height: 1.5; //30px
+		// line-height: 1.5; //30px
 	}
-
 }
 
 a {
-	@include base-transition();
+	@include action-transition();
 	color: $link-color;
 	text-decoration: none;
 }
@@ -59,7 +58,7 @@ td {
 	vertical-align: top;
 }
 
-nav ul, nav ol {
+nav ul, nav ol, nav li {
 	margin: 0;
 }
 

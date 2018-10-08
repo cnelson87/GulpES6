@@ -68,8 +68,8 @@ sub {
 blockquote, q {
 	quotes: none;
 }
-blockquote::after, blockquote::after,
-q::after, q::after {
+blockquote::before, blockquote::after,
+q::before, q::after {
 	content: none;
 }
 

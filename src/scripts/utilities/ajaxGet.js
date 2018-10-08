@@ -1,9 +1,9 @@
 /**
- * ajaxGet
- * @author: Chris Nelson <cnelson87@gmail.com>
- * @description: Returns an Ajax GET request using deferred.
+ * @module ajaxGet
+ * @author Chris Nelson <cnelson87@gmail.com>
+ * @description Returns an Ajax GET request using deferred.
  * @param: url is required, dataType & data are optional.
- * @return: json, html, text
+ * @return: json, html, or text
  */
 
 const ajaxGet = function(url, dataType, data) {

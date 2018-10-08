@@ -9,15 +9,12 @@
 	height: auto;
 	padding-top: 56.25%;
 	position: relative;
+
 	&.ar4x3 {
 		padding-top: 75.0%; //4x3 aspect ratio
 	}
+
 	> iframe {
-		display: block;
-		width: 100%;
-		height: 100%;
-		position: absolute;
-		left: 0;
-		top: 0;
+		@include absolute-window;
 	}
 }

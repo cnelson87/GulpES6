@@ -32,14 +32,10 @@
 	}
 
 	.screen {
-		display: block;
+		@include absolute-window;
 		background-color: $color-black;
+		display: block;
 		opacity: 0.5;
-		position: absolute;
-		left: 0;
-		right: 0;
-		top: 0;
-		bottom: 0;
 	}
 
 }

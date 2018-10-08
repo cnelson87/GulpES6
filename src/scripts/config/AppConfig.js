@@ -1,6 +1,6 @@
 /**
- * AppConfig
- * @description: Defines application constants
+ * @module AppConfig
+ * @description Defines application constants
  */
 
 if (!window.location.origin) {

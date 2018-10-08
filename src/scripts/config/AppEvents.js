@@ -1,6 +1,6 @@
 /**
- * AppEvents
- * @description: Defines global application events
+ * @module AppEvents
+ * @description Defines global application events
  */
 
 const AppEvents = {

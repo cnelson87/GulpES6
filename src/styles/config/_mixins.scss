@@ -1,7 +1,7 @@
 //
 // Mixins
 // -----------------------------------------------------
-
+// sass-lint:disable no-important
 
 @mixin accelerate {
 	backface-visibility: hidden;
@@ -23,9 +23,17 @@
 	}
 }
 
-@mixin hidden {
-	display: none;
-	visibility: hidden;
+@mixin absolute-window {
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+@mixin fixed-window {
+	@include absolute-window;
+	position: fixed;
 }
 
 @mixin offscreen {
@@ -45,14 +53,18 @@
 	white-space: nowrap;
 }
 
+@mixin hidden {
+	display: none !important;
+	visibility: hidden !important;
+}
+
 @mixin visible($display: block) {
 	display: $display;
 	visibility: visible;
 }
 
-
 // Standard Action-Element Transition
-@mixin base-transition($duration: $transition-speed) {
+@mixin action-transition($duration: $transition-speed) {
 	transition: color $duration, background-color $duration, border-color $duration, opacity $duration, transform $duration;
 }
 

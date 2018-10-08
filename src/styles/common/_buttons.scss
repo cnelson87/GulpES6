@@ -4,7 +4,7 @@
 
 //use either <a>, <button>, or <input> tags
 .button {
-	@include base-transition();
+	@include action-transition();
 	display: inline-block;
 	cursor: pointer;
 	min-width: 120px;

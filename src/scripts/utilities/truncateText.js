@@ -1,7 +1,7 @@
 /**
- * truncateText
- * @author: Chris Nelson <cnelson87@gmail.com>
- * @description: Truncate text and add ellipsis
+ * @module truncateText
+ * @author Chris Nelson <cnelson87@gmail.com>
+ * @description Truncate text and add ellipsis
  */
 
 const truncateText = function() {

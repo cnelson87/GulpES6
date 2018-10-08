@@ -1,8 +1,8 @@
 /**
- * focusOnContentEl
- * @author: Chris Nelson <cnelson87@gmail.com>
- * @description: Sets focus on content and optionally scrolls into view
- * @params: jQuery $element required, extraOffset & scrollSpeed optional
+ * @module focusOnContentEl
+ * @author Chris Nelson <cnelson87@gmail.com>
+ * @description Sets focus on content and optionally scrolls into view
+ * @param: jQuery $element required, extraOffset & scrollSpeed optional
  */
 
 import AppConfig from '../config/AppConfig';

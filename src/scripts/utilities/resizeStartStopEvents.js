@@ -1,7 +1,7 @@
 /**
- * resizeStartStopEvents
- * @author: Chris Nelson <cnelson87@gmail.com>
- * @description: Broadcasts pseudo 'resizeStart' and 'resizeStop' events
+ * @module resizeStartStopEvents
+ * @author Chris Nelson <cnelson87@gmail.com>
+ * @description Broadcasts pseudo 'resizeStart' and 'resizeStop' events
  */
 
 import AppEvents from '../config/AppEvents';
