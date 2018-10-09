@@ -32,6 +32,7 @@ var PATHS = {
 			'src/vendor/validation/jquery.validate.min.js',
 			'src/vendor/validation/additional-methods.min.js',
 			'src/vendor/moment.min.js',
+			'src/vendor/moment-timezone-with-data-2012-2022.min.js',
 			'src/vendor/underscore.min.js',
 			'src/vendor/backbone.min.js',
 			'src/vendor/backbone-super.min.js'
