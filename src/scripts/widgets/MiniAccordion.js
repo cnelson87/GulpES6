@@ -145,8 +145,8 @@ class MiniAccordion {
 	}
 
 	__keydownTab(event) {
+		const { keys } = AppConfig;
 		let keyCode = event.which;
-		let { keys } = AppConfig;
 
 		// spacebar; activate tab click
 		if (keyCode === keys.space) {

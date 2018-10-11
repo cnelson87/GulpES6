@@ -61,7 +61,7 @@ class RangeSlider {
 
 	initSlider() {
 		const slider = this.$slider[0]; // native slider element
-		let { keys } = AppConfig;
+		const { keys } = AppConfig;
 
 		noUiSlider.create(slider, {
 			connect: [false, true, false],

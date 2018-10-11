@@ -87,7 +87,7 @@ class ModalWindow {
 	}
 
 	_addEventListeners() {
-		let { keys } = AppConfig;
+		const { keys } = AppConfig;
 
 		this.$body.on('click', this.options.selectorTriggers, (event) => {
 			event.preventDefault();

@@ -222,9 +222,9 @@ class Accordion {
 	}
 
 	__keydownTab(event) {
+		const { keys } = AppConfig;
 		let keyCode = event.which;
 		let index = this.$tabs.index(event.currentTarget);
-		let { keys } = AppConfig;
 
 		// left/up arrow; emulate tabbing to previous tab
 		if (keyCode === keys.left || keyCode === keys.up) {
