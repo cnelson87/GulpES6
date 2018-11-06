@@ -6,11 +6,12 @@
  */
 
 import AppConfig from '../config/AppConfig';
+import AppState from '../config/AppState';
 
 const focusOnContentEl = function($el, extraTopOffset = 0, scrollSpeed = AppConfig.timing.fast) {
 	const $window = $(window);
 	const $htmlBody = $('html, body');
-	let topOffset = AppConfig.topOffset + extraTopOffset;
+	let topOffset = AppState.topOffset + extraTopOffset;
 	let pnlTop = $el.offset().top;
 	let pnlHeight = $el.outerHeight();
 	let winTop = $window.scrollTop() + topOffset;

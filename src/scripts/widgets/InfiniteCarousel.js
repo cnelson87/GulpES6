@@ -19,6 +19,7 @@
 
 import AppConfig from '../config/AppConfig';
 import AppEvents from '../config/AppEvents';
+import AppState from '../config/AppState';
 import focusOnContentEl from '../utilities/focusOnContentEl';
 
 class InfiniteCarousel {
@@ -73,7 +74,7 @@ class InfiniteCarousel {
 		/* eslint-enable no-magic-numbers */
 		this.setAutoRotation = null;
 		this.isAnimating = false;
-		this.currentBreakpoint = AppConfig.currentBreakpoint;
+		this.currentBreakpoint = AppState.currentBreakpoint;
 
 		// check url hash to override currentIndex
 		this.setInitialFocus = false;
@@ -213,7 +214,7 @@ class InfiniteCarousel {
 **/
 
 	__onBreakpointChange(event, params) {
-		this.currentBreakpoint = AppConfig.currentBreakpoint;
+		this.currentBreakpoint = AppState.currentBreakpoint;
 	}
 
 	__clickNavPrev(event) {

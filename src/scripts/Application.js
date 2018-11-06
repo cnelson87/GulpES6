@@ -5,6 +5,7 @@
 
 import AppConfig from './config/AppConfig';
 import AppEvents from './config/AppEvents';
+import AppState from '../config/AppState';
 import getQueryStringParams from './utilities/getQueryStringParams';
 import breakpointChangeEvent from './utilities/breakpointChangeEvent';
 import resizeStartStopEvents from './utilities/resizeStartStopEvents';
@@ -277,7 +278,7 @@ const Application = {
 	},
 
 	setTopOffset: function() {
-		AppConfig.topOffset = this.$header.height();
+		AppState.topOffset = this.$header.height();
 	}
 
 };

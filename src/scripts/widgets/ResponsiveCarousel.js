@@ -19,6 +19,7 @@
 
 import AppConfig from '../config/AppConfig';
 import AppEvents from '../config/AppEvents';
+import AppState from '../config/AppState';
 import focusOnContentEl from '../utilities/focusOnContentEl';
 
 class ResponsiveCarousel {
@@ -136,10 +137,10 @@ class ResponsiveCarousel {
 	}
 
 	setOptions() {
-		// console.log(AppConfig.currentBreakpoint);
+		// console.log(AppState.currentBreakpoint);
 		const percent = 100;
 
-		switch(AppConfig.currentBreakpoint) {
+		switch(AppState.currentBreakpoint) {
 			case 'mobile':
 				this.numVisibleItems = this.options.numVisibleItemsMobile;
 				this.numItemsToAnimate = this.options.numItemsToAnimateMobile;

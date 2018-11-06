@@ -16,13 +16,13 @@
 		"babel-polyfill": "^6.26.0"
 	},
 	"devDependencies": {
-		"gulp": "^3.9.1",
-		"autoprefixer": "^9.2.1",
+		"autoprefixer": "^9.3.1",
 		"babel-core": "^6.26.3",
 		"babel-preset-env": "^1.7.0",
 		"babelify": "^8.0.0",
 		"browserify": "^16.2.3",
-		"eslint": "^5.7.0",
+		"eslint": "^5.8.0",
+		"gulp": "^3.9.1",
 		"gulp-autoprefixer": "^6.0.0",
 		"gulp-concat": "^2.6.1",
 		"gulp-connect": "^5.6.1",
@@ -38,7 +38,8 @@
 		"gulp-uglify": "^3.0.1",
 		"handlebars": "^4.0.12",
 		"hbsfy": "^2.8.1",
-		"node-sass": "^4.9.4",
+		"node-sass": "^4.10.0",
+		"remapify": "^2.2.0",
 		"vinyl-buffer": "^1.0.1",
 		"vinyl-source-stream": "^2.0.0",
 		"yargs": "^12.0.2"

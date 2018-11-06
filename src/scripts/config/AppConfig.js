@@ -61,19 +61,6 @@ const AppConfig = {
 	// my 'chrisn.wearepop@gmail.com' key
 	youtubeApiKey: 'AIzaSyDpNKX16BmckoJ14akwMxk0mHuJWgvNuBI',
 
-	// responsive breakpoints
-	isMobileView: null,
-	isTabletView: null,
-	isDesktopView: null,
-	currentBreakpoint: null,
-	breakpoints: {
-		1: 'mobile',
-		2: 'tablet',
-		3: 'desktop'
-	},
-
-	topOffset : 0,
-
 };
 
 export default AppConfig;
