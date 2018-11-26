@@ -26,7 +26,7 @@ class HeightEqualizer {
 	initialize($el, options) {
 
 		this.$el = $el;
-		this.options = $.extend({
+		this.options = Object.assign({
 			selectorItems: '> div',
 			setParentHeight: false
 		}, options);

@@ -51,9 +51,9 @@ const Application = {
 
 		this.params = null;
 
-		if (AppConfig.isIE9) {this.$html.addClass('ie9');}
 		if (AppConfig.isIE10) {this.$html.addClass('ie10');}
 		if (AppConfig.isIE11) {this.$html.addClass('ie11');}
+		if (AppConfig.isEdge) {this.$html.addClass('edge');}
 		if (AppConfig.isAndroid) {this.$html.addClass('android');}
 		if (AppConfig.isIOS) {this.$html.addClass('ios');}
 
