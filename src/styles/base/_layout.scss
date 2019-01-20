@@ -56,6 +56,7 @@ body {
 .content-container-fluid {
 	margin: 0 auto;
 	padding: $vertical-pad-mobile $gutter-width-mobile;
+	position: relative;
 	@media (min-width: $breakpoint-tablet-min) {
 		padding: $vertical-pad-mobile $gutter-width-tablet;
 	}

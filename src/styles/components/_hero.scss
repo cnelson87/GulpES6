@@ -5,12 +5,11 @@
 
 
 .content.hero {
+	border-color: $color-black;
 	display: flex;
 	align-items: center;
 	min-height: 56.25vw; //16x9 ratio
-	background: $color-white no-repeat center top;
-	background-size: cover;
-	border-color: $color-black;
+	overflow: hidden;
 
 	&.bottom-angle {
 		border-bottom: 0;
@@ -30,16 +29,27 @@
 		clip-path: polygon(0% 0%, 50% 10%, 100% 0%, 100% 100%, 0% 100%);
 	}
 
+	.hero-background {
+		@include absolute-window;
+		background: $color-white no-repeat center top;
+		background-size: cover;
+		transform: scale(1);
+	}
+
+	.hero-background-1 {
+		background-image: url($image-path+'/media/hero-1.jpg');
+	}
+
+	.hero-background-2 {
+		background-image: url($image-path+'/media/hero-2.jpg');
+	}
+
+	.hero-background-3 {
+		background-image: url($image-path+'/media/hero-3.jpg');
+	}
+
 }
 
 .content.hero.bottom-angle + .content.hero.top-cutout {
 	margin-top: -5.625vw;
-}
-
-.content.hero.test-hero-1 {
-	background-image: url($image-path+'/hero-1.jpg');
-}
-
-.content.hero.test-hero-2 {
-	background-image: url($image-path+'/hero-2.jpg');
 }

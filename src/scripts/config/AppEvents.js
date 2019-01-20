@@ -1,6 +1,6 @@
 /**
  * @module AppEvents
- * @description Defines global application events
+ * @description Defines custom application events
  */
 
 const AppEvents = {

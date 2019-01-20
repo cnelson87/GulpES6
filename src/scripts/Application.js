@@ -12,6 +12,7 @@ import resizeStartStopEvents from './utilities/resizeStartStopEvents';
 import scrollStartStopEvents from './utilities/scrollStartStopEvents';
 import HomepageView from './views/HomepageView';
 import FormsPage from './views/FormsPage';
+import HeroPage from 'views/HeroPage';
 import PromisePage from './views/PromisePage';
 import VideosPage from './views/VideosPage';
 
@@ -81,6 +82,9 @@ const Application = {
 			case 'formspage':
 				this.initFormsPage();
 				break;
+			case 'heropage':
+				this.initHeroPage();
+				break;
 			case 'promisepage':
 				this.initPromisePage();
 				break;
@@ -133,6 +137,10 @@ const Application = {
 	initFormsPage: function() {
 		new DualDatepicker($('#dual-datepicker'));
 		FormsPage.initialize();
+	},
+
+	initHeroPage: function() {
+		HeroPage.initialize();
 	},
 
 	initPromisePage: function() {
