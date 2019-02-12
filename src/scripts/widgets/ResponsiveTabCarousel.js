@@ -18,8 +18,8 @@
 
 */
 
-import AppConfig from '../config/AppConfig';
-import ResponsiveCarousel from '../widgets/ResponsiveCarousel';
+import AppConfig from 'config/AppConfig';
+import ResponsiveCarousel from 'widgets/ResponsiveCarousel';
 
 class ResponsiveTabCarousel extends ResponsiveCarousel {
 

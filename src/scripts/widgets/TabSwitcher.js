@@ -17,10 +17,10 @@
 
 */
 
-import AppConfig from '../config/AppConfig';
-import AppEvents from '../config/AppEvents';
-import focusOnContentEl from '../utilities/focusOnContentEl';
-import HeightEqualizer from '../widgets/HeightEqualizer';
+import AppConfig from 'config/AppConfig';
+import AppEvents from 'config/AppEvents';
+import focusOnContentEl from 'utilities/focusOnContentEl';
+import HeightEqualizer from 'widgets/HeightEqualizer';
 
 class TabSwitcher {
 

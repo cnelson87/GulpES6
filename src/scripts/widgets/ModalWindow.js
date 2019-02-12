@@ -16,8 +16,8 @@
 
 */
 
-import AppConfig from '../config/AppConfig';
-import modalTemplate from '../../templates/ModalTemplate.hbs';
+import AppConfig from 'config/AppConfig';
+import modalTemplate from 'templates/ModalTemplate.hbs';
 
 class ModalWindow {
 

@@ -17,7 +17,7 @@
 
 */
 
-import AppConfig from '../config/AppConfig';
+import AppConfig from 'config/AppConfig';
 
 class RangeSlider {
 

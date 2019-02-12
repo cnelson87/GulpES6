@@ -17,10 +17,10 @@
 
 */
 
-import AppConfig from '../config/AppConfig';
-import AppEvents from '../config/AppEvents';
-import AppState from '../config/AppState';
-import focusOnContentEl from '../utilities/focusOnContentEl';
+import AppConfig from 'config/AppConfig';
+import AppEvents from 'config/AppEvents';
+import AppState from 'config/AppState';
+import focusOnContentEl from 'utilities/focusOnContentEl';
 
 class InfiniteCarousel {
 

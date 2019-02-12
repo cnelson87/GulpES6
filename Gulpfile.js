@@ -1,6 +1,8 @@
 //
 // Packages
 ////////////////////////////////////////////////////////////////////////////
+const fs = require('fs');
+const path = require('path');
 const gulp = require('gulp');
 const argv = require('yargs').argv;
 const autoprefixer = require('gulp-autoprefixer');
@@ -14,7 +16,7 @@ const fileinclude = require('gulp-file-include');
 const gulpif = require('gulp-if');
 const hbsfy = require('hbsfy');
 const livereload = require('gulp-livereload');
-// const remapify = require('remapify');
+const pathmodify = require('pathmodify');
 const sass = require('gulp-sass');
 const sasslint = require('gulp-sass-lint');
 const source = require('vinyl-source-stream');
@@ -25,17 +27,17 @@ const connect = require('gulp-connect');
 //
 // CONSTANTS
 ////////////////////////////////////////////////////////////////////////////
-// const PACKAGE = require('./package.json');
-const PATHS = require('./paths.js');
-const SRC = PATHS.SRC;
-const DEST = PATHS.DEST;
+const PACKAGE = JSON.parse(fs.readFileSync('./package.json'));
+const FILEPATHS = require('./filepaths.js');
+const SRC = FILEPATHS.SRC;
+const DEST = FILEPATHS.DEST;
 const ENV = {
 	DEV: 'local',
 	PROD: 'public'
 };
 const ENVIRONMENT = (argv.dev) ? ENV.DEV : ENV.PROD;
-const PORT = 8999;
-const LIVERELOAD_PORT = 30999;
+const PORT = PACKAGE.portNumber;
+const LIVERELOAD_PORT = PACKAGE.livereloadPortNum;
 
 //
 // Utils
@@ -96,17 +98,22 @@ gulp.task('sasslint', function() {
 });
 
 gulp.task('scripts', function() {
+	var mods = [
+		pathmodify.mod.dir('config', path.join(__dirname, './src/scripts/config')),
+		pathmodify.mod.dir('collections', path.join(__dirname, './src/scripts/collections')),
+		pathmodify.mod.dir('models', path.join(__dirname, './src/scripts/models')),
+		pathmodify.mod.dir('utilities', path.join(__dirname, './src/scripts/utilities')),
+		pathmodify.mod.dir('views', path.join(__dirname, './src/scripts/views')),
+		pathmodify.mod.dir('widgets', path.join(__dirname, './src/scripts/widgets')),
+		pathmodify.mod.dir('templates', path.join(__dirname, './src/templates'))
+	];
 	var b = browserify({
 		entries: SRC.SCRIPTS_ENTRY,
 		debug: isDev()
-	});
+	}).plugin(pathmodify, {mods: mods});
 	return b
-		.transform(hbsfy, {
-			extensions: ['hbs']
-		})
-		.transform(babelify, {
-			presets: ['env']
-		})
+		.transform(hbsfy, { extensions: ['hbs'] })
+		.transform(babelify, { presets: ['@babel/preset-env'] })
 		.bundle()
 		.pipe(source('app.js'))
 		.pipe(buffer())
@@ -119,9 +126,7 @@ gulp.task('styles', function() {
 	return gulp.src(SRC.STYLES_ENTRY)
 		.pipe(gulpif(isDev(), sourcemaps.init()))
 		.pipe(sass())
-		.pipe(autoprefixer({
-			browsers: ['last 5 versions', 'safari >= 10', 'ie >= 10']
-		}))
+		.pipe(autoprefixer())
 		.pipe(gulpif(isDev(), sourcemaps.write('.')))
 		.pipe(gulpif(isProd(), cssmin()))
 		.pipe(out(DEST.STYLES))

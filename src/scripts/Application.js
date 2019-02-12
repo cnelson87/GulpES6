@@ -3,35 +3,34 @@
  * @author Chris Nelson <cnelson87@gmail.com>
  */
 
-import AppConfig from './config/AppConfig';
-import AppEvents from './config/AppEvents';
-import AppState from './config/AppState';
-import getQueryStringParams from './utilities/getQueryStringParams';
-import breakpointChangeEvent from './utilities/breakpointChangeEvent';
-import resizeStartStopEvents from './utilities/resizeStartStopEvents';
-import scrollStartStopEvents from './utilities/scrollStartStopEvents';
-import HomepageView from './views/HomepageView';
-import FormsPage from './views/FormsPage';
+import AppConfig from 'config/AppConfig';
+import AppEvents from 'config/AppEvents';
+import AppState from 'config/AppState';
+import getQueryStringParams from 'utilities/getQueryStringParams';
+import breakpointChangeEvent from 'utilities/breakpointChangeEvent';
+import resizeStartStopEvents from 'utilities/resizeStartStopEvents';
+import scrollStartStopEvents from 'utilities/scrollStartStopEvents';
+import HomepageView from 'views/HomepageView';
+import FormsPage from 'views/FormsPage';
 import HeroPage from 'views/HeroPage';
-import PromisePage from './views/PromisePage';
-import VideosPage from './views/VideosPage';
-
-import DualDatepicker from './widgets/DualDatepicker';
-import ResponsiveCarousel from './widgets/ResponsiveCarousel';
-import ResponsiveTabCarousel from './widgets/ResponsiveTabCarousel';
-import InfiniteCarousel from './widgets/InfiniteCarousel';
-import MiniAccordion from './widgets/MiniAccordion';
-import Accordion from './widgets/Accordion';
-import TabSwitcher from './widgets/TabSwitcher';
-import SelectTabSwitcher from './widgets/SelectTabSwitcher';
-import Horizordion from './widgets/Horizordion';
-import ModalWindow from './widgets/ModalWindow';
-import AjaxModal from './widgets/AjaxModal';
-import AjaxModalForm from './widgets/AjaxModalForm';
-import RangeSlider from './widgets/RangeSlider';
-import DateRangeSlider from './widgets/DateRangeSlider';
-// import {SuperClass, SubClass} from './widgets/SuperSubClass';
-import {SubClass} from './widgets/SuperSubClass';
+import PromisePage from 'views/PromisePage';
+import VideosPage from 'views/VideosPage';
+import DualDatepicker from 'widgets/DualDatepicker';
+import ResponsiveCarousel from 'widgets/ResponsiveCarousel';
+import ResponsiveTabCarousel from 'widgets/ResponsiveTabCarousel';
+import InfiniteCarousel from 'widgets/InfiniteCarousel';
+import MiniAccordion from 'widgets/MiniAccordion';
+import Accordion from 'widgets/Accordion';
+import TabSwitcher from 'widgets/TabSwitcher';
+import SelectTabSwitcher from 'widgets/SelectTabSwitcher';
+import Horizordion from 'widgets/Horizordion';
+import ModalWindow from 'widgets/ModalWindow';
+import AjaxModal from 'widgets/AjaxModal';
+import AjaxModalForm from 'widgets/AjaxModalForm';
+import RangeSlider from 'widgets/RangeSlider';
+import DateRangeSlider from 'widgets/DateRangeSlider';
+// import {SuperClass, SubClass} from 'widgets/SuperSubClass';
+import {SubClass} from 'widgets/SuperSubClass';
 
 const Application = {
 

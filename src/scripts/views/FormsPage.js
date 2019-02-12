@@ -2,7 +2,7 @@
  * Forms Page
  */
 
-// import AppConfig from '../config/AppConfig';
+// import AppConfig from 'config/AppConfig';
 
 const FormsPage = {
 

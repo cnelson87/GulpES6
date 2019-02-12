@@ -18,10 +18,10 @@
 
 */
 
-import AjaxModal from '../widgets/AjaxModal';
-import ajaxPost from '../utilities/ajaxPost';
-// import serializeFormFields from '../utilities/serializeFormFields';
-import modalFullscreenTemplate from '../../templates/ModalFullscreenTemplate.hbs';
+import AjaxModal from 'widgets/AjaxModal';
+import ajaxPost from 'utilities/ajaxPost';
+// import serializeFormFields from 'utilities/serializeFormFields';
+import modalFullscreenTemplate from 'templates/ModalFullscreenTemplate.hbs';
 
 class AjaxModalForm extends AjaxModal {
 

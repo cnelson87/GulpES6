@@ -1,4 +1,4 @@
-var PATHS = {
+var FILEPATHS = {
 	SRC: {
 		ASSETS: 'src/assets/**/*',
 		DATA: 'src/data/**/*',
@@ -49,4 +49,4 @@ var PATHS = {
 	}
 };
 
-module.exports = PATHS;
+module.exports = FILEPATHS;

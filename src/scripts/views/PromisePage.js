@@ -2,9 +2,9 @@
  * Promise Page
  */
 
-import AppConfig from '../config/AppConfig';
-import ajaxGet from '../utilities/ajaxGet';
-import PromiseDataListing from '../../templates/PromiseDataListing.hbs';
+import AppConfig from 'config/AppConfig';
+import ajaxGet from 'utilities/ajaxGet';
+import PromiseDataListing from 'templates/PromiseDataListing.hbs';
 
 const PromisePage = {
 

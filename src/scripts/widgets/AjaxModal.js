@@ -19,9 +19,9 @@
 
 */
 
-import ModalWindow from '../widgets/ModalWindow';
-import LoaderSpinner from '../widgets/LoaderSpinner';
-import ajaxGet from '../utilities/ajaxGet';
+import ModalWindow from 'widgets/ModalWindow';
+import LoaderSpinner from 'widgets/LoaderSpinner';
+import ajaxGet from 'utilities/ajaxGet';
 
 class AjaxModal extends ModalWindow {
 

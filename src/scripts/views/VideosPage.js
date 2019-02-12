@@ -2,10 +2,10 @@
  * Videos Page
  */
 
-import AppConfig from '../config/AppConfig';
-import ajaxGet from '../utilities/ajaxGet';
-import youtubeVideoControl from '../utilities/youtubeVideoControl';
-import VideosGrid from '../../templates/VideosGrid.hbs';
+import AppConfig from 'config/AppConfig';
+import ajaxGet from 'utilities/ajaxGet';
+import youtubeVideoControl from 'utilities/youtubeVideoControl';
+import VideosGrid from 'templates/VideosGrid.hbs';
 
 const VideosPage = {
 

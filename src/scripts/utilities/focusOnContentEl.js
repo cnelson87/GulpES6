@@ -5,8 +5,8 @@
  * @param: jQuery $element required, extraOffset & scrollSpeed optional
  */
 
-import AppConfig from '../config/AppConfig';
-import AppState from '../config/AppState';
+import AppConfig from 'config/AppConfig';
+import AppState from 'config/AppState';
 
 const focusOnContentEl = function($el, extraTopOffset = 0, scrollSpeed = AppConfig.timing.fast) {
 	const $window = $(window);

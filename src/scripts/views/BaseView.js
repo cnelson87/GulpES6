@@ -2,7 +2,7 @@
  * Base View
  */
 
-import LoaderSpinner from '../widgets/LoaderSpinner';
+import LoaderSpinner from 'widgets/LoaderSpinner';
 
 const BaseView = Backbone.View.extend({
 

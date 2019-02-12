@@ -4,7 +4,7 @@
  * @description Broadcasts pseudo 'scrollStart' and 'scrollStop' events
  */
 
-import AppEvents from '../config/AppEvents';
+import AppEvents from 'config/AppEvents';
 
 const scrollStartStopEvents = function() {
 	let timer;

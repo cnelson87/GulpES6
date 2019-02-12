@@ -2,9 +2,9 @@
  * Homepage View
  */
 
-import BaseView from '../views/BaseView';
-import HomepageModel from '../models/Homepage/HomepageModel';
-import tmplHomepageContent from '../../templates/HomepageContent.hbs';
+import BaseView from 'views/BaseView';
+import HomepageModel from 'models/Homepage/HomepageModel';
+import tmplHomepageContent from 'templates/HomepageContent.hbs';
 
 const HomepageView = BaseView.extend({
 

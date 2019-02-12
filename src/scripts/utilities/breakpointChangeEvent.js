@@ -4,8 +4,8 @@
  * @description Broadcasts pseudo 'breakpointChange' event
  */
 
-import AppEvents from '../config/AppEvents';
-import AppState from '../config/AppState';
+import AppEvents from 'config/AppEvents';
+import AppState from 'config/AppState';
 
 const breakpointChangeEvent = function() {
 

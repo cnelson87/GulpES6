@@ -2,7 +2,7 @@
  * Homepage Model
  */
 
-import AppConfig from '../../config/AppConfig';
+import AppConfig from 'config/AppConfig';
 
 const HomepageModel = Backbone.Model.extend({
 

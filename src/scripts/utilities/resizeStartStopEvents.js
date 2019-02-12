@@ -4,7 +4,7 @@
  * @description Broadcasts pseudo 'resizeStart' and 'resizeStop' events
  */
 
-import AppEvents from '../config/AppEvents';
+import AppEvents from 'config/AppEvents';
 
 const resizeStartStopEvents = function() {
 	let timer;

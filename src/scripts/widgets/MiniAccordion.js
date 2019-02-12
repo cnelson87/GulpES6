@@ -17,9 +17,9 @@
 
 */
 
-import AppConfig from '../config/AppConfig';
-import AppEvents from '../config/AppEvents';
-import focusOnContentEl from '../utilities/focusOnContentEl';
+import AppConfig from 'config/AppConfig';
+import AppEvents from 'config/AppEvents';
+import focusOnContentEl from 'utilities/focusOnContentEl';
 
 class MiniAccordion {
 

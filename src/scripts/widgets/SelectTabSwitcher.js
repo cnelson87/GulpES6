@@ -16,7 +16,7 @@
 
 */
 
-import TabSwitcher from '../widgets/TabSwitcher';
+import TabSwitcher from 'widgets/TabSwitcher';
 
 class SelectTabSwitcher extends TabSwitcher {
 

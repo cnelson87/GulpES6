@@ -17,7 +17,7 @@
 
 */
 
-import ModalWindow from '../widgets/ModalWindow';
+import ModalWindow from 'widgets/ModalWindow';
 
 class ModalSubclass extends ModalWindow {
 
