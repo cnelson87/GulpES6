@@ -52,6 +52,8 @@
 		"yoda": 2
 	},
 	"globals": {
+		"module": true,
+		"process": true,
 		"require": true,
 		"Modernizr": true,
 		"jQuery": true,

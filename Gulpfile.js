@@ -54,7 +54,7 @@ function getSiteRoot() {
 	return (DEST.ROOT + '/' + ENVIRONMENT);
 }
 function out(path) {
-	// var ret = gulp.dest(getSiteRoot() + '/' + (path || '').replace(/^\//, ''));
+	// let ret = gulp.dest(getSiteRoot() + '/' + (path || '').replace(/^\//, ''));
 	// console.log(ret);
 	return gulp.dest(getSiteRoot() + '/' + (path || '').replace(/^\//, ''));
 }
@@ -98,7 +98,7 @@ gulp.task('sasslint', function() {
 });
 
 gulp.task('scripts', function() {
-	var mods = [
+	const mods = [
 		pathmodify.mod.dir('config', path.join(__dirname, './src/scripts/config')),
 		pathmodify.mod.dir('collections', path.join(__dirname, './src/scripts/collections')),
 		pathmodify.mod.dir('models', path.join(__dirname, './src/scripts/models')),
@@ -107,7 +107,7 @@ gulp.task('scripts', function() {
 		pathmodify.mod.dir('widgets', path.join(__dirname, './src/scripts/widgets')),
 		pathmodify.mod.dir('templates', path.join(__dirname, './src/templates'))
 	];
-	var b = browserify({
+	let b = browserify({
 		entries: SRC.SCRIPTS_ENTRY,
 		debug: isDev()
 	}).plugin(pathmodify, {mods: mods});

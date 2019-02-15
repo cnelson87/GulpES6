@@ -1,4 +1,4 @@
-var FILEPATHS = {
+const FILEPATHS = {
 	SRC: {
 		ASSETS: 'src/assets/**/*',
 		DATA: 'src/data/**/*',
