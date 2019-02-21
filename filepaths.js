@@ -16,7 +16,7 @@ const FILEPATHS = {
 		],
 		TEMPLATES: 'src/templates/**/*.hbs',
 		VENDOR: [
-			'src/vendor/modernizr.custom.min.js',
+			// 'src/vendor/modernizr.custom.min.js',
 			'src/vendor/jquery.min.js',
 			'src/vendor/jquery-ui.custom.min.js',
 			'src/vendor/jquery.touchSwipe.min.js',
@@ -25,6 +25,7 @@ const FILEPATHS = {
 			'src/vendor/greensock/TweenMax.min.js',
 			'src/vendor/greensock/ScrollToPlugin.min.js',
 			'src/vendor/greensock/Draggable.min.js',
+			'src/vendor/greensock/jquery.gsap.min.js',
 			'src/vendor/scrollmagic/ScrollMagic.min.js',
 			'src/vendor/scrollmagic/jquery.ScrollMagic.min.js',
 			'src/vendor/scrollmagic/animation.gsap.min.js',
@@ -33,9 +34,7 @@ const FILEPATHS = {
 			'src/vendor/validation/additional-methods.min.js',
 			'src/vendor/moment.min.js',
 			'src/vendor/moment-timezone-with-data-2012-2022.min.js',
-			'src/vendor/underscore.min.js',
-			'src/vendor/backbone.min.js',
-			'src/vendor/backbone-super.min.js'
+			'src/vendor/underscore.min.js'
 		]
 	},
 	DEST: {

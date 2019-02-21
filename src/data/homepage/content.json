@@ -1,9 +1,12 @@
 {
-	"h1": "Dynamic H1",
-	"content": [
-		"This secondary intro and the following content was injected dynamically by a Backbone View making an Ajax request for a 'content.json' file, then rendered with a Handlebars template."
-	],
-	"h2Blocks": [
+	"primaryBlock" : {
+		"title": "Dynamic H1",
+		"content": [
+			"This intro block and the following content was injected dynamically via an Ajax request for a 'content.json' file, then rendered with a Handlebars template.",
+			"Lorem ipsum dolor sit amet, sodales sapien malesuada mattis, in placerat. Nonummy sit massa, ultricies vivamus in wisi quam amet eleifend."
+		]
+	},
+	"level2Blocks": [
 		{
 			"title": "First H2 Lorem Ipsum Dolor Sit Amet",
 			"content": [
@@ -16,13 +19,13 @@
 			"content": [
 				"<strong>Second One</strong> lorem ipsum dolor sit amet, sodales sapien malesuada mattis, in placerat. Nonummy sit massa, ultricies vivamus in wisi quam amet eleifend. Cras diam ipsum blandit, est euismod integer dolor ante, voluptatem neque ullamcorper arcu sed, lacus pellentesque integer. Accumsan velit et. Elit posuere quam suspendisse ultrices."
 			],
-			"h3Blocks": [
+			"level3Blocks": [
 				{
 					"title": "Sub H3 One Nullam Ut Tellus",
 					"content": [
 						"Sub One A nullam ut tellus, pellentesque est lacus velit. Justo vel taciti feugiat. Bibendum id id neque ac eros congue, tempus penatibus, maecenas nec torquent fermentum. Tellus vitae aenean urna odio egestas, turpis accumsan eget et gravida eu, in metus diam ipsum etiam urna."
 					],
-					"h4Blocks": [
+					"level4Blocks": [
 						{
 							"title": "H4 Sub One Sub One Nullam Ut Tellus",
 							"content": [

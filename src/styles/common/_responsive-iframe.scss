@@ -5,10 +5,10 @@
 // Responsive iframe (youtube, vimeo, google maps, etc)
 // default 16x9 aspect
 .responsive-iframe {
-	width: 100%;
 	height: auto;
 	padding-top: 56.25%;
 	position: relative;
+	width: 100%;
 
 	&.ar4x3 {
 		padding-top: 75.0%; //4x3 aspect ratio
@@ -16,5 +16,8 @@
 
 	> iframe {
 		@include absolute-window;
+		// need to override inline width & height
+		height: 100%;
+		width: 100%;
 	}
 }

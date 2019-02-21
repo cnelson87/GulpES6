@@ -36,7 +36,7 @@ const VideosPage = {
 	process: function(response) {
 		// console.log(response);
 		// let kind = response.kind; //not needed
-		let data = response.items.map(function(item) {
+		let viewData = response.items.map((item) => {
 			return {
 				videoId: item.contentDetails.videoId,
 				title: item.snippet.title,
@@ -44,12 +44,12 @@ const VideosPage = {
 			};
 		});
 
-		this.render(data);
+		this.render(viewData);
 	},
 
-	render: function(data) {
-		console.log(data);
-		let html = this.template(data);
+	render: function(viewData) {
+		// console.log(viewData);
+		let html = this.template(viewData);
 		this.$el.html(html);
 		youtubeVideoControl();
 	}

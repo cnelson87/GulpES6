@@ -1,21 +1,21 @@
-<h1>{{h1}}</h1>
+<h1>{{primaryBlock.title}}</h1>
 <div class="intro">
-{{#each content}}
-	<p>{{{this}}}</p>
-{{/each}}
+	{{#each primaryBlock.content}}
+		<p>{{{this}}}</p>
+	{{/each}}
 </div>
-{{#each h2Blocks}}
+{{#each level2Blocks}}
 	<hr />
 	<h2>{{title}}</h2>
 	{{#each content}}
 		<p>{{{this}}}</p>
 	{{/each}}
-	{{#each h3Blocks}}
+	{{#each level3Blocks}}
 		<h3>{{title}}</h3>
 		{{#each content}}
 			<p>{{{this}}}</p>
 		{{/each}}
-		{{#each h4Blocks}}
+		{{#each level4Blocks}}
 			<h4>{{title}}</h4>
 			{{#each content}}
 				<p>{{{this}}}</p>

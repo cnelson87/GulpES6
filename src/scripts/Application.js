@@ -10,7 +10,7 @@ import getQueryStringParams from 'utilities/getQueryStringParams';
 import breakpointChangeEvent from 'utilities/breakpointChangeEvent';
 import resizeStartStopEvents from 'utilities/resizeStartStopEvents';
 import scrollStartStopEvents from 'utilities/scrollStartStopEvents';
-import HomepageView from 'views/HomepageView';
+import HomePage from 'views/HomePage';
 import FormsPage from 'views/FormsPage';
 import HeroPage from 'views/HeroPage';
 import PromisePage from 'views/PromisePage';
@@ -126,10 +126,7 @@ const Application = {
 	},
 
 	initHomePage: function() {
-		this.homepageView = new HomepageView({
-			controller: this,
-			el: $('#homepage-app')
-		});
+		HomePage.initialize();
 	},
 
 	initFormsPage: function() {

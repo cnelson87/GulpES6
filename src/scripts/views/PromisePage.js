@@ -37,14 +37,14 @@ const PromisePage = {
 		//sort array numerically
 		let sorted = list.slice().sort(function(a,b) {return a - b;});
 		//convert to Set to remove duplicates
-		let data = [...new Set(sorted)];
+		let viewData = [...new Set(sorted)];
 
-		this.render(data);
+		this.render(viewData);
 	},
 
-	render: function(data) {
-		// console.log(data);
-		let html = this.template(data);
+	render: function(viewData) {
+		// console.log(viewData);
+		let html = this.template(viewData);
 		this.$el.html(html);
 	}
 
