@@ -18,8 +18,9 @@
 @import 'base/reset';
 @import 'base/breakpoint-indicator';
 @import 'base/typography';
-@import 'base/forms';
-@import 'base/classes';
+@import 'base/form-elements';
+@import 'base/utility-classes';
+@import 'base/responsive-classes';
 @import 'base/layout';
 
 // common re-usable styles
@@ -31,6 +32,7 @@
 
 // components used for a specific purpose
 @import 'components/hero';
+@import 'components/form-group';
 @import 'components/mediablock';
 @import 'components/image-card';
 @import 'components/datepicker';

@@ -29,6 +29,7 @@ $border-color-med: $color-gray-med;
 $border-color-light: $color-gray-light;
 $border-color-xlight: $color-gray-xlight;
 $error-color: $color-red1;
+$required-color: $color-red1;
 $transparent: rgba(0,0,0,0); //iOS friendly transparent
 
 
@@ -65,8 +66,8 @@ $breakpoint-mobile-wide: 540px;
 $breakpoint-mobile-max:  767px;
 $breakpoint-tablet-min:  768px;
 $breakpoint-tablet-wide: 920px;
-$breakpoint-tablet-max:  1024px;
-$breakpoint-desktop-min: 1025px;
+$breakpoint-tablet-max:  1083px;
+$breakpoint-desktop-min: 1084px;
 $breakpoint-desktop-wide: 1360px;
 $breakpoint-desktop-xwide: 1920px;
 //background stretch
@@ -83,9 +84,11 @@ $desktop-wide-container-width: $max-width;
 
 
 // Grid System
-$gutter-width-mobile: 20px;
-$gutter-width-tablet: 30px;
-$gutter-width-desktop: 40px;
+$gutter-base: 20px;
+$gutter-half: $gutter-base / 2;
+$gutter-width-mobile: $gutter-base;
+$gutter-width-tablet: $gutter-base * 1.5;
+$gutter-width-desktop: $gutter-base * 2;
 $gutter-half-width-mobile: $gutter-width-mobile / 2;
 $gutter-half-width-tablet: $gutter-width-tablet / 2;
 $gutter-half-width-desktop: $gutter-width-desktop / 2;

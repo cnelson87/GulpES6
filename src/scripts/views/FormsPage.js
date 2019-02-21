@@ -2,22 +2,32 @@
  * Forms Page
  */
 
-// import AppConfig from 'config/AppConfig';
+import DualDatepicker from 'widgets/DualDatepicker';
 
 const FormsPage = {
 
 	initialize: function() {
+		// DOM elements
 		this.form1 = document.getElementById('Form1');
 		this.form2 = document.getElementById('Form2');
 		this.form3 = document.getElementById('Form3');
 		this.form4 = document.getElementById('Form4');
 		this.allForms = document.querySelectorAll('form');
-
+		// jQuery elements
 		this.$form1 = $(this.form1);
 		this.$form2 = $(this.form2);
 		this.$form3 = $(this.form3);
 		this.$form4 = $(this.form4);
-		this.$allForms = $('form');
+		this.$allForms = $(this.allForms);
+
+		new DualDatepicker($('#dual-datepicker-1'));
+		new DualDatepicker($('#dual-datepicker-2'));
+
+		// jQuery validation
+		this.$form1.validate();
+		this.$form2.validate();
+		this.$form3.validate();
+		this.$form4.validate();
 
 		console.log('form1 validity:', this.form1.checkValidity());
 		console.log('form2 validity:', this.form2.checkValidity());

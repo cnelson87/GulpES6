@@ -1,0 +1,328 @@
+//
+// Form Elements
+// -----------------------------------------------------
+
+
+fieldset {
+	margin-bottom: 1.5em;
+	position: relative;
+}
+
+legend {
+	display: none;
+}
+
+label, .label {
+	display: inline-block;
+	color: $color-gray-dark;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 20px;
+	vertical-align: top;
+	padding: 6px 0; // matches input height for vertical alignment
+
+	&.disabled {
+		color: $color-gray-light;
+	}
+
+	span.sm {
+		font-size: 14px;
+		font-weight: normal;
+	}
+}
+
+output {
+	display: inline-block;
+	color: $color-gray-dark;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 20px;
+	padding: 6px 0;
+}
+
+input, select, textarea, button {
+	display: inline-block;
+	background: $transparent;
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+	color: $color-gray-dark;
+	font-family: $main-font;
+	font-size: 16px;
+	line-height: 20px;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	vertical-align: top;
+}
+
+// Remove dotted line from input on Firefox
+input::-moz-focus-inner {
+	border: 0;
+}
+
+// Remove number spin box on Chrome
+// input::-webkit-outer-spin-button,
+// input::-webkit-inner-spin-button {
+// 	-webkit-appearance: none;
+// 	margin: 0;
+// }
+
+input:invalid,
+select:invalid,
+textarea:invalid {
+	box-shadow: none;
+	outline: 0;
+}
+
+::-webkit-input-placeholder {
+	color: $color-gray-med;
+	opacity: 1;
+}
+::-moz-placeholder {
+	color: $color-gray-med;
+	opacity: 1;
+}
+:-ms-input-placeholder {
+	color: $color-gray-med;
+	opacity: 1;
+}
+::placeholder {
+	color: $color-gray-med;
+	opacity: 1;
+}
+:focus::-webkit-input-placeholder {
+	color: transparent;
+	opacity: 0;
+}
+:focus::-moz-placeholder {
+	color: transparent;
+	opacity: 0;
+}
+:focus:-ms-input-placeholder {
+	color: transparent;
+	opacity: 0;
+}
+:focus::placeholder {
+	color: transparent;
+	opacity: 0;
+}
+
+//
+// Start text inputs, selects, textareas
+
+input[type='text'],
+input[type='password'],
+input[type='email'],
+input[type='number'],
+input[type='tel'],
+input[type='url'],
+input[type='search'],
+select,
+textarea {
+	appearance: none;
+	border: 1px solid $border-color-med;
+	border-radius: $border-radius-sm;
+	max-width: 600px;
+	min-width: 100px;
+	height: 32px;
+	padding: 5px 8px;
+	width: 100%;
+}
+
+select {
+	background: $transparent url($image-path+'/select-btn.png') no-repeat right 8px top 50%;
+	padding-right: 24px;
+}
+select::-ms-expand {
+	display: none;
+}
+
+textarea {
+	height: 92px; // line-height x 4, + padding & border
+	resize: none;
+}
+
+input[type='text']:focus,
+input[type='password']:focus,
+input[type='email']:focus,
+input[type='number']:focus,
+input[type='tel']:focus,
+input[type='url']:focus,
+input[type='search']:focus,
+select:focus,
+textarea:focus {
+	border-color: $border-color-dark;
+	outline: none;
+}
+
+input[type='text'][disabled],
+input[type='password'][disabled],
+input[type='email'][disabled],
+input[type='number'][disabled],
+input[type='tel'][disabled],
+input[type='url'][disabled],
+input[type='search'][disabled],
+select[disabled],
+textarea[disabled] {
+	color: $color-gray-light;
+	border-color: $border-color-xlight;
+}
+
+// input[type='text']:invalid,
+// input[type='password']:invalid,
+// input[type='email']:invalid,
+// input[type='number']:invalid,
+// input[type='tel']:invalid,
+// input[type='url']:invalid,
+// input[type='search']:invalid,
+// select:invalid,
+// textarea:invalid,
+input[type='text'].invalid,
+input[type='password'].invalid,
+input[type='email'].invalid,
+input[type='number'].invalid,
+input[type='tel'].invalid,
+input[type='url'].invalid,
+input[type='search'].invalid,
+select.invalid,
+textarea.invalid {
+	border-color: $error-color;
+}
+
+//
+// End text inputs, selects, textareas
+
+// Start checkbox & radio inputs
+//
+
+input[type='checkbox'],
+input[type='radio'] {
+	// setting exact size removes IE padding, makes uniform cross-browser
+	cursor: pointer;
+	height: 20px;
+	vertical-align: middle;
+	width: 20px;
+
+	& + label {
+		padding-top: 0;
+	}
+
+	&[disabled] {
+		cursor: default;
+
+		& + label {
+			color: $color-gray-light;
+		}
+	}
+}
+
+//
+// End checkbox & radio inputs
+
+// Start range input
+//
+
+input[type='range'] {
+	cursor: pointer;
+	max-width: 600px;
+	min-width: 100px;
+	height: 32px;
+	width: 100%;
+
+	&[disabled] {
+		cursor: default;
+	}
+}
+
+//
+// End range input
+
+// Start buttons
+//
+
+input[type='submit'],
+input[type='reset'],
+input[type='button'],
+button {
+	appearance: none;
+	cursor: pointer;
+}
+
+//
+// End buttons
+
+// Start misc
+//
+
+// message below an input field
+.field-validation-error,
+.help-block {
+	color: $color-gray-med;
+	display: block;
+	font-size: 12px;
+	line-height: 16px;
+}
+
+.field-validation-error {
+	color: $error-color;
+}
+
+// wrapper for form buttons
+.form-btns {
+	clear: both;
+	border-top: 1px solid $border-color-med;
+	margin-bottom: 1.5em;
+	padding-top: 1.0em;
+}
+
+//
+// End misc
+
+
+
+// use as a modifier class with .vertical-fields or .inline-fields
+.cb-rb-fields {
+	> li {
+		min-height: 20px;
+		margin-bottom: 0.75em;
+		> label {
+			display: block;
+			margin: 0 0 0 24px;
+		}
+	}
+	input[type='checkbox'],
+	input[type='radio'] {
+		float: left;
+	}
+}
+
+.vertical-fields.cb-rb-fields > li > label {
+	margin: 0 0 0 24px;
+}
+
+.inline-fields.cb-rb-fields > li {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+// line-up nested .cb-rb-fields with text inputs (matches label width + margin)
+.horizontal-fields .cb-rb-fields {
+	display: inline-block;
+	vertical-align: top;
+	margin: 2px 0 -8px;
+}
+
+.horizontal-fields > li > .cb-rb-fields:first-child {
+	margin-left: 128px;
+}
+.horizontal-fields.label-width-short > li > .cb-rb-fields:first-child {
+	margin-left: 88px;
+}
+.horizontal-fields.label-width-long > li > .cb-rb-fields:first-child {
+	margin-left: 168px;
+}
+
+//
+//	End fieldsets & lists
+//

@@ -1,0 +1,78 @@
+//
+// Form Groupo
+// -----------------------------------------------------
+
+
+.form-group {
+	margin: 0 -#{$gutter-half} 1.0em;
+	position: relative;
+
+	&.no-bottom-margin {
+		margin-bottom: 0;
+	}
+
+	.field-validation-error,
+	.help-block {
+		margin-top: 5px;
+	}
+
+	// label, .label {
+	// 	display: block;
+	// }
+
+	.label-column,
+	.input-column {
+		padding: 0 $gutter-half;
+		position: relative;
+	}
+
+	&.required-field {
+		.label-column {
+			label::after,
+			.label::after {
+				color: $required-color;
+				content: '*';
+				position: relative;
+				right: -2px;
+				white-space: nowrap;
+			}
+		}
+	}
+
+	&.horizontal-form-group {
+		@media (min-width: $breakpoint-tablet-min) {
+			display: flex;
+
+			.label-column {
+				flex-shrink: 0;
+				text-align: right;
+				width: 33.33333%;
+			}
+
+			// note: somethimes there's just an input-column without a label-column.
+			// don't use width, let it adjust to either 75% or 100% if label-column is absent
+			.input-column {
+				flex-grow: 1;
+			}
+		}
+
+		@media (min-width: $breakpoint-desktop-min) {
+			.label-column {
+				width: 25%;
+			}
+		}
+	}
+
+	&.inline-form-group {
+		@media (min-width: $breakpoint-tablet-min) {
+			display: inline-flex;
+			margin: 0 0 1.0em;
+
+			.label-column,
+			.input-column {
+				padding: 0 $gutter-base 0 0;
+			}
+		}
+	}
+
+}

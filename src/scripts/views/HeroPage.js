@@ -2,14 +2,13 @@
  * Hero Page
  */
 
-// import AppConfig from 'config/AppConfig';
 import AppEvents from 'config/AppEvents';
 import AppState from 'config/AppState';
 
 const HeroPage = {
 
 	initialize: function() {
-		console.log('hero page');
+		// console.log('hero page');
 		this.$scrollZoomParallaxBGs = $('.scroll-zoom-parallax');
 		this.initScrollMagic();
 	},
