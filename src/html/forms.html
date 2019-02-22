@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+@@include('./_includes/head.html', {
+	"title": "Forms Page",
+	"description": "Description for the Forms page",
+	"keywords": "forms forms forms"
+})
+<body class="contentpage" id="formspage">
+
+	<div class="page-container">
+
+@@include('./_includes/header.html' {})
+
+		<main class="site-main" id="main">
+
+			<section class="content">
+				<div class="content-container">
+					<h1>Forms H1</h1>
+					<div class="intro">
+						<p>
+							This is the Forms page intro content.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="content">
+				<div class="content-container">
+
+					<form id="Form1" method="POST" action="/forms.html">
+
+						<h2>Vertical label &amp; form fields</h2>
+
+						<p>Labels and form fields are vertically stacked in mobile/tablet/desktop views by default.</p>
+
+						<fieldset>
+							<p><span class="required">*</span> required field</p>
+
+							<div class="datepicker-container" id="dual-datepicker-1">
+								<div class="form-group">
+									<div class="label-column">
+										<label for="StartDate">Start Date</label>
+									</div>
+									<div class="input-column">
+										<input type="text" id="StartDate" name="StartDate" class="datepicker start-date" placeholder="Start Date" />
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="label-column">
+										<label for="EndDate">End Date</label>
+									</div>
+									<div class="input-column">
+										<input type="text" id="EndDate" name="EndDate" class="datepicker end-date" placeholder="End Date" />
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="label-column">
+									<label for="Text1">Text <span class="required">*</span></label>
+								</div>
+								<div class="input-column">
+									<input type="text" id="Text1" name="Text1" data-label="Text" placeholder="Text" required />
+									<div class="help-block">This is a form help block message.</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="label-column">
+									<label for="Text1X">Text (disabled)</label>
+								</div>
+								<div class="input-column">
+									<input type="text" id="Text1X" name="Text1X" data-label="Text X" placeholder="Text X" disabled />
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="label-column">
+									<label for="Password1">Password</label>
+								</div>
+								<div class="input-column">
+									<input type="password" id="Password1" name="Password1" data-label="Password" placeholder="Password" />
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="label-column">
+									<label for="Email1">Email</label>
+								</div>
+								<div class="input-column">
+									<input type="email" id="Email1" name="Email1" data-label="Email" placeholder="Email" />
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="label-column">
+									<label for="Url1">URL</label>
+								</div>
+								<div class="input-column">
+									<input type="url" id="Url1" name="Url1" data-label="URL" placeholder="URL" />
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="label-column">
+									<label for="Tel1">Telephone</label>
+								</div>
+								<div class="input-column">
+									<input type="tel" id="Tel1" name="Tel1" maxlength="10" data-label="Telephone" placeholder="Tel" />
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="label-column">
+									<label for="Select1">Select <span class="required">*</span></label>
+								</div>
+								<div class="input-column">
+									<select id="Select1" name="Select1" data-label="Select" required>
+										<option value="">Select</option>
+										<option value="A">A</option>
+										<option value="B">B</option>
+										<option value="C">C</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="label-column">
+									<label for="Number1">Number</label>
+								</div>
+								<div class="input-column">
+									<input type="number" id="Number1" name="Number1" min="1" max="999" pattern="\d*" data-label="Number" placeholder="Number" />
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="label-column">
+									<label for="Range1">Range</label>
+								</div>
+								<div class="input-column">
+									<input type="range" id="Range1" name="Range1" min="1" max="100" data-label="Range" />
+									<div class="help-block">from 1 to 100</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="label-column">
+									<label for="Textarea1">Textarea</label>
+								</div>
+								<div class="input-column">
+									<textarea id="Textarea1" name="Textarea1" maxlength="100" data-label="Textarea" placeholder="Textarea"></textarea>
+								</div>
+							</div>
+
+							<!-- <div class="form-group">
+								<div class="label-column">
+									<label for="Search1">Search</label>
+								</div>
+								<div class="input-column">
+									<input type="search" id="Search1" name="Search1" data-label="Search" />
+								</div>
+							</div> -->
+
+						</fieldset>
+
+						<div class="form-btns">
+							<input type="submit" class="button" id="Submit1" name="Submit1" value="Submit" />
+							&nbsp;
+							<em>(default: align left)</em>
+						</div>
+
+					</form>
+
+				</div>
+			</section>
+
+			<section class="content">
+				<div class="content-container">
+
+					<form id="Form2" method="POST" action="/forms.html">
+
+						<h2>Horizontal label &amp; form fields</h2>
+
+						<p>Labels and form fields are vertically stacked in mobile and horizontal in tablet/desktop views.</p>
+
+						<fieldset>
+							<p><span class="required">*</span> required field</p>
+
+							<div class="datepicker-container" id="dual-datepicker-2">
+								<div class="form-group horizontal-form-group">
+									<div class="label-column">
+										<label for="StartDate2">Start Date</label>
+									</div>
+									<div class="input-column">
+										<input type="text" id="StartDate2" name="StartDate2" class="datepicker start-date" placeholder="Start Date" />
+									</div>
+								</div>
+								<div class="form-group horizontal-form-group">
+									<div class="label-column">
+										<label for="EndDate2">End Date</label>
+									</div>
+									<div class="input-column">
+										<input type="text" id="EndDate2" name="EndDate2" class="datepicker end-date" placeholder="End Date" />
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group horizontal-form-group">
+								<div class="label-column">
+									<label for="Text2">Text <span class="required">*</span></label>
+								</div>
+								<div class="input-column">
+									<input type="text" id="Text2" name="Text2" data-label="Text" placeholder="Text" required />
+									<div class="help-block">This is a form help block message.</div>
+								</div>
+							</div>
+
+							<div class="form-group horizontal-form-group">
+								<div class="label-column">
+									<label for="Text2X">Text (disabled)</label>
+								</div>
+								<div class="input-column">
+									<input type="text" id="Text2X" name="Text2X" data-label="Text X" placeholder="Text" disabled />
+								</div>
+							</div>
+
+							<div class="form-group horizontal-form-group">
+								<div class="label-column">
+									<label for="Password2">Password</label>
+								</div>
+								<div class="input-column">
+									<input type="password" id="Password2" name="Password2" data-label="Password" placeholder="Password" />
+								</div>
+							</div>
+
+							<div class="form-group horizontal-form-group">
+								<div class="label-column">
+									<label for="Email2">Email</label>
+								</div>
+								<div class="input-column">
+									<input type="email" id="Email2" name="Email2" data-label="Email" placeholder="Email" />
+								</div>
+							</div>
+
+							<div class="form-group horizontal-form-group">
+								<div class="label-column">
+									<label for="Url2">URL</label>
+								</div>
+								<div class="input-column">
+									<input type="url" id="Url2" name="Url2" data-label="URL" placeholder="URL" />
+								</div>
+							</div>
+
+							<div class="form-group horizontal-form-group">
+								<div class="label-column">
+									<label for="Tel2">Telephone</label>
+								</div>
+								<div class="input-column">
+									<input type="tel" id="Tel2" name="Tel2" maxlength="10" data-label="Telephone" placeholder="Tel" />
+								</div>
+							</div>
+
+							<div class="form-group horizontal-form-group">
+								<div class="label-column">
+									<label for="Select2">Select <span class="required">*</span></label>
+								</div>
+								<div class="input-column">
+									<select id="Select2" name="Select2" data-label="Select" required>
+										<option value="">Select</option>
+										<option value="A">A</option>
+										<option value="B">B</option>
+										<option value="C">C</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group horizontal-form-group">
+								<div class="label-column">
+									<label for="Number2">Number</label>
+								</div>
+								<div class="input-column">
+									<input type="number" id="Number2" name="Number2" min="1" max="999" pattern="\d*" data-label="Number" placeholder="Number" />
+								</div>
+							</div>
+
+							<div class="form-group horizontal-form-group">
+								<div class="label-column">
+									<label for="Range2">Range</label>
+								</div>
+								<div class="input-column">
+									<input type="range" id="Range2" name="Range2" min="1" max="100" data-label="Range" />
+									<div class="help-block">from 1 to 100</div>
+								</div>
+							</div>
+
+							<div class="form-group horizontal-form-group">
+								<div class="label-column">
+									<label for="Textarea2">Textarea</label>
+								</div>
+								<div class="input-column">
+									<textarea id="Textarea2" name="Textarea2" maxlength="100" data-label="Textarea" placeholder="Textarea"></textarea>
+								</div>
+							</div>
+						</fieldset>
+
+						<div class="form-btns align-right">
+							<em>(custom: align right)</em>
+							&nbsp;
+							<input type="submit" class="button" id="Submit2" name="Submit2" value="Submit" />
+						</div>
+
+					</form>
+
+				</div>
+			</section>
+
+			<section class="content">
+				<div class="content-container">
+
+					<form id="Form3" method="POST" action="/forms.html">
+
+						<h2>Inline Form Fields</h2>
+
+						<fieldset>
+							<p><span class="required">*</span> required field</p>
+
+							<div class="form-group inline-form-group">
+								<div class="label-column">
+									<label for="Text3">Text <span class="required">*</span></label>
+								</div>
+								<div class="input-column">
+									<input type="text" id="Text3" name="Text3" data-label="Text" placeholder="Text" required />
+								</div>
+							</div>
+
+							<div class="form-group inline-form-group">
+								<div class="label-column">
+									<label for="Password3">Password</label>
+								</div>
+								<div class="input-column">
+									<input type="password" id="Password3" name="Password3" data-label="Password" placeholder="Password" />
+								</div>
+							</div>
+
+							<div class="form-group inline-form-group">
+								<div class="label-column">
+									<label for="Email3">Email</label>
+								</div>
+								<div class="input-column">
+									<input type="email" id="Email3" name="Email3" data-label="Email" placeholder="Email" />
+								</div>
+							</div>
+
+							<div class="form-group inline-form-group">
+								<div class="label-column">
+									<label for="Url3">URL</label>
+								</div>
+								<div class="input-column">
+									<input type="url" id="Url3" name="Url3" data-label="URL" placeholder="URL" />
+								</div>
+							</div>
+
+							<div class="form-group inline-form-group">
+								<div class="label-column">
+									<label for="Tel3">Telephone</label>
+								</div>
+								<div class="input-column">
+									<input type="tel" id="Tel3" name="Tel3" maxlength="10" data-label="Telephone" placeholder="Tel" />
+								</div>
+							</div>
+
+							<div class="form-group inline-form-group">
+								<div class="label-column">
+									<label for="Select3">Select</label>
+								</div>
+								<div class="input-column">
+									<select id="Select3" name="Select3" data-label="Select">
+										<option value="">Select</option>
+										<option value="A">A</option>
+										<option value="B">B</option>
+										<option value="C">C</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group inline-form-group">
+								<div class="label-column">
+									<label for="Number3">Number</label>
+								</div>
+								<div class="input-column">
+									<input type="number" id="Number3" name="Number3" min="1" max="999" pattern="\d*" data-label="Number" placeholder="Number" />
+								</div>
+							</div>
+
+							<div class="form-group inline-form-group">
+								<div class="label-column">
+									<label for="Range3">Range</label>
+								</div>
+								<div class="input-column">
+									<input type="range" id="Range3" name="Range3" min="1" max="100" data-label="Range" />
+								</div>
+							</div>
+
+						</fieldset>
+
+						<div class="form-btns">
+							<input type="submit" class="button" id="Submit3" name="Submit3" value="Submit" />
+						</div>
+
+					</form>
+
+				</div>
+			</section>
+
+			<section class="content">
+				<div class="content-container">
+
+					<form id="Form4" method="POST" action="/forms.html">
+
+						<h2>Checkboxes &amp; Radios</h2>
+
+						<fieldset>
+							<h3>Stacked Checkboxes</h3>
+
+							<div class="cb-rb-group">
+								<input type="checkbox" id="checkbox1a" name="checkbox1a" />
+								<label for="checkbox1a">CB 1A: An example of an exceptionally long label that wraps to multiple lines on smaller screens</label>
+							</div>
+
+							<div class="cb-rb-group">
+								<input type="checkbox" id="checkbox1b" name="checkbox1b" />
+								<label for="checkbox1b">CB 1B</label>
+							</div>
+
+							<div class="cb-rb-group">
+								<input type="checkbox" id="checkbox1c" name="checkbox1c" />
+								<label for="checkbox1c">CB 1C</label>
+							</div>
+
+							<div class="cb-rb-group">
+								<input type="checkbox" id="checkbox1d" name="checkbox1d" disabled />
+								<label for="checkbox1d">CB 1D</label>
+							</div>
+
+						</fieldset>
+
+						<fieldset>
+							<h3>Stacked Radios</h3>
+
+							<div class="cb-rb-group">
+								<input type="radio" id="radio1a" name="radiogroup1" />
+								<label for="radio1a">RB 1A</label>
+							</div>
+
+							<div class="cb-rb-group">
+								<input type="radio" id="radio1b" name="radiogroup1" disabled />
+								<label for="radio1b">RB 1B</label>
+							</div>
+
+							<div class="cb-rb-group">
+								<input type="radio" id="radio1c" name="radiogroup1" />
+								<label for="radio1c">RB 1C</label>
+							</div>
+
+						</fieldset>
+
+						<fieldset>
+							<h3>Inline Checkboxes</h3>
+
+							<div class="inline-cb-rb-group-container">
+								<div class="cb-rb-group">
+									<input type="checkbox" id="checkbox2a" name="checkbox2a" />
+									<label for="checkbox2a">CB 2A</label>
+								</div>
+								<div class="cb-rb-group">
+									<input type="checkbox" id="checkbox2b" name="checkbox2b" />
+									<label for="checkbox2b">CB 2B</label>
+								</div>
+								<div class="cb-rb-group">
+									<input type="checkbox" id="checkbox2c" name="checkbox2c" />
+									<label for="checkbox2c">CB 2C</label>
+								</div>
+								<div class="cb-rb-group">
+									<input type="checkbox" id="checkbox2d" name="checkbox2d" disabled />
+									<label for="checkbox2d">CB 2D</label>
+								</div>
+							</div>
+
+						</fieldset>
+
+						<fieldset>
+							<h3>Inline Radios</h3>
+
+							<div class="inline-cb-rb-group-container">
+								<div class="cb-rb-group">
+									<input type="radio" id="radio2a" name="radiogroup2" />
+									<label for="radio2a">RB 2A</label>
+								</div>
+								<div class="cb-rb-group">
+									<input type="radio" id="radio2b" name="radiogroup2" disabled />
+									<label for="radio2b">RB 2B</label>
+								</div>
+								<div class="cb-rb-group">
+									<input type="radio" id="radio2c" name="radiogroup2" />
+									<label for="radio2c">RB 2C</label>
+								</div>
+							</div>
+
+						</fieldset>
+
+						<fieldset>
+							<h3>Stacked Checkboxes with label column</h3>
+							<div class="form-group horizontal-form-group">
+								<div class="label-column">
+									<span class="label">Choose Options</span>
+								</div>
+								<div class="input-column">
+									<div class="cb-rb-group">
+										<input type="checkbox" id="checkbox3a" name="checkbox3a" />
+										<label for="checkbox3a">CB 3A: An example of an exceptionally long label that wraps to multiple lines on smaller screens</label>
+									</div>
+									<div class="cb-rb-group">
+										<input type="checkbox" id="checkbox3b" name="checkbox3b" />
+										<label for="checkbox3b">CB 3B</label>
+									</div>
+									<div class="cb-rb-group">
+										<input type="checkbox" id="checkbox3c" name="checkbox3c" />
+										<label for="checkbox3c">CB 3C</label>
+									</div>
+									<div class="cb-rb-group">
+										<input type="checkbox" id="checkbox3d" name="checkbox3d" />
+										<label for="checkbox3d">CB 3D</label>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+
+						<fieldset>
+							<h3>Inline Radios with label column</h3>
+							<div class="form-group horizontal-form-group">
+								<div class="label-column">
+									<span class="label">Choose Option</span>
+								</div>
+								<div class="input-column">
+									<div class="inline-cb-rb-group-container">
+										<div class="cb-rb-group">
+											<input type="radio" id="radio3a" name="radiogroup3" />
+											<label for="radio3a">RB 3A</label>
+										</div>
+										<div class="cb-rb-group">
+											<input type="radio" id="radio3b" name="radiogroup3" />
+											<label for="radio3b">RB 3B</label>
+										</div>
+										<div class="cb-rb-group">
+											<input type="radio" id="radio3c" name="radiogroup3" />
+											<label for="radio3c">RB 3C</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+
+						<div class="form-btns">
+							<input type="submit" class="button" id="Submit4" name="Submit4" value="Submit" />
+						</div>
+
+					</form>
+
+				</div>
+			</section>
+
+		</main>
+
+@@include('./_includes/footer.html' {})
+
+	</div>
+
+</body>
+</html>
