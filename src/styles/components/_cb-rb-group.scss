@@ -1,0 +1,33 @@
+//
+// Checkbox & Radio Group
+// -----------------------------------------------------
+
+
+.cb-rb-group {
+	margin-bottom: 0.25em;
+	padding-left: 24px;
+	position: relative;
+
+	input[type='checkbox'],
+	input[type='radio'] {
+		float: left;
+		margin-left: -24px;
+		margin-top: 6px;
+		vertical-align: top;
+	}
+
+	label {
+		cursor: pointer;
+		font-weight: normal;
+		vertical-align: top;
+	}
+}
+
+.inline-cb-rb-group-container {
+	@media (min-width: $breakpoint-tablet-min) {
+		.cb-rb-group {
+			display: inline-block;
+			margin-right: $gutter-base;
+		}
+	}
+}
