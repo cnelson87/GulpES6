@@ -43,6 +43,7 @@ class AjaxModalForm extends AjaxModal {
 	modalOpened() {
 		super.modalOpened();
 		this.$form = this.$content.find('form');
+		this.$form.validate();
 		this.$form.on('submit', this.onFormPost.bind(this));
 	}
 
@@ -50,17 +51,17 @@ class AjaxModalForm extends AjaxModal {
 		event.preventDefault();
 		let postUrl = this.$form.attr('action');
 		// let data = serializeFormFields(this.$form);
-		let data = this.$form.serialize()
+		let data = this.$form.serialize();
 		// console.log(data);
 
 		this.ajaxLoader.addLoader();
 
 		Promise.resolve(ajaxPost(postUrl, data)).then((response) => {
-			// console.log('success', response);
-			// this.ajaxLoader.removeLoader();
-		}).catch((response) => {
-			// console.log('error', response);
-			// this.ajaxLoader.removeLoader();
+			console.log('success:', response);
+			this.ajaxLoader.removeLoader();
+		}).catch((error) => {
+			console.log('error:', error);
+			this.ajaxLoader.removeLoader();
 		});
 
 	}

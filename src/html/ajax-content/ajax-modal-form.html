@@ -1,0 +1,106 @@
+
+	<form id="ModalForm" method="POST" action="#">
+		<h2>Form Fields</h2>
+		<fieldset>
+			<p><span class="required">*</span> required field</p>
+
+			<div class="form-group horizontal-form-group">
+				<div class="label-column">
+					<label for="ModalFormText">Text <span class="required">*</span></label>
+				</div>
+				<div class="input-column">
+					<input type="text" id="ModalFormText" name="ModalFormText" data-label="Text" placeholder="Text" required />
+					<div class="help-block">This is a form help block message.</div>
+				</div>
+			</div>
+
+			<div class="form-group horizontal-form-group">
+				<div class="label-column">
+					<label for="ModalFormPassword">Password</label>
+				</div>
+				<div class="input-column">
+					<input type="password" id="ModalFormPassword" name="ModalFormPassword" data-label="Password" placeholder="Password" />
+				</div>
+			</div>
+
+			<div class="form-group horizontal-form-group">
+				<div class="label-column">
+					<label for="ModalFormEmail">Email</label>
+				</div>
+				<div class="input-column">
+					<input type="email" id="ModalFormEmail" name="ModalFormEmail" data-label="Email" placeholder="Email" />
+				</div>
+			</div>
+
+			<div class="form-group horizontal-form-group">
+				<div class="label-column">
+					<label for="ModalFormUrl">URL</label>
+				</div>
+				<div class="input-column">
+					<input type="url" id="ModalFormUrl" name="ModalFormUrl" data-label="URL" placeholder="URL" />
+				</div>
+			</div>
+
+			<div class="form-group horizontal-form-group">
+				<div class="label-column">
+					<label for="ModalFormTel">Telephone</label>
+				</div>
+				<div class="input-column">
+					<input type="tel" id="ModalFormTel" name="ModalFormTel" maxlength="10" data-label="Telephone" placeholder="Tel" />
+				</div>
+			</div>
+
+			<div class="form-group horizontal-form-group">
+				<div class="label-column">
+					<label for="ModalFormSelect">Select <span class="required">*</span></label>
+				</div>
+				<div class="input-column">
+					<select id="ModalFormSelect" name="ModalFormSelect" data-label="Select" required>
+						<option value="">Select</option>
+						<option value="A">A</option>
+						<option value="B">B</option>
+						<option value="C">C</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group horizontal-form-group">
+				<div class="label-column">
+					<label for="ModalFormNumber">Number</label>
+				</div>
+				<div class="input-column">
+					<input type="number" id="ModalFormNumber" name="ModalFormNumber" min="1" max="999" pattern="\d*" data-label="Number" placeholder="Number" />
+				</div>
+			</div>
+
+			<div class="form-group horizontal-form-group">
+				<div class="label-column">
+					<label for="ModalFormRange">Range</label>
+				</div>
+				<div class="input-column">
+					<input type="range" id="ModalFormRange" name="ModalFormRange" min="1" max="100" data-label="Range" />
+					<div class="help-block">from 1 to 100</div>
+				</div>
+			</div>
+
+			<div class="form-group horizontal-form-group">
+				<div class="label-column">
+					<label for="ModalFormComments">Textarea</label>
+				</div>
+				<div class="input-column">
+					<textarea id="ModalFormComments" name="ModalFormComments" maxlength="100" data-label="Textarea" placeholder="Textarea"></textarea>
+				</div>
+			</div>
+
+		</fieldset>
+
+		<div class="form-btns align-right no-margin">
+			<em>(message before button)</em>
+			&nbsp;
+			<button type="submit" class="button" id="ModalFormSubmit" name="ModalFormSubmit">Submit</button>
+		</div>
+
+	</form>
