@@ -18,7 +18,7 @@
 
 */
 
-import AppConfig from 'config/AppConfig';
+import Constants from 'config/Constants';
 import ResponsiveCarousel from 'widgets/ResponsiveCarousel';
 
 class ResponsiveTabCarousel extends ResponsiveCarousel {
@@ -109,7 +109,7 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 	}
 
 	__keydownTab(event) {
-		const { keys } = AppConfig;
+		const { keys } = Constants;
 		let keyCode = event.which;
 		let index = this.$tabs.index(event.currentTarget);
 

@@ -1,7 +1,7 @@
 /* eslint-disable */
 var Handlebars = require('handlebars/runtime')['default'];
 
-const HandlebarsHelpers = function() {
+(function() {
 
 	/**
 	 * Compare a value
@@ -47,7 +47,4 @@ const HandlebarsHelpers = function() {
 
 	});
 
-};
-
-export default HandlebarsHelpers;
-/* eslint-enable */
+})();

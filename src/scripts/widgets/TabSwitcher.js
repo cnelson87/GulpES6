@@ -17,8 +17,8 @@
 
 */
 
-import AppConfig from 'config/AppConfig';
-import AppEvents from 'config/AppEvents';
+import Constants from 'config/Constants';
+import Events from 'config/Events';
 import focusOnContentEl from 'utilities/focusOnContentEl';
 import HeightEqualizer from 'widgets/HeightEqualizer';
 
@@ -43,10 +43,10 @@ class TabSwitcher {
 			classInitialized: 'is-initialized',
 			equalizeHeight: false,
 			autoRotate: false,
-			autoRotateInterval: AppConfig.timing.interval,
+			autoRotateInterval: Constants.timing.interval,
 			maxAutoRotations: 5,
-			animDuration: AppConfig.timing.standard,
-			selectorFocusEls: AppConfig.focusableElements,
+			animDuration: Constants.timing.standard,
+			selectorFocusEls: Constants.focusableElements,
 			selectedText: 'currently selected',
 			enableTracking: false,
 			customEventPrefix: 'TabSwitcher'
@@ -205,7 +205,7 @@ class TabSwitcher {
 	}
 
 	__keydownTab(event) {
-		const { keys } = AppConfig;
+		const { keys } = Constants;
 		let keyCode = event.which;
 		let index = this.$tabs.index(event.currentTarget);
 
@@ -310,7 +310,7 @@ class TabSwitcher {
 	fireTracking() {
 		if (!this.options.enableTracking) {return;}
 		let $activePanel = this.$panels.eq(this.currentIndex);
-		$.event.trigger(AppEvents.TRACKING_STATE, [$activePanel]);
+		$.event.trigger(Events.TRACKING_STATE, [$activePanel]);
 	}
 
 	unInitialize() {

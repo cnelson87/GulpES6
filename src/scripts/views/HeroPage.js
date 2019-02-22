@@ -2,18 +2,18 @@
  * Hero Page
  */
 
-import AppEvents from 'config/AppEvents';
-import AppState from 'config/AppState';
+import Events from 'config/Events';
+import State from 'config/State';
 
 const HeroPage = {
 
-	initialize: function() {
+	initialize() {
 		// console.log('hero page');
 		this.$scrollZoomParallaxBGs = $('.scroll-zoom-parallax');
 		this.initScrollMagic();
 	},
 
-	initScrollMagic: function() {
+	initScrollMagic() {
 
 		this.scrollController = new ScrollMagic.Controller({});
 		this.parallaxScenes = [];
@@ -26,7 +26,7 @@ const HeroPage = {
 			this.parallaxScenes[i] = new ScrollMagic.Scene({
 					triggerElement: $bgParent,
 					triggerHook: 'onLeave',
-					offset: AppState.topOffset * -1,
+					offset: State.topOffset * -1,
 					duration: '65%'
 				})
 				.setTween(bgTween)
@@ -36,18 +36,18 @@ const HeroPage = {
 
 	},
 
-	uninitScrollMagic: function() {
+	uninitScrollMagic() {
 		this.scrollController.destroy(true);
 		this.parallaxScenes = null;
 		TweenMax.set(this.$scrollZoomParallaxBGs, {clearProps: 'all'});
 	},
 
-	addEventListeners: function() {
-		window.addEventListener(AppEvents.WINDOW_RESIZE_STOP, this._onWindowChange.bind(this));
-		window.addEventListener(AppEvents.BREAKPOINT_CHANGE, this._onWindowChange.bind(this));
+	addEventListeners() {
+		window.addEventListener(Events.WINDOW_RESIZE_END, this._onWindowChange.bind(this));
+		window.addEventListener(Events.BREAKPOINT_CHANGE, this._onWindowChange.bind(this));
 	},
 
-	_onWindowChange: function() {
+	_onWindowChange() {
 		this.uninitScrollMagic();
 		// the scrollmagic destroy() method does not have a callback and appears to
 		// behave asynchronously, so add a small delay before re-initializing.

@@ -1,17 +1,17 @@
 /**
- * @module resizeStartStopEvents
+ * @module resizeBeginEndEvents
  * @author Chris Nelson <cnelson87@gmail.com>
  * @description Broadcasts pseudo 'resizeStart' and 'resizeStop' events
  */
 
-import AppEvents from 'config/AppEvents';
+import Events from 'config/Events';
 
-const resizeStartStopEvents = function() {
+const resizeBeginEndEvents = function() {
 	let timer;
 	let timeoutTime = 100;
 	window.addEventListener('resize', function(event) {
-		let customResizeStartEvent = new Event(AppEvents.WINDOW_RESIZE_START);
-		let customResizeStopEvent = new Event(AppEvents.WINDOW_RESIZE_STOP);
+		let customResizeStartEvent = new Event(Events.WINDOW_RESIZE_BEGIN);
+		let customResizeStopEvent = new Event(Events.WINDOW_RESIZE_END);
 		if (timer) {
 			clearTimeout(timer);
 		} else {
@@ -24,4 +24,4 @@ const resizeStartStopEvents = function() {
 	});
 };
 
-export default resizeStartStopEvents;
+export default resizeBeginEndEvents;

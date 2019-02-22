@@ -1,17 +1,17 @@
 /**
- * @module scrollStartStopEvents
+ * @module scrollBeginEndEvents
  * @author Chris Nelson <cnelson87@gmail.com>
  * @description Broadcasts pseudo 'scrollStart' and 'scrollStop' events
  */
 
-import AppEvents from 'config/AppEvents';
+import Events from 'config/Events';
 
-const scrollStartStopEvents = function() {
+const scrollBeginEndEvents = function() {
 	let timer;
 	let timeoutTime = 100;
 	window.addEventListener('scroll', function(event) {
-		let customScrollStartEvent = new Event(AppEvents.WINDOW_SCROLL_START);
-		let customScrollStopEvent = new Event(AppEvents.WINDOW_SCROLL_STOP);
+		let customScrollStartEvent = new Event(Events.WINDOW_SCROLL_BEGIN);
+		let customScrollStopEvent = new Event(Events.WINDOW_SCROLL_END);
 		if (timer) {
 			clearTimeout(timer);
 		} else {
@@ -24,4 +24,4 @@ const scrollStartStopEvents = function() {
 	});
 };
 
-export default scrollStartStopEvents;
+export default scrollBeginEndEvents;

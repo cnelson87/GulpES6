@@ -17,7 +17,7 @@
 
 */
 
-import AppConfig from 'config/AppConfig';
+import Constants from 'config/Constants';
 
 class RangeSlider {
 
@@ -61,7 +61,7 @@ class RangeSlider {
 
 	initSlider() {
 		const slider = this.$slider[0]; // native slider element
-		const { keys } = AppConfig;
+		const { keys } = Constants;
 
 		noUiSlider.create(slider, {
 			connect: [false, true, false],

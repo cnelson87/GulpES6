@@ -17,7 +17,7 @@
 
 */
 
-import AppConfig from 'config/AppConfig';
+import Constants from 'config/Constants';
 
 class AutoRotator {
 
@@ -32,8 +32,8 @@ class AutoRotator {
 		this.options = Object.assign({
 			initialIndex: 0,
 			selectorItems: 'article',
-			autoRotateInterval: AppConfig.timing.interval,
-			animDuration: (AppConfig.timing.fast / 1000),
+			autoRotateInterval: Constants.timing.interval,
+			animDuration: (Constants.timing.fast / 1000),
 			animEasing: 'Power4.easeOut',
 			customEventPrefix: 'AutoRotator'
 		}, options);

@@ -2,23 +2,23 @@
  * Promise Page
  */
 
-import AppConfig from 'config/AppConfig';
+import Constants from 'config/Constants';
 import ajaxGet from 'utilities/ajaxGet';
 import PromiseDataListing from 'templates/PromiseDataListing.hbs';
 
 const PromisePage = {
 
-	initialize: function() {
+	initialize() {
 		this.$el = $('#promise-app');
 		this.template = PromiseDataListing;
 		this.fetch();
 	},
 
-	fetch: function() {
+	fetch() {
 		let xhrs = [
-			ajaxGet(AppConfig.urls.fibonacci),
-			ajaxGet(AppConfig.urls.primes),
-			ajaxGet(AppConfig.urls.sevens)
+			ajaxGet(Constants.urls.fibonacci),
+			ajaxGet(Constants.urls.primes),
+			ajaxGet(Constants.urls.sevens)
 		];
 
 		Promise.all(xhrs)
@@ -30,7 +30,7 @@ const PromisePage = {
 			});
 	},
 
-	process: function(response) {
+	process(response) {
 		console.log(response);
 		//combine response data into single array
 		let list = [].concat(...response);
@@ -42,7 +42,7 @@ const PromisePage = {
 		this.render(viewData);
 	},
 
-	render: function(viewData) {
+	render(viewData) {
 		// console.log(viewData);
 		let html = this.template(viewData);
 		this.$el.html(html);

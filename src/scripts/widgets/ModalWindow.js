@@ -16,7 +16,7 @@
 
 */
 
-import AppConfig from 'config/AppConfig';
+import Constants from 'config/Constants';
 import modalTemplate from 'templates/ModalTemplate.hbs';
 
 class ModalWindow {
@@ -43,8 +43,8 @@ class ModalWindow {
 			activeClass: 'is-active',
 			activeBodyClass: 'modal-active',
 			enableOverlayCloseClick: false,
-			animDuration: AppConfig.timing.standard,
-			selectorContentEls: AppConfig.contentElements,
+			animDuration: Constants.timing.standard,
+			selectorContentEls: Constants.contentElements,
 			customEventPrefix: 'ModalWindow'
 		}, options);
 
@@ -87,7 +87,7 @@ class ModalWindow {
 	}
 
 	_addEventListeners() {
-		const { keys } = AppConfig;
+		const { keys } = Constants;
 
 		this.$body.on('click', this.options.selectorTriggers, (event) => {
 			event.preventDefault();

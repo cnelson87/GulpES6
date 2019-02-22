@@ -3,13 +3,13 @@
  * @author Chris Nelson <cnelson87@gmail.com>
  */
 
-import AppConfig from 'config/AppConfig';
-import AppEvents from 'config/AppEvents';
-import AppState from 'config/AppState';
+import Constants from 'config/Constants';
+import Events from 'config/Events';
+import State from 'config/State';
 import getQueryStringParams from 'utilities/getQueryStringParams';
 import breakpointChangeEvent from 'utilities/breakpointChangeEvent';
-import resizeStartStopEvents from 'utilities/resizeStartStopEvents';
-import scrollStartStopEvents from 'utilities/scrollStartStopEvents';
+import resizeBeginEndEvents from 'utilities/resizeBeginEndEvents';
+import scrollBeginEndEvents from 'utilities/scrollBeginEndEvents';
 import HomePage from 'views/HomePage';
 import FormsPage from 'views/FormsPage';
 import HeroPage from 'views/HeroPage';
@@ -33,7 +33,7 @@ import {SubClass} from 'widgets/SuperSubClass';
 
 const Application = {
 
-	initialize: function() {
+	initialize() {
 		// console.log('Application:initialize');
 		let urlHash = location.hash.substring(1) || null;
 		let hashParams = urlHash ? getQueryStringParams(urlHash) : null;
@@ -50,11 +50,11 @@ const Application = {
 
 		this.params = null;
 
-		if (AppConfig.isIE10) {this.$html.addClass('ie10');}
-		if (AppConfig.isIE11) {this.$html.addClass('ie11');}
-		if (AppConfig.isEdge) {this.$html.addClass('edge');}
-		if (AppConfig.isAndroid) {this.$html.addClass('android');}
-		if (AppConfig.isIOS) {this.$html.addClass('ios');}
+		if (Constants.isIE10) {this.$html.addClass('ie10');}
+		if (Constants.isIE11) {this.$html.addClass('ie11');}
+		if (Constants.isEdge) {this.$html.addClass('edge');}
+		if (Constants.isAndroid) {this.$html.addClass('android');}
+		if (Constants.isIOS) {this.$html.addClass('ios');}
 
 		if (!!queryParams || !!hashParams) {
 			this.params = Object.assign({}, queryParams, hashParams);
@@ -65,87 +65,58 @@ const Application = {
 
 		// Initialize custom events
 		breakpointChangeEvent();
-		resizeStartStopEvents();
-		scrollStartStopEvents();
+		resizeBeginEndEvents();
+		scrollBeginEndEvents();
 
 		this._addEventListeners();
 
 		this.setTopOffset();
 
-		// init specific page views
-		switch(this.bodyID) {
-			case 'homepage':
-				this.initHomePage();
-				break;
-			case 'formspage':
-				this.initFormsPage();
-				break;
-			case 'heropage':
-				this.initHeroPage();
-				break;
-			case 'promisepage':
-				this.initPromisePage();
-				break;
-			case 'videospage':
-				this.initVideosPage();
-				break;
-			case 'carouselpage':
-				this.initCarouselPage();
-				break;
-			case 'tabcarouselpage':
-				this.initTabCarouselPage();
-				break;
-			case 'infinitecarouselpage':
-				this.initInfiniteCarouselPage();
-				break;
-			case 'miniaccordionpage':
-				this.initMiniAccordionPage();
-				break;
-			case 'accordionpage':
-				this.initAccordionPage();
-				break;
-			case 'tabswitcherpage':
-				this.initTabswitcherPage();
-				break;
-			case 'horizordionpage':
-				this.initHorizordionPage();
-				break;
-			case 'modalspage':
-				this.initModalsPage();
-				break;
-			case 'rangesliderpage':
-				this.initRangeSliderPage();
-				break;
-			case 'testpage':
-				this.initTestPage();
-				break;
-			default:
-				//console.log('default');
+		// init specific page view
+		if (typeof this.pagemap[this.bodyID] !== 'undefined') {
+			this[this.pagemap[this.bodyID]]();
 		}
-
 	},
 
-	initHomePage: function() {
+	pagemap: {
+		homepage: 'initHomePage',
+		formspage: 'initFormsPage',
+		heropage: 'initHeroPage',
+		promisepage: 'initPromisePage',
+		videospage: 'initVideosPage',
+		carouselpage: 'initCarouselPage',
+		tabcarouselpage: 'initTabCarouselPage',
+		infinitecarouselpage: 'initInfiniteCarouselPage',
+		miniaccordionpage: 'initMiniAccordionPage',
+		accordionpage: 'initAccordionPage',
+		tabswitcherpage: 'initTabswitcherPage',
+		horizordionpage: 'initHorizordionPage',
+		modalspage: 'initModalsPage',
+		rangesliderpage: 'initRangeSliderPage',
+		testpage: 'initTestPage',
+	},
+
+	initHomePage() {
 		HomePage.initialize();
 	},
 
-	initFormsPage: function() {
+	initFormsPage() {
 		FormsPage.initialize();
 	},
 
-	initHeroPage: function() {
+	initHeroPage() {
 		HeroPage.initialize();
 	},
 
-	initPromisePage: function() {
+	initPromisePage() {
 		PromisePage.initialize();
 	},
 
-	initVideosPage: function() {
+	initVideosPage() {
 		VideosPage.initialize();
 	},
 
-	initCarouselPage: function() {
+	initCarouselPage() {
 		new ResponsiveCarousel($('#carousel-m1-t1-d1'), {
 			loopEndToEnd: false,
 			autoRotate: true
@@ -173,18 +144,18 @@ const Application = {
 		});
 	},
 
-	initTabCarouselPage: function() {
+	initTabCarouselPage() {
 		new ResponsiveTabCarousel($('#tabcarousel-m1-t1-d1'), {
 			loopEndToEnd: false,
 			autoRotate: true
 		});
 	},
 
-	initInfiniteCarouselPage: function() {
+	initInfiniteCarouselPage() {
 		new InfiniteCarousel($('#infinite-carousel'), {});
 	},
 
-	initMiniAccordionPage: function() {
+	initMiniAccordionPage() {
 		let $miniAccordions = $('.accordion');
 		for (let i=0, len=$miniAccordions.length; i<len; i++) {
 			new MiniAccordion($miniAccordions.eq(i), {
@@ -193,7 +164,7 @@ const Application = {
 		}
 	},
 
-	initAccordionPage: function() {
+	initAccordionPage() {
 		new Accordion($('#accordion-default'));
 		new Accordion($('#accordion-custom'), {
 			initialIndex: -1,
@@ -201,7 +172,7 @@ const Application = {
 		});
 	},
 
-	initTabswitcherPage: function() {
+	initTabswitcherPage() {
 		new TabSwitcher($('#tabswitcher-default'));
 		new TabSwitcher($('#tabswitcher-custom'), {
 			equalizeHeight: true,
@@ -210,20 +181,20 @@ const Application = {
 		new SelectTabSwitcher($('#select-tabswitcher'));
 	},
 
-	initHorizordionPage: function() {
+	initHorizordionPage() {
 		new Horizordion($('#horizordion-default'));
 		new Horizordion($('#horizordion-custom'), {
 			initialIndex: -1
 		});
 	},
 
-	initModalsPage: function() {
+	initModalsPage() {
 		new ModalWindow();
 		new AjaxModal();
 		new AjaxModalForm();
 	},
 
-	initRangeSliderPage: function() {
+	initRangeSliderPage() {
 		/* eslint-disable no-magic-numbers */
 		new RangeSlider($('#range-slider'), {
 			sliderSteps: 1
@@ -237,50 +208,50 @@ const Application = {
 		/* eslint-enable no-magic-numbers */
 	},
 
-	initTestPage: function() {
+	initTestPage() {
 		// Super / Sub class demo
 		new SubClass();
 	},
 
-	_addEventListeners: function() {
-		window.addEventListener(AppEvents.WINDOW_RESIZE_START, this.onWindowResizeStart.bind(this));
-		window.addEventListener(AppEvents.WINDOW_RESIZE_STOP, this.onWindowResizeStop.bind(this));
-		window.addEventListener(AppEvents.WINDOW_SCROLL_START, this.onWindowScrollStart.bind(this));
-		window.addEventListener(AppEvents.WINDOW_SCROLL_STOP, this.onWindowScrollStop.bind(this));
-		window.addEventListener(AppEvents.BREAKPOINT_CHANGE, this.onBreakpointChange.bind(this));
+	_addEventListeners() {
+		window.addEventListener(Events.BREAKPOINT_CHANGE, this.onBreakpointChange.bind(this));
+		window.addEventListener(Events.WINDOW_RESIZE_BEGIN, this.onWindowResizeBegin.bind(this));
+		window.addEventListener(Events.WINDOW_RESIZE_END, this.onWindowResizeEnd.bind(this));
+		window.addEventListener(Events.WINDOW_SCROLL_BEGIN, this.onWindowScrollBegin.bind(this));
+		window.addEventListener(Events.WINDOW_SCROLL_END, this.onWindowScrollEnd.bind(this));
 	},
 
-	_removeEventListeners: function() {
-		window.removeEventListener(AppEvents.WINDOW_RESIZE_START, this.onWindowResizeStart.bind(this));
-		window.removeEventListener(AppEvents.WINDOW_RESIZE_STOP, this.onWindowResizeStop.bind(this));
-		window.removeEventListener(AppEvents.WINDOW_SCROLL_START, this.onWindowScrollStart.bind(this));
-		window.removeEventListener(AppEvents.WINDOW_SCROLL_STOP, this.onWindowScrollStop.bind(this));
-		window.removeEventListener(AppEvents.BREAKPOINT_CHANGE, this.onBreakpointChange.bind(this));
+	_removeEventListeners() {
+		window.removeEventListener(Events.BREAKPOINT_CHANGE, this.onBreakpointChange.bind(this));
+		window.removeEventListener(Events.WINDOW_RESIZE_BEGIN, this.onWindowResizeBegin.bind(this));
+		window.removeEventListener(Events.WINDOW_RESIZE_END, this.onWindowResizeEnd.bind(this));
+		window.removeEventListener(Events.WINDOW_SCROLL_BEGIN, this.onWindowScrollBegin.bind(this));
+		window.removeEventListener(Events.WINDOW_SCROLL_END, this.onWindowScrollEnd.bind(this));
 	},
 
-	onWindowResizeStart: function() {
-		// console.log('onWindowResizeStart');
+	onWindowResizeBegin() {
+		// console.log('onWindowResizeBegin');
 	},
 
-	onWindowResizeStop: function() {
-		// console.log('onWindowResizeStop');
+	onWindowResizeEnd() {
+		// console.log('onWindowResizeEnd');
 	},
 
-	onWindowScrollStart: function() {
-		// console.log('onWindowScrollStart');
+	onWindowScrollBegin() {
+		// console.log('onWindowScrollBegin');
 	},
 
-	onWindowScrollStop: function() {
-		// console.log('onWindowScrollStop');
+	onWindowScrollEnd() {
+		// console.log('onWindowScrollEnd');
 	},
 
-	onBreakpointChange: function(params) {
+	onBreakpointChange(params) {
 		// console.log('onBreakpointChange', params);
 		this.setTopOffset();
 	},
 
-	setTopOffset: function() {
-		AppState.topOffset = this.$header.height();
+	setTopOffset() {
+		State.topOffset = this.$header.height();
 	}
 
 };

@@ -4,8 +4,8 @@
  * @description Broadcasts pseudo 'breakpointChange' event
  */
 
-import AppEvents from 'config/AppEvents';
-import AppState from 'config/AppState';
+import Events from 'config/Events';
+import State from 'config/State';
 
 const breakpointChangeEvent = function() {
 
@@ -14,22 +14,22 @@ const breakpointChangeEvent = function() {
 	}).appendTo($('body'));
 	let zIndex = $elIndicator.css('z-index');
 
-	let updateAppState = function() {
-		AppState.currentBreakpoint = AppState.breakpoints[zIndex];
-		AppState.isMobileView = AppState.currentBreakpoint === 'mobile';
-		AppState.isTabletView = AppState.currentBreakpoint === 'tablet';
-		AppState.isDesktopView = AppState.currentBreakpoint === 'desktop';
+	let updateState = function() {
+		State.currentBreakpoint = State.breakpoints[zIndex];
+		State.isMobileView = State.currentBreakpoint === 'mobile';
+		State.isTabletView = State.currentBreakpoint === 'tablet';
+		State.isDesktopView = State.currentBreakpoint === 'desktop';
 	};
-	updateAppState();
+	updateState();
 
 	window.addEventListener('resize', function(event) {
 		let newZI = $elIndicator.css('z-index');
 		if (newZI !== zIndex) {
 			zIndex = newZI;
-			let customChangeEvent = new CustomEvent(AppEvents.BREAKPOINT_CHANGE, {
-				breakpoint: AppState.breakpoints[zIndex]
+			let customChangeEvent = new CustomEvent(Events.BREAKPOINT_CHANGE, {
+				breakpoint: State.breakpoints[zIndex]
 			});
-			updateAppState();
+			updateState();
 			window.dispatchEvent(customChangeEvent);
 		}
 	});

@@ -1,5 +1,5 @@
 /**
- * @module AppConfig
+ * @module Constants
  * @description Defines application constants
  */
 
@@ -7,7 +7,7 @@ if (!window.location.origin) {
 	window.location.origin = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
 }
 
-const AppConfig = {
+const Constants = {
 
 	siteUrl: window.location.origin,
 	isIE10: navigator.userAgent.indexOf('MSIE 10') !== -1,
@@ -63,4 +63,4 @@ const AppConfig = {
 
 };
 
-export default AppConfig;
+export default Constants;

@@ -17,8 +17,8 @@
 
 */
 
-import AppConfig from 'config/AppConfig';
-import AppEvents from 'config/AppEvents';
+import Constants from 'config/Constants';
+import Events from 'config/Events';
 import focusOnContentEl from 'utilities/focusOnContentEl';
 
 class MiniAccordion {
@@ -38,9 +38,9 @@ class MiniAccordion {
 			selectorTabs: '.accordion--header a',
 			selectorPanels: '.accordion--panel',
 			classActive: 'is-active',
-			animDuration: (AppConfig.timing.standard / 1000),
+			animDuration: (Constants.timing.standard / 1000),
 			animEasing: 'Power4.easeOut',
-			selectorFocusEls: AppConfig.focusableElements,
+			selectorFocusEls: Constants.focusableElements,
 			selectedText: 'currently selected',
 			enableTracking: false,
 			customEventPrefix: 'MiniAccordion'
@@ -145,7 +145,7 @@ class MiniAccordion {
 	}
 
 	__keydownTab(event) {
-		const { keys } = AppConfig;
+		const { keys } = Constants;
 		let keyCode = event.which;
 
 		// spacebar; activate tab click
@@ -254,7 +254,7 @@ class MiniAccordion {
 
 	fireTracking() {
 		if (!this.options.enableTracking) {return;}
-		$.event.trigger(AppEvents.TRACKING_STATE, [this.$el]);
+		$.event.trigger(Events.TRACKING_STATE, [this.$el]);
 	}
 
 	unInitialize() {

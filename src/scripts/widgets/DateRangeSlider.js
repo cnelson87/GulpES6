@@ -18,7 +18,7 @@
 
 */
 
-import AppConfig from 'config/AppConfig';
+import Constants from 'config/Constants';
 
 class DateRangeSlider {
 
@@ -71,7 +71,7 @@ class DateRangeSlider {
 
 	initSlider() {
 		const slider = this.$slider[0]; // native slider element
-		const { keys } = AppConfig;
+		const { keys } = Constants;
 
 		let formateDate = (date) => {
 			return moment(date).format(this.dateFormat);

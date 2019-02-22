@@ -2,20 +2,20 @@
  * Home Page
  */
 
-import AppConfig from 'config/AppConfig';
+import Constants from 'config/Constants';
 import ajaxGet from 'utilities/ajaxGet';
 import HomepageContent from 'templates/HomepageContent.hbs';
 
 const HomePage = {
 
-	initialize: function() {
+	initialize() {
 		this.$el = $('#homepage-app');
 		this.template = HomepageContent;
 		this.fetch();
 	},
 
-	fetch: function() {
-		let xhr = ajaxGet(AppConfig.urls.homepageContent);
+	fetch() {
+		let xhr = ajaxGet(Constants.urls.homepageContent);
 
 		Promise.resolve(xhr)
 			.then((response) => {
@@ -26,7 +26,7 @@ const HomePage = {
 			});
 	},
 
-	render: function(viewData) {
+	render(viewData) {
 		let html = this.template(viewData);
 		this.$el.html(html);
 	}

@@ -17,9 +17,9 @@
 
 */
 
-import AppConfig from 'config/AppConfig';
-import AppEvents from 'config/AppEvents';
-import AppState from 'config/AppState';
+import Constants from 'config/Constants';
+import Events from 'config/Events';
+import State from 'config/State';
 import focusOnContentEl from 'utilities/focusOnContentEl';
 
 class InfiniteCarousel {
@@ -48,11 +48,11 @@ class InfiniteCarousel {
 			adjOuterTrack: 80,
 			enableSwipe: true,
 			autoRotate: false,
-			autoRotateInterval: AppConfig.timing.interval,
+			autoRotateInterval: Constants.timing.interval,
 			maxAutoRotations: 5,
-			animDuration: (AppConfig.timing.standard / 1000),
+			animDuration: (Constants.timing.standard / 1000),
 			animEasing: 'Power4.easeInOut',
-			selectorFocusEls: AppConfig.focusableElements,
+			selectorFocusEls: Constants.focusableElements,
 			enableTracking: false,
 			customEventPrefix: 'InfiniteCarousel'
 		}, options);
@@ -74,7 +74,7 @@ class InfiniteCarousel {
 		/* eslint-enable no-magic-numbers */
 		this.setAutoRotation = null;
 		this.isAnimating = false;
-		this.currentBreakpoint = AppState.currentBreakpoint;
+		this.currentBreakpoint = State.currentBreakpoint;
 
 		// check url hash to override currentIndex
 		this.setInitialFocus = false;
@@ -164,7 +164,7 @@ class InfiniteCarousel {
 	_addEventListeners() {
 		let self = this;
 
-		this.$window.on(AppEvents.BREAKPOINT_CHANGE, this.__onBreakpointChange.bind(this));
+		this.$window.on(Events.BREAKPOINT_CHANGE, this.__onBreakpointChange.bind(this));
 
 		this.$navPrev.on('click', this.__clickNavPrev.bind(this));
 
@@ -189,7 +189,7 @@ class InfiniteCarousel {
 	}
 
 	_removeEventListeners() {
-		this.$window.off(AppEvents.BREAKPOINT_CHANGE, this.__onBreakpointChange.bind(this));
+		this.$window.off(Events.BREAKPOINT_CHANGE, this.__onBreakpointChange.bind(this));
 		this.$navPrev.off('click', this.__clickNavPrev.bind(this));
 		this.$navNext.off('click', this.__clickNavNext.bind(this));
 		if (this.options.enableSwipe) {
@@ -214,7 +214,7 @@ class InfiniteCarousel {
 **/
 
 	__onBreakpointChange(event, params) {
-		this.currentBreakpoint = AppState.currentBreakpoint;
+		this.currentBreakpoint = State.currentBreakpoint;
 	}
 
 	__clickNavPrev(event) {
@@ -348,7 +348,7 @@ class InfiniteCarousel {
 	fireTracking() {
 		if (!this.options.enableTracking) {return;}
 		let $activePanel = this.$panels.eq(this.currentIndex);
-		$.event.trigger(AppEvents.TRACKING_STATE, [$activePanel]);
+		$.event.trigger(Events.TRACKING_STATE, [$activePanel]);
 	}
 
 	unInitialize() {

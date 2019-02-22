@@ -16,8 +16,8 @@
 
 */
 
-import AppConfig from 'config/AppConfig';
-import AppEvents from 'config/AppEvents';
+import Constants from 'config/Constants';
+import Events from 'config/Events';
 import focusOnContentEl from 'utilities/focusOnContentEl';
 
 class Horizordion {
@@ -40,8 +40,8 @@ class Horizordion {
 			classActive: 'is-active',
 			classDisabled: 'is-disabled',
 			classInitialized: 'is-initialized',
-			animDuration: AppConfig.timing.standard,
-			selectorFocusEls: AppConfig.focusableElements,
+			animDuration: Constants.timing.standard,
+			selectorFocusEls: Constants.focusableElements,
 			selectedText: 'currently selected',
 			enableTracking: false,
 			customEventPrefix: 'Horizordion'
@@ -169,7 +169,7 @@ class Horizordion {
 	}
 
 	__keydownTab(event) {
-		const { keys } = AppConfig;
+		const { keys } = Constants;
 		let keyCode = event.which;
 		let index = this.$tabs.index(event.currentTarget);
 
@@ -277,7 +277,7 @@ class Horizordion {
 	fireTracking() {
 		if (!this.options.enableTracking) {return;}
 		let $activePanel = this.$panels.eq(this.currentIndex);
-		$.event.trigger(AppEvents.TRACKING_STATE, [$activePanel]);
+		$.event.trigger(Events.TRACKING_STATE, [$activePanel]);
 	}
 
 	unInitialize() {

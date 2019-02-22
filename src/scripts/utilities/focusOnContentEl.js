@@ -5,13 +5,13 @@
  * @param: jQuery $element required, extraOffset & scrollSpeed optional
  */
 
-import AppConfig from 'config/AppConfig';
-import AppState from 'config/AppState';
+import Constants from 'config/Constants';
+import State from 'config/State';
 
-const focusOnContentEl = function($el, extraTopOffset = 0, scrollSpeed = AppConfig.timing.fast) {
+const focusOnContentEl = function($el, extraTopOffset = 0, scrollSpeed = Constants.timing.fast) {
 	const $window = $(window);
 	const $htmlBody = $('html, body');
-	let topOffset = AppState.topOffset + extraTopOffset;
+	let topOffset = State.topOffset + extraTopOffset;
 	let pnlTop = $el.offset().top;
 	let pnlHeight = $el.outerHeight();
 	let winTop = $window.scrollTop() + topOffset;
@@ -19,7 +19,7 @@ const focusOnContentEl = function($el, extraTopOffset = 0, scrollSpeed = AppConf
 	let scrollTop = pnlTop - topOffset;
 	let tabindex = '-1';
 	let easing = 'easeOutCubic';
-	let $focusEl = $el.find(AppConfig.contentElements).filter(':visible').first();
+	let $focusEl = $el.find(Constants.contentElements).filter(':visible').first();
 	if (!$focusEl.length) {$focusEl = $el;}
 	if ($focusEl.attr('tabindex') === '0' ||
 		$focusEl.prop('tagName') === 'A' ||

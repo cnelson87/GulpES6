@@ -11,4 +11,3 @@
 	window.CustomEvent = CustomEvent;
 	window.Event = CustomEvent;
 })();
-/* eslint-enable */

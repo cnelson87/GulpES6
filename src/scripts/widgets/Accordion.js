@@ -18,8 +18,8 @@
 
 */
 
-import AppConfig from 'config/AppConfig';
-import AppEvents from 'config/AppEvents';
+import Constants from 'config/Constants';
+import Events from 'config/Events';
 import focusOnContentEl from 'utilities/focusOnContentEl';
 import HeightEqualizer from 'widgets/HeightEqualizer';
 
@@ -44,9 +44,9 @@ class Accordion {
 			classInitialized: 'is-initialized',
 			equalizeHeight: false,
 			selfClosing: true,
-			animDuration: (AppConfig.timing.standard / 1000),
+			animDuration: (Constants.timing.standard / 1000),
 			animEasing: 'Power4.easeOut',
-			selectorFocusEls: AppConfig.focusableElements,
+			selectorFocusEls: Constants.focusableElements,
 			selectedText: 'currently selected',
 			enableTracking: false,
 			customEventPrefix: 'Accordion'
@@ -222,7 +222,7 @@ class Accordion {
 	}
 
 	__keydownTab(event) {
-		const { keys } = AppConfig;
+		const { keys } = Constants;
 		let keyCode = event.which;
 		let index = this.$tabs.index(event.currentTarget);
 
@@ -371,7 +371,7 @@ class Accordion {
 	fireTracking() {
 		if (!this.options.enableTracking) {return;}
 		let $activePanel = this.$panels.eq(this.currentIndex);
-		$.event.trigger(AppEvents.TRACKING_STATE, [$activePanel]);
+		$.event.trigger(Events.TRACKING_STATE, [$activePanel]);
 	}
 
 	unInitialize() {
