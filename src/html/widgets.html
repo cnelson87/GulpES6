@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+@@include('./_includes/head.html', {
+	"title": "Widgets Page",
+	"description": "Description for the Widgets page",
+	"keywords": "widgets accordion carousel tabswitcher"
+})
+<body class="contentpage" id="widgetspage">
+
+	<div class="page-container">
+
+@@include('./_includes/header.html' {})
+
+		<main class="site-main" id="main">
+
+			<section class="content">
+				<div class="content-container">
+					<h1>Widgets H1</h1>
+					<div class="intro">
+						<p>This is the Widgets page intro content.</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="content">
+				<div class="content-container">
+
+					<h2>Accordion w/ default options</h2>
+
+					<div id="accordion-default" class="accordion">
+
+						<div class="accordion--header">
+							<a href="#accordion-panel-1-1">Tab One</a>
+						</div>
+						<article data-id="accordion-panel-1-1" class="accordion--panel">
+							<div class="accordion--panel-content">
+								<h3>Panel One</h3>
+								<p>
+									Tab Panel One content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+								</p>
+								<p>
+									Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+								</p>
+							</div>
+						</article>
+
+						<div class="accordion--header">
+							<a href="#accordion-panel-1-2">Tab Two</a>
+						</div>
+						<article data-id="accordion-panel-1-2" class="accordion--panel">
+							<div class="accordion--panel-content">
+								<h3>Panel Two</h3>
+								<p>
+									Tab Panel Two content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+								</p>
+							</div>
+						</article>
+
+						<div class="accordion--header">
+							<a href="#accordion-panel-1-3">Tab Three</a>
+						</div>
+						<article data-id="accordion-panel-1-3" class="accordion--panel">
+							<div class="accordion--panel-content">
+								<h3>Panel Three</h3>
+								<p>
+									Tab Panel Three content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+								</p>
+								<p>
+									Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit.
+								</p>
+							</div>
+						</article>
+
+						<div class="accordion--header">
+							<a href="#accordion-panel-1-4">Tab Four <em class="ignore-click small hide-mobile">[ignore-click]</em></a>
+						</div>
+						<article data-id="accordion-panel-1-4" class="accordion--panel">
+							<div class="accordion--panel-content">
+								<h3>Panel Four</h3>
+								<p>
+									Tab Panel Four content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+								</p>
+							</div>
+						</article>
+
+					</div>
+
+					<br />
+
+					<h2>Accordion w/ custom options</h2>
+					<p>{initialIndex: null, equalizeHeight: true}</p>
+
+					<div id="accordion-custom" class="accordion">
+
+						<div class="accordion--header">
+							<a href="#accordion-panel-2-1">Tab One</a>
+						</div>
+						<article data-id="accordion-panel-2-1" class="accordion--panel">
+							<div class="accordion--panel-content">
+								<h3>Panel One</h3>
+								<p>
+									Tab Panel One content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+								</p>
+								<p>
+									Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+								</p>
+							</div>
+						</article>
+
+						<div class="accordion--header">
+							<a href="#accordion-panel-2-2">Tab Two</a>
+						</div>
+						<article data-id="accordion-panel-2-2" class="accordion--panel">
+							<div class="accordion--panel-content">
+								<h3>Panel Two</h3>
+								<p>
+									Tab Panel Two content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+								</p>
+							</div>
+						</article>
+
+						<div class="accordion--header">
+							<a href="#accordion-panel-2-3">Tab Three</a>
+						</div>
+						<article data-id="accordion-panel-2-3" class="accordion--panel">
+							<div class="accordion--panel-content">
+								<h3>Panel Three</h3>
+								<p>
+									Tab Panel Three content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+								</p>
+								<p>
+									Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit.
+								</p>
+							</div>
+						</article>
+
+						<div class="accordion--header">
+							<a href="#accordion-panel-2-4">Tab Four</a>
+						</div>
+						<article data-id="accordion-panel-2-4" class="accordion--panel">
+							<div class="accordion--panel-content">
+								<h3>Panel Four</h3>
+								<p>
+									Tab Panel Four content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+								</p>
+							</div>
+						</article>
+
+					</div>
+
+				</div>
+			</section>
+
+			<section class="content">
+				<div class="content-container">
+
+					<h2>Mini Accordions</h2>
+					<p>A Mini Accordions is a single accordion panel, not tied to or synced with any other accordion panels.</p>
+
+					<div class="accordion mini-accordion">
+						<div class="accordion--header">
+							<a href="#accordion-panel-1">Tab One</a>
+						</div>
+						<article data-id="accordion-panel-1" class="accordion--panel">
+							<div class="accordion--panel-content">
+								<h3>Panel One</h3>
+								<p>
+									Tab Panel One content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+								</p>
+								<p>
+									Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+								</p>
+							</div>
+						</article>
+					</div>
+
+					<div class="accordion mini-accordion">
+						<div class="accordion--header">
+							<a href="#accordion-panel-2">Tab Two</a>
+						</div>
+						<article data-id="accordion-panel-2" class="accordion--panel">
+							<div class="accordion--panel-content">
+								<h3>Panel Two</h3>
+								<p>
+									Tab Panel Two content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+								</p>
+							</div>
+						</article>
+					</div>
+
+					<div class="accordion mini-accordion">
+						<div class="accordion--header">
+							<a href="#accordion-panel-3">Tab Three</a>
+						</div>
+						<article data-id="accordion-panel-3" class="accordion--panel">
+							<div class="accordion--panel-content">
+								<h3>Panel Three</h3>
+								<p>
+									Tab Panel Three content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+								</p>
+								<p>
+									Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit.
+								</p>
+							</div>
+						</article>
+					</div>
+
+					<div class="accordion mini-accordion">
+						<div class="accordion--header">
+							<a href="#accordion-panel-4">Tab Four</a>
+						</div>
+						<article data-id="accordion-panel-4" class="accordion--panel">
+							<div class="accordion--panel-content">
+								<h3>Panel Four</h3>
+								<p>
+									Tab Panel Four content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+								</p>
+							</div>
+						</article>
+					</div>
+
+				</div>
+			</section>
+
+			<section class="content">
+				<div class="content-container">
+
+					<h2>Carousel m:1 t:1 d:1</h2>
+
+					<div id="carousel-m1-t1-d1" class="responsive-carousel">
+						<div class="carousel--outer-mask">
+							<div class="carousel--inner-track">
+								<article data-id="carousel-panel-1-01" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-01.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 01</h3>
+											<p>Caption for lorem ipsum 01.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="carousel-panel-1-02" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-02.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 02</h3>
+											<p>Caption for lorem ipsum 02.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="carousel-panel-1-03" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-03.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 03</h3>
+											<p>Caption for lorem ipsum 03.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="carousel-panel-1-04" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-04.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 04</h3>
+											<p>Caption for lorem ipsum 04.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="carousel-panel-1-05" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-05.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 05</h3>
+											<p>Caption for lorem ipsum 05.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="carousel-panel-1-06" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-06.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 06</h3>
+											<p>Caption for lorem ipsum 06.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="carousel-panel-1-07" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-07.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 07</h3>
+											<p>Caption for lorem ipsum 07.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="carousel-panel-1-08" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-08.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 08</h3>
+											<p>Caption for lorem ipsum 08.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="carousel-panel-1-09" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-09.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 09</h3>
+											<p>Caption for lorem ipsum 09.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="carousel-panel-1-10" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-10.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 10</h3>
+											<p>Caption for lorem ipsum 10.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="carousel-panel-1-11" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-03.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 11</h3>
+											<p>Caption for lorem ipsum 11.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="carousel-panel-1-12" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-07.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 12</h3>
+											<p>Caption for lorem ipsum 12.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+							</div>
+						</div>
+						<a title="Previous" class="arrow-nav nav-prev"><span class="arrow"></span></a>
+						<a title="Next" class="arrow-nav nav-next"><span class="arrow"></span></a>
+					</div>
+
+					<br />
+
+					<h2>Carousel m:1 t:2 d:3</h2>
+
+					<div id="carousel-m1-t2-d3" class="responsive-carousel">
+						<div class="carousel--outer-mask">
+							<div class="carousel--inner-track">
+								<article data-id="carousel-panel-2-01" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-01.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 01</h3>
+											<p>Caption for lorem ipsum 01.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="carousel-panel-2-02" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-02.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 02</h3>
+											<p>Caption for lorem ipsum 02.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="carousel-panel-2-03" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-03.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 03</h3>
+											<p>Caption for lorem ipsum 03.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="carousel-panel-2-04" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-04.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 04</h3>
+											<p>Caption for lorem ipsum 04.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="carousel-panel-2-05" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-05.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 05</h3>
+											<p>Caption for lorem ipsum 05.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="carousel-panel-2-06" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-06.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 06</h3>
+											<p>Caption for lorem ipsum 06.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="carousel-panel-2-07" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-07.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 07</h3>
+											<p>Caption for lorem ipsum 07.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="carousel-panel-2-08" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-08.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 08</h3>
+											<p>Caption for lorem ipsum 08.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="carousel-panel-2-09" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-09.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 09</h3>
+											<p>Caption for lorem ipsum 09.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="carousel-panel-2-10" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-10.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 10</h3>
+											<p>Caption for lorem ipsum 10.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="carousel-panel-2-11" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-03.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 11</h3>
+											<p>Caption for lorem ipsum 11.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="carousel-panel-2-12" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-07.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 12</h3>
+											<p>Caption for lorem ipsum 12.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+							</div>
+						</div>
+						<a title="Previous" class="arrow-nav nav-prev"><span class="arrow"></span></a>
+						<a title="Next" class="arrow-nav nav-next"><span class="arrow"></span></a>
+					</div>
+
+					<br />
+
+					<h2>Carousel m:1 t:3 d:5</h2>
+
+					<div id="carousel-m1-t3-d5" class="responsive-carousel">
+						<div class="carousel--outer-mask">
+							<div class="carousel--inner-track">
+								<article data-id="carousel-panel-3-01" class="carousel--panel">
+									<div class="carousel--panel-content mediablock padded">
+										<img alt="" src="/_assets/images/media/main-01.jpg" />
+									</div>
+								</article>
+								<article data-id="carousel-panel-3-02" class="carousel--panel">
+									<div class="carousel--panel-content mediablock padded">
+										<img alt="" src="/_assets/images/media/main-02.jpg" />
+									</div>
+								</article>
+								<article data-id="carousel-panel-3-03" class="carousel--panel">
+									<div class="carousel--panel-content mediablock padded">
+										<img alt="" src="/_assets/images/media/main-03.jpg" />
+									</div>
+								</article>
+								<article data-id="carousel-panel-3-04" class="carousel--panel">
+									<div class="carousel--panel-content mediablock padded">
+										<img alt="" src="/_assets/images/media/main-04.jpg" />
+									</div>
+								</article>
+								<article data-id="carousel-panel-3-05" class="carousel--panel">
+									<div class="carousel--panel-content mediablock padded">
+										<img alt="" src="/_assets/images/media/main-05.jpg" />
+									</div>
+								</article>
+								<article data-id="carousel-panel-3-06" class="carousel--panel">
+									<div class="carousel--panel-content mediablock padded">
+										<img alt="" src="/_assets/images/media/main-06.jpg" />
+									</div>
+								</article>
+								<article data-id="carousel-panel-3-07" class="carousel--panel">
+									<div class="carousel--panel-content mediablock padded">
+										<img alt="" src="/_assets/images/media/main-07.jpg" />
+									</div>
+								</article>
+								<article data-id="carousel-panel-3-08" class="carousel--panel">
+									<div class="carousel--panel-content mediablock padded">
+										<img alt="" src="/_assets/images/media/main-08.jpg" />
+									</div>
+								</article>
+								<article data-id="carousel-panel-3-09" class="carousel--panel">
+									<div class="carousel--panel-content mediablock padded">
+										<img alt="" src="/_assets/images/media/main-09.jpg" />
+									</div>
+								</article>
+								<article data-id="carousel-panel-3-10" class="carousel--panel">
+									<div class="carousel--panel-content mediablock padded">
+										<img alt="" src="/_assets/images/media/main-10.jpg" />
+									</div>
+								</article>
+								<article data-id="carousel-panel-3-11" class="carousel--panel">
+									<div class="carousel--panel-content mediablock padded">
+										<img alt="" src="/_assets/images/media/main-03.jpg" />
+									</div>
+								</article>
+								<article data-id="carousel-panel-3-12" class="carousel--panel">
+									<div class="carousel--panel-content mediablock padded">
+										<img alt="" src="/_assets/images/media/main-07.jpg" />
+									</div>
+								</article>
+							</div>
+						</div>
+						<a title="Previous" class="arrow-nav nav-prev"><span class="arrow"></span></a>
+						<a title="Next" class="arrow-nav nav-next"><span class="arrow"></span></a>
+					</div>
+
+				</div>
+			</section>
+
+			<section class="content">
+				<div class="content-container">
+
+					<h2>Tab Carousel m:1 t:1 d:1</h2>
+
+					<div id="tabcarousel-m1-t1-d1" class="responsive-carousel tab-carousel">
+						<div class="carousel--outer-mask">
+							<div class="carousel--inner-track">
+								<article data-id="tabcarousel-panel-01" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-01.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 01</h3>
+											<p>Caption for lorem ipsum 01.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="tabcarousel-panel-02" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-02.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 02</h3>
+											<p>Caption for lorem ipsum 02.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="tabcarousel-panel-03" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-03.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 03</h3>
+											<p>Caption for lorem ipsum 03.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="tabcarousel-panel-04" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-04.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 04</h3>
+											<p>Caption for lorem ipsum 04.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="tabcarousel-panel-05" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-05.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 05</h3>
+											<p>Caption for lorem ipsum 05.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="tabcarousel-panel-06" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-06.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 06</h3>
+											<p>Caption for lorem ipsum 06.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="tabcarousel-panel-07" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-07.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 07</h3>
+											<p>Caption for lorem ipsum 07.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="tabcarousel-panel-08" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-08.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 08</h3>
+											<p>Caption for lorem ipsum 08.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="tabcarousel-panel-09" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-09.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 09</h3>
+											<p>Caption for lorem ipsum 09.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="tabcarousel-panel-10" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-10.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 10</h3>
+											<p>Caption for lorem ipsum 10.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="tabcarousel-panel-11" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-03.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 11</h3>
+											<p>Caption for lorem ipsum 11.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+								<article data-id="tabcarousel-panel-12" class="carousel--panel">
+									<div class="carousel--panel-content mediablock">
+										<img alt="" src="/_assets/images/media/main-07.jpg" />
+										<div class="mediablock--info">
+											<h3>Lorem Ipsum 12</h3>
+											<p>Caption for lorem ipsum 12.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+									</div>
+								</article>
+							</div>
+						</div>
+						<a title="Previous" class="arrow-nav nav-prev"><span class="arrow"></span></a>
+						<a title="Next" class="arrow-nav nav-next"><span class="arrow"></span></a>
+						<nav class="carousel--tabnav">
+							<ul>
+								<li><a href="#01">panel 01 of 12</a></li>
+								<li><a href="#02">panel 02 of 12</a></li>
+								<li><a href="#03">panel 03 of 12</a></li>
+								<li><a href="#04">panel 04 of 12</a></li>
+								<li><a href="#05">panel 05 of 12</a></li>
+								<li><a href="#06">panel 06 of 12</a></li>
+								<li><a href="#07">panel 07 of 12</a></li>
+								<li><a href="#08">panel 08 of 12</a></li>
+								<li><a href="#09">panel 09 of 12</a></li>
+								<li><a href="#10">panel 10 of 12</a></li>
+								<li><a href="#11">panel 11 of 12</a></li>
+								<li><a href="#12">panel 12 of 12</a></li>
+							</ul>
+						</nav>
+					</div>
+
+				</div>
+			</section>
+
+			<section class="content">
+				<div class="content-container">
+
+					<h2>Infinite Carousel</h2>
+
+					<div id="infinite-carousel" class="infinite-carousel">
+						<div class="stretch-background"></div>
+						<div class="carousel--outer-mask">
+							<div class="carousel--inner-track">
+								<div data-id="infinite-carousel-panel-01" class="carousel--panel">
+									<article class="image-card">
+										<a class="thumb-img" href="#">
+											<img alt="" src="/_assets/images/media/main-01.jpg" />
+										</a>
+										<div class="image-card--content">
+											<h3>Lorem Ipsum 01</h3>
+											<p>Caption for lorem ipsum 01.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+										<div class="screen"></div>
+									</article>
+								</div>
+								<div data-id="infinite-carousel-panel-02" class="carousel--panel">
+									<article class="image-card">
+										<a class="thumb-img" href="#">
+											<img alt="" src="/_assets/images/media/main-02.jpg" />
+										</a>
+										<div class="image-card--content">
+											<h3>Lorem Ipsum 02</h3>
+											<p>Caption for lorem ipsum 02.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+										<div class="screen"></div>
+									</article>
+								</div>
+								<div data-id="infinite-carousel-panel-03" class="carousel--panel">
+									<article class="image-card">
+										<a class="thumb-img" href="#">
+											<img alt="" src="/_assets/images/media/main-03.jpg" />
+										</a>
+										<div class="image-card--content">
+											<h3>Lorem Ipsum 03</h3>
+											<p>Caption for lorem ipsum 03.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+										<div class="screen"></div>
+									</article>
+								</div>
+								<div data-id="infinite-carousel-panel-04" class="carousel--panel">
+									<article class="image-card">
+										<a class="thumb-img" href="#">
+											<img alt="" src="/_assets/images/media/main-04.jpg" />
+										</a>
+										<div class="image-card--content">
+											<h3>Lorem Ipsum 04</h3>
+											<p>Caption for lorem ipsum 04.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+										<div class="screen"></div>
+									</article>
+								</div>
+								<div data-id="infinite-carousel-panel-05" class="carousel--panel">
+									<article class="image-card">
+										<a class="thumb-img" href="#">
+											<img alt="" src="/_assets/images/media/main-05.jpg" />
+										</a>
+										<div class="image-card--content">
+											<h3>Lorem Ipsum 05</h3>
+											<p>Caption for lorem ipsum 05.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+										<div class="screen"></div>
+									</article>
+								</div>
+								<div data-id="infinite-carousel-panel-06" class="carousel--panel">
+									<article class="image-card">
+										<a class="thumb-img" href="#">
+											<img alt="" src="/_assets/images/media/main-06.jpg" />
+										</a>
+										<div class="image-card--content">
+											<h3>Lorem Ipsum 06</h3>
+											<p>Caption for lorem ipsum 06.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+										<div class="screen"></div>
+									</article>
+								</div>
+								<div data-id="infinite-carousel-panel-07" class="carousel--panel">
+									<article class="image-card">
+										<a class="thumb-img" href="#">
+											<img alt="" src="/_assets/images/media/main-07.jpg" />
+										</a>
+										<div class="image-card--content">
+											<h3>Lorem Ipsum 07</h3>
+											<p>Caption for lorem ipsum 07.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+										<div class="screen"></div>
+									</article>
+								</div>
+								<div data-id="infinite-carousel-panel-08" class="carousel--panel">
+									<article class="image-card">
+										<a class="thumb-img" href="#">
+											<img alt="" src="/_assets/images/media/main-08.jpg" />
+										</a>
+										<div class="image-card--content">
+											<h3>Lorem Ipsum 08</h3>
+											<p>Caption for lorem ipsum 08.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+										<div class="screen"></div>
+									</article>
+								</div>
+								<div data-id="infinite-carousel-panel-09" class="carousel--panel">
+									<article class="image-card">
+										<a class="thumb-img" href="#">
+											<img alt="" src="/_assets/images/media/main-09.jpg" />
+										</a>
+										<div class="image-card--content">
+											<h3>Lorem Ipsum 09</h3>
+											<p>Caption for lorem ipsum 09.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+										<div class="screen"></div>
+									</article>
+								</div>
+								<div data-id="infinite-carousel-panel-10" class="carousel--panel">
+									<article class="image-card">
+										<a class="thumb-img" href="#">
+											<img alt="" src="/_assets/images/media/main-10.jpg" />
+										</a>
+										<div class="image-card--content">
+											<h3>Lorem Ipsum 10</h3>
+											<p>Caption for lorem ipsum 10.<br /><a class="arrow-link" href="#">Read More</a></p>
+										</div>
+										<div class="screen"></div>
+									</article>
+								</div>
+							</div>
+						</div>
+						<a title="Previous" class="arrow-nav nav-prev"><span class="arrow"></span></a>
+						<a title="Next" class="arrow-nav nav-next"><span class="arrow"></span></a>
+					</div>
+
+				</div>
+			</section>
+
+			<section class="content">
+				<div class="content-container">
+
+					<h2>TabSwitcher w/ default options</h2>
+
+					<div id="tabswitcher-default" class="tabswitcher">
+
+						<nav class="tabswitcher--tabnav">
+							<ul>
+								<li><a href="#tabswitcher-panel-1-1">Tab 1</a></li>
+								<li><a href="#tabswitcher-panel-1-2">Tab 2</a></li>
+								<li><a href="#tabswitcher-panel-1-3">Tab 3</a></li>
+								<li><a href="#tabswitcher-panel-1-4">Tab 4 <em class="ignore-click small hide-mobile">[ignore-click]</em></a></li>
+							</ul>
+						</nav>
+
+						<div class="tabswitcher--panels-container">
+							<article data-id="tabswitcher-panel-1-1" class="tabswitcher--panel">
+								<div class="tabswitcher--panel-content">
+									<h3>Panel One</h3>
+									<p>
+										Tab Panel One content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+									</p>
+									<p>
+										Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+									</p>
+								</div>
+							</article>
+							<article data-id="tabswitcher-panel-1-2" class="tabswitcher--panel">
+								<div class="tabswitcher--panel-content">
+									<h3>Panel Two</h3>
+									<p>
+										Tab Panel Two content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+									</p>
+								</div>
+							</article>
+							<article data-id="tabswitcher-panel-1-3" class="tabswitcher--panel">
+								<div class="tabswitcher--panel-content">
+									<h3>Panel Three</h3>
+									<p>
+										Tab Panel Three content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+									</p>
+									<p>
+										Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit.
+									</p>
+								</div>
+							</article>
+							<article data-id="tabswitcher-panel-1-4" class="tabswitcher--panel">
+								<div class="tabswitcher--panel-content">
+									<h3>Panel Four</h3>
+									<p>
+										Tab Panel Four content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+									</p>
+								</div>
+							</article>
+						</div>
+
+					</div>
+
+					<br />
+
+					<h2>TabSwitcher w/ custom options</h2>
+					<p>{equalizeHeight: true, autoRotate: true}</p>
+
+					<div id="tabswitcher-custom" class="tabswitcher">
+
+						<nav class="tabswitcher--tabnav">
+							<ul>
+								<li><a href="#tabswitcher-panel-2-1">Tab 1</a></li>
+								<li><a href="#tabswitcher-panel-2-2">Tab 2</a></li>
+								<li><a href="#tabswitcher-panel-2-3">Tab 3</a></li>
+								<li><a href="#tabswitcher-panel-2-4">Tab 4</a></li>
+							</ul>
+						</nav>
+
+						<div class="tabswitcher--panels-container">
+							<article data-id="tabswitcher-panel-2-1" class="tabswitcher--panel">
+								<div class="tabswitcher--panel-content">
+									<h3>Panel One</h3>
+									<p>
+										Tab Panel One content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+									</p>
+									<p>
+										Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+									</p>
+								</div>
+							</article>
+							<article data-id="tabswitcher-panel-2-2" class="tabswitcher--panel">
+								<div class="tabswitcher--panel-content">
+									<h3>Panel Two</h3>
+									<p>
+										Tab Panel Two content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+									</p>
+								</div>
+							</article>
+							<article data-id="tabswitcher-panel-2-3" class="tabswitcher--panel">
+								<div class="tabswitcher--panel-content">
+									<h3>Panel Three</h3>
+									<p>
+										Tab Panel Three content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+									</p>
+									<p>
+										Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit.
+									</p>
+								</div>
+							</article>
+							<article data-id="tabswitcher-panel-2-4" class="tabswitcher--panel">
+								<div class="tabswitcher--panel-content">
+									<h3>Panel Four</h3>
+									<p>
+										Tab Panel Four content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+									</p>
+								</div>
+							</article>
+						</div>
+
+					</div>
+
+					<br />
+
+					<h2>SelectTabSwitcher</h2>
+					<p>Subclass of TabSwitcher uses a select dropdown instead of tabs</p>
+
+					<div id="select-tabswitcher" class="tabswitcher select-tabswitcher">
+
+						<nav class="tabswitcher--tabnav">
+							<select>
+								<option value="#tabswitcher-panel-3-1">Tab 1</option>
+								<option value="#tabswitcher-panel-3-2">Tab 2</option>
+								<option value="#tabswitcher-panel-3-3">Tab 3</option>
+								<option value="#tabswitcher-panel-3-4">Tab 4</option>
+							</select>
+						</nav>
+
+						<div class="tabswitcher--panels-container">
+							<article data-id="tabswitcher-panel-3-1" class="tabswitcher--panel">
+								<div class="tabswitcher--panel-content">
+									<h3>Panel One</h3>
+									<p>
+										Tab Panel One content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+									</p>
+									<p>
+										Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+									</p>
+								</div>
+							</article>
+							<article data-id="tabswitcher-panel-3-2" class="tabswitcher--panel">
+								<div class="tabswitcher--panel-content">
+									<h3>Panel Two</h3>
+									<p>
+										Tab Panel Two content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+									</p>
+								</div>
+							</article>
+							<article data-id="tabswitcher-panel-3-3" class="tabswitcher--panel">
+								<div class="tabswitcher--panel-content">
+									<h3>Panel Three</h3>
+									<p>
+										Tab Panel Three content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+									</p>
+									<p>
+										Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit.
+									</p>
+								</div>
+							</article>
+							<article data-id="tabswitcher-panel-3-4" class="tabswitcher--panel">
+								<div class="tabswitcher--panel-content">
+									<h3>Panel Four</h3>
+									<p>
+										Tab Panel Four content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+									</p>
+								</div>
+							</article>
+						</div>
+
+					</div>
+
+				</div>
+			</section>
+
+		</main>
+
+@@include('./_includes/footer.html' {})
+
+	</div>
+
+</body>
+</html>

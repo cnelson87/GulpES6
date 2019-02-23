@@ -15,11 +15,11 @@ import FormsPage from 'views/FormsPage';
 import HeroPage from 'views/HeroPage';
 import PromisePage from 'views/PromisePage';
 import VideosPage from 'views/VideosPage';
+import Accordion from 'widgets/Accordion';
+import MiniAccordion from 'widgets/MiniAccordion';
 import ResponsiveCarousel from 'widgets/ResponsiveCarousel';
 import ResponsiveTabCarousel from 'widgets/ResponsiveTabCarousel';
 import InfiniteCarousel from 'widgets/InfiniteCarousel';
-import MiniAccordion from 'widgets/MiniAccordion';
-import Accordion from 'widgets/Accordion';
 import TabSwitcher from 'widgets/TabSwitcher';
 import SelectTabSwitcher from 'widgets/SelectTabSwitcher';
 import Horizordion from 'widgets/Horizordion';
@@ -84,12 +84,7 @@ const Application = {
 		heropage: 'initHeroPage',
 		promisepage: 'initPromisePage',
 		videospage: 'initVideosPage',
-		carouselpage: 'initCarouselPage',
-		tabcarouselpage: 'initTabCarouselPage',
-		infinitecarouselpage: 'initInfiniteCarouselPage',
-		miniaccordionpage: 'initMiniAccordionPage',
-		accordionpage: 'initAccordionPage',
-		tabswitcherpage: 'initTabswitcherPage',
+		widgetspage: 'initWidgetsPage',
 		horizordionpage: 'initHorizordionPage',
 		modalspage: 'initModalsPage',
 		rangesliderpage: 'initRangeSliderPage',
@@ -116,11 +111,21 @@ const Application = {
 		VideosPage.initialize();
 	},
 
-	initCarouselPage() {
+	initWidgetsPage() {
+		const $miniAccordions = $('.mini-accordion');
+
+		new Accordion($('#accordion-default'));
+
+		new Accordion($('#accordion-custom'), {
+			initialIndex: -1,
+			equalizeHeight: true
+		});
+
 		new ResponsiveCarousel($('#carousel-m1-t1-d1'), {
 			loopEndToEnd: false,
 			autoRotate: true
 		});
+
 		new ResponsiveCarousel($('#carousel-m1-t2-d3'), {
 			numVisibleItemsMobile: 1,
 			numItemsToAnimateMobile: 1,
@@ -131,6 +136,7 @@ const Application = {
 			loopEndToEnd: true,
 			autoRotate: false
 		});
+
 		new ResponsiveCarousel($('#carousel-m1-t3-d5'), {
 			numVisibleItemsMobile: 1,
 			numItemsToAnimateMobile: 1,
@@ -142,43 +148,29 @@ const Application = {
 			staggerActiveItems: true,
 			autoRotate: false
 		});
-	},
 
-	initTabCarouselPage() {
 		new ResponsiveTabCarousel($('#tabcarousel-m1-t1-d1'), {
 			loopEndToEnd: false,
 			autoRotate: true
 		});
-	},
 
-	initInfiniteCarouselPage() {
-		new InfiniteCarousel($('#infinite-carousel'), {});
-	},
+		new InfiniteCarousel($('#infinite-carousel'));
 
-	initMiniAccordionPage() {
-		let $miniAccordions = $('.accordion');
-		for (let i=0, len=$miniAccordions.length; i<len; i++) {
-			new MiniAccordion($miniAccordions.eq(i), {
-				initialOpen: (i === 0) ? true : false,
+		$miniAccordions.each((index) => {
+			new MiniAccordion($miniAccordions.eq(index), {
+				initialOpen: (index === 0) ? true : false,
 			});
-		}
-	},
-
-	initAccordionPage() {
-		new Accordion($('#accordion-default'));
-		new Accordion($('#accordion-custom'), {
-			initialIndex: -1,
-			equalizeHeight: true
 		});
-	},
 
-	initTabswitcherPage() {
 		new TabSwitcher($('#tabswitcher-default'));
+
 		new TabSwitcher($('#tabswitcher-custom'), {
 			equalizeHeight: true,
 			autoRotate: true
 		});
+
 		new SelectTabSwitcher($('#select-tabswitcher'));
+
 	},
 
 	initHorizordionPage() {
