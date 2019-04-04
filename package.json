@@ -1,6 +1,6 @@
 {
 	"name": "gulp-es6",
-	"version": "0.3.3",
+	"version": "0.3.4",
 	"title": "Gulp ES6",
 	"description": "A Gulp ES6 sandbox.",
 	"namespace": "gulpes6",
@@ -13,16 +13,16 @@
 		"build": "clear && gulp"
 	},
 	"dependencies": {
-		"@babel/polyfill": "^7.2.5"
+		"@babel/polyfill": "7.4.0"
 	},
 	"devDependencies": {
 		"gulp": "^3.9.1",
-		"@babel/core": "^7.3.3",
-		"@babel/preset-env": "^7.3.1",
-		"autoprefixer": "^9.4.9",
+		"@babel/core": "^7.4.3",
+		"@babel/preset-env": "^7.4.3",
+		"autoprefixer": "^9.5.0",
 		"babelify": "^10.0.0",
 		"browserify": "^16.2.3",
-		"eslint": "^5.14.1",
+		"eslint": "^5.16.0",
 		"gulp-autoprefixer": "^6.0.0",
 		"gulp-concat": "^2.6.1",
 		"gulp-connect": "^5.7.0",
@@ -35,14 +35,15 @@
 		"gulp-sass": "^4.0.2",
 		"gulp-sass-lint": "^1.4.0",
 		"gulp-sourcemaps": "^2.6.5",
-		"gulp-uglify": "^3.0.1",
-		"handlebars": "^4.1.0",
+		"gulp-uglify": "^3.0.2",
+		"handlebars": "^4.1.1",
 		"hbsfy": "^2.8.1",
 		"node-sass": "^4.11.0",
 		"pathmodify": "^0.5.0",
+		"uglify-js": "^3.5.3",
 		"vinyl-buffer": "^1.0.1",
 		"vinyl-source-stream": "^2.0.0",
-		"yargs": "^13.2.1"
+		"yargs": "^13.2.2"
 	},
 	"repository": {
 		"type": "git",
