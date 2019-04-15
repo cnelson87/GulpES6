@@ -1,5 +1,5 @@
 /**
- * Hero Page
+ * @module HeroPage
  */
 
 import Events from 'config/Events';

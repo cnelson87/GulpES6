@@ -3,13 +3,11 @@
 
 	DESCRIPTION: Basic TabSwitcher widget
 
-	VERSION: 0.3.9
+	VERSION: 0.4.0
 
 	USAGE: let myTabSwitcher = new TabSwitcher('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
-
-	AUTHOR: Chris Nelson <cnelson87@gmail.com>
 
 	DEPENDENCIES:
 		- jquery 3.x
@@ -52,25 +50,29 @@ class TabSwitcher {
 			customEventPrefix: 'TabSwitcher'
 		}, options);
 
-		// element references
+		// elements
 		this.$tabs = this.$el.find(this.options.selectorTabs);
 		this.$panels = this.$el.find(this.options.selectorPanels);
 
-		// setup & properties
+		// properties
 		this._length = this.$panels.length;
 		if (this.options.initialIndex >= this._length) {this.options.initialIndex = 0;}
-		this.currentIndex = this.options.initialIndex;
-		this.previousIndex = null;
 		this.heightEqualizer = null;
-		this.isAnimating = false;
 		this.selectedLabel = `<span class="offscreen selected-text"> - ${this.options.selectedText}</span>`;
+
+		// state
+		this.state = {
+			currentIndex: this.options.initialIndex,
+			previousIndex: null,
+			isAnimating: false,
+		};
 
 		// check url hash to override currentIndex
 		this.setInitialFocus = false;
 		if (urlHash) {
 			for (let i=0; i<this._length; i++) {
 				if (this.$panels.eq(i).data('id') === urlHash) {
-					this.currentIndex = i;
+					this.state.currentIndex = i;
 					this.setInitialFocus = true;
 					break;
 				}
@@ -91,8 +93,8 @@ class TabSwitcher {
 **/
 
 	initDOM() {
-		let $activeTab = this.$tabs.eq(this.currentIndex);
-		let $activePanel = this.$panels.eq(this.currentIndex);
+		let $activeTab = this.$tabs.eq(this.state.currentIndex);
+		let $activePanel = this.$panels.eq(this.state.currentIndex);
 
 		this.$el.attr({'role':'tablist', 'aria-live':'polite'});
 		this.$tabs.attr({'role':'tab', 'tabindex':'0', 'aria-selected':'false'});
@@ -157,9 +159,9 @@ class TabSwitcher {
 	}
 
 	autoRotation() {
-		this.previousIndex = this.currentIndex;
-		this.currentIndex++;
-		if (this.currentIndex === this._length) {this.currentIndex = 0;}
+		this.state.previousIndex = this.state.currentIndex;
+		this.state.currentIndex++;
+		if (this.state.currentIndex === this._length) {this.state.currentIndex = 0;}
 
 		this.switchPanels();
 		this.autoRotationCounter--;
@@ -187,18 +189,18 @@ class TabSwitcher {
 		let $currentTab = this.$tabs.eq(index);
 		let $currentPanel = this.$panels.eq(index);
 
-		if (this.isAnimating || $currentTab.hasClass(this.options.classDisabled)) {return;}
+		if (this.state.isAnimating || $currentTab.hasClass(this.options.classDisabled)) {return;}
 
 		if (this.options.autoRotate) {
 			clearInterval(this.setAutoRotation);
 			this.options.autoRotate = false;
 		}
 
-		if (this.currentIndex === index) {
+		if (this.state.currentIndex === index) {
 			this.focusOnPanel($currentPanel);
 		} else {
-			this.previousIndex = this.currentIndex;
-			this.currentIndex = index;
+			this.state.previousIndex = this.state.currentIndex;
+			this.state.currentIndex = index;
 			this.switchPanels(event);
 		}
 
@@ -253,12 +255,12 @@ class TabSwitcher {
 **/
 
 	switchPanels(event) {
-		let $inactiveTab = this.$tabs.eq(this.previousIndex);
-		let $activeTab = this.$tabs.eq(this.currentIndex);
-		let $inactivePanel = this.$panels.eq(this.previousIndex);
-		let $activePanel = this.$panels.eq(this.currentIndex);
+		let $inactiveTab = this.$tabs.eq(this.state.previousIndex);
+		let $activeTab = this.$tabs.eq(this.state.currentIndex);
+		let $inactivePanel = this.$panels.eq(this.state.previousIndex);
+		let $activePanel = this.$panels.eq(this.state.currentIndex);
 
-		this.isAnimating = true;
+		this.state.isAnimating = true;
 
 		this.deactivateTab($inactiveTab);
 		this.activateTab($activeTab);
@@ -270,7 +272,7 @@ class TabSwitcher {
 		$.event.trigger(`${this.options.customEventPrefix}:panelPreOpen`, {activePanel: $activePanel});
 
 		setTimeout(() => {
-			this.isAnimating = false;
+			this.state.isAnimating = false;
 			if (!!event) {
 				this.focusOnPanel($activePanel);
 			}
@@ -309,7 +311,7 @@ class TabSwitcher {
 
 	fireTracking() {
 		if (!this.options.enableTracking) {return;}
-		let $activePanel = this.$panels.eq(this.currentIndex);
+		let $activePanel = this.$panels.eq(this.state.currentIndex);
 		$.event.trigger(Events.TRACKING_STATE, [$activePanel]);
 	}
 

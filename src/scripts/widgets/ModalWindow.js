@@ -9,8 +9,6 @@
 		@param {jQuery Object}
 		@param {Object}
 
-	AUTHOR: Chris Nelson <cnelson87@gmail.com>
-
 	DEPENDENCIES:
 		- jquery 3.x
 
@@ -48,7 +46,7 @@ class ModalWindow {
 			customEventPrefix: 'ModalWindow'
 		}, options);
 
-		// element references
+		// elements
 		this.$activeTrigger = null;
 		this.$modalWindow = null;
 		this.$overlay = null;
@@ -56,7 +54,7 @@ class ModalWindow {
 		this.$content = null;
 		this.$closeBtn = null;
 
-		// setup & properties
+		// properties
 		this.isModalActivated = false;
 		this.windowScrollTop = 0;
 

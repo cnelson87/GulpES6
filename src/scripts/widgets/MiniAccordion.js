@@ -3,13 +3,11 @@
 
 	DESCRIPTION: A single Accordion item
 
-	VERSION: 0.3.9
+	VERSION: 0.4.0
 
 	USAGE: let myAccordion = new MiniAccordion('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
-
-	AUTHOR: Chris Nelson <cnelson87@gmail.com>
 
 	DEPENDENCIES:
 		- jquery 3.x
@@ -46,19 +44,23 @@ class MiniAccordion {
 			customEventPrefix: 'MiniAccordion'
 		}, options);
 
-		// element references
+		// elements
 		this.$tab = this.$el.find(this.options.selectorTabs);
 		this.$panel = this.$el.find(this.options.selectorPanels);
 
-		// setup & properties
-		this.isActive = this.options.initialOpen;
-		this.isAnimating = false;
+		// properties
 		this.selectedLabel = `<span class="offscreen selected-text"> - ${this.options.selectedText}</span>`;
+
+		// state
+		this.state = {
+			isActive: this.options.initialOpen,
+			isAnimating: false,
+		};
 
 		// check url hash to override isActive
 		this.setInitialFocus = false;
 		if (urlHash && this.$panel.data('id') === urlHash) {
-			this.isActive = true;
+			this.state.isActive = true;
 			this.setInitialFocus = true;
 		}
 
@@ -82,13 +84,13 @@ class MiniAccordion {
 		this.$panel.attr({'role':'tabpanel', 'aria-hidden':'true'});
 		this.$panel.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
 
-		if (this.isActive) {
+		if (this.state.isActive) {
 			this.activateTab();
 			this.activatePanel();
 		}
 
 		TweenMax.set(this.$panel, {
-			display: this.isActive ? 'block' : 'none',
+			display: this.state.isActive ? 'block' : 'none',
 			height: 'auto'
 		});
 
@@ -134,9 +136,9 @@ class MiniAccordion {
 	__clickTab(event) {
 		event.preventDefault();
 		if ($(event.target).hasClass('ignore-click')) {return;}
-		if (this.isAnimating) {return;}
+		if (this.state.isAnimating) {return;}
 
-		if (this.isActive) {
+		if (this.state.isActive) {
 			this.animateClosed();
 		} else {
 			this.animateOpen();
@@ -164,9 +166,9 @@ class MiniAccordion {
 	animateClosed() {
 		let self = this;
 
-		this.isAnimating = true;
+		this.state.isAnimating = true;
 
-		this.isActive = false;
+		this.state.isActive = false;
 
 		this.deactivateTab();
 
@@ -181,7 +183,7 @@ class MiniAccordion {
 				$.event.trigger(`${self.options.customEventPrefix}:panelClosing`, [self.$panel]);
 			},
 			onComplete: function() {
-				self.isAnimating = false;
+				self.state.isAnimating = false;
 				self.$tab.focus();
 				TweenMax.set(self.$panel, {
 					display: 'none',
@@ -197,9 +199,9 @@ class MiniAccordion {
 		let self = this;
 		let panelHeight = this.$panel.outerHeight();
 
-		this.isAnimating = true;
+		this.state.isAnimating = true;
 
-		this.isActive = true;
+		this.state.isActive = true;
 
 		this.activateTab();
 
@@ -215,7 +217,7 @@ class MiniAccordion {
 				$.event.trigger(`${self.options.customEventPrefix}:panelOpening`, [self.$panel]);
 			},
 			onComplete: function() {
-				self.isAnimating = false;
+				self.state.isAnimating = false;
 				self.focusOnPanel(self.$panel);
 				TweenMax.set(self.$panel, {
 					height: 'auto'

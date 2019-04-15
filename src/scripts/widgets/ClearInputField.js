@@ -3,18 +3,20 @@
 
 	DESCRIPTION: Mimics the -webkit- input type='search' clear 'X' icon
 
-	VERSION: 0.0.1
+	VERSION: 0.0.2
 
-	AUTHOR: Chris Nelson <cnelson87@gmail.com>
+	DEPENDENCIES:
+		- jquery 3.x
 
 */
 
 class ClearInputField {
+
 	constructor($el) {
-		this.init($el);
+		this.initialize($el);
 	}
 
-	init($el) {
+	initialize($el) {
 		this.$el = $el;
 		this.$input = this.$el.find('[data-input-field]');
 		this.$clear = this.$el.find('[data-clear-button]');
@@ -25,6 +27,7 @@ class ClearInputField {
 	clear() {
 		this.$input.val('').focus();
 	}
+
 }
 
 export default ClearInputField;

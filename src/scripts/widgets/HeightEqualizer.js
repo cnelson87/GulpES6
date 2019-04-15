@@ -3,13 +3,11 @@
 
 	DESCRIPTION: Sets equal height on a collection of DOM ELs
 
-	VERSION: 0.2.4
+	VERSION: 0.2.5
 
 	USAGE: let myHeightEqualizer = new HeightEqualizer('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
-
-	AUTHOR: Chris Nelson <cnelson87@gmail.com>
 
 	DEPENDENCIES:
 		- jquery 3.x
@@ -31,13 +29,14 @@ class HeightEqualizer {
 			setParentHeight: false
 		}, options);
 
-		// element references
+		// elements
 		this.$items = this.$el.find(this.options.selectorItems);
 
-		this._len = this.$items.length;
-		if (this._len <= 1) {return;}
-
+		// properties
+		this._length = this.$items.length;
 		this.maxHeight = 0;
+
+		if (this._length <= 1) {return;}
 
 		this.calcHeight();
 		this.setHeight();
@@ -61,7 +60,7 @@ class HeightEqualizer {
 
 	calcHeight() {
 		let heightCheck = 0;
-		for (let i=0; i<this._len; i++) {
+		for (let i=0; i<this._length; i++) {
 			//outerHeight includes height + padding + border
 			heightCheck = this.$items.eq(i).outerHeight();
 			if (heightCheck > this.maxHeight) {

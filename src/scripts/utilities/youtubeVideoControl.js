@@ -1,6 +1,5 @@
 /**
  * @module youtubeVideoControl
- * @author Chris Nelson <cnelson87@gmail.com>
  * @description Manages multiple youtube iframe embed videos on a page
  */
 

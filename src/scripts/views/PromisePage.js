@@ -1,5 +1,5 @@
 /**
- * Promise Page
+ * @module PromisePage
  */
 
 import Constants from 'config/Constants';

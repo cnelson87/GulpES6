@@ -3,13 +3,11 @@
 
 	DESCRIPTION: A range slider widget
 
-	VERSION: 0.1.1
+	VERSION: 0.1.2
 
 	USAGE: let myRangeSlider = new RangeSlider('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
-
-	AUTHOR: Chris Nelson <cnelson87@gmail.com>
 
 	DEPENDENCIES:
 		- jquery 3.x
@@ -38,12 +36,12 @@ class RangeSlider {
 			customEventPrefix: 'RangeSlider'
 		}, options);
 
-		// element references
+		// elements
 		this.$slider = this.$el.find(this.options.selectorSlider).first(); //must be only 1
 		this.$outputs = this.$el.find(this.options.selectorOutputs); //must be exactly 2 (start & end)
 		this.$fields = this.$el.find(this.options.selectorFields); //must be exactly 2 (start & end)
 
-		// setup & properties
+		// properties
 		this.data = this.$slider.data();
 		this.steps = this.data.steps || this.options.sliderSteps;
 		this.min = this.data.min; //data-min is required

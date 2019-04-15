@@ -1,6 +1,5 @@
 /**
  * @module getQueryStringParams
- * @author Chris Nelson <cnelson87@gmail.com>
  * @description Reads query string and returns an object of name / value pairs.
  * @param: 'str' is optional, defaults to location.search
  * @return: {}

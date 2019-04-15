@@ -9,8 +9,6 @@
 		@param {jQuery Object}
 		@param {Object}
 
-	AUTHOR: Chris Nelson <cnelson87@gmail.com>
-
 	DEPENDENCIES:
 		- jquery 3.x
 		- AjaxModal.js
@@ -33,7 +31,7 @@ class AjaxModalForm extends AjaxModal {
 			customEventPrefix: 'AjaxModalForm'
 		}, options);
 
-		// element references
+		// elements
 		this.$form = null;
 
 		super.initialize(subclassOptions);

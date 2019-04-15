@@ -9,8 +9,6 @@
 		@param {jQuery Object}
 		@param {Object}
 
-	AUTHOR: Chris Nelson <cnelson87@gmail.com>
-
 	DEPENDENCIES:
 		- jquery 3.x
 
@@ -35,11 +33,11 @@ class Widget {
 			customEventPrefix: 'Widget'
 		}, options);
 
-		// element references
+		// elements
 		this.$foobars = this.$el.find(this.options.selectorFoobars);
 		this.$things = this.$el.find(this.options.selectorThings);
 
-		// setup & properties
+		// properties
 		this._length = this.$things.length;
 
 		this.initDOM();
@@ -52,12 +50,10 @@ class Widget {
 
 	initDOM() {
 
-
 		this.$el.addClass(this.options.classInitialized);
 	}
 
 	uninitDOM() {
-
 
 		this.$el.removeClass(this.options.classInitialized);
 	}

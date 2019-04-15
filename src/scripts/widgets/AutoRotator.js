@@ -3,13 +3,11 @@
 
 	DESCRIPTION: Auto show / hide a list of elements
 
-	VERSION: 0.1.2
+	VERSION: 0.2.0
 
 	USAGE: let myAutoRotator = new AutoRotator('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
-
-	AUTHOR: Chris Nelson <cnelson87@gmail.com>
 
 	DEPENDENCIES:
 		- jquery 3.x
@@ -38,15 +36,19 @@ class AutoRotator {
 			customEventPrefix: 'AutoRotator'
 		}, options);
 
-		// element references
+		// elements
 		this.$items = this.$el.children(this.options.selectorItems);
 
-		// setup & properties
-		this.lenItems = this.$items.length;
+		// properties
+		this._length = this.$items.length;
+		if (this.options.initialIndex >= this._length) {this.options.initialIndex = 0;}
 		this.rotationInterval = this.options.autoRotateInterval;
-		if (this.options.initialIndex >= this.lenItems) {this.options.initialIndex = 0;}
-		this.currentIndex = this.options.initialIndex;
-		this.previousIndex = null;
+
+		// state
+		this.state = {
+			currentIndex: this.options.initialIndex,
+			previousIndex: null,
+		};
 
 		this.setDOM();
 
@@ -59,7 +61,7 @@ class AutoRotator {
 	}
 
 	setDOM() {
-		let $activeItem = $(this.$items[this.currentIndex]);
+		let $activeItem = $(this.$items[this.state.currentIndex]);
 
 		TweenMax.set(this.$items, {
 			left: '100%',
@@ -75,11 +77,11 @@ class AutoRotator {
 
 	autoRotation() {
 
-		this.previousIndex = this.currentIndex;
-		this.currentIndex += 1;
+		this.state.previousIndex = this.state.currentIndex;
+		this.state.currentIndex++;
 
-		if (this.currentIndex === this.lenItems - 1) {
-			this.currentIndex = 0;
+		if (this.state.currentIndex === this._length - 1) {
+			this.state.currentIndex = 0;
 		}
 
 		this.updateDOM();
@@ -87,8 +89,8 @@ class AutoRotator {
 	}
 
 	updateDOM() {
-		let $activeItem = $(this.$items[this.currentIndex]);
-		let $inactiveItem = $(this.$items[this.previousIndex]);
+		let $activeItem = this.$items.eq(this.state.currentIndex);
+		let $inactiveItem = this.$items.eq(this.state.previousIndex);
 
 		TweenMax.set($inactiveItem, {
 			zIndex: 8

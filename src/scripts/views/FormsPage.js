@@ -1,5 +1,5 @@
 /**
- * Forms Page
+ * @module FormsPage
  */
 
 import DualDatepicker from 'widgets/DualDatepicker';

@@ -1,6 +1,5 @@
 /**
  * @module serializeFormFields
- * @author Chris Nelson <cnelson87@gmail.com>
  * @description Serialize form data
  * @param: jQuery $element required
  * @return: {}

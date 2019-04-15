@@ -1,17 +1,16 @@
 /**
  * @module truncateText
- * @author Chris Nelson <cnelson87@gmail.com>
  * @description Truncate text and add ellipsis
  */
 
 const truncateText = function() {
-	let $els = $('[data-truncate]');
-	let defaultLen = 200;
-	console.log($els);
+	const $els = $('[data-truncate]');
+	const defaultLength = 200;
+
 	$els.each((i, el) => {
-		let $el = $(el);
+		const $el = $(el);
 		let text = $el.text();
-		let len = $el.data('truncate') || defaultLen;
+		let len = $el.data('truncate') || defaultLength;
 		if (text.length > len) {
 			text = text.substring(0, len);
 			text += '&hellip;';

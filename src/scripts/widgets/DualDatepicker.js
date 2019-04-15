@@ -9,8 +9,6 @@
 		@param {jQuery Object}
 		@param {Object}
 
-	AUTHOR: Chris Nelson <cnelson87@gmail.com>
-
 	DEPENDENCIES:
 		- jquery 3.x
 		- jquery-ui 1.12.1
@@ -37,7 +35,7 @@ class DualDatepicker {
 			customEventPrefix: 'DualDatepicker'
 		}, options);
 
-		// element references
+		// elements
 		this.$startDatepicker = this.$el.find(this.options.selectorStartDatepicker);
 		this.$endDatepicker = this.$el.find(this.options.selectorEndDatepicker);
 

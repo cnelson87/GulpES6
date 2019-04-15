@@ -3,13 +3,11 @@
 
 	DESCRIPTION: A range slider widget for selecting a date or time, useful for small ranges, use DualDatepicker for large ranges.
 
-	VERSION: 0.1.1
+	VERSION: 0.1.2
 
 	USAGE: let myDateRangeSlider = new DateRangeSlider('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
-
-	AUTHOR: Chris Nelson <cnelson87@gmail.com>
 
 	DEPENDENCIES:
 		- jquery 3.x
@@ -47,12 +45,12 @@ class DateRangeSlider {
 			customEventPrefix: 'DateRangeSlider'
 		}, options);
 
-		// element references
+		// elements
 		this.$slider = this.$el.find(this.options.selectorSlider).first(); //must be only 1
 		this.$outputs = this.$el.find(this.options.selectorOutputs); //must be exactly 2 (start & end)
 		this.$fields = this.$el.find(this.options.selectorFields); //must be exactly 2 (start & end)
 
-		// setup & properties
+		// properties
 		this.data = this.$slider.data();
 		this.steps = this.data.steps || this.options.sliderSteps;
 		this.min = new Date(this.data.min); //data-min is required

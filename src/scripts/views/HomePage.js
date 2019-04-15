@@ -1,5 +1,5 @@
 /**
- * Home Page
+ * @module HomePage
  */
 
 import Constants from 'config/Constants';

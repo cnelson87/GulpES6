@@ -1,15 +1,15 @@
 /**
  * @module resizeBeginEndEvents
- * @author Chris Nelson <cnelson87@gmail.com>
- * @description Broadcasts pseudo 'resizeStart' and 'resizeStop' events
+ * @description Broadcasts pseudo 'resizeBegin' and 'resizeEnd' events
  */
 
 import Events from 'config/Events';
 
 const resizeBeginEndEvents = function() {
-	let timer;
-	let timeoutTime = 100;
-	window.addEventListener('resize', function(event) {
+	const timerDelay = 100;
+	let timer = null;
+
+	window.addEventListener('resize', (event) => {
 		let customResizeStartEvent = new Event(Events.WINDOW_RESIZE_BEGIN);
 		let customResizeStopEvent = new Event(Events.WINDOW_RESIZE_END);
 		if (timer) {
@@ -17,10 +17,10 @@ const resizeBeginEndEvents = function() {
 		} else {
 			window.dispatchEvent(customResizeStartEvent);
 		}
-		timer = setTimeout(function() {
+		timer = setTimeout(() => {
 			timer = null;
 			window.dispatchEvent(customResizeStopEvent);
-		}, timeoutTime);
+		}, timerDelay);
 	});
 };
 

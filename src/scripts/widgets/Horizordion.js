@@ -3,13 +3,11 @@
 
 	DESCRIPTION: A horizontal Accordion
 
-	VERSION: 0.1.4
+	VERSION: 0.2.0
 
 	USAGE: let myHorizordion = new Horizordion('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
-
-	AUTHOR: Chris Nelson <cnelson87@gmail.com>
 
 	DEPENDENCIES:
 		- jquery 3.x
@@ -47,24 +45,28 @@ class Horizordion {
 			customEventPrefix: 'Horizordion'
 		}, options);
 
-		// element references
+		// elements
 		this.$tabs = this.$el.find(this.options.selectorTabs);
 		this.$panels = this.$el.find(this.options.selectorPanels);
 
-		// setup & properties
+		// properties
 		this._length = this.$panels.length;
 		if (this.options.initialIndex >= this._length) {this.options.initialIndex = 0;}
-		this.currentIndex = this.options.initialIndex;
-		this.previousIndex = null;
-		this.isAnimating = false;
 		this.selectedLabel = `<span class="offscreen selected-text"> - ${this.options.selectedText}</span>`;
+
+		// state
+		this.state = {
+			currentIndex: this.options.initialIndex,
+			previousIndex: null,
+			isAnimating: false,
+		};
 
 		// check url hash to override currentIndex
 		this.setInitialFocus = false;
 		if (urlHash) {
 			for (let i=0; i<this._length; i++) {
 				if (this.$panels.eq(i).data('id') === urlHash) {
-					this.currentIndex = i;
+					this.state.currentIndex = i;
 					this.setInitialFocus = true;
 					break;
 				}
@@ -86,8 +88,8 @@ class Horizordion {
 
 	initDOM() {
 		let highIndex = 9999;
-		let $activeTab = this.$tabs.eq(this.currentIndex === -1 ? highIndex : this.currentIndex);
-		let $activePanel = this.$panels.eq(this.currentIndex === -1 ? highIndex : this.currentIndex);
+		let $activeTab = this.$tabs.eq(this.state.currentIndex === -1 ? highIndex : this.state.currentIndex);
+		let $activePanel = this.$panels.eq(this.state.currentIndex === -1 ? highIndex : this.state.currentIndex);
 
 		this.$el.attr({'role':'tablist', 'aria-live':'polite'});
 		this.$tabs.attr({'role':'tab', 'tabindex':'0', 'aria-selected':'false'});
@@ -147,23 +149,23 @@ class Horizordion {
 		if (this.isAnimating || $currentTab.hasClass(this.options.classDisabled)) {return;}
 
 		// currentIndex is open
-		if (this.currentIndex === index) {
-			this.previousIndex = null;
-			this.currentIndex = -1;
+		if (this.state.currentIndex === index) {
+			this.state.previousIndex = null;
+			this.state.currentIndex = -1;
 			this.closePanel(index);
 
 		// currentIndex is -1, all are closed
-		} else if (this.currentIndex === -1) {
-			this.previousIndex = null;
-			this.currentIndex = index;
+	} else if (this.state.currentIndex === -1) {
+			this.state.previousIndex = null;
+			this.state.currentIndex = index;
 			this.openPanel(index);
 
 		// default behaviour
 		} else {
-			this.previousIndex = this.currentIndex;
-			this.currentIndex = index;
-			this.closePanel(this.previousIndex);
-			this.openPanel(this.currentIndex);
+			this.state.previousIndex = this.state.currentIndex;
+			this.state.currentIndex = index;
+			this.closePanel(this.state.previousIndex);
+			this.openPanel(this.state.currentIndex);
 		}
 
 	}
@@ -276,7 +278,7 @@ class Horizordion {
 
 	fireTracking() {
 		if (!this.options.enableTracking) {return;}
-		let $activePanel = this.$panels.eq(this.currentIndex);
+		let $activePanel = this.$panels.eq(this.state.currentIndex);
 		$.event.trigger(Events.TRACKING_STATE, [$activePanel]);
 	}
 

@@ -1,15 +1,15 @@
 /**
  * @module scrollBeginEndEvents
- * @author Chris Nelson <cnelson87@gmail.com>
- * @description Broadcasts pseudo 'scrollStart' and 'scrollStop' events
+ * @description Broadcasts pseudo 'scrollBegin' and 'scrollEnd' events
  */
 
 import Events from 'config/Events';
 
 const scrollBeginEndEvents = function() {
-	let timer;
-	let timeoutTime = 100;
-	window.addEventListener('scroll', function(event) {
+	const timerDelay = 100;
+	let timer = null;
+
+	window.addEventListener('scroll', (event) => {
 		let customScrollStartEvent = new Event(Events.WINDOW_SCROLL_BEGIN);
 		let customScrollStopEvent = new Event(Events.WINDOW_SCROLL_END);
 		if (timer) {
@@ -17,10 +17,10 @@ const scrollBeginEndEvents = function() {
 		} else {
 			window.dispatchEvent(customScrollStartEvent);
 		}
-		timer = setTimeout(function() {
+		timer = setTimeout(() => {
 			timer = null;
 			window.dispatchEvent(customScrollStopEvent);
-		}, timeoutTime);
+		}, timerDelay);
 	});
 };
 

@@ -4,13 +4,11 @@
 	DESCRIPTION: Subclass of ResponsiveTabCarousel adds tab navigation
 	NOTE: The tabs only work if mobile/tablet/desktop views all display one 'panel' at a time.
 
-	VERSION: 0.3.3
+	VERSION: 0.4.0
 
 	USAGE: let myTabCarousel = new ResponsiveTabCarousel('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
-
-	AUTHOR: Chris Nelson <cnelson87@gmail.com>
 
 	DEPENDENCIES:
 		- jquery 3.x
@@ -25,9 +23,7 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 
 	initialize($el, options) {
 
-		// defaults
-		this.$el = $el;
-		this.options = Object.assign({
+		let subclassOptions = Object.assign({
 			initialIndex: 0,
 			numVisibleItemsMobile: 1,
 			numItemsToAnimateMobile: 1,
@@ -41,13 +37,13 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 			customEventPrefix: 'ResponsiveTabCarousel'
 		}, options);
 
-		// element references
-		this.$tabs = this.$el.find(this.options.selectorTabs);
+		// elements
+		this.$tabs = $el.find(subclassOptions.selectorTabs);
 
-		// setup & properties
-		this.selectedLabel = `<span class="offscreen selected-text"> - ${this.options.selectedText}</span>`;
+		// properties
+		this.selectedLabel = `<span class="offscreen selected-text"> - ${subclassOptions.selectedText}</span>`;
 
-		super.initialize($el, this.options);
+		super.initialize($el, subclassOptions);
 	}
 
 
@@ -56,7 +52,7 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 **/
 
 	initDOM() {
-		let $activeTab = this.$tabs.eq(this.currentIndex);
+		let $activeTab = this.$tabs.eq(this.state.currentIndex);
 		this.$tabs.attr({'role':'tab', 'tabindex':'0', 'aria-selected':'false'});
 		$activeTab.addClass(this.options.classActiveNav).attr({'aria-selected':'true'});
 		$activeTab.append(this.selectedLabel);
@@ -92,17 +88,17 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 		let $currentTab = this.$tabs.eq(index);
 		let $currentPanel = this.$panels.eq(index);
 
-		if (this.isAnimating || $currentTab.hasClass(this.options.classNavDisabled)) {return;}
+		if (this.state.isAnimating || $currentTab.hasClass(this.options.classNavDisabled)) {return;}
 
 		if (this.options.autoRotate) {
 			clearInterval(this.setAutoRotation);
 			this.options.autoRotate = false;
 		}
 
-		if (this.currentIndex === index) {
+		if (this.state.currentIndex === index) {
 			this.focusOnPanel($currentPanel);
 		} else {
-			this.currentIndex = index;
+			this.state.currentIndex = index;
 			this.updateCarousel(event);
 		}
 
@@ -158,7 +154,7 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 
 	updateNav() {
 		let $inactiveTab = this.$tabs.filter('.'+this.options.classActiveNav);
-		let $activeTab = this.$tabs.eq(this.currentIndex);
+		let $activeTab = this.$tabs.eq(this.state.currentIndex);
 
 		$inactiveTab.removeClass(this.options.classActiveNav).attr({'aria-selected':'false'});
 		$activeTab.addClass(this.options.classActiveNav).attr({'aria-selected':'true'});

@@ -3,13 +3,11 @@
 
 	DESCRIPTION: A carousel widget that responds to mobile, tablet, and desaktop media queries
 
-	VERSION: 0.3.9
+	VERSION: 0.4.0
 
 	USAGE: let myCarousel = new ResponsiveCarousel('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
-
-	AUTHOR: Chris Nelson <cnelson87@gmail.com>
 
 	DEPENDENCIES:
 		- jquery 3.x
@@ -62,30 +60,34 @@ class ResponsiveCarousel {
 			customEventPrefix: 'ResponsiveCarousel'
 		}, options);
 
-		// element references
+		// elements
 		this.$navPrev = this.$el.find(this.options.selectorNavPrev);
 		this.$navNext = this.$el.find(this.options.selectorNavNext);
 		this.$innerTrack = this.$el.find(this.options.selectorInnerTrack);
 		this.$panels = this.$innerTrack.children(this.options.selectorPanels);
 
-		// setup & properties
+		// properties
 		this._length = this.$panels.length;
 		if (this.options.initialIndex >= this._length) {this.options.initialIndex = 0;}
-		this.currentIndex = this.options.initialIndex;
 		this.lastIndex = null;
 		this.itemWidth = null;
 		this.scrollAmt = null;
 		this.trackWidth = null;
 		this.numVisibleItems = null;
 		this.numItemsToAnimate = null;
-		this.isAnimating = false;
+
+		// state
+		this.state = {
+			currentIndex: this.options.initialIndex,
+			isAnimating: false,
+		};
 
 		// check url hash to override currentIndex
 		this.setInitialFocus = false;
 		if (urlHash) {
 			for (let i=0; i<this._length; i++) {
 				if (this.$panels.eq(i).data('id') === urlHash) {
-					this.currentIndex = i;
+					this.state.currentIndex = i;
 					this.setInitialFocus = true;
 					break;
 				}
@@ -106,7 +108,7 @@ class ResponsiveCarousel {
 **/
 
 	initDOM() {
-		let $activePanel = this.$panels.eq(this.currentIndex);
+		let $activePanel = this.$panels.eq(this.state.currentIndex);
 
 		this.$el.attr({'role':'tablist', 'aria-live':'polite'});
 		this.$navPrev.attr({'role':'button', 'tabindex':'0'});
@@ -158,7 +160,7 @@ class ResponsiveCarousel {
 		}
 
 		this.lastIndex = this._length - this.numVisibleItems;
-		if (this.currentIndex > this.lastIndex) {this.currentIndex = this.lastIndex;}
+		if (this.state.currentIndex > this.lastIndex) {this.state.currentIndex = this.lastIndex;}
 		this.itemWidth = percent / this._length;
 		this.scrollAmt = (percent / this.numVisibleItems) * -1;
 		this.trackWidth = (1 / this.numVisibleItems) * (this._length * percent);
@@ -168,7 +170,7 @@ class ResponsiveCarousel {
 	setDOM() {
 		let itemWidth = this.itemWidth + '%';
 		let trackWidth = this.trackWidth + '%';
-		let leftPos = (this.scrollAmt * this.currentIndex) + '%';
+		let leftPos = (this.scrollAmt * this.state.currentIndex) + '%';
 
 		// disable nav links if not enough visible items
 		this.updateNav();
@@ -241,11 +243,11 @@ class ResponsiveCarousel {
 
 	autoRotation() {
 
-		if (this.currentIndex === this.lastIndex) {
-			this.currentIndex = 0;
+		if (this.state.currentIndex === this.lastIndex) {
+			this.state.currentIndex = 0;
 		} else {
-			this.currentIndex += this.numItemsToAnimate;
-			if (this.currentIndex > this.lastIndex) {this.currentIndex = this.lastIndex;}
+			this.state.currentIndex += this.numItemsToAnimate;
+			if (this.state.currentIndex > this.lastIndex) {this.state.currentIndex = this.lastIndex;}
 		}
 
 		this.updateCarousel();
@@ -272,18 +274,18 @@ class ResponsiveCarousel {
 	__clickNavPrev(event) {
 		event.preventDefault();
 
-		if (this.isAnimating || this.$navPrev.hasClass(this.options.classNavDisabled)) {return;}
+		if (this.state.isAnimating || this.$navPrev.hasClass(this.options.classNavDisabled)) {return;}
 
 		if (this.options.autoRotate) {
 			clearInterval(this.setAutoRotation);
 			this.options.autoRotate = false;
 		}
 
-		if (this.options.loopEndToEnd && this.currentIndex === 0) {
-			this.currentIndex = this.lastIndex;
+		if (this.options.loopEndToEnd && this.state.currentIndex === 0) {
+			this.state.currentIndex = this.lastIndex;
 		} else {
-			this.currentIndex -= this.numItemsToAnimate;
-			if (this.currentIndex < 0) {this.currentIndex = 0;}
+			this.state.currentIndex -= this.numItemsToAnimate;
+			if (this.state.currentIndex < 0) {this.state.currentIndex = 0;}
 		}
 
 		this.updateCarousel(event);
@@ -293,18 +295,18 @@ class ResponsiveCarousel {
 	__clickNavNext(event) {
 		event.preventDefault();
 
-		if (this.isAnimating || this.$navNext.hasClass(this.options.classNavDisabled)) {return;}
+		if (this.state.isAnimating || this.$navNext.hasClass(this.options.classNavDisabled)) {return;}
 
 		if (this.options.autoRotate) {
 			clearInterval(this.setAutoRotation);
 			this.options.autoRotate = false;
 		}
 
-		if (this.options.loopEndToEnd && this.currentIndex === this.lastIndex) {
-			this.currentIndex = 0;
+		if (this.options.loopEndToEnd && this.state.currentIndex === this.lastIndex) {
+			this.state.currentIndex = 0;
 		} else {
-			this.currentIndex += this.numItemsToAnimate;
-			if (this.currentIndex > this.lastIndex) {this.currentIndex = this.lastIndex;}
+			this.state.currentIndex += this.numItemsToAnimate;
+			if (this.state.currentIndex > this.lastIndex) {this.state.currentIndex = this.lastIndex;}
 		}
 
 		this.updateCarousel(event);
@@ -318,10 +320,10 @@ class ResponsiveCarousel {
 
 	updateCarousel(event) {
 		let self = this;
-		let leftPos = (this.scrollAmt * this.currentIndex) + '%';
-		let $activePanel = this.$panels.eq(this.currentIndex);
+		let leftPos = (this.scrollAmt * this.state.currentIndex) + '%';
+		let $activePanel = this.$panels.eq(this.state.currentIndex);
 
-		this.isAnimating = true;
+		this.state.isAnimating = true;
 
 		this.deactivateItems();
 
@@ -336,7 +338,7 @@ class ResponsiveCarousel {
 				$.event.trigger(`${self.options.customEventPrefix}:carouselOpening`, {activePanel: $activePanel});
 			},
 			onComplete: function() {
-				self.isAnimating = false;
+				self.state.isAnimating = false;
 				self.activateItems();
 				if (!!event) {
 					self.focusOnPanel($activePanel);
@@ -355,10 +357,10 @@ class ResponsiveCarousel {
 			this.$navPrev.removeClass(this.options.classNavDisabled).attr({'tabindex':'0'});
 			this.$navNext.removeClass(this.options.classNavDisabled).attr({'tabindex':'0'});
 
-			if (this.currentIndex <= 0) {
+			if (this.state.currentIndex <= 0) {
 				this.$navPrev.addClass(this.options.classNavDisabled).attr({'tabindex':'-1'});
 			}
-			if (this.currentIndex >= this.lastIndex) {
+			if (this.state.currentIndex >= this.lastIndex) {
 				this.$navNext.addClass(this.options.classNavDisabled).attr({'tabindex':'-1'});
 			}
 
@@ -373,8 +375,8 @@ class ResponsiveCarousel {
 
 	activateItems() {
 		let self = this;
-		let first = this.currentIndex;
-		let last = this.currentIndex + this.numVisibleItems;
+		let first = this.state.currentIndex;
+		let last = this.state.currentIndex + this.numVisibleItems;
 		let $activeItems = this.$panels.slice(first, last);
 		let delay = 100;
 
@@ -402,7 +404,7 @@ class ResponsiveCarousel {
 
 	fireTracking() {
 		if (!this.options.enableTracking) {return;}
-		let $activePanel = this.$panels.eq(this.currentIndex);
+		let $activePanel = this.$panels.eq(this.state.currentIndex);
 		$.event.trigger(Events.TRACKING_STATE, [$activePanel]);
 	}
 

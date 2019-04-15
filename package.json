@@ -1,6 +1,6 @@
 {
 	"name": "gulp-es6",
-	"version": "0.3.4",
+	"version": "0.3.5",
 	"title": "Gulp ES6",
 	"description": "A Gulp ES6 sandbox.",
 	"namespace": "gulpes6",
@@ -10,7 +10,7 @@
 	"livereloadPortNum": 30376,
 	"scripts": {
 		"start": "clear && gulp --dev",
-		"build": "clear && gulp"
+		"build": "gulp"
 	},
 	"dependencies": {
 		"@babel/polyfill": "7.4.0"
@@ -19,7 +19,7 @@
 		"gulp": "^3.9.1",
 		"@babel/core": "^7.4.3",
 		"@babel/preset-env": "^7.4.3",
-		"autoprefixer": "^9.5.0",
+		"autoprefixer": "^9.5.1",
 		"babelify": "^10.0.0",
 		"browserify": "^16.2.3",
 		"eslint": "^5.16.0",
@@ -36,11 +36,11 @@
 		"gulp-sass-lint": "^1.4.0",
 		"gulp-sourcemaps": "^2.6.5",
 		"gulp-uglify": "^3.0.2",
-		"handlebars": "^4.1.1",
+		"handlebars": "^4.1.2",
 		"hbsfy": "^2.8.1",
 		"node-sass": "^4.11.0",
 		"pathmodify": "^0.5.0",
-		"uglify-js": "^3.5.3",
+		"uglify-js": "^3.5.4",
 		"vinyl-buffer": "^1.0.1",
 		"vinyl-source-stream": "^2.0.0",
 		"yargs": "^13.2.2"

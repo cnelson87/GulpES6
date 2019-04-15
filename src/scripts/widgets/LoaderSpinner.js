@@ -3,13 +3,11 @@
 
 	DESCRIPTION: Universal Ajax loader & spinner overlay
 
-	VERSION: 0.2.4
+	VERSION: 0.2.5
 
 	USAGE: let myLoaderSpinner = new LoaderSpinner('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
-
-	AUTHOR: Chris Nelson <cnelson87@gmail.com>
 
 	DEPENDENCIES:
 		- jquery 3.x
@@ -29,13 +27,13 @@ class LoaderSpinner {
 			overlayTemplate: '<div class="loader-spinner-overlay"></div>'
 		}, options);
 
-		// element references
+		// elements
 		this.$elOverlay = $(this.options.overlayTemplate);
 
 	}
 
 	addLoader() {
-		let delay = 10;
+		const delay = 10;
 		this.$el.append(this.$elOverlay);
 		setTimeout(() => {
 			//spinner gif gets 'stuck' and needs a click

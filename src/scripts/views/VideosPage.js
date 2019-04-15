@@ -1,5 +1,5 @@
 /**
- * Videos Page
+ * @module VideosPage
  */
 
 import Constants from 'config/Constants';

@@ -1,6 +1,5 @@
 /**
  * @module Application
- * @author Chris Nelson <cnelson87@gmail.com>
  */
 
 import Constants from 'config/Constants';
@@ -28,8 +27,8 @@ import AjaxModal from 'widgets/AjaxModal';
 import AjaxModalForm from 'widgets/AjaxModalForm';
 import RangeSlider from 'widgets/RangeSlider';
 import DateRangeSlider from 'widgets/DateRangeSlider';
-// import {SuperClass, SubClass} from 'widgets/SuperSubClass';
-import {SubClass} from 'widgets/SuperSubClass';
+// import { SuperClass, SubClass } from 'widgets/SuperSubClass';
+import { SubClass } from 'widgets/SuperSubClass';
 
 const Application = {
 
