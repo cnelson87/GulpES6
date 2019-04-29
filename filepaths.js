@@ -33,7 +33,7 @@ const FILEPATHS = {
 			'src/vendor/validation/jquery.validate.min.js',
 			'src/vendor/validation/additional-methods.min.js',
 			'src/vendor/moment.min.js',
-			'src/vendor/moment-timezone-with-data-2012-2022.min.js',
+			'src/vendor/moment-timezone-with-data-10-year-range.min.js',
 			'src/vendor/underscore.min.js'
 		]
 	},
