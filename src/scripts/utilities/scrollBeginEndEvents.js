@@ -10,16 +10,16 @@ const scrollBeginEndEvents = function() {
 	let timer = null;
 
 	window.addEventListener('scroll', (event) => {
-		let customScrollStartEvent = new Event(Events.WINDOW_SCROLL_BEGIN);
-		let customScrollStopEvent = new Event(Events.WINDOW_SCROLL_END);
+		let customScrollBeginEvent = new Event(Events.WINDOW_SCROLL_BEGIN);
+		let customScrollEndEvent = new Event(Events.WINDOW_SCROLL_END);
 		if (timer) {
 			clearTimeout(timer);
 		} else {
-			window.dispatchEvent(customScrollStartEvent);
+			window.dispatchEvent(customScrollBeginEvent);
 		}
 		timer = setTimeout(() => {
 			timer = null;
-			window.dispatchEvent(customScrollStopEvent);
+			window.dispatchEvent(customScrollEndEvent);
 		}, timerDelay);
 	});
 };

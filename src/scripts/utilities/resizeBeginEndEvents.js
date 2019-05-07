@@ -10,16 +10,16 @@ const resizeBeginEndEvents = function() {
 	let timer = null;
 
 	window.addEventListener('resize', (event) => {
-		let customResizeStartEvent = new Event(Events.WINDOW_RESIZE_BEGIN);
-		let customResizeStopEvent = new Event(Events.WINDOW_RESIZE_END);
+		let customResizeBeginEvent = new Event(Events.WINDOW_RESIZE_BEGIN);
+		let customResizeEndEvent = new Event(Events.WINDOW_RESIZE_END);
 		if (timer) {
 			clearTimeout(timer);
 		} else {
-			window.dispatchEvent(customResizeStartEvent);
+			window.dispatchEvent(customResizeBeginEvent);
 		}
 		timer = setTimeout(() => {
 			timer = null;
-			window.dispatchEvent(customResizeStopEvent);
+			window.dispatchEvent(customResizeEndEvent);
 		}, timerDelay);
 	});
 };
