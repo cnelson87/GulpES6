@@ -10,6 +10,7 @@ const babelify = require('babelify');
 const browserify = require('browserify');
 const buffer = require('vinyl-buffer');
 const concat = require('gulp-concat');
+const connect = require('gulp-connect');
 const cssmin = require('gulp-cssmin');
 const eslint = require('gulp-eslint');
 const fileinclude = require('gulp-file-include');
@@ -22,7 +23,6 @@ const sasslint = require('gulp-sass-lint');
 const source = require('vinyl-source-stream');
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
-const connect = require('gulp-connect');
 
 //
 // CONSTANTS
@@ -63,41 +63,53 @@ function out(path) {
 // Tasks
 ////////////////////////////////////////////////////////////////////////////
 
-gulp.task('assets', function() {
-	return gulp.src(SRC.ASSETS)
-		.pipe(out(DEST.ASSETS));
+gulp.task('assets', () => {
+	return (
+		gulp.src(SRC.ASSETS)
+			.pipe(out(DEST.ASSETS))
+			.pipe(gulpif(isDev(), livereload()))
+	);
 });
 
-gulp.task('data', function() {
-	return gulp.src(SRC.DATA)
-		.pipe(out(DEST.DATA));
+gulp.task('data', () => {
+	return (
+		gulp.src(SRC.DATA)
+			.pipe(out(DEST.DATA))
+			.pipe(gulpif(isDev(), livereload()))
+	);
 });
 
-gulp.task('html', function() {
-	return gulp.src([SRC.HTML, '!'+SRC.HTML_INCLUDES])
-		.pipe(fileinclude({
-			prefix: '@@',
-			basepath: '@file'
-		}))
-		.pipe(out())
-		.pipe(gulpif(isDev(), livereload()))
+gulp.task('html', () => {
+	return (
+		gulp.src([SRC.HTML, '!'+SRC.HTML_INCLUDES])
+			.pipe(fileinclude({
+				prefix: '@@',
+				basepath: '@file'
+			}))
+			.pipe(out())
+			.pipe(gulpif(isDev(), livereload()))
+	);
 });
 
-gulp.task('eslint', function() {
-	return gulp.src([SRC.SCRIPTS])
-		.pipe(gulpif(isDev(), eslint()))
-		.pipe(gulpif(isDev(), eslint.format()))
-		.pipe(gulpif(isDev(), eslint.failOnError()))
+gulp.task('eslint', () => {
+	return (
+		gulp.src([SRC.SCRIPTS])
+			.pipe(gulpif(isDev(), eslint()))
+			.pipe(gulpif(isDev(), eslint.format()))
+			.pipe(gulpif(isDev(), eslint.failOnError()))
+	);
 });
 
-gulp.task('sasslint', function() {
-	return gulp.src([SRC.STYLES, '!'+SRC.STYLES_VENDOR])
-		.pipe(gulpif(isDev(), sasslint()))
-		.pipe(gulpif(isDev(), sasslint.format()))
-		.pipe(gulpif(isDev(), sasslint.failOnError()))
+gulp.task('sasslint', () => {
+	return (
+		gulp.src([SRC.STYLES, '!'+SRC.STYLES_VENDOR])
+			.pipe(gulpif(isDev(), sasslint()))
+			.pipe(gulpif(isDev(), sasslint.format()))
+			.pipe(gulpif(isDev(), sasslint.failOnError()))
+	);
 });
 
-gulp.task('scripts', function() {
+gulp.task('scripts', () => {
 	const mods = [
 		pathmodify.mod.dir('config', path.join(__dirname, './src/scripts/config')),
 		pathmodify.mod.dir('utilities', path.join(__dirname, './src/scripts/utilities')),
@@ -105,41 +117,47 @@ gulp.task('scripts', function() {
 		pathmodify.mod.dir('widgets', path.join(__dirname, './src/scripts/widgets')),
 		pathmodify.mod.dir('templates', path.join(__dirname, './src/templates'))
 	];
-	let b = browserify({
-		entries: SRC.SCRIPTS_ENTRY,
-		debug: isDev()
-	}).plugin(pathmodify, {mods: mods});
-	return b
-		.transform(hbsfy, { extensions: ['hbs'] })
-		.transform(babelify, { presets: ['@babel/preset-env'] })
-		.bundle()
-		.pipe(source('app.js'))
-		.pipe(buffer())
-		.pipe(gulpif(isProd(), uglify()))
-		.pipe(out(DEST.SCRIPTS))
-		.pipe(gulpif(isDev(), livereload()))
+	return (
+		browserify({
+			entries: SRC.SCRIPTS_ENTRY,
+			debug: isDev()
+		})
+			.plugin(pathmodify, {mods: mods})
+			.transform(hbsfy, { extensions: ['hbs'] })
+			.transform(babelify, { presets: ['@babel/preset-env'] })
+			.bundle()
+			.pipe(source('app.js'))
+			.pipe(buffer())
+			.pipe(gulpif(isProd(), uglify()))
+			.pipe(out(DEST.SCRIPTS))
+			.pipe(gulpif(isDev(), livereload()))
+	);
 });
 
-gulp.task('styles', function() {
-	return gulp.src(SRC.STYLES_ENTRY)
-		.pipe(gulpif(isDev(), sourcemaps.init()))
-		.pipe(sass())
-		.pipe(autoprefixer())
-		.pipe(gulpif(isDev(), sourcemaps.write('.')))
-		.pipe(gulpif(isProd(), cssmin()))
-		.pipe(out(DEST.STYLES))
-		.pipe(gulpif(isDev(), livereload()))
+gulp.task('styles', () => {
+	return (
+		gulp.src(SRC.STYLES_ENTRY)
+			.pipe(gulpif(isDev(), sourcemaps.init()))
+			.pipe(sass())
+			.pipe(autoprefixer())
+			.pipe(gulpif(isDev(), sourcemaps.write('.')))
+			.pipe(gulpif(isProd(), cssmin()))
+			.pipe(out(DEST.STYLES))
+			.pipe(gulpif(isDev(), livereload()))
+	);
 });
 
-gulp.task('vendor', function() {
-	return gulp.src(SRC.VENDOR)
-		.pipe(concat('vendor.js'))
-		.pipe(out(DEST.SCRIPTS))
+gulp.task('vendor', () => {
+	return (
+		gulp.src(SRC.VENDOR)
+			.pipe(concat('vendor.js'))
+			.pipe(out(DEST.SCRIPTS))
+	);
 });
 
-gulp.task('server', function() {
+gulp.task('server', gulp.series((done) => {
 	connect.server({
-		host: '0',
+		host: 'localhost',
 		root: './' + getSiteRoot(),
 		port: PORT,
 		livereload: {
@@ -147,34 +165,25 @@ gulp.task('server', function() {
 			port: LIVERELOAD_PORT
 		}
 	});
-});
+	done();
+}));
 
-gulp.task('watch', function() {
+gulp.task('watch', gulp.series((done) => {
 	livereload.listen({ port: LIVERELOAD_PORT });
-	gulp.watch(SRC.ASSETS, ['assets']);
-	gulp.watch(SRC.DATA, ['data']);
-	gulp.watch(SRC.HTML, ['html']);
-	gulp.watch(SRC.SCRIPTS, ['eslint', 'scripts']);
-	gulp.watch(SRC.STYLES, ['sasslint', 'styles']);
-	gulp.watch(SRC.TEMPLATES, ['scripts']);
-});
+	gulp.watch(SRC.ASSETS, gulp.series(['assets']));
+	gulp.watch(SRC.DATA, gulp.series(['data']));
+	gulp.watch(SRC.HTML, gulp.series(['html']));
+	gulp.watch(SRC.SCRIPTS, gulp.series(['eslint', 'scripts']));
+	gulp.watch(SRC.STYLES, gulp.series(['sasslint', 'styles']));
+	gulp.watch(SRC.TEMPLATES, gulp.series(['scripts']));
+	done();
+}));
 
 // build task
-let buildTasks = [ 'assets', 'data', 'html', 'eslint', 'scripts', 'sasslint', 'styles', 'vendor' ];
+let tasks = [ 'assets', 'data', 'html', 'eslint', 'scripts', 'sasslint', 'styles', 'vendor' ];
 if (isDev()) {
-	buildTasks.push('server');
-	buildTasks.push('watch');
+	tasks.push('server', 'watch');
 }
-gulp.task('build', buildTasks, function() {
-	// process.nextTick(function() {
-	// 	gutil.log(DIVIDER);
-	// 	if (isDev()) {
-	// 		notification('Gulp Ready');
-	// 	}
-	// });
-});
-
-// default task
-gulp.task('default', function() {
-	gulp.start('build');
-});
+gulp.task('default', gulp.series(tasks, (done) => {
+	done();
+}));
