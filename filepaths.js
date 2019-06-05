@@ -5,15 +5,11 @@ const FILEPATHS = {
 		HTML: 'src/html/**/*.html',
 		HTML_INCLUDES: 'src/html/_includes/**/*.html',
 		SCRIPTS: 'src/scripts/**/*.js',
-		SCRIPTS_ENTRY: [
-			'./src/scripts/initialize.js'
-		],
+		SCRIPTS_ENTRY: './src/scripts/initialize.js',
 		STYLES: 'src/styles/**/*.scss',
 		STYLES_VENDOR: 'src/styles/vendor/*.scss',
-		STYLES_ENTRY: [
-			'./src/styles/app.scss',
-			'./src/styles/print.scss'
-		],
+		STYLES_ENTRY: './src/styles/app.scss',
+		PRINT_STYLES_ENTRY: './src/styles/print.scss',
 		TEMPLATES: 'src/templates/**/*.hbs',
 		VENDOR: [
 			// 'src/vendor/modernizr.custom.min.js',

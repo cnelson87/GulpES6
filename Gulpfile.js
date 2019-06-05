@@ -9,6 +9,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const babelify = require('babelify');
 const browserify = require('browserify');
 const buffer = require('vinyl-buffer');
+const clean = require('gulp-clean');
 const concat = require('gulp-concat');
 const connect = require('gulp-connect');
 const cssmin = require('gulp-cssmin');
@@ -18,6 +19,7 @@ const gulpif = require('gulp-if');
 const hbsfy = require('hbsfy');
 const livereload = require('gulp-livereload');
 const pathmodify = require('pathmodify');
+const rename = require('gulp-rename');
 const sass = require('gulp-sass');
 const sasslint = require('gulp-sass-lint');
 const source = require('vinyl-source-stream');
@@ -36,6 +38,7 @@ const ENV = {
 	PROD: 'public'
 };
 const ENVIRONMENT = (argv.dev) ? ENV.DEV : ENV.PROD;
+const APP_NAME = PACKAGE.appName;
 const PORT = PACKAGE.portNumber;
 const LIVERELOAD_PORT = PACKAGE.livereloadPortNum;
 
@@ -63,6 +66,12 @@ function out(path) {
 // Tasks
 ////////////////////////////////////////////////////////////////////////////
 
+gulp.task('clean', () => {
+	return (
+		gulp.src(DEST.ROOT+'/'+ENVIRONMENT, {read: false, allowEmpty: true}).pipe(clean())
+	);
+});
+
 gulp.task('assets', () => {
 	return (
 		gulp.src(SRC.ASSETS)
@@ -84,7 +93,10 @@ gulp.task('html', () => {
 		gulp.src([SRC.HTML, '!'+SRC.HTML_INCLUDES])
 			.pipe(fileinclude({
 				prefix: '@@',
-				basepath: '@file'
+				basepath: '@file',
+				context: {
+					appName: APP_NAME
+				}
 			}))
 			.pipe(out())
 			.pipe(gulpif(isDev(), livereload()))
@@ -129,6 +141,7 @@ gulp.task('scripts', () => {
 			.pipe(source('app.js'))
 			.pipe(buffer())
 			.pipe(gulpif(isProd(), uglify()))
+			.pipe(rename(APP_NAME+'.js'))
 			.pipe(out(DEST.SCRIPTS))
 			.pipe(gulpif(isDev(), livereload()))
 	);
@@ -142,6 +155,20 @@ gulp.task('styles', () => {
 			.pipe(autoprefixer())
 			.pipe(gulpif(isDev(), sourcemaps.write('.')))
 			.pipe(gulpif(isProd(), cssmin()))
+			.pipe(rename(APP_NAME+'.css'))
+			.pipe(out(DEST.STYLES))
+			.pipe(gulpif(isDev(), livereload()))
+	);
+});
+
+gulp.task('print', () => {
+	return (
+		gulp.src(SRC.PRINT_STYLES_ENTRY)
+			.pipe(gulpif(isDev(), sourcemaps.init()))
+			.pipe(sass())
+			.pipe(autoprefixer())
+			.pipe(gulpif(isDev(), sourcemaps.write('.')))
+			.pipe(gulpif(isProd(), cssmin()))
 			.pipe(out(DEST.STYLES))
 			.pipe(gulpif(isDev(), livereload()))
 	);
@@ -150,7 +177,7 @@ gulp.task('styles', () => {
 gulp.task('vendor', () => {
 	return (
 		gulp.src(SRC.VENDOR)
-			.pipe(concat('vendor.js'))
+			.pipe(concat('vendor.js', {newLine: '\n\n'}))
 			.pipe(out(DEST.SCRIPTS))
 	);
 });
@@ -180,7 +207,7 @@ gulp.task('watch', gulp.series((done) => {
 }));
 
 // build task
-let tasks = [ 'assets', 'data', 'html', 'eslint', 'scripts', 'sasslint', 'styles', 'vendor' ];
+let tasks = [ 'clean', 'assets', 'data', 'html', 'eslint', 'scripts', 'sasslint', 'styles', 'print', 'vendor' ];
 if (isDev()) {
 	tasks.push('server', 'watch');
 }
