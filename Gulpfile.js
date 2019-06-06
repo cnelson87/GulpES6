@@ -184,7 +184,7 @@ gulp.task('vendor', () => {
 
 gulp.task('server', gulp.series((done) => {
 	connect.server({
-		host: 'localhost',
+		host: [], //accepts anything
 		root: './' + getSiteRoot(),
 		port: PORT,
 		livereload: {
