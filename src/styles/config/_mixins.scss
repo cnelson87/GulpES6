@@ -38,13 +38,17 @@
 
 @mixin offscreen {
 	display: block;
-	width: 1px;
 	height: 1px;
+	width: 1px;
 	text-indent: 200%;
 	white-space: nowrap;
+	border: 0;
+	margin: 0;
+	padding: 0;
 	overflow: hidden;
-	position: absolute;
-	left: -9999px;
+	position: fixed;
+	left: -1px;
+	top: -1px;
 }
 
 @mixin text-hide {

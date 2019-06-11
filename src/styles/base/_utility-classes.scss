@@ -62,7 +62,8 @@
 	@include fixed-window;
 }
 
-.offscreen {
+.offscreen,
+.sr-only {
 	@include offscreen;
 }
 
