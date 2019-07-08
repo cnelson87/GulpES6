@@ -2,7 +2,8 @@
  * @module initialize
  */
 
-import '@babel/polyfill';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 import './polyfills';
 import './hbsHelpers';
 import Application from './Application.js';
