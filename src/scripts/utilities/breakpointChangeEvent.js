@@ -3,13 +3,14 @@
  * @description Broadcasts pseudo 'breakpointChange' event
  */
 
+import Constants from 'config/Constants';
 import Events from 'config/Events';
 import State from 'config/State';
 
 const breakpointChangeEvent = function() {
 
 	function updateState(zIndex) {
-		State.currentBreakpoint = State.breakpoints[zIndex];
+		State.currentBreakpoint = Constants.breakpoints[zIndex];
 		State.isMobileView = State.currentBreakpoint === 'mobile';
 		State.isTabletView = State.currentBreakpoint === 'tablet';
 		State.isDesktopView = State.currentBreakpoint === 'desktop';
@@ -27,10 +28,10 @@ const breakpointChangeEvent = function() {
 		let newZI = $elIndicator.css('z-index');
 		if (newZI !== zIndex) {
 			zIndex = newZI;
-			let customChangeEvent = new CustomEvent(Events.BREAKPOINT_CHANGE, {
-				breakpoint: State.breakpoints[zIndex]
-			});
 			updateState(zIndex);
+			let customChangeEvent = new CustomEvent(Events.BREAKPOINT_CHANGE, {
+				breakpoint: State.currentBreakpoint
+			});
 			window.dispatchEvent(customChangeEvent);
 		}
 	});

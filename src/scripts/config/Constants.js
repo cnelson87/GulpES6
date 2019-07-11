@@ -24,6 +24,21 @@ const Constants = {
 	// elements that are natively able to receive focus
 	focusableElements: 'a, button, input, select, textarea, iframe, audio, video',
 
+	// breakpoints used throughout
+	breakpoints: {
+		1: 'mobile',
+		2: 'tablet',
+		3: 'desktop'
+	},
+
+	// timing used throughout
+	timing: {
+		fast: 200,
+		standard: 400,
+		slow: 800,
+		interval: 8000
+	},
+
 	// keyboard key codes
 	keys: {
 		enter: 13,
@@ -35,14 +50,6 @@ const Constants = {
 		up: 38,
 		right: 39,
 		down: 40
-	},
-
-	// timing used throughout
-	timing: {
-		fast: 200,
-		standard: 400,
-		slow: 800,
-		interval: 8000
 	},
 
 	// ajax endpoints

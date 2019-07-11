@@ -5,11 +5,6 @@
 
 const State = {
 
-	breakpoints: {
-		1: 'mobile',
-		2: 'tablet',
-		3: 'desktop'
-	},
 	isMobileView: null,
 	isTabletView: null,
 	isDesktopView: null,
