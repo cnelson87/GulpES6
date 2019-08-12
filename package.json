@@ -1,6 +1,6 @@
 {
 	"name": "gulp-es6",
-	"version": "0.4.0",
+	"version": "0.4.1",
 	"title": "Gulp ES6",
 	"description": "A Gulp ES6 sandbox.",
 	"appName": "gulpes6",
@@ -13,25 +13,25 @@
 		"build": "gulp"
 	},
 	"dependencies": {
-		"core-js": "^3.1.4",
-		"regenerator-runtime": "^0.13.2"
+		"core-js": "^3.2.1",
+		"regenerator-runtime": "^0.13.3"
 	},
 	"devDependencies": {
 		"gulp": "^4.0.2",
-		"@babel/core": "^7.5.0",
-		"@babel/preset-env": "^7.5.0",
+		"@babel/core": "^7.5.5",
+		"@babel/preset-env": "^7.5.5",
 		"autoprefixer": "^9.6.1",
 		"babelify": "^10.0.0",
-		"browserify": "^16.3.0",
-		"eslint": "^6.0.1",
+		"browserify": "^16.5.0",
+		"eslint": "^6.1.0",
 		"gulp-autoprefixer": "^6.1.0",
 		"gulp-clean": "^0.4.0",
 		"gulp-concat": "^2.6.1",
 		"gulp-connect": "^5.7.0",
 		"gulp-cssmin": "^0.2.0",
 		"gulp-eslint": "^6.0.0",
-		"gulp-file-include": "^2.0.1",
-		"gulp-if": "^2.0.2",
+		"gulp-file-include": "^2.1.0",
+		"gulp-if": "^3.0.0",
 		"gulp-livereload": "^4.0.1",
 		"gulp-postcss": "^8.0.0",
 		"gulp-rename": "^1.4.0",
@@ -46,7 +46,7 @@
 		"uglify-js": "^3.6.0",
 		"vinyl-buffer": "^1.0.1",
 		"vinyl-source-stream": "^2.0.0",
-		"yargs": "^13.2.4"
+		"yargs": "^13.3.0"
 	},
 	"repository": {
 		"type": "git",
