@@ -34,11 +34,10 @@ const FILEPATHS = {
 		]
 	},
 	DEST: {
-		ROOT: './_builds',
-		DEV: 'local',
-		PROD: 'public',
+		DEV: './_builds/local',
+		PROD: './_builds/public',
 		ASSETS: '_assets',
-		DATA: '_data',
+		DATA: '_assets/data',
 		SCRIPTS: '_assets/scripts',
 		STYLES: '_assets/styles'
 	}

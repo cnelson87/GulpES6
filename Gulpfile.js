@@ -33,33 +33,28 @@ const PACKAGE = JSON.parse(fs.readFileSync('./package.json'));
 const FILEPATHS = require('./filepaths.js');
 const SRC = FILEPATHS.SRC;
 const DEST = FILEPATHS.DEST;
-const ENV = {
-	DEV: 'local',
-	PROD: 'public'
-};
-const ENVIRONMENT = (argv.dev) ? ENV.DEV : ENV.PROD;
+const DEV = 'dev';
+const PROD = 'prod';
+const ENVIRONMENT = (argv.dev) ? DEV : PROD;
+const SITE_ROOT = ENVIRONMENT === DEV ? DEST.DEV : DEST.PROD;
 const APP_NAME = PACKAGE.appName;
 const PORT = PACKAGE.portNumber;
-const LIVERELOAD_PORT = PACKAGE.livereloadPortNum;
+const LIVERELOAD_PORT = PACKAGE.livereloadPort;
 
 //
 // Utils
 ////////////////////////////////////////////////////////////////////////////
 
 function isDev() {
-	return (ENVIRONMENT === ENV.DEV);
+	return (ENVIRONMENT === DEV);
 }
 function isProd() {
-	return (ENVIRONMENT === ENV.PROD);
-}
-function getSiteRoot() {
-	// console.log(DEST.ROOT + '/' + ENVIRONMENT);
-	return (DEST.ROOT + '/' + ENVIRONMENT);
+	return (ENVIRONMENT === PROD);
 }
 function out(path) {
-	// let ret = gulp.dest(getSiteRoot() + '/' + (path || '').replace(/^\//, ''));
-	// console.log(ret);
-	return gulp.dest(getSiteRoot() + '/' + (path || '').replace(/^\//, ''));
+	let output = SITE_ROOT + '/' + (path || '');//.replace(/^\//, ''));
+	// console.log('out()', path, output);
+	return gulp.dest(output);
 }
 
 //
@@ -68,7 +63,7 @@ function out(path) {
 
 gulp.task('clean', () => {
 	return (
-		gulp.src(DEST.ROOT+'/'+ENVIRONMENT, {read: false, allowEmpty: true}).pipe(clean())
+		gulp.src(SITE_ROOT, {read: false, allowEmpty: true}).pipe(clean())
 	);
 });
 
@@ -135,8 +130,8 @@ gulp.task('scripts', () => {
 			debug: isDev()
 		})
 			.plugin(pathmodify, {mods: mods})
-			.transform(hbsfy, { extensions: ['hbs'] })
-			.transform(babelify, { presets: ['@babel/preset-env'] })
+			.transform(hbsfy, {extensions: ['hbs']})
+			.transform(babelify, {presets: ['@babel/preset-env']})
 			.bundle()
 			.pipe(source('app.js'))
 			.pipe(buffer())
@@ -185,7 +180,7 @@ gulp.task('vendor', () => {
 gulp.task('server', gulp.series((done) => {
 	connect.server({
 		host: [], //accepts anything
-		root: './' + getSiteRoot(),
+		root: SITE_ROOT,
 		port: PORT,
 		livereload: {
 			enable: true,
@@ -207,7 +202,7 @@ gulp.task('watch', gulp.series((done) => {
 }));
 
 // build task
-let tasks = [ 'clean', 'assets', 'data', 'html', 'eslint', 'scripts', 'sasslint', 'styles', 'print', 'vendor' ];
+let tasks = ['clean', 'assets', 'data', 'html', 'eslint', 'scripts', 'sasslint', 'styles', 'print', 'vendor'];
 if (isDev()) {
 	tasks.push('server', 'watch');
 }

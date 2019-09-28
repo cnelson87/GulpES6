@@ -54,12 +54,12 @@ const Constants = {
 
 	// ajax endpoints
 	urls: {
-		fibonacci: '/_data/promises/fibonacci.json',
-		primes: '/_data/promises/primes.json',
-		sevens: '/_data/promises/sevens.json',
+		fibonacci: '/_assets/data/promises/fibonacci.json',
+		primes: '/_assets/data/promises/primes.json',
+		sevens: '/_assets/data/promises/sevens.json',
 		videosPlaylistLIVE: 'https://www.googleapis.com/youtube/v3/playlistItems',
-		videosPlaylistDEV: '/_data/videos/playlist.json',
-		homepageContent: '/_data/homepage/content.json'
+		videosPlaylistDEV: '/_assets/data/videos/playlist.json',
+		homepageContent: '/_assets/data/homepage/content.json'
 	},
 
 	// Starbucks Members playlist
