@@ -13,14 +13,12 @@
 		margin-bottom: $vertical-pad-mobile;
 	}
 
-	// Tablet+
 	@media (min-width: $breakpoint-tablet-min) {
 		.primary-video {
 			margin-bottom: $vertical-pad-tablet;
 		}
 	}
 
-	// Desktop+
 	@media (min-width: $breakpoint-desktop-min) {
 		.primary-video {
 			margin-bottom: $vertical-pad-desktop;
@@ -29,7 +27,6 @@
 
 	.videos-grid {
 
-		// Tablet+
 		@media (min-width: $breakpoint-tablet-min) {
 
 			h3 {
@@ -40,9 +37,7 @@
 				height: 6.0em;
 				overflow: hidden;
 			}
-
 		}
-
 	}
 
 }

@@ -37,21 +37,19 @@
 	padding: $gutter-width-mobile;
 	position: relative;
 
-	&.is-active {
-		animation: fadeInFromNone $animation-speed;
-		animation-fill-mode: forwards;
-	}
-
-	// Tablet+
 	@media (min-width: $breakpoint-tablet-min) {
 		width: $tablet-container-width - $gutter-width-tablet;
 		padding: $gutter-width-tablet;
 	}
 
-	// Desktop+
 	@media (min-width: $breakpoint-desktop-min) {
 		width: $desktop-container-width - $gutter-width-desktop;
 		padding: $gutter-width-desktop;
+	}
+
+	&.is-active {
+		animation: fadeInFromNone $animation-speed;
+		animation-fill-mode: forwards;
 	}
 
 	&.fullscreen-modal {
@@ -69,7 +67,6 @@
 	background: $color-white;
 	position: relative;
 
-	// Tablet+
 	@media (min-width: $breakpoint-tablet-min) {
 		height: auto;
 		max-height: 100%;
@@ -106,17 +103,15 @@
 		-webkit-overflow-scrolling: touch;
 		// sass-lint:enable no-misspelled-properties
 
-		// Tablet+
 		@media (min-width: $breakpoint-tablet-min) {
 			padding-left: $gutter-width-tablet;
 			padding-right: $gutter-width-tablet;
 		}
 
-		// Desktop+
 		@media (min-width: $breakpoint-desktop-min) {
 			padding-left: $gutter-width-desktop;
 			padding-right: $gutter-width-desktop;
 		}
-
 	}
+
 }

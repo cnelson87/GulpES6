@@ -17,9 +17,11 @@ a.arrow-link {
 		padding-left: 5px;
 		text-decoration: none;
 	}
+
 	&:hover::after, &:focus::after {
 		text-decoration: none;
 	}
+
 	&.small-arrow-link {
 		font-size: 14px;
 		text-transform: uppercase;
@@ -40,9 +42,11 @@ a.arrow-link-back {
 		padding-right: 5px;
 		text-decoration: none;
 	}
+
 	&:hover::after, &:focus::after {
 		text-decoration: none;
 	}
+
 	&.small-arrow-link-back {
 		font-size: 14px;
 		text-transform: uppercase;

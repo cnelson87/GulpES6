@@ -24,8 +24,13 @@
 	.arrow-nav {
 		position: absolute;
 		top: calc(35% - 25px);
-		&.nav-prev {left: -15px;}
-		&.nav-next {right: -15px;}
+
+		&.nav-prev {
+			left: -15px;
+		}
+		&.nav-next {
+			right: -15px;
+		}
 	}
 
 	.carousel--outer-mask {
@@ -52,13 +57,10 @@
 		// &.is-active {
 		// 	opacity: 1.0;
 		// }
-
 	}
 
 }
 
-
-// Tablet+
 @media (min-width: $breakpoint-tablet-min) {
 	.infinite-carousel {
 		min-height: 408px;
@@ -66,8 +68,13 @@
 
 		.arrow-nav {
 			top: 120px;
-			&.nav-prev {left: calc(50% - 300px);}
-			&.nav-next {right: calc(50% - 300px);}
+
+			&.nav-prev {
+				left: calc(50% - 300px);
+			}
+			&.nav-next {
+				right: calc(50% - 300px);
+			}
 		}
 
 		.carousel--outer-mask {
@@ -83,13 +90,11 @@
 				width: calc(100% + 80px);
 				transform: translateY(-20px);
 			}
-
 		}
 
 	}
 }
 
-// Desktop+
 @media (min-width: $breakpoint-desktop-min) {
 	.infinite-carousel {
 		min-height: 418px;

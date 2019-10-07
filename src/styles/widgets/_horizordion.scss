@@ -8,7 +8,6 @@
 	margin: 1.5em 0;
 	position: relative;
 
-	// Tablet+Desktop+
 	@media (min-width: $breakpoint-tablet-min) {
 		display: flex;
 		// flex-flow: row nowrap;
@@ -22,7 +21,6 @@
 		overflow: hidden;
 		position: relative;
 
-		// Tablet+Desktop+
 		@media (min-width: $breakpoint-tablet-min) {
 			flex: 1;
 			// flex-grow: 1;
@@ -32,7 +30,6 @@
 			&.is-active {
 				flex-grow: 7;
 			}
-
 		}
 
 		// Test Colors
@@ -53,7 +50,6 @@
 
 		> .horizordion--tab {
 
-			// Tablet+Desktop+
 			@media (min-width: $breakpoint-tablet-min) {
 				height: 100%;
 				position: absolute;
@@ -94,9 +90,7 @@
 						}
 					}
 				}
-
 			}
-
 		}
 
 		> .horizordion--content {
@@ -105,7 +99,6 @@
 			position: relative;
 			// transition: opacity $animation-speed;
 
-			// Tablet+Desktop+
 			@media (min-width: $breakpoint-tablet-min) {
 				width: calc(100% - 40px); //minus tab width
 			}
@@ -119,7 +112,6 @@
 				transition-delay: $animation-speed;
 			}
 		}
-
 	}
 
 }

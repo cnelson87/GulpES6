@@ -13,13 +13,11 @@ body {
 	// font-size: 62.5%; //10px
 	line-height: 1.5; //24px
 
-	// Tablet+
 	@media (min-width: $breakpoint-tablet-min) {
 		font-size: 112.5%; //18px
 		// line-height: 1.5; //27px
 	}
 
-	// Desktop+
 	@media (min-width: $breakpoint-desktop-min) {
 		font-size: 125%; //20px
 		// line-height: 1.5; //30px

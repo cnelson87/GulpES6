@@ -13,14 +13,11 @@
 	top: -1px;
 	z-index: 1;
 
-	// Tablet+
 	@media (min-width: $breakpoint-tablet-min) {
 		z-index: 2;
 	}
 
-	// Desktop+
 	@media (min-width: $breakpoint-desktop-min) {
 		z-index: 3;
 	}
-
 }

@@ -1,545 +1,1038 @@
 {
-	"kind": "youtube#playlistItemListResponse",
-	"etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/WMNKpw3Eas7C44TMU9q8f7KTkSo\"",
-	"pageInfo": {
-		"totalResults": 12,
-		"resultsPerPage": 50
+	"kind":"youtube#playlistItemListResponse",
+	"etag":"\"p4VTdlkQv3HQeTEaXgvLePAydmU/Fdtzx5DLI-XYu7lHj7oSlTdQsNM\"",
+	"pageInfo":{
+		"totalResults":21,
+		"resultsPerPage":50
 	},
-	"items": [
+	"items":[
 		{
-			"kind": "youtube#playlistItem",
-			"etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/gMqnywTU6IDcHf_rH3sdyee52js\"",
-			"id": "UExMdDdWcnJ4OUUyQkRVZGVEc1ZmZVI0UXgwRkRMVG83di4zRjM0MkVCRTg0MkYyQTM0",
-			"snippet": {
-				"publishedAt": "2016-06-27T15:25:32.000Z",
-				"channelId": "UCj4nCgtjKJppK_IZeY8TUJg",
-				"title": "Earn Free Food & Drink with Starbucks Rewards",
-				"description": "Earn stars for every purchase, big or small, to redeem for free food or drinks with Starbucks Rewards™. See details at starbucks.com/terms.",
-				"thumbnails": {
-					"default": {
-						"url": "https://i.ytimg.com/vi/EaiNlAQ5v9k/default.jpg",
-						"width": 120,
-						"height": 90
+			"kind":"youtube#playlistItem",
+			"etag":"\"p4VTdlkQv3HQeTEaXgvLePAydmU/NBx7ZlmIxVKEZih0pmIuTEqNsPA\"",
+			"id":"UEx5WWxMczAycmdCWVJXQnpZcG9IejdtMlNFOG1FWjY4dy41NkI0NEY2RDEwNTU3Q0M2",
+			"snippet":{
+				"publishedAt":"2013-08-15T10:07:22.000Z",
+				"channelId":"UCsJ4blFwoWEcsdgYJcGDJng",
+				"title":"R 1.1 - Initial Setup and Navigation",
+				"description":"Strategies that will make beginning R users more efficient: writing code using a \"script\" and navigating through directories within R.",
+				"thumbnails":{
+					"default":{
+						"url":"https://i.ytimg.com/vi/iffR3fWv4xw/default.jpg",
+						"width":120,
+						"height":90
 					},
-					"medium": {
-						"url": "https://i.ytimg.com/vi/EaiNlAQ5v9k/mqdefault.jpg",
-						"width": 320,
-						"height": 180
+					"medium":{
+						"url":"https://i.ytimg.com/vi/iffR3fWv4xw/mqdefault.jpg",
+						"width":320,
+						"height":180
 					},
-					"high": {
-						"url": "https://i.ytimg.com/vi/EaiNlAQ5v9k/hqdefault.jpg",
-						"width": 480,
-						"height": 360
+					"high":{
+						"url":"https://i.ytimg.com/vi/iffR3fWv4xw/hqdefault.jpg",
+						"width":480,
+						"height":360
 					},
-					"standard": {
-						"url": "https://i.ytimg.com/vi/EaiNlAQ5v9k/sddefault.jpg",
-						"width": 640,
-						"height": 480
+					"standard":{
+						"url":"https://i.ytimg.com/vi/iffR3fWv4xw/sddefault.jpg",
+						"width":640,
+						"height":480
 					},
-					"maxres": {
-						"url": "https://i.ytimg.com/vi/EaiNlAQ5v9k/maxresdefault.jpg",
-						"width": 1280,
-						"height": 720
+					"maxres":{
+						"url":"https://i.ytimg.com/vi/iffR3fWv4xw/maxresdefault.jpg",
+						"width":1280,
+						"height":720
 					}
 				},
-				"channelTitle": "Starbucks Coffee",
-				"playlistId": "PLLt7Vrrx9E2BDUdeDsVfeR4Qx0FDLTo7v",
-				"position": 0,
-				"resourceId": {
-					"kind": "youtube#video",
-					"videoId": "EaiNlAQ5v9k"
+				"channelTitle":"ed bass",
+				"playlistId":"PLyYlLs02rgBYRWBzYpoHz7m2SE8mEZ68w",
+				"position":0,
+				"resourceId":{
+					"kind":"youtube#video",
+					"videoId":"iffR3fWv4xw"
 				}
 			},
-			"contentDetails": {
-				"videoId": "EaiNlAQ5v9k"
+			"contentDetails":{
+				"videoId":"iffR3fWv4xw",
+				"videoPublishedAt":"2013-07-01T18:33:00.000Z"
 			}
 		},
 		{
-			"kind": "youtube#playlistItem",
-			"etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/bl_a8517yUEiE6GFXry6phgWlVI\"",
-			"id": "UExMdDdWcnJ4OUUyQkRVZGVEc1ZmZVI0UXgwRkRMVG83di5GM0Q3M0MzMzY5NTJFNTdE",
-			"snippet": {
-				"publishedAt": "2016-06-27T15:17:23.000Z",
-				"channelId": "UCj4nCgtjKJppK_IZeY8TUJg",
-				"title": "Jump the Line with Starbucks Rewards",
-				"description": "Use your phone to order and pay ahead and jump the line with Starbucks Rewards™. See details at starbucks.com/terms.",
-				"thumbnails": {
-					"default": {
-						"url": "https://i.ytimg.com/vi/AyCYtOK0pZk/default.jpg",
-						"width": 120,
-						"height": 90
+			"kind":"youtube#playlistItem",
+			"etag":"\"p4VTdlkQv3HQeTEaXgvLePAydmU/r6-K_O1aGk8R8XVibhcWQNvbngY\"",
+			"id":"UEx5WWxMczAycmdCWVJXQnpZcG9IejdtMlNFOG1FWjY4dy4yODlGNEE0NkRGMEEzMEQy",
+			"snippet":{
+				"publishedAt":"2013-08-15T10:08:44.000Z",
+				"channelId":"UCsJ4blFwoWEcsdgYJcGDJng",
+				"title":"R 1.2 - Calculations and Variables",
+				"description":"Get acquainted with performing basic computations in R, creating R objects (sometimes called \"variables\"), and seeing and running earlier commands that were run in the console.",
+				"thumbnails":{
+					"default":{
+						"url":"https://i.ytimg.com/vi/S-o-sdlzhkE/default.jpg",
+						"width":120,
+						"height":90
 					},
-					"medium": {
-						"url": "https://i.ytimg.com/vi/AyCYtOK0pZk/mqdefault.jpg",
-						"width": 320,
-						"height": 180
+					"medium":{
+						"url":"https://i.ytimg.com/vi/S-o-sdlzhkE/mqdefault.jpg",
+						"width":320,
+						"height":180
 					},
-					"high": {
-						"url": "https://i.ytimg.com/vi/AyCYtOK0pZk/hqdefault.jpg",
-						"width": 480,
-						"height": 360
+					"high":{
+						"url":"https://i.ytimg.com/vi/S-o-sdlzhkE/hqdefault.jpg",
+						"width":480,
+						"height":360
+					},
+					"standard":{
+						"url":"https://i.ytimg.com/vi/S-o-sdlzhkE/sddefault.jpg",
+						"width":640,
+						"height":480
+					},
+					"maxres":{
+						"url":"https://i.ytimg.com/vi/S-o-sdlzhkE/maxresdefault.jpg",
+						"width":1280,
+						"height":720
 					}
 				},
-				"channelTitle": "Starbucks Coffee",
-				"playlistId": "PLLt7Vrrx9E2BDUdeDsVfeR4Qx0FDLTo7v",
-				"position": 1,
-				"resourceId": {
-					"kind": "youtube#video",
-					"videoId": "AyCYtOK0pZk"
+				"channelTitle":"ed bass",
+				"playlistId":"PLyYlLs02rgBYRWBzYpoHz7m2SE8mEZ68w",
+				"position":1,
+				"resourceId":{
+					"kind":"youtube#video",
+					"videoId":"S-o-sdlzhkE"
 				}
 			},
-			"contentDetails": {
-				"videoId": "AyCYtOK0pZk"
+			"contentDetails":{
+				"videoId":"S-o-sdlzhkE",
+				"videoPublishedAt":"2013-07-01T18:30:27.000Z"
 			}
 		},
 		{
-			"kind": "youtube#playlistItem",
-			"etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/puhhFcKwGxinIscD-O6p1JuyUUY\"",
-			"id": "UExMdDdWcnJ4OUUyQkRVZGVEc1ZmZVI0UXgwRkRMVG83di4yMDhBMkNBNjRDMjQxQTg1",
-			"snippet": {
-				"publishedAt": "2016-05-17T20:07:37.000Z",
-				"channelId": "UCj4nCgtjKJppK_IZeY8TUJg",
-				"title": "Starbucks Rewards, Made Even Better With the App",
-				"description": "Get the most out of Starbucks Rewards with the mobile app from Starbucks. Discover some of its best features like ordering ahead and earning free food and drinks. https://sbux.co/rewards",
-				"thumbnails": {
-					"default": {
-						"url": "https://i.ytimg.com/vi/N4ScwYcBA7E/default.jpg",
-						"width": 120,
-						"height": 90
+			"kind":"youtube#playlistItem",
+			"etag":"\"p4VTdlkQv3HQeTEaXgvLePAydmU/FX8GYRZ69e8mwdHKmRj1-LkHnpg\"",
+			"id":"UEx5WWxMczAycmdCWVJXQnpZcG9IejdtMlNFOG1FWjY4dy4wMTcyMDhGQUE4NTIzM0Y5",
+			"snippet":{
+				"publishedAt":"2013-08-15T10:09:07.000Z",
+				"channelId":"UCsJ4blFwoWEcsdgYJcGDJng",
+				"title":"R 1.3 - Create and Work With Vectors",
+				"description":"Learn how to create a vector in R using the c() function and the colon-notation (e.g. 1:5), find the length of a vector using the length() function, and subset vectors with bracket-notation and the head() and tail() functions.",
+				"thumbnails":{
+					"default":{
+						"url":"https://i.ytimg.com/vi/YhQOV27pQfg/default.jpg",
+						"width":120,
+						"height":90
 					},
-					"medium": {
-						"url": "https://i.ytimg.com/vi/N4ScwYcBA7E/mqdefault.jpg",
-						"width": 320,
-						"height": 180
+					"medium":{
+						"url":"https://i.ytimg.com/vi/YhQOV27pQfg/mqdefault.jpg",
+						"width":320,
+						"height":180
 					},
-					"high": {
-						"url": "https://i.ytimg.com/vi/N4ScwYcBA7E/hqdefault.jpg",
-						"width": 480,
-						"height": 360
+					"high":{
+						"url":"https://i.ytimg.com/vi/YhQOV27pQfg/hqdefault.jpg",
+						"width":480,
+						"height":360
 					},
-					"standard": {
-						"url": "https://i.ytimg.com/vi/N4ScwYcBA7E/sddefault.jpg",
-						"width": 640,
-						"height": 480
+					"standard":{
+						"url":"https://i.ytimg.com/vi/YhQOV27pQfg/sddefault.jpg",
+						"width":640,
+						"height":480
 					},
-					"maxres": {
-						"url": "https://i.ytimg.com/vi/N4ScwYcBA7E/maxresdefault.jpg",
-						"width": 1280,
-						"height": 720
+					"maxres":{
+						"url":"https://i.ytimg.com/vi/YhQOV27pQfg/maxresdefault.jpg",
+						"width":1280,
+						"height":720
 					}
 				},
-				"channelTitle": "Starbucks Coffee",
-				"playlistId": "PLLt7Vrrx9E2BDUdeDsVfeR4Qx0FDLTo7v",
-				"position": 2,
-				"resourceId": {
-					"kind": "youtube#video",
-					"videoId": "N4ScwYcBA7E"
+				"channelTitle":"ed bass",
+				"playlistId":"PLyYlLs02rgBYRWBzYpoHz7m2SE8mEZ68w",
+				"position":2,
+				"resourceId":{
+					"kind":"youtube#video",
+					"videoId":"YhQOV27pQfg"
 				}
 			},
-			"contentDetails": {
-				"videoId": "N4ScwYcBA7E"
+			"contentDetails":{
+				"videoId":"YhQOV27pQfg",
+				"videoPublishedAt":"2013-07-01T18:27:18.000Z"
 			}
 		},
 		{
-			"kind": "youtube#playlistItem",
-			"etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/ohS1BCk_XPXXra2Z8F6zX7a5230\"",
-			"id": "UExMdDdWcnJ4OUUyQkRVZGVEc1ZmZVI0UXgwRkRMVG83di5ENDU4Q0M4RDExNzM1Mjcy",
-			"snippet": {
-				"publishedAt": "2016-05-13T15:19:10.000Z",
-				"channelId": "UCj4nCgtjKJppK_IZeY8TUJg",
-				"title": "Get Ready to Love the New Starbucks Rewards",
-				"description": "Starbucks Rewards is an easy way to get rewarded for doing what you're already doing. Just download the app, join, and you're on your way to earning amazing benefits like free brewed refills, a free birthday drink, ordering and paying ahead with your phone to jump the line and so much more.",
-				"thumbnails": {
-					"default": {
-						"url": "https://i.ytimg.com/vi/-FalnLT5irs/default.jpg",
-						"width": 120,
-						"height": 90
+			"kind":"youtube#playlistItem",
+			"etag":"\"p4VTdlkQv3HQeTEaXgvLePAydmU/2UU0WMyLsBDhn88rwjfGGAzf5fg\"",
+			"id":"UEx5WWxMczAycmdCWVJXQnpZcG9IejdtMlNFOG1FWjY4dy41MjE1MkI0OTQ2QzJGNzNG",
+			"snippet":{
+				"publishedAt":"2013-08-15T10:09:18.000Z",
+				"channelId":"UCsJ4blFwoWEcsdgYJcGDJng",
+				"title":"R 1.4 - Character and Boolean Vectors",
+				"description":"So far we've seen objects that use numbers, but R is also built to handle more types of objects. Here we explore vectors that contain strings or Boolean values (TRUE / FALSE).",
+				"thumbnails":{
+					"default":{
+						"url":"https://i.ytimg.com/vi/GKu5tw_bIpA/default.jpg",
+						"width":120,
+						"height":90
 					},
-					"medium": {
-						"url": "https://i.ytimg.com/vi/-FalnLT5irs/mqdefault.jpg",
-						"width": 320,
-						"height": 180
+					"medium":{
+						"url":"https://i.ytimg.com/vi/GKu5tw_bIpA/mqdefault.jpg",
+						"width":320,
+						"height":180
 					},
-					"high": {
-						"url": "https://i.ytimg.com/vi/-FalnLT5irs/hqdefault.jpg",
-						"width": 480,
-						"height": 360
+					"high":{
+						"url":"https://i.ytimg.com/vi/GKu5tw_bIpA/hqdefault.jpg",
+						"width":480,
+						"height":360
+					},
+					"standard":{
+						"url":"https://i.ytimg.com/vi/GKu5tw_bIpA/sddefault.jpg",
+						"width":640,
+						"height":480
+					},
+					"maxres":{
+						"url":"https://i.ytimg.com/vi/GKu5tw_bIpA/maxresdefault.jpg",
+						"width":1280,
+						"height":720
 					}
 				},
-				"channelTitle": "Starbucks Coffee",
-				"playlistId": "PLLt7Vrrx9E2BDUdeDsVfeR4Qx0FDLTo7v",
-				"position": 3,
-				"resourceId": {
-					"kind": "youtube#video",
-					"videoId": "-FalnLT5irs"
+				"channelTitle":"ed bass",
+				"playlistId":"PLyYlLs02rgBYRWBzYpoHz7m2SE8mEZ68w",
+				"position":3,
+				"resourceId":{
+					"kind":"youtube#video",
+					"videoId":"GKu5tw_bIpA"
 				}
 			},
-			"contentDetails": {
-				"videoId": "-FalnLT5irs"
+			"contentDetails":{
+				"videoId":"GKu5tw_bIpA",
+				"videoPublishedAt":"2013-07-01T18:25:57.000Z"
 			}
 		},
 		{
-			"kind": "youtube#playlistItem",
-			"etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/RRrYF5QKAIJdLeiQUX5jwtaMH7g\"",
-			"id": "UExMdDdWcnJ4OUUyQkRVZGVEc1ZmZVI0UXgwRkRMVG83di4yMUQyQTQzMjRDNzMyQTMy",
-			"snippet": {
-				"publishedAt": "2016-04-28T16:24:50.000Z",
-				"channelId": "UCj4nCgtjKJppK_IZeY8TUJg",
-				"title": "Endless Free Refills with Starbucks Rewards",
-				"description": "Enjoy free refills on brewed coffee and tea when you join the new Starbucks Rewards™. See details at starbucks.com/terms.",
-				"thumbnails": {
-					"default": {
-						"url": "https://i.ytimg.com/vi/b5msbusA2Go/default.jpg",
-						"width": 120,
-						"height": 90
+			"kind":"youtube#playlistItem",
+			"etag":"\"p4VTdlkQv3HQeTEaXgvLePAydmU/0KyCau-7clkbvwaarZeSHLQM3GI\"",
+			"id":"UEx5WWxMczAycmdCWVJXQnpZcG9IejdtMlNFOG1FWjY4dy4wOTA3OTZBNzVEMTUzOTMy",
+			"snippet":{
+				"publishedAt":"2013-08-15T10:09:28.000Z",
+				"channelId":"UCsJ4blFwoWEcsdgYJcGDJng",
+				"title":"R 1.5 - Vector Arithmetic",
+				"description":"This video demystifies the different ways R performs vector arithmetic (e.g. addition and multiplication), covering topics including element-wise arithmetic, vector recycling, and how some functions are automatically applied across the elements in a vector. The seq() function is also introduced.",
+				"thumbnails":{
+					"default":{
+						"url":"https://i.ytimg.com/vi/u5hroyx0J4o/default.jpg",
+						"width":120,
+						"height":90
 					},
-					"medium": {
-						"url": "https://i.ytimg.com/vi/b5msbusA2Go/mqdefault.jpg",
-						"width": 320,
-						"height": 180
+					"medium":{
+						"url":"https://i.ytimg.com/vi/u5hroyx0J4o/mqdefault.jpg",
+						"width":320,
+						"height":180
 					},
-					"high": {
-						"url": "https://i.ytimg.com/vi/b5msbusA2Go/hqdefault.jpg",
-						"width": 480,
-						"height": 360
+					"high":{
+						"url":"https://i.ytimg.com/vi/u5hroyx0J4o/hqdefault.jpg",
+						"width":480,
+						"height":360
+					},
+					"standard":{
+						"url":"https://i.ytimg.com/vi/u5hroyx0J4o/sddefault.jpg",
+						"width":640,
+						"height":480
+					},
+					"maxres":{
+						"url":"https://i.ytimg.com/vi/u5hroyx0J4o/maxresdefault.jpg",
+						"width":1280,
+						"height":720
 					}
 				},
-				"channelTitle": "Starbucks Coffee",
-				"playlistId": "PLLt7Vrrx9E2BDUdeDsVfeR4Qx0FDLTo7v",
-				"position": 4,
-				"resourceId": {
-					"kind": "youtube#video",
-					"videoId": "b5msbusA2Go"
+				"channelTitle":"ed bass",
+				"playlistId":"PLyYlLs02rgBYRWBzYpoHz7m2SE8mEZ68w",
+				"position":4,
+				"resourceId":{
+					"kind":"youtube#video",
+					"videoId":"u5hroyx0J4o"
 				}
 			},
-			"contentDetails": {
-				"videoId": "b5msbusA2Go"
+			"contentDetails":{
+				"videoId":"u5hroyx0J4o",
+				"videoPublishedAt":"2013-07-01T18:24:34.000Z"
 			}
 		},
 		{
-			"kind": "youtube#playlistItem",
-			"etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/mQ_HAV0pYDy4htWsNHXUccPLrZI\"",
-			"id": "UExMdDdWcnJ4OUUyQkRVZGVEc1ZmZVI0UXgwRkRMVG83di5EQUE1NTFDRjcwMDg0NEMz",
-			"snippet": {
-				"publishedAt": "2016-04-28T16:12:54.000Z",
-				"channelId": "UCj4nCgtjKJppK_IZeY8TUJg",
-				"title": "Free Birthday Drink with Starbucks Rewards",
-				"description": "Enjoy a free drink on your birthday with the new Starbucks Rewards™.  See details at starbucks.com/terms.",
-				"thumbnails": {
-					"default": {
-						"url": "https://i.ytimg.com/vi/Sh7aN3xHygM/default.jpg",
-						"width": 120,
-						"height": 90
+			"kind":"youtube#playlistItem",
+			"etag":"\"p4VTdlkQv3HQeTEaXgvLePAydmU/8NkbCOogWLikoJgO1ThNb_Nqaaw\"",
+			"id":"UEx5WWxMczAycmdCWVJXQnpZcG9IejdtMlNFOG1FWjY4dy4xMkVGQjNCMUM1N0RFNEUx",
+			"snippet":{
+				"publishedAt":"2013-08-15T10:09:40.000Z",
+				"channelId":"UCsJ4blFwoWEcsdgYJcGDJng",
+				"title":"R 1.6 - Building and Subsetting Matrices",
+				"description":"Learn how to create a matrix with dimensions of your choosing, how recycle a vector when creating a matrix, and how to query specific characteristics of the vector using functions such as dim(), head(), and tail(). Details and potential pitfalls for subsetting a matrix using the bracket-notation are also covered.",
+				"thumbnails":{
+					"default":{
+						"url":"https://i.ytimg.com/vi/cR-hEUs1rRw/default.jpg",
+						"width":120,
+						"height":90
 					},
-					"medium": {
-						"url": "https://i.ytimg.com/vi/Sh7aN3xHygM/mqdefault.jpg",
-						"width": 320,
-						"height": 180
+					"medium":{
+						"url":"https://i.ytimg.com/vi/cR-hEUs1rRw/mqdefault.jpg",
+						"width":320,
+						"height":180
 					},
-					"high": {
-						"url": "https://i.ytimg.com/vi/Sh7aN3xHygM/hqdefault.jpg",
-						"width": 480,
-						"height": 360
+					"high":{
+						"url":"https://i.ytimg.com/vi/cR-hEUs1rRw/hqdefault.jpg",
+						"width":480,
+						"height":360
+					},
+					"standard":{
+						"url":"https://i.ytimg.com/vi/cR-hEUs1rRw/sddefault.jpg",
+						"width":640,
+						"height":480
+					},
+					"maxres":{
+						"url":"https://i.ytimg.com/vi/cR-hEUs1rRw/maxresdefault.jpg",
+						"width":1280,
+						"height":720
 					}
 				},
-				"channelTitle": "Starbucks Coffee",
-				"playlistId": "PLLt7Vrrx9E2BDUdeDsVfeR4Qx0FDLTo7v",
-				"position": 5,
-				"resourceId": {
-					"kind": "youtube#video",
-					"videoId": "Sh7aN3xHygM"
+				"channelTitle":"ed bass",
+				"playlistId":"PLyYlLs02rgBYRWBzYpoHz7m2SE8mEZ68w",
+				"position":5,
+				"resourceId":{
+					"kind":"youtube#video",
+					"videoId":"cR-hEUs1rRw"
 				}
 			},
-			"contentDetails": {
-				"videoId": "Sh7aN3xHygM"
+			"contentDetails":{
+				"videoId":"cR-hEUs1rRw",
+				"videoPublishedAt":"2013-07-01T18:22:04.000Z"
 			}
 		},
 		{
-			"kind": "youtube#playlistItem",
-			"etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/ZwLNMIiNjMEa-20ScQKfGzdNIdE\"",
-			"id": "UExMdDdWcnJ4OUUyQkRVZGVEc1ZmZVI0UXgwRkRMVG83di41Mzk2QTAxMTkzNDk4MDhF",
-			"snippet": {
-				"publishedAt": "2016-04-15T04:35:29.000Z",
-				"channelId": "UCj4nCgtjKJppK_IZeY8TUJg",
-				"title": "Starbucks Rewards How to: Mobile Order and Pay",
-				"description": "Ever wonder how some people walk in and out of Starbucks without ordering? Learn how to jump the line using Mobile Order & Pay. Use your Starbucks app to quickly order and pick up your favorite beverages and treats when you're on the go. Want more details? Visit http://www.starbucks.com/promo/rewards.\n\nMobile Order & Pay is available at participating stores. See starbucks.com/terms for details.",
-				"thumbnails": {
-					"default": {
-						"url": "https://i.ytimg.com/vi/lKTE4Mb5XFM/default.jpg",
-						"width": 120,
-						"height": 90
+			"kind":"youtube#playlistItem",
+			"etag":"\"p4VTdlkQv3HQeTEaXgvLePAydmU/6nwX2yDNBl_0UVSTa5xTBAD0ZN0\"",
+			"id":"UEx5WWxMczAycmdCWVJXQnpZcG9IejdtMlNFOG1FWjY4dy41MzJCQjBCNDIyRkJDN0VD",
+			"snippet":{
+				"publishedAt":"2013-08-15T10:11:05.000Z",
+				"channelId":"UCsJ4blFwoWEcsdgYJcGDJng",
+				"title":"R 1.7 - Section 1 Review and Help Files",
+				"description":"A quick review of the topics covered in the Section 1 videos: vectors, matrices, subsetting, and a few standard functions. Also learn how to access help files in R.",
+				"thumbnails":{
+					"default":{
+						"url":"https://i.ytimg.com/vi/mtu5_IYhgpg/default.jpg",
+						"width":120,
+						"height":90
 					},
-					"medium": {
-						"url": "https://i.ytimg.com/vi/lKTE4Mb5XFM/mqdefault.jpg",
-						"width": 320,
-						"height": 180
+					"medium":{
+						"url":"https://i.ytimg.com/vi/mtu5_IYhgpg/mqdefault.jpg",
+						"width":320,
+						"height":180
 					},
-					"high": {
-						"url": "https://i.ytimg.com/vi/lKTE4Mb5XFM/hqdefault.jpg",
-						"width": 480,
-						"height": 360
+					"high":{
+						"url":"https://i.ytimg.com/vi/mtu5_IYhgpg/hqdefault.jpg",
+						"width":480,
+						"height":360
 					},
-					"standard": {
-						"url": "https://i.ytimg.com/vi/lKTE4Mb5XFM/sddefault.jpg",
-						"width": 640,
-						"height": 480
+					"standard":{
+						"url":"https://i.ytimg.com/vi/mtu5_IYhgpg/sddefault.jpg",
+						"width":640,
+						"height":480
 					},
-					"maxres": {
-						"url": "https://i.ytimg.com/vi/lKTE4Mb5XFM/maxresdefault.jpg",
-						"width": 1280,
-						"height": 720
+					"maxres":{
+						"url":"https://i.ytimg.com/vi/mtu5_IYhgpg/maxresdefault.jpg",
+						"width":1280,
+						"height":720
 					}
 				},
-				"channelTitle": "Starbucks Coffee",
-				"playlistId": "PLLt7Vrrx9E2BDUdeDsVfeR4Qx0FDLTo7v",
-				"position": 6,
-				"resourceId": {
-					"kind": "youtube#video",
-					"videoId": "lKTE4Mb5XFM"
+				"channelTitle":"ed bass",
+				"playlistId":"PLyYlLs02rgBYRWBzYpoHz7m2SE8mEZ68w",
+				"position":6,
+				"resourceId":{
+					"kind":"youtube#video",
+					"videoId":"mtu5_IYhgpg"
 				}
 			},
-			"contentDetails": {
-				"videoId": "lKTE4Mb5XFM"
+			"contentDetails":{
+				"videoId":"mtu5_IYhgpg",
+				"videoPublishedAt":"2013-07-01T18:15:39.000Z"
 			}
 		},
 		{
-			"kind": "youtube#playlistItem",
-			"etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/Y0S3oZXbHnS8ulVvQ6LBSzfjieA\"",
-			"id": "UExMdDdWcnJ4OUUyQkRVZGVEc1ZmZVI0UXgwRkRMVG83di4zMDg5MkQ5MEVDMEM1NTg2",
-			"snippet": {
-				"publishedAt": "2016-04-12T17:26:17.000Z",
-				"channelId": "UCj4nCgtjKJppK_IZeY8TUJg",
-				"title": "Introducing the New Starbucks Rewards",
-				"description": "Learn more about the new Starbucks Rewards program that will award Stars based on what you buy, no matter how often you visit. Find out how and where you'll earn Stars in the new program, how your current rewards will transition into the new program, what will happen to your current status and Stars once the program has transitioned.\n\nFor more details about Rewards program changes visit http://www.starbucks.com/promo/rewards.",
-				"thumbnails": {
-					"default": {
-						"url": "https://i.ytimg.com/vi/tPW2zGLPWzE/default.jpg",
-						"width": 120,
-						"height": 90
+			"kind":"youtube#playlistItem",
+			"etag":"\"p4VTdlkQv3HQeTEaXgvLePAydmU/nnatQnLaDwLPDPr3ZpXf3NXNCok\"",
+			"id":"UEx5WWxMczAycmdCWVJXQnpZcG9IejdtMlNFOG1FWjY4dy5DQUNERDQ2NkIzRUQxNTY1",
+			"snippet":{
+				"publishedAt":"2013-08-15T10:11:18.000Z",
+				"channelId":"UCsJ4blFwoWEcsdgYJcGDJng",
+				"title":"R 2.1 - Loading Data and Working With Data Frames",
+				"description":"Get a refresher on navigating directories on your computer in R, and learn to load a CSV (comma-separated values) data set in the form of a \"data frame\" using the read.csv() function, which is a special type of data matrix. This video also introduces factor variables and explores the data in a data frame using the dim(), head(), length(), names(), and subset() functions.",
+				"thumbnails":{
+					"default":{
+						"url":"https://i.ytimg.com/vi/qK1ElUMkhq0/default.jpg",
+						"width":120,
+						"height":90
 					},
-					"medium": {
-						"url": "https://i.ytimg.com/vi/tPW2zGLPWzE/mqdefault.jpg",
-						"width": 320,
-						"height": 180
+					"medium":{
+						"url":"https://i.ytimg.com/vi/qK1ElUMkhq0/mqdefault.jpg",
+						"width":320,
+						"height":180
 					},
-					"high": {
-						"url": "https://i.ytimg.com/vi/tPW2zGLPWzE/hqdefault.jpg",
-						"width": 480,
-						"height": 360
+					"high":{
+						"url":"https://i.ytimg.com/vi/qK1ElUMkhq0/hqdefault.jpg",
+						"width":480,
+						"height":360
 					},
-					"standard": {
-						"url": "https://i.ytimg.com/vi/tPW2zGLPWzE/sddefault.jpg",
-						"width": 640,
-						"height": 480
+					"standard":{
+						"url":"https://i.ytimg.com/vi/qK1ElUMkhq0/sddefault.jpg",
+						"width":640,
+						"height":480
 					},
-					"maxres": {
-						"url": "https://i.ytimg.com/vi/tPW2zGLPWzE/maxresdefault.jpg",
-						"width": 1280,
-						"height": 720
+					"maxres":{
+						"url":"https://i.ytimg.com/vi/qK1ElUMkhq0/maxresdefault.jpg",
+						"width":1280,
+						"height":720
 					}
 				},
-				"channelTitle": "Starbucks Coffee",
-				"playlistId": "PLLt7Vrrx9E2BDUdeDsVfeR4Qx0FDLTo7v",
-				"position": 7,
-				"resourceId": {
-					"kind": "youtube#video",
-					"videoId": "tPW2zGLPWzE"
+				"channelTitle":"ed bass",
+				"playlistId":"PLyYlLs02rgBYRWBzYpoHz7m2SE8mEZ68w",
+				"position":7,
+				"resourceId":{
+					"kind":"youtube#video",
+					"videoId":"qK1ElUMkhq0"
 				}
 			},
-			"contentDetails": {
-				"videoId": "tPW2zGLPWzE"
+			"contentDetails":{
+				"videoId":"qK1ElUMkhq0",
+				"videoPublishedAt":"2013-07-01T18:14:21.000Z"
 			}
 		},
 		{
-			"kind": "youtube#playlistItem",
-			"etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/2OzhEg0chF7d3OE-C9xeQukWCrE\"",
-			"id": "UExMdDdWcnJ4OUUyQkRVZGVEc1ZmZVI0UXgwRkRMVG83di45NDk1REZENzhEMzU5MDQz",
-			"snippet": {
-				"publishedAt": "2016-04-12T15:47:42.000Z",
-				"channelId": "UCj4nCgtjKJppK_IZeY8TUJg",
-				"title": "How to: Track your Starbucks Rewards Stars",
-				"description": "Learn how to see your earned Stars and easily track your progress towards free food and drinks. Since every purchase gives you more Stars, you'll see them add up quickly in the app and online on your Starbucks Rewards account. Want to track your Starbucks Stars? Visit https://www.starbucks.com/account/signin\n\nFor more details about Rewards program changes visit, http://www.starbucks.com/promo/rewards.",
-				"thumbnails": {
-					"default": {
-						"url": "https://i.ytimg.com/vi/hx_W1NzDfdc/default.jpg",
-						"width": 120,
-						"height": 90
+			"kind":"youtube#playlistItem",
+			"etag":"\"p4VTdlkQv3HQeTEaXgvLePAydmU/VTmAuYBW3NBQs0ErYj6mqroC6T8\"",
+			"id":"UEx5WWxMczAycmdCWVJXQnpZcG9IejdtMlNFOG1FWjY4dy45NDk1REZENzhEMzU5MDQz",
+			"snippet":{
+				"publishedAt":"2013-08-15T10:11:44.000Z",
+				"channelId":"UCsJ4blFwoWEcsdgYJcGDJng",
+				"title":"R 2.2 - Loading Data, Object Summaries, and Dates",
+				"description":"Learn how to load data in the form of a tab-delimited text file using the read.delim(), how to get a high-level overview of an R object using the str() and summary() functions, and get a crash-course into working with dates in R with an example highlighting why this skill is so useful.",
+				"thumbnails":{
+					"default":{
+						"url":"https://i.ytimg.com/vi/cx_3zWo4sUs/default.jpg",
+						"width":120,
+						"height":90
 					},
-					"medium": {
-						"url": "https://i.ytimg.com/vi/hx_W1NzDfdc/mqdefault.jpg",
-						"width": 320,
-						"height": 180
+					"medium":{
+						"url":"https://i.ytimg.com/vi/cx_3zWo4sUs/mqdefault.jpg",
+						"width":320,
+						"height":180
 					},
-					"high": {
-						"url": "https://i.ytimg.com/vi/hx_W1NzDfdc/hqdefault.jpg",
-						"width": 480,
-						"height": 360
+					"high":{
+						"url":"https://i.ytimg.com/vi/cx_3zWo4sUs/hqdefault.jpg",
+						"width":480,
+						"height":360
 					},
-					"standard": {
-						"url": "https://i.ytimg.com/vi/hx_W1NzDfdc/sddefault.jpg",
-						"width": 640,
-						"height": 480
+					"standard":{
+						"url":"https://i.ytimg.com/vi/cx_3zWo4sUs/sddefault.jpg",
+						"width":640,
+						"height":480
 					},
-					"maxres": {
-						"url": "https://i.ytimg.com/vi/hx_W1NzDfdc/maxresdefault.jpg",
-						"width": 1280,
-						"height": 720
+					"maxres":{
+						"url":"https://i.ytimg.com/vi/cx_3zWo4sUs/maxresdefault.jpg",
+						"width":1280,
+						"height":720
 					}
 				},
-				"channelTitle": "Starbucks Coffee",
-				"playlistId": "PLLt7Vrrx9E2BDUdeDsVfeR4Qx0FDLTo7v",
-				"position": 8,
-				"resourceId": {
-					"kind": "youtube#video",
-					"videoId": "hx_W1NzDfdc"
+				"channelTitle":"ed bass",
+				"playlistId":"PLyYlLs02rgBYRWBzYpoHz7m2SE8mEZ68w",
+				"position":8,
+				"resourceId":{
+					"kind":"youtube#video",
+					"videoId":"cx_3zWo4sUs"
 				}
 			},
-			"contentDetails": {
-				"videoId": "hx_W1NzDfdc"
+			"contentDetails":{
+				"videoId":"cx_3zWo4sUs",
+				"videoPublishedAt":"2013-07-01T18:13:33.000Z"
 			}
 		},
 		{
-			"kind": "youtube#playlistItem",
-			"etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/X539ilNo670o2PHE8UvOqCzhXH4\"",
-			"id": "UExMdDdWcnJ4OUUyQkRVZGVEc1ZmZVI0UXgwRkRMVG83di5DQUNERDQ2NkIzRUQxNTY1",
-			"snippet": {
-				"publishedAt": "2016-04-12T15:46:43.000Z",
-				"channelId": "UCj4nCgtjKJppK_IZeY8TUJg",
-				"title": "How to: Pay at Starbucks with the App",
-				"description": "The Starbucks app is a quick and easy way to pay with your phone at Starbucks cafes. Learn how to add a Starbucks Card to your app and pay for your favorite treats with ease with this tutorial. Want more information about the Starbucks app? Visit http://www.starbucks.com/promo/rewards. \n\nMobile Order and Pay is available at participating stores. See starbucks.com/terms for details.",
-				"thumbnails": {
-					"default": {
-						"url": "https://i.ytimg.com/vi/8UTyusMA2Pk/default.jpg",
-						"width": 120,
-						"height": 90
+			"kind":"youtube#playlistItem",
+			"etag":"\"p4VTdlkQv3HQeTEaXgvLePAydmU/652oSxuCBzlCP-Adyy_k9_rgoVw\"",
+			"id":"UEx5WWxMczAycmdCWVJXQnpZcG9IejdtMlNFOG1FWjY4dy5GNjNDRDREMDQxOThCMDQ2",
+			"snippet":{
+				"publishedAt":"2013-08-15T10:11:57.000Z",
+				"channelId":"UCsJ4blFwoWEcsdgYJcGDJng",
+				"title":"R 2.3 - if() Statements, Logical Operators, and the which() Function",
+				"description":"if-else statements are a key component to any programming language. This video introduces how to effectively use these statements in R and also clarifies some nuances of logical operators in R. Two related functions are also introduced: ifelse() as a shortcut that can be used to create faster and more readable code, and the which() function that retrieves the positions in a Boolean vector that are TRUE.",
+				"thumbnails":{
+					"default":{
+						"url":"https://i.ytimg.com/vi/eVEx_pBEkRI/default.jpg",
+						"width":120,
+						"height":90
 					},
-					"medium": {
-						"url": "https://i.ytimg.com/vi/8UTyusMA2Pk/mqdefault.jpg",
-						"width": 320,
-						"height": 180
+					"medium":{
+						"url":"https://i.ytimg.com/vi/eVEx_pBEkRI/mqdefault.jpg",
+						"width":320,
+						"height":180
 					},
-					"high": {
-						"url": "https://i.ytimg.com/vi/8UTyusMA2Pk/hqdefault.jpg",
-						"width": 480,
-						"height": 360
+					"high":{
+						"url":"https://i.ytimg.com/vi/eVEx_pBEkRI/hqdefault.jpg",
+						"width":480,
+						"height":360
 					},
-					"standard": {
-						"url": "https://i.ytimg.com/vi/8UTyusMA2Pk/sddefault.jpg",
-						"width": 640,
-						"height": 480
+					"standard":{
+						"url":"https://i.ytimg.com/vi/eVEx_pBEkRI/sddefault.jpg",
+						"width":640,
+						"height":480
 					},
-					"maxres": {
-						"url": "https://i.ytimg.com/vi/8UTyusMA2Pk/maxresdefault.jpg",
-						"width": 1280,
-						"height": 720
+					"maxres":{
+						"url":"https://i.ytimg.com/vi/eVEx_pBEkRI/maxresdefault.jpg",
+						"width":1280,
+						"height":720
 					}
 				},
-				"channelTitle": "Starbucks Coffee",
-				"playlistId": "PLLt7Vrrx9E2BDUdeDsVfeR4Qx0FDLTo7v",
-				"position": 9,
-				"resourceId": {
-					"kind": "youtube#video",
-					"videoId": "8UTyusMA2Pk"
+				"channelTitle":"ed bass",
+				"playlistId":"PLyYlLs02rgBYRWBzYpoHz7m2SE8mEZ68w",
+				"position":9,
+				"resourceId":{
+					"kind":"youtube#video",
+					"videoId":"eVEx_pBEkRI"
 				}
 			},
-			"contentDetails": {
-				"videoId": "8UTyusMA2Pk"
+			"contentDetails":{
+				"videoId":"eVEx_pBEkRI",
+				"videoPublishedAt":"2013-07-01T18:12:42.000Z"
 			}
 		},
 		{
-			"kind": "youtube#playlistItem",
-			"etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/EbLk4OrhQNbEt77vmwrIj0_GyCc\"",
-			"id": "UExMdDdWcnJ4OUUyQkRVZGVEc1ZmZVI0UXgwRkRMVG83di41MzJCQjBCNDIyRkJDN0VD",
-			"snippet": {
-				"publishedAt": "2016-04-12T15:44:31.000Z",
-				"channelId": "UCj4nCgtjKJppK_IZeY8TUJg",
-				"title": "How to: Reload your Starbucks Card",
-				"description": "Learn how to reload your physical or digital card by connecting them to your credit or debit card to make reloading even simpler.\n\nFor more details about Rewards program changes visit http://www.starbucks.com/promo/rewards.",
-				"thumbnails": {
-					"default": {
-						"url": "https://i.ytimg.com/vi/9kPxorIvtLE/default.jpg",
-						"width": 120,
-						"height": 90
+			"kind":"youtube#playlistItem",
+			"etag":"\"p4VTdlkQv3HQeTEaXgvLePAydmU/XWC8Tj3FwAx-D3q51l6ffS2sfUs\"",
+			"id":"UEx5WWxMczAycmdCWVJXQnpZcG9IejdtMlNFOG1FWjY4dy40NzZCMERDMjVEN0RFRThB",
+			"snippet":{
+				"publishedAt":"2013-08-15T10:12:11.000Z",
+				"channelId":"UCsJ4blFwoWEcsdgYJcGDJng",
+				"title":"R 2.4 - for() Loops and Handling Missing Observations",
+				"description":"This video discusses for() loops, which are a structure that can be used to execute a set of code repeatedly. Also covered in this video are the min(), max(), and append() functions, as well as how to identify and omit missing values.",
+				"thumbnails":{
+					"default":{
+						"url":"https://i.ytimg.com/vi/djI-yfk-DZM/default.jpg",
+						"width":120,
+						"height":90
 					},
-					"medium": {
-						"url": "https://i.ytimg.com/vi/9kPxorIvtLE/mqdefault.jpg",
-						"width": 320,
-						"height": 180
+					"medium":{
+						"url":"https://i.ytimg.com/vi/djI-yfk-DZM/mqdefault.jpg",
+						"width":320,
+						"height":180
 					},
-					"high": {
-						"url": "https://i.ytimg.com/vi/9kPxorIvtLE/hqdefault.jpg",
-						"width": 480,
-						"height": 360
+					"high":{
+						"url":"https://i.ytimg.com/vi/djI-yfk-DZM/hqdefault.jpg",
+						"width":480,
+						"height":360
 					},
-					"standard": {
-						"url": "https://i.ytimg.com/vi/9kPxorIvtLE/sddefault.jpg",
-						"width": 640,
-						"height": 480
+					"standard":{
+						"url":"https://i.ytimg.com/vi/djI-yfk-DZM/sddefault.jpg",
+						"width":640,
+						"height":480
 					},
-					"maxres": {
-						"url": "https://i.ytimg.com/vi/9kPxorIvtLE/maxresdefault.jpg",
-						"width": 1280,
-						"height": 720
+					"maxres":{
+						"url":"https://i.ytimg.com/vi/djI-yfk-DZM/maxresdefault.jpg",
+						"width":1280,
+						"height":720
 					}
 				},
-				"channelTitle": "Starbucks Coffee",
-				"playlistId": "PLLt7Vrrx9E2BDUdeDsVfeR4Qx0FDLTo7v",
-				"position": 10,
-				"resourceId": {
-					"kind": "youtube#video",
-					"videoId": "9kPxorIvtLE"
+				"channelTitle":"ed bass",
+				"playlistId":"PLyYlLs02rgBYRWBzYpoHz7m2SE8mEZ68w",
+				"position":10,
+				"resourceId":{
+					"kind":"youtube#video",
+					"videoId":"djI-yfk-DZM"
 				}
 			},
-			"contentDetails": {
-				"videoId": "9kPxorIvtLE"
+			"contentDetails":{
+				"videoId":"djI-yfk-DZM",
+				"videoPublishedAt":"2013-07-01T18:11:31.000Z"
 			}
 		},
 		{
-			"kind": "youtube#playlistItem",
-			"etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/H1F7K4QPEGYRzq8nlOc0vA6aqic\"",
-			"id": "UExMdDdWcnJ4OUUyQkRVZGVEc1ZmZVI0UXgwRkRMVG83di4xMkVGQjNCMUM1N0RFNEUx",
-			"snippet": {
-				"publishedAt": "2016-04-12T15:43:52.000Z",
-				"channelId": "UCj4nCgtjKJppK_IZeY8TUJg",
-				"title": "How to: Register for Starbucks Rewards",
-				"description": "Starbucks Rewards makes earning Rewards as easy as purchasing your favorite Starbucks drinks. Learn step by step how to join Starbucks Rewards and start earning Stars by downloading the Starbucks app. For more information, visit http://www.starbucks.com/card/rewards.\n\nSee starbucks.com/terms for details.",
-				"thumbnails": {
-					"default": {
-						"url": "https://i.ytimg.com/vi/LvKSf3oxGgc/default.jpg",
-						"width": 120,
-						"height": 90
+			"kind":"youtube#playlistItem",
+			"etag":"\"p4VTdlkQv3HQeTEaXgvLePAydmU/IqenGnKZ7SXVuLWCNbLU9LtZT4k\"",
+			"id":"UEx5WWxMczAycmdCWVJXQnpZcG9IejdtMlNFOG1FWjY4dy5EMEEwRUY5M0RDRTU3NDJC",
+			"snippet":{
+				"publishedAt":"2013-08-15T10:12:21.000Z",
+				"channelId":"UCsJ4blFwoWEcsdgYJcGDJng",
+				"title":"R 2.5 - Lists",
+				"description":"Learn how to create and use lists in R, which are dynamic, flexible R objects that can hold and organize other R objects.",
+				"thumbnails":{
+					"default":{
+						"url":"https://i.ytimg.com/vi/UffunYeERV0/default.jpg",
+						"width":120,
+						"height":90
 					},
-					"medium": {
-						"url": "https://i.ytimg.com/vi/LvKSf3oxGgc/mqdefault.jpg",
-						"width": 320,
-						"height": 180
+					"medium":{
+						"url":"https://i.ytimg.com/vi/UffunYeERV0/mqdefault.jpg",
+						"width":320,
+						"height":180
 					},
-					"high": {
-						"url": "https://i.ytimg.com/vi/LvKSf3oxGgc/hqdefault.jpg",
-						"width": 480,
-						"height": 360
+					"high":{
+						"url":"https://i.ytimg.com/vi/UffunYeERV0/hqdefault.jpg",
+						"width":480,
+						"height":360
 					},
-					"standard": {
-						"url": "https://i.ytimg.com/vi/LvKSf3oxGgc/sddefault.jpg",
-						"width": 640,
-						"height": 480
+					"standard":{
+						"url":"https://i.ytimg.com/vi/UffunYeERV0/sddefault.jpg",
+						"width":640,
+						"height":480
 					},
-					"maxres": {
-						"url": "https://i.ytimg.com/vi/LvKSf3oxGgc/maxresdefault.jpg",
-						"width": 1280,
-						"height": 720
+					"maxres":{
+						"url":"https://i.ytimg.com/vi/UffunYeERV0/maxresdefault.jpg",
+						"width":1280,
+						"height":720
 					}
 				},
-				"channelTitle": "Starbucks Coffee",
-				"playlistId": "PLLt7Vrrx9E2BDUdeDsVfeR4Qx0FDLTo7v",
-				"position": 11,
-				"resourceId": {
-					"kind": "youtube#video",
-					"videoId": "LvKSf3oxGgc"
+				"channelTitle":"ed bass",
+				"playlistId":"PLyYlLs02rgBYRWBzYpoHz7m2SE8mEZ68w",
+				"position":11,
+				"resourceId":{
+					"kind":"youtube#video",
+					"videoId":"UffunYeERV0"
 				}
 			},
-			"contentDetails": {
-				"videoId": "LvKSf3oxGgc"
+			"contentDetails":{
+				"videoId":"UffunYeERV0",
+				"videoPublishedAt":"2013-07-01T18:10:46.000Z"
+			}
+		},
+		{
+			"kind":"youtube#playlistItem",
+			"etag":"\"p4VTdlkQv3HQeTEaXgvLePAydmU/Xo-cKmQLA81C4fYsFkpu93j-fR0\"",
+			"id":"UEx5WWxMczAycmdCWVJXQnpZcG9IejdtMlNFOG1FWjY4dy45ODRDNTg0QjA4NkFBNkQy",
+			"snippet":{
+				"publishedAt":"2013-08-15T10:12:31.000Z",
+				"channelId":"UCsJ4blFwoWEcsdgYJcGDJng",
+				"title":"R 3.1 - Managing the Workspace and Variable Casting",
+				"description":"View all the objects in the workspace using ls(), remove objects using rm(), cast a variable as a different type using an as.[type]() function, and use lists or data frames to organize data or results.",
+				"thumbnails":{
+					"default":{
+						"url":"https://i.ytimg.com/vi/8oc3mIa0TCw/default.jpg",
+						"width":120,
+						"height":90
+					},
+					"medium":{
+						"url":"https://i.ytimg.com/vi/8oc3mIa0TCw/mqdefault.jpg",
+						"width":320,
+						"height":180
+					},
+					"high":{
+						"url":"https://i.ytimg.com/vi/8oc3mIa0TCw/hqdefault.jpg",
+						"width":480,
+						"height":360
+					},
+					"standard":{
+						"url":"https://i.ytimg.com/vi/8oc3mIa0TCw/sddefault.jpg",
+						"width":640,
+						"height":480
+					},
+					"maxres":{
+						"url":"https://i.ytimg.com/vi/8oc3mIa0TCw/maxresdefault.jpg",
+						"width":1280,
+						"height":720
+					}
+				},
+				"channelTitle":"ed bass",
+				"playlistId":"PLyYlLs02rgBYRWBzYpoHz7m2SE8mEZ68w",
+				"position":12,
+				"resourceId":{
+					"kind":"youtube#video",
+					"videoId":"8oc3mIa0TCw"
+				}
+			},
+			"contentDetails":{
+				"videoId":"8oc3mIa0TCw",
+				"videoPublishedAt":"2013-07-01T18:09:32.000Z"
+			}
+		},
+		{
+			"kind":"youtube#playlistItem",
+			"etag":"\"p4VTdlkQv3HQeTEaXgvLePAydmU/0jBV2y-buCiLZcTWlSdIbSdPS8I\"",
+			"id":"UEx5WWxMczAycmdCWVJXQnpZcG9IejdtMlNFOG1FWjY4dy4zMDg5MkQ5MEVDMEM1NTg2",
+			"snippet":{
+				"publishedAt":"2013-08-15T10:12:43.000Z",
+				"channelId":"UCsJ4blFwoWEcsdgYJcGDJng",
+				"title":"R 3.2 - The apply() Family of Functions",
+				"description":"When data are organized in a matrix or data frame, the apply() function can be used to calculate summaries (or apply a more complex function) across either the rows or columns of the data object. Or if summaries for each group (level) of one or more variables are desired, use the tapply() or by() function.",
+				"thumbnails":{
+					"default":{
+						"url":"https://i.ytimg.com/vi/WuCVs3bW-ZY/default.jpg",
+						"width":120,
+						"height":90
+					},
+					"medium":{
+						"url":"https://i.ytimg.com/vi/WuCVs3bW-ZY/mqdefault.jpg",
+						"width":320,
+						"height":180
+					},
+					"high":{
+						"url":"https://i.ytimg.com/vi/WuCVs3bW-ZY/hqdefault.jpg",
+						"width":480,
+						"height":360
+					},
+					"standard":{
+						"url":"https://i.ytimg.com/vi/WuCVs3bW-ZY/sddefault.jpg",
+						"width":640,
+						"height":480
+					},
+					"maxres":{
+						"url":"https://i.ytimg.com/vi/WuCVs3bW-ZY/maxresdefault.jpg",
+						"width":1280,
+						"height":720
+					}
+				},
+				"channelTitle":"ed bass",
+				"playlistId":"PLyYlLs02rgBYRWBzYpoHz7m2SE8mEZ68w",
+				"position":13,
+				"resourceId":{
+					"kind":"youtube#video",
+					"videoId":"WuCVs3bW-ZY"
+				}
+			},
+			"contentDetails":{
+				"videoId":"WuCVs3bW-ZY",
+				"videoPublishedAt":"2013-07-01T18:08:24.000Z"
+			}
+		},
+		{
+			"kind":"youtube#playlistItem",
+			"etag":"\"p4VTdlkQv3HQeTEaXgvLePAydmU/_oLskEyiUfFEWZN17ePRdjouQSw\"",
+			"id":"UEx5WWxMczAycmdCWVJXQnpZcG9IejdtMlNFOG1FWjY4dy41Mzk2QTAxMTkzNDk4MDhF",
+			"snippet":{
+				"publishedAt":"2013-08-15T10:12:52.000Z",
+				"channelId":"UCsJ4blFwoWEcsdgYJcGDJng",
+				"title":"R 3.3 - Access or Create Columns in Data Frames, or Simplify a Data Frame using aggregate()",
+				"description":"The with() function makes it easy to access many variables (columns) in a data frame for one-off calculations, the within() function can be used to create new columns that are merged with the original data frame, and aggregate() is useful for aggregating variables in a data frame across groupings based on one or more variables.",
+				"thumbnails":{
+					"default":{
+						"url":"https://i.ytimg.com/vi/pZ6Bnxg9E8w/default.jpg",
+						"width":120,
+						"height":90
+					},
+					"medium":{
+						"url":"https://i.ytimg.com/vi/pZ6Bnxg9E8w/mqdefault.jpg",
+						"width":320,
+						"height":180
+					},
+					"high":{
+						"url":"https://i.ytimg.com/vi/pZ6Bnxg9E8w/hqdefault.jpg",
+						"width":480,
+						"height":360
+					},
+					"standard":{
+						"url":"https://i.ytimg.com/vi/pZ6Bnxg9E8w/sddefault.jpg",
+						"width":640,
+						"height":480
+					},
+					"maxres":{
+						"url":"https://i.ytimg.com/vi/pZ6Bnxg9E8w/maxresdefault.jpg",
+						"width":1280,
+						"height":720
+					}
+				},
+				"channelTitle":"ed bass",
+				"playlistId":"PLyYlLs02rgBYRWBzYpoHz7m2SE8mEZ68w",
+				"position":14,
+				"resourceId":{
+					"kind":"youtube#video",
+					"videoId":"pZ6Bnxg9E8w"
+				}
+			},
+			"contentDetails":{
+				"videoId":"pZ6Bnxg9E8w",
+				"videoPublishedAt":"2013-07-01T19:14:12.000Z"
+			}
+		},
+		{
+			"kind":"youtube#playlistItem",
+			"etag":"\"p4VTdlkQv3HQeTEaXgvLePAydmU/Dj5kSVVePAyFryrn90tHmucZNHY\"",
+			"id":"UEx5WWxMczAycmdCWVJXQnpZcG9IejdtMlNFOG1FWjY4dy5EQUE1NTFDRjcwMDg0NEMz",
+			"snippet":{
+				"publishedAt":"2013-08-15T10:13:32.000Z",
+				"channelId":"UCsJ4blFwoWEcsdgYJcGDJng",
+				"title":"R 4.1 - Basic Structure of a Function",
+				"description":"This video introduces the basic structure of a function, covering the declaration of the function, using an argument, and returning a result.",
+				"thumbnails":{
+					"default":{
+						"url":"https://i.ytimg.com/vi/Z1wB1rHAYzQ/default.jpg",
+						"width":120,
+						"height":90
+					},
+					"medium":{
+						"url":"https://i.ytimg.com/vi/Z1wB1rHAYzQ/mqdefault.jpg",
+						"width":320,
+						"height":180
+					},
+					"high":{
+						"url":"https://i.ytimg.com/vi/Z1wB1rHAYzQ/hqdefault.jpg",
+						"width":480,
+						"height":360
+					},
+					"standard":{
+						"url":"https://i.ytimg.com/vi/Z1wB1rHAYzQ/sddefault.jpg",
+						"width":640,
+						"height":480
+					},
+					"maxres":{
+						"url":"https://i.ytimg.com/vi/Z1wB1rHAYzQ/maxresdefault.jpg",
+						"width":1280,
+						"height":720
+					}
+				},
+				"channelTitle":"ed bass",
+				"playlistId":"PLyYlLs02rgBYRWBzYpoHz7m2SE8mEZ68w",
+				"position":15,
+				"resourceId":{
+					"kind":"youtube#video",
+					"videoId":"Z1wB1rHAYzQ"
+				}
+			},
+			"contentDetails":{
+				"videoId":"Z1wB1rHAYzQ",
+				"videoPublishedAt":"2013-07-01T18:06:41.000Z"
+			}
+		},
+		{
+			"kind":"youtube#playlistItem",
+			"etag":"\"p4VTdlkQv3HQeTEaXgvLePAydmU/SkZ_URteFHFrHNIgN_hyMRnMIzQ\"",
+			"id":"UEx5WWxMczAycmdCWVJXQnpZcG9IejdtMlNFOG1FWjY4dy41QTY1Q0UxMTVCODczNThE",
+			"snippet":{
+				"publishedAt":"2013-08-15T10:13:46.000Z",
+				"channelId":"UCsJ4blFwoWEcsdgYJcGDJng",
+				"title":"R 4.2 - Returning a List and Providing Default Arguments",
+				"description":"Become more proficient in writing functions by learning the standard way to return more complex results from functions using a list, and learn how to specify a default value for an argument.",
+				"thumbnails":{
+					"default":{
+						"url":"https://i.ytimg.com/vi/DzIy6U-N6ac/default.jpg",
+						"width":120,
+						"height":90
+					},
+					"medium":{
+						"url":"https://i.ytimg.com/vi/DzIy6U-N6ac/mqdefault.jpg",
+						"width":320,
+						"height":180
+					},
+					"high":{
+						"url":"https://i.ytimg.com/vi/DzIy6U-N6ac/hqdefault.jpg",
+						"width":480,
+						"height":360
+					},
+					"standard":{
+						"url":"https://i.ytimg.com/vi/DzIy6U-N6ac/sddefault.jpg",
+						"width":640,
+						"height":480
+					},
+					"maxres":{
+						"url":"https://i.ytimg.com/vi/DzIy6U-N6ac/maxresdefault.jpg",
+						"width":1280,
+						"height":720
+					}
+				},
+				"channelTitle":"ed bass",
+				"playlistId":"PLyYlLs02rgBYRWBzYpoHz7m2SE8mEZ68w",
+				"position":16,
+				"resourceId":{
+					"kind":"youtube#video",
+					"videoId":"DzIy6U-N6ac"
+				}
+			},
+			"contentDetails":{
+				"videoId":"DzIy6U-N6ac",
+				"videoPublishedAt":"2013-07-01T18:05:57.000Z"
+			}
+		},
+		{
+			"kind":"youtube#playlistItem",
+			"etag":"\"p4VTdlkQv3HQeTEaXgvLePAydmU/DZLW4ARx8B_wwQSHodekcv2QYlE\"",
+			"id":"UEx5WWxMczAycmdCWVJXQnpZcG9IejdtMlNFOG1FWjY4dy4yMUQyQTQzMjRDNzMyQTMy",
+			"snippet":{
+				"publishedAt":"2013-08-15T10:13:56.000Z",
+				"channelId":"UCsJ4blFwoWEcsdgYJcGDJng",
+				"title":"R 4.3 - Add a Warning or Stop the Function Execution",
+				"description":"The most helpful functions return clear warnings and errors when something is wrong. This video introduces the warning() and stop() functions, which can be used within a function to report a warning to the user or stop the function's execution.",
+				"thumbnails":{
+					"default":{
+						"url":"https://i.ytimg.com/vi/29TdKkUmcA4/default.jpg",
+						"width":120,
+						"height":90
+					},
+					"medium":{
+						"url":"https://i.ytimg.com/vi/29TdKkUmcA4/mqdefault.jpg",
+						"width":320,
+						"height":180
+					},
+					"high":{
+						"url":"https://i.ytimg.com/vi/29TdKkUmcA4/hqdefault.jpg",
+						"width":480,
+						"height":360
+					},
+					"standard":{
+						"url":"https://i.ytimg.com/vi/29TdKkUmcA4/sddefault.jpg",
+						"width":640,
+						"height":480
+					},
+					"maxres":{
+						"url":"https://i.ytimg.com/vi/29TdKkUmcA4/maxresdefault.jpg",
+						"width":1280,
+						"height":720
+					}
+				},
+				"channelTitle":"ed bass",
+				"playlistId":"PLyYlLs02rgBYRWBzYpoHz7m2SE8mEZ68w",
+				"position":17,
+				"resourceId":{
+					"kind":"youtube#video",
+					"videoId":"29TdKkUmcA4"
+				}
+			},
+			"contentDetails":{
+				"videoId":"29TdKkUmcA4",
+				"videoPublishedAt":"2013-07-01T18:04:55.000Z"
+			}
+		},
+		{
+			"kind":"youtube#playlistItem",
+			"etag":"\"p4VTdlkQv3HQeTEaXgvLePAydmU/FmBs_tjprcRqnjEwdaTrnc_hOpw\"",
+			"id":"UEx5WWxMczAycmdCWVJXQnpZcG9IejdtMlNFOG1FWjY4dy45RTgxNDRBMzUwRjQ0MDhC",
+			"snippet":{
+				"publishedAt":"2013-08-15T10:14:08.000Z",
+				"channelId":"UCsJ4blFwoWEcsdgYJcGDJng",
+				"title":"R 4.4 - Passing Additional Arguments Using an Ellipsis",
+				"description":"Sometimes it is useful to be able to pass any extra arguments to another function. For example, if a new plotting function is created that makes use of the function called plot(), it would be useful to be able to be able to specify additional details to plot() automatically. This is possible using an ellipsis, \"...\".",
+				"thumbnails":{
+					"default":{
+						"url":"https://i.ytimg.com/vi/O3Bf2hM_gNc/default.jpg",
+						"width":120,
+						"height":90
+					},
+					"medium":{
+						"url":"https://i.ytimg.com/vi/O3Bf2hM_gNc/mqdefault.jpg",
+						"width":320,
+						"height":180
+					},
+					"high":{
+						"url":"https://i.ytimg.com/vi/O3Bf2hM_gNc/hqdefault.jpg",
+						"width":480,
+						"height":360
+					},
+					"standard":{
+						"url":"https://i.ytimg.com/vi/O3Bf2hM_gNc/sddefault.jpg",
+						"width":640,
+						"height":480
+					},
+					"maxres":{
+						"url":"https://i.ytimg.com/vi/O3Bf2hM_gNc/maxresdefault.jpg",
+						"width":1280,
+						"height":720
+					}
+				},
+				"channelTitle":"ed bass",
+				"playlistId":"PLyYlLs02rgBYRWBzYpoHz7m2SE8mEZ68w",
+				"position":18,
+				"resourceId":{
+					"kind":"youtube#video",
+					"videoId":"O3Bf2hM_gNc"
+				}
+			},
+			"contentDetails":{
+				"videoId":"O3Bf2hM_gNc",
+				"videoPublishedAt":"2013-07-01T18:01:46.000Z"
+			}
+		},
+		{
+			"kind":"youtube#playlistItem",
+			"etag":"\"p4VTdlkQv3HQeTEaXgvLePAydmU/5XDCSW6b_o_W1Wf2QdTICR1pxKY\"",
+			"id":"UEx5WWxMczAycmdCWVJXQnpZcG9IejdtMlNFOG1FWjY4dy5ENDU4Q0M4RDExNzM1Mjcy",
+			"snippet":{
+				"publishedAt":"2013-08-15T10:14:19.000Z",
+				"channelId":"UCsJ4blFwoWEcsdgYJcGDJng",
+				"title":"R 4.5 - Make a Returned Result Invisible and Build Recursive Functions",
+				"description":"Use the invisible() function in place of return() in a function to prevent the output from printing to the user's screen but still allow the result to be stored into an R object. Additionally, when building a recursive function, use the Recall() function.",
+				"thumbnails":{
+					"default":{
+						"url":"https://i.ytimg.com/vi/CHmmHfJ8hCA/default.jpg",
+						"width":120,
+						"height":90
+					},
+					"medium":{
+						"url":"https://i.ytimg.com/vi/CHmmHfJ8hCA/mqdefault.jpg",
+						"width":320,
+						"height":180
+					},
+					"high":{
+						"url":"https://i.ytimg.com/vi/CHmmHfJ8hCA/hqdefault.jpg",
+						"width":480,
+						"height":360
+					},
+					"standard":{
+						"url":"https://i.ytimg.com/vi/CHmmHfJ8hCA/sddefault.jpg",
+						"width":640,
+						"height":480
+					},
+					"maxres":{
+						"url":"https://i.ytimg.com/vi/CHmmHfJ8hCA/maxresdefault.jpg",
+						"width":1280,
+						"height":720
+					}
+				},
+				"channelTitle":"ed bass",
+				"playlistId":"PLyYlLs02rgBYRWBzYpoHz7m2SE8mEZ68w",
+				"position":19,
+				"resourceId":{
+					"kind":"youtube#video",
+					"videoId":"CHmmHfJ8hCA"
+				}
+			},
+			"contentDetails":{
+				"videoId":"CHmmHfJ8hCA",
+				"videoPublishedAt":"2013-07-01T18:00:17.000Z"
+			}
+		},
+		{
+			"kind":"youtube#playlistItem",
+			"etag":"\"p4VTdlkQv3HQeTEaXgvLePAydmU/pOF_OXV-fuM7PpnxPUyydeIi9yk\"",
+			"id":"UEx5WWxMczAycmdCWVJXQnpZcG9IejdtMlNFOG1FWjY4dy4yMDhBMkNBNjRDMjQxQTg1",
+			"snippet":{
+				"publishedAt":"2013-08-15T10:14:32.000Z",
+				"channelId":"UCsJ4blFwoWEcsdgYJcGDJng",
+				"title":"R 4.6 - Custom Functions With apply()",
+				"description":"In the last section of videos, the apply() function was introduced. A prebuilt function is often used in this function, but it is also common to write a new function within apply() or to apply a custom function.",
+				"thumbnails":{
+					"default":{
+						"url":"https://i.ytimg.com/vi/H06_Ic_kDvI/default.jpg",
+						"width":120,
+						"height":90
+					},
+					"medium":{
+						"url":"https://i.ytimg.com/vi/H06_Ic_kDvI/mqdefault.jpg",
+						"width":320,
+						"height":180
+					},
+					"high":{
+						"url":"https://i.ytimg.com/vi/H06_Ic_kDvI/hqdefault.jpg",
+						"width":480,
+						"height":360
+					},
+					"standard":{
+						"url":"https://i.ytimg.com/vi/H06_Ic_kDvI/sddefault.jpg",
+						"width":640,
+						"height":480
+					},
+					"maxres":{
+						"url":"https://i.ytimg.com/vi/H06_Ic_kDvI/maxresdefault.jpg",
+						"width":1280,
+						"height":720
+					}
+				},
+				"channelTitle":"ed bass",
+				"playlistId":"PLyYlLs02rgBYRWBzYpoHz7m2SE8mEZ68w",
+				"position":20,
+				"resourceId":{
+					"kind":"youtube#video",
+					"videoId":"H06_Ic_kDvI"
+				}
+			},
+			"contentDetails":{
+				"videoId":"H06_Ic_kDvI",
+				"videoPublishedAt":"2013-07-01T17:57:22.000Z"
 			}
 		}
 	]

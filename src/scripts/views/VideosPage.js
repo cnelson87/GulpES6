@@ -22,7 +22,7 @@ const VideosPage = {
 			playlistId: Constants.youtubePlaylistId,
 			key: Constants.youtubeApiKey
 		};
-		let xhr = ajaxGet(Constants.urls.videosPlaylistDEV, 'json', params);
+		let xhr = ajaxGet(Constants.urls.videosPlaylistLIVE, 'json', params);
 
 		Promise.resolve(xhr)
 			.then((response) => {

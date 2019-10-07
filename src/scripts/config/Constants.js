@@ -62,11 +62,10 @@ const Constants = {
 		homepageContent: '/_assets/data/homepage/content.json'
 	},
 
-	// Starbucks Members playlist
-	youtubePlaylistId: 'PLLt7Vrrx9E2CZTd0A3Prj0CBGGE0dcdDe',
+	youtubePlaylistId: 'PLyYlLs02rgBYRWBzYpoHz7m2SE8mEZ68w',
 
-	// my 'chrisn.wearepop@gmail.com' key
-	youtubeApiKey: 'AIzaSyDpNKX16BmckoJ14akwMxk0mHuJWgvNuBI',
+	// 'cnelson87@gmail.com' key
+	youtubeApiKey: 'AIzaSyArsiakfiHbXRsHYv57Hti8dnzEJHRHV8Y',
 
 };
 

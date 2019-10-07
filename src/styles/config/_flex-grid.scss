@@ -10,12 +10,10 @@
 	margin: 0 -#{$gutter-half-width-mobile};
 	position: relative;
 
-	// Tablet+
 	@media (min-width: $breakpoint-tablet-min) {
 		margin: 0 -#{$gutter-half-width-tablet};
 	}
 
-	// Desktop+
 	@media (min-width: $breakpoint-desktop-min) {
 		margin: 0 -#{$gutter-half-width-desktop};
 	}
@@ -26,12 +24,10 @@
 	padding: 0 $gutter-half-width-mobile;
 	position: relative;
 
-	// Tablet+
 	@media (min-width: $breakpoint-tablet-min) {
 		padding: 0 $gutter-half-width-tablet;
 	}
 
-	// Desktop+
 	@media (min-width: $breakpoint-desktop-min) {
 		padding: 0 $gutter-half-width-desktop;
 	}

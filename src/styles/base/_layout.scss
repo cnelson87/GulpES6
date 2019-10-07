@@ -14,9 +14,17 @@ body {
 	@include clearfix;
 	background: $body-bg url($image-path+'/bg-main-mobi.jpg') no-repeat fixed center top;
 	background-size: cover;
+	// CAUTION: experimental, may need to remove overflow from html & body, may not work in Safari.
+	// use overscroll-behavior to stop the "bounce" or refresh effect
+	// when getting to the top or bottom scroll limits of the page.
+	// sass-lint:disable no-misspelled-properties
+	// overscroll-behavior: none;
+	// sass-lint:enable no-misspelled-properties
+
 	@media (min-width: $breakpoint-tablet-min) {
 		background-image: url($image-path+'/bg-main-tabt.jpg');
 	}
+
 	@media (min-width: $breakpoint-desktop-min) {
 		background-image: url($image-path+'/bg-main-desk.jpg');
 	}
@@ -44,9 +52,11 @@ body {
 .site-main {
 	flex-grow: 1;
 	padding: $vertical-pad-mobile 0;
+
 	@media (min-width: $breakpoint-tablet-min) {
 		padding: $vertical-pad-tablet 0;
 	}
+
 	@media (min-width: $breakpoint-desktop-min) {
 		padding: $vertical-pad-desktop 0;
 	}
@@ -57,24 +67,30 @@ body {
 	margin: 0 auto;
 	padding: $vertical-pad-mobile $gutter-width-mobile;
 	position: relative;
+
 	@media (min-width: $breakpoint-tablet-min) {
 		padding: $vertical-pad-mobile $gutter-width-tablet;
 	}
+
 	@media (min-width: $breakpoint-desktop-min) {
 		padding: $vertical-pad-mobile $gutter-width-desktop;
 	}
 }
 
 .content-container {
+
 	@media (max-width: $breakpoint-mobile-max) {
 		max-width: $mobile-container-max-width;
 	}
+
 	@media (min-width: $breakpoint-tablet-min) {
 		width: $tablet-container-width;
 	}
+
 	@media (min-width: $breakpoint-desktop-min) {
 		width: $desktop-container-width;
 	}
+
 	@media (min-width: $breakpoint-desktop-wide) {
 		width: $desktop-wide-container-width;
 	}
@@ -100,9 +116,11 @@ body {
 
 .content + .content {
 	margin-top: $vertical-pad-mobile;
+
 	@media (min-width: $breakpoint-tablet-min) {
 		margin-top: $vertical-pad-tablet;
 	}
+
 	@media (min-width: $breakpoint-desktop-min) {
 		margin-top: $vertical-pad-desktop;
 	}

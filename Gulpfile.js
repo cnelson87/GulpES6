@@ -17,7 +17,6 @@ const eslint = require('gulp-eslint');
 const fileinclude = require('gulp-file-include');
 const gulpif = require('gulp-if');
 const hbsfy = require('hbsfy');
-const livereload = require('gulp-livereload');
 const pathmodify = require('pathmodify');
 const rename = require('gulp-rename');
 const sass = require('gulp-sass');
@@ -71,7 +70,7 @@ gulp.task('assets', () => {
 	return (
 		gulp.src(SRC.ASSETS)
 			.pipe(out(DEST.ASSETS))
-			.pipe(gulpif(isDev(), livereload()))
+			.pipe(gulpif(isDev(), connect.reload()))
 	);
 });
 
@@ -79,7 +78,7 @@ gulp.task('data', () => {
 	return (
 		gulp.src(SRC.DATA)
 			.pipe(out(DEST.DATA))
-			.pipe(gulpif(isDev(), livereload()))
+			.pipe(gulpif(isDev(), connect.reload()))
 	);
 });
 
@@ -94,7 +93,7 @@ gulp.task('html', () => {
 				}
 			}))
 			.pipe(out())
-			.pipe(gulpif(isDev(), livereload()))
+			.pipe(gulpif(isDev(), connect.reload()))
 	);
 });
 
@@ -138,7 +137,7 @@ gulp.task('scripts', () => {
 			.pipe(gulpif(isProd(), uglify()))
 			.pipe(rename(APP_NAME+'.js'))
 			.pipe(out(DEST.SCRIPTS))
-			.pipe(gulpif(isDev(), livereload()))
+			.pipe(gulpif(isDev(), connect.reload()))
 	);
 });
 
@@ -152,7 +151,7 @@ gulp.task('styles', () => {
 			.pipe(gulpif(isProd(), cssmin()))
 			.pipe(rename(APP_NAME+'.css'))
 			.pipe(out(DEST.STYLES))
-			.pipe(gulpif(isDev(), livereload()))
+			.pipe(gulpif(isDev(), connect.reload()))
 	);
 });
 
@@ -165,7 +164,7 @@ gulp.task('print', () => {
 			.pipe(gulpif(isDev(), sourcemaps.write('.')))
 			.pipe(gulpif(isProd(), cssmin()))
 			.pipe(out(DEST.STYLES))
-			.pipe(gulpif(isDev(), livereload()))
+			.pipe(gulpif(isDev(), connect.reload()))
 	);
 });
 
@@ -183,7 +182,6 @@ gulp.task('server', gulp.series((done) => {
 		root: SITE_ROOT,
 		port: PORT,
 		livereload: {
-			enable: true,
 			port: LIVERELOAD_PORT
 		}
 	});
@@ -191,7 +189,6 @@ gulp.task('server', gulp.series((done) => {
 }));
 
 gulp.task('watch', gulp.series((done) => {
-	livereload.listen({ port: LIVERELOAD_PORT });
 	gulp.watch(SRC.ASSETS, gulp.series(['assets']));
 	gulp.watch(SRC.DATA, gulp.series(['data']));
 	gulp.watch(SRC.HTML, gulp.series(['html']));
