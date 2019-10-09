@@ -5,9 +5,9 @@ A Gulp-based ES6 sandbox. Scripts are compiled using Browserify and transpiled u
 
 ## Base Dependencies
 
-- Install Node.js: [NodeJS Installer](https://nodejs.org/)
-- Install Gulp-CLI: `npm install gulp-cli -g` (https://gulpjs.com/)
-- Optional / Recommended: Install Yarn: (https://yarnpkg.com/en/)
+- [Install Node.js:](https://nodejs.org/)
+- [Install Gulp-CLI:](https://gulpjs.com/), `npm install gulp-cli -g`
+- Optional / Recommended: [Install Yarn:](https://yarnpkg.com/en/)
 
 
 ## NPM Modules

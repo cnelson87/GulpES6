@@ -12,6 +12,10 @@
 .modal-window {
 	@include fixed-window;
 	overflow: hidden;
+	// use overscroll-behavior-y to stop page scrolling when the overlay's scroll limits are reached.
+	// sass-lint:disable no-misspelled-properties
+	overscroll-behavior-y: contain;
+	// sass-lint:enable no-misspelled-properties
 	z-index: $modal-zindex;
 }
 
