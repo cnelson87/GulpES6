@@ -18,7 +18,7 @@ const PromisePage = {
 		let xhrs = [
 			ajaxGet(Constants.urls.fibonacci),
 			ajaxGet(Constants.urls.primes),
-			ajaxGet(Constants.urls.sevens)
+			ajaxGet(Constants.urls.triangle)
 		];
 
 		Promise.all(xhrs)
