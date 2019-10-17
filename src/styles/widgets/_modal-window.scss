@@ -11,7 +11,7 @@
 // containing element for modal
 .modal-window {
 	@include fixed-window;
-	overflow: hidden;
+	overflow: auto;
 	// use overscroll-behavior-y to stop page scrolling when the overlay's scroll limits are reached.
 	// sass-lint:disable no-misspelled-properties
 	overscroll-behavior-y: contain;
