@@ -28,10 +28,10 @@ const breakpointChangeEvent = function() {
 		let newZI = $elIndicator.css('z-index');
 		if (newZI !== zIndex) {
 			zIndex = newZI;
+			updateState(zIndex);
 			let customChangeEvent = new CustomEvent(Events.BREAKPOINT_CHANGE, {
 				breakpoint: State.currentBreakpoint
 			});
-			updateState(zIndex);
 			window.dispatchEvent(customChangeEvent);
 		}
 	});

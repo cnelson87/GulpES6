@@ -3,9 +3,9 @@
 
 	DESCRIPTION: jQuery-UI DualDatepicker widget
 
-	VERSION: 0.1.0
+	VERSION: 0.2.0
 
-	USAGE: let myDualDatepicker = new DualDatepicker('Element', 'Options')
+	USAGE: const myDualDatepicker = new DualDatepicker('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
 
@@ -28,10 +28,10 @@ class DualDatepicker {
 		this.options = Object.assign({
 			selectorStartDatepicker: '.start-date',
 			selectorEndDatepicker: '.end-date',
-			bindEndDateToStartDate: true,			//end date can't be before start date
-			bindStartDateToEndDate: false,		//start date can't be after end date
-			minimumDateDiff: 1,						//min num of days between start and end dates
-			numberOfMonths: 2,						//num months to show
+			bindEndDateToStartDate: true, //end date can't be before start date
+			bindStartDateToEndDate: false, //start date can't be after end date
+			minimumDateDiff: 1, //min num of days between start and end dates
+			numberOfMonths: 2, //num months to show
 			customEventPrefix: 'DualDatepicker'
 		}, options);
 
@@ -59,7 +59,7 @@ class DualDatepicker {
 		const minimumDays = this.options.minimumDateDiff;
 		const numberOfMonths = this.options.numberOfMonths;
 
-		// let beforeShow = function(textbox, instance) {
+		// function beforeShow(textbox, instance) {
 		// 	console.log(textbox, instance);
 		// 	let $datepicker = $('#ui-datepicker-div');
 		// 	$datepicker.css({
@@ -71,13 +71,13 @@ class DualDatepicker {
 		// 	$datepicker.hide();
 		// };
 
-		let beforeShowDay = function(date) {
-			let start = $startDatepicker.datepicker('getDate');
-			let end = $endDatepicker.datepicker('getDate');
-			let dpStart = Date.parse(start);
-			let dpEnd = Date.parse(end);
-			let dpDate = Date.parse(date);
-			let data = ( dpDate >= dpStart && dpDate <= dpEnd ) ? [true, 'ui-state-active', ''] : [true, '', ''];
+		function beforeShowDay(date) {
+			const start = $startDatepicker.datepicker('getDate');
+			const end = $endDatepicker.datepicker('getDate');
+			const dpStart = Date.parse(start);
+			const dpEnd = Date.parse(end);
+			const dpDate = Date.parse(date);
+			const data = ( dpDate >= dpStart && dpDate <= dpEnd ) ? [true, 'ui-state-active', ''] : [true, '', ''];
 			return data;
 		};
 
@@ -119,10 +119,10 @@ class DualDatepicker {
 		// 1. Prevent visible blinking cursor through calendar on iOS.
 		// 2. Remove "done" form control on iOS.
 		// Note: may affect accessibility, may need to revisit
-		$startDatepicker.on('focus', function() {
+		$startDatepicker.on('focus', () => {
 			$startDatepicker.blur();
 		});
-		$endDatepicker.on('focus', function() {
+		$endDatepicker.on('focus', () => {
 			$endDatepicker.blur();
 		});
 

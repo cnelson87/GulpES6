@@ -3,9 +3,9 @@
 
 	DESCRIPTION: Subclass of ModalWindow GETs Ajax content
 
-	VERSION: 0.3.2
+	VERSION: 0.4.0
 
-	USAGE: let myAjaxModal = new AjaxModal('Options')
+	USAGE: const myAjaxModal = new AjaxModal('Options')
 		@param {jQuery Object}
 		@param {Object}
 
@@ -44,9 +44,9 @@ class AjaxModal extends ModalWindow {
 	}
 
 	getContent() {
-		let contentHTML = null;
-		let ajaxUrl = this.$activeTrigger.data('ajaxurl');
-		let targetID = ajaxUrl.split('#')[1] || null;
+		const ajaxUrl = this.$activeTrigger.data('ajaxurl');
+		const targetID = ajaxUrl.split('#')[1] || null;
+		let contentHTML;
 		let targetEl;
 
 		this.ajaxLoader.addLoader();

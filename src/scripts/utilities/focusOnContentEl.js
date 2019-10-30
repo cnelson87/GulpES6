@@ -10,16 +10,18 @@ import State from 'config/State';
 const focusOnContentEl = function($el, extraTopOffset = 0, scrollSpeed = Constants.timing.fast) {
 	const $window = $(window);
 	const $htmlBody = $('html, body');
-	let topOffset = State.topOffset + extraTopOffset;
-	let pnlTop = $el.offset().top;
-	let pnlHeight = $el.outerHeight();
-	let winTop = $window.scrollTop() + topOffset;
-	let winHeight = $window.height() - topOffset;
-	let scrollTop = pnlTop - topOffset;
+	const easing = 'easeOutCubic';
+	const topOffset = State.topOffset + extraTopOffset;
+	const pnlTop = $el.offset().top;
+	const pnlHeight = $el.outerHeight();
+	const winTop = $window.scrollTop() + topOffset;
+	const winHeight = $window.height() - topOffset;
+	const scrollTop = pnlTop - topOffset;
 	let tabindex = '-1';
-	let easing = 'easeOutCubic';
 	let $focusEl = $el.find(Constants.contentElements).filter(':visible').first();
-	if (!$focusEl.length) {$focusEl = $el;}
+	if (!$focusEl.length) {
+		$focusEl = $el;
+	}
 	if ($focusEl.attr('tabindex') === '0' ||
 		$focusEl.prop('tagName') === 'A' ||
 		$focusEl.prop('tagName') === 'BUTTON') {

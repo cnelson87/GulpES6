@@ -3,9 +3,9 @@
 
 	DESCRIPTION: Subclass of AjaxModal also POSTs Ajax data
 
-	VERSION: 0.1.2
+	VERSION: 0.2.0
 
-	USAGE: let myAjaxModalForm = new AjaxModalForm('Options')
+	USAGE: const myAjaxModalForm = new AjaxModalForm('Options')
 		@param {jQuery Object}
 		@param {Object}
 
@@ -13,12 +13,13 @@
 		- jquery 3.x
 		- AjaxModal.js
 		- ajaxPost.js
+		- serializeFormFields.js
 
 */
 
 import AjaxModal from 'widgets/AjaxModal';
 import ajaxPost from 'utilities/ajaxPost';
-// import serializeFormFields from 'utilities/serializeFormFields';
+import serializeFormFields from 'utilities/serializeFormFields';
 import modalFullscreenTemplate from 'templates/ModalFullscreenTemplate.hbs';
 
 class AjaxModalForm extends AjaxModal {
@@ -47,20 +48,20 @@ class AjaxModalForm extends AjaxModal {
 
 	onFormPost(event) {
 		event.preventDefault();
-		let postUrl = this.$form.attr('action');
-		// let data = serializeFormFields(this.$form);
-		let data = this.$form.serialize();
-		// console.log(data);
+		const postUrl = this.$form.attr('action');
+		const formData = serializeFormFields(this.$form);
+		// console.log(formData);
 
 		this.ajaxLoader.addLoader();
 
-		Promise.resolve(ajaxPost(postUrl, data)).then((response) => {
-			console.log('success:', response);
-			this.ajaxLoader.removeLoader();
-		}).catch((error) => {
-			console.log('error:', error);
-			this.ajaxLoader.removeLoader();
-		});
+		Promise.resolve(ajaxPost(postUrl, formData))
+			.then((response) => {
+				console.log('success:', response);
+				this.ajaxLoader.removeLoader();
+			}).catch((error) => {
+				console.log('error:', error);
+				this.ajaxLoader.removeLoader();
+			});
 
 	}
 

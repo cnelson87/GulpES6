@@ -5,7 +5,7 @@
 
 	VERSION: 0.1.0
 
-	USAGE: let myModalSubclass = new ModalSubclass('Options')
+	USAGE: const myModalSubclass = new ModalSubclass('Options')
 		@param {jQuery Object}
 		@param {Object}
 

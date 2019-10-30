@@ -5,7 +5,7 @@
 
 	VERSION: 0.2.5
 
-	USAGE: let myHeightEqualizer = new HeightEqualizer('Element', 'Options')
+	USAGE: const myHeightEqualizer = new HeightEqualizer('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
 

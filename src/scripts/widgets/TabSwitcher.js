@@ -3,9 +3,9 @@
 
 	DESCRIPTION: Basic TabSwitcher widget
 
-	VERSION: 0.4.0
+	VERSION: 0.5.0
 
-	USAGE: let myTabSwitcher = new TabSwitcher('Element', 'Options')
+	USAGE: const myTabSwitcher = new TabSwitcher('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
 
@@ -28,7 +28,7 @@ class TabSwitcher {
 	}
 
 	initialize($el, options) {
-		let urlHash = location.hash.substring(1) || null;
+		const urlHash = location.hash.substring(1) || null;
 
 		// defaults
 		this.$el = $el;
@@ -58,7 +58,7 @@ class TabSwitcher {
 		this._length = this.$panels.length;
 		if (this.options.initialIndex >= this._length) {this.options.initialIndex = 0;}
 		this.heightEqualizer = null;
-		this.selectedLabel = `<span class="offscreen selected-text"> - ${this.options.selectedText}</span>`;
+		this.selectedLabel = `<span class="sr-only selected-text"> - ${this.options.selectedText}</span>`;
 
 		// state
 		this.state = {
@@ -93,35 +93,36 @@ class TabSwitcher {
 **/
 
 	initDOM() {
-		let $activeTab = this.$tabs.eq(this.state.currentIndex);
-		let $activePanel = this.$panels.eq(this.state.currentIndex);
+		const { classInitialized, selectorFocusEls, selectorPanels, equalizeHeight, autoRotate, autoRotateInterval, maxAutoRotations } = this.options;
+		const $activeTab = this.$tabs.eq(this.state.currentIndex);
+		const $activePanel = this.$panels.eq(this.state.currentIndex);
 
-		this.$el.attr({'role':'tablist', 'aria-live':'polite'});
-		this.$tabs.attr({'role':'tab', 'tabindex':'0', 'aria-selected':'false'});
-		this.$panels.attr({'role':'tabpanel', 'aria-hidden':'true'});
-		this.$panels.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
+		this.$el.attr({'role': 'tablist', 'aria-live': 'polite'});
+		this.$tabs.attr({'role': 'tab', 'tabindex': '0', 'aria-selected': 'false'});
+		this.$panels.attr({'role': 'tabpanel', 'aria-hidden': 'true'});
+		this.$panels.find(selectorFocusEls).attr({'tabindex': '-1'});
 
 		this.activateTab($activeTab);
 
 		this.activatePanel($activePanel);
 
 		// equalize items height
-		if (this.options.equalizeHeight) {
+		if (equalizeHeight) {
 			this.heightEqualizer = new HeightEqualizer(this.$el, {
-				selectorItems: this.options.selectorPanels,
+				selectorItems: selectorPanels,
 				setParentHeight: false
 			});
 		}
 
 		// auto-rotate items
-		if (this.options.autoRotate) {
-			this.autoRotationCounter = this._length * this.options.maxAutoRotations;
+		if (autoRotate) {
+			this.autoRotationCounter = this._length * maxAutoRotations;
 			this.setAutoRotation = setInterval(() => {
 				this.autoRotation();
-			}, this.options.autoRotateInterval);
+			}, autoRotateInterval);
 		}
 
-		this.$el.addClass(this.options.classInitialized);
+		this.$el.addClass(classInitialized);
 
 		// initial focus on content
 		this.$window.on('load', () => {
@@ -133,15 +134,16 @@ class TabSwitcher {
 	}
 
 	uninitDOM() {
-		this.$el.removeAttr('role aria-live').removeClass(this.options.classInitialized);
-		this.$tabs.removeAttr('role tabindex aria-selected').removeClass(this.options.classActive);
-		this.$panels.removeAttr('role aria-hidden').removeClass(this.options.classActive);
-		this.$panels.find(this.options.selectorFocusEls).removeAttr('tabindex');
+		const { classInitialized, classActive, selectorFocusEls, equalizeHeight, autoRotate } = this.options;
+		this.$el.removeAttr('role aria-live').removeClass(classInitialized);
+		this.$tabs.removeAttr('role tabindex aria-selected').removeClass(classActive);
+		this.$panels.removeAttr('role aria-hidden').removeClass(classActive);
+		this.$panels.find(selectorFocusEls).removeAttr('tabindex');
 		this.$tabs.find('.selected-text').remove();
-		if (this.options.equalizeHeight) {
+		if (equalizeHeight) {
 			this.heightEqualizer.unInitialize();
 		}
-		if (this.options.autoRotate) {
+		if (autoRotate) {
 			clearInterval(this.setAutoRotation);
 		}
 	}
@@ -185,20 +187,22 @@ class TabSwitcher {
 	__clickTab(event) {
 		event.preventDefault();
 		if ($(event.target).hasClass('ignore-click')) {return;}
-		let index = this.$tabs.index(event.currentTarget);
-		let $currentTab = this.$tabs.eq(index);
-		let $currentPanel = this.$panels.eq(index);
+		const { classDisabled, autoRotate } = this.options;
+		const index = this.$tabs.index(event.currentTarget);
+		const $currentTab = this.$tabs.eq(index);
+		const $currentPanel = this.$panels.eq(index);
 
-		if (this.state.isAnimating || $currentTab.hasClass(this.options.classDisabled)) {return;}
+		if (this.state.isAnimating || $currentTab.hasClass(classDisabled)) {return;}
 
-		if (this.options.autoRotate) {
+		if (autoRotate) {
 			clearInterval(this.setAutoRotation);
 			this.options.autoRotate = false;
 		}
 
 		if (this.state.currentIndex === index) {
 			this.focusOnPanel($currentPanel);
-		} else {
+		}
+		else {
 			this.state.previousIndex = this.state.currentIndex;
 			this.state.currentIndex = index;
 			this.switchPanels(event);
@@ -208,7 +212,7 @@ class TabSwitcher {
 
 	__keydownTab(event) {
 		const { keys } = Constants;
-		let keyCode = event.which;
+		const keyCode = event.which;
 		let index = this.$tabs.index(event.currentTarget);
 
 		// left/up arrow; emulate tabbing to previous tab
@@ -255,10 +259,12 @@ class TabSwitcher {
 **/
 
 	switchPanels(event) {
-		let $inactiveTab = this.$tabs.eq(this.state.previousIndex);
-		let $activeTab = this.$tabs.eq(this.state.currentIndex);
-		let $inactivePanel = this.$panels.eq(this.state.previousIndex);
-		let $activePanel = this.$panels.eq(this.state.currentIndex);
+		const { animDuration, customEventPrefix } = this.options;
+		const { currentIndex, previousIndex } = this.state;
+		const $inactiveTab = this.$tabs.eq(previousIndex);
+		const $activeTab = this.$tabs.eq(currentIndex);
+		const $inactivePanel = this.$panels.eq(previousIndex);
+		const $activePanel = this.$panels.eq(currentIndex);
 
 		this.state.isAnimating = true;
 
@@ -268,44 +274,44 @@ class TabSwitcher {
 		this.deactivatePanel($inactivePanel);
 		this.activatePanel($activePanel);
 
-		$.event.trigger(`${this.options.customEventPrefix}:panelPreClose`, {inactivePanel: $inactivePanel});
-		$.event.trigger(`${this.options.customEventPrefix}:panelPreOpen`, {activePanel: $activePanel});
+		$.event.trigger(`${customEventPrefix}:panelPreClose`, {inactivePanel: $inactivePanel});
+		$.event.trigger(`${customEventPrefix}:panelPreOpen`, {activePanel: $activePanel});
 
 		setTimeout(() => {
 			this.state.isAnimating = false;
 			if (!!event) {
 				this.focusOnPanel($activePanel);
 			}
-			$.event.trigger(`${this.options.customEventPrefix}:panelClosed`, {inactivePanel: $inactivePanel});
-			$.event.trigger(`${this.options.customEventPrefix}:panelOpened`, {activePanel: $activePanel});
-		}, this.options.animDuration);
+			$.event.trigger(`${customEventPrefix}:panelClosed`, {inactivePanel: $inactivePanel});
+			$.event.trigger(`${customEventPrefix}:panelOpened`, {activePanel: $activePanel});
+		}, animDuration);
 
 		this.fireTracking();
 	}
 
 	deactivateTab($tab) {
-		$tab.removeClass(this.options.classActive).attr({'aria-selected':'false'});
+		$tab.removeClass(this.options.classActive).attr({'aria-selected': 'false'});
 		$tab.find('.selected-text').remove();
 	}
 
 	activateTab($tab) {
-		$tab.addClass(this.options.classActive).attr({'aria-selected':'true'});
+		$tab.addClass(this.options.classActive).attr({'aria-selected': 'true'});
 		$tab.append(this.selectedLabel);
 	}
 
 	deactivatePanel($panel) {
-		$panel.removeClass(this.options.classActive).attr({'aria-hidden':'true'});
-		$panel.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
+		$panel.removeClass(this.options.classActive).attr({'aria-hidden': 'true'});
+		$panel.find(this.options.selectorFocusEls).attr({'tabindex': '-1'});
 	}
 
 	activatePanel($panel) {
-		$panel.addClass(this.options.classActive).attr({'aria-hidden':'false'});
-		$panel.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
+		$panel.addClass(this.options.classActive).attr({'aria-hidden': 'false'});
+		$panel.find(this.options.selectorFocusEls).attr({'tabindex': '0'});
 	}
 
 	focusOnPanel($panel) {
-		let index = this.$panels.index($panel);
-		let extraTopOffset = this.$tabs.eq(index).outerHeight();
+		const index = this.$panels.index($panel);
+		const extraTopOffset = this.$tabs.eq(index).outerHeight();
 		focusOnContentEl($panel, extraTopOffset);
 	}
 

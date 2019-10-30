@@ -34,9 +34,9 @@ const Application = {
 
 	initialize() {
 		// console.log('Application:initialize');
-		let urlHash = location.hash.substring(1) || null;
-		let hashParams = urlHash ? getQueryStringParams(urlHash) : null;
-		let queryParams = getQueryStringParams();
+		const urlHash = location.hash.substring(1) || null;
+		const hashParams = urlHash ? getQueryStringParams(urlHash) : null;
+		const queryParams = getQueryStringParams();
 
 		this.$window = $(window);
 		this.$document = $(document);

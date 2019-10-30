@@ -7,8 +7,8 @@
 
 const getQueryStringParams = function(str) {
 	//ex: '?foo=bar&abc=123&bool=true&quxzot'
-	let qs = str || decodeURIComponent(location.search.substring(1)); //decode and remove leading '?'
-	let pairs = qs.split('&'); //['foo=bar','abc=123','bool=true','quxzot']
+	const qs = str || decodeURIComponent(location.search.substring(1)); //decode and remove leading '?'
+	const pairs = qs.split('&'); //['foo=bar','abc=123','bool=true','quxzot']
 	let result = {};
 	if (!qs) {return;}
 	pairs.forEach(function(pair) {

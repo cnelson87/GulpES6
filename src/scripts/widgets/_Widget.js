@@ -5,7 +5,7 @@
 
 	VERSION: 0.1.0
 
-	USAGE: let myWidget = new Widget('Element', 'Options')
+	USAGE: const myWidget = new Widget('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
 

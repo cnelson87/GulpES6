@@ -3,9 +3,9 @@
 
 	DESCRIPTION: A single Accordion item
 
-	VERSION: 0.4.0
+	VERSION: 0.5.0
 
-	USAGE: let myAccordion = new MiniAccordion('Element', 'Options')
+	USAGE: const myAccordion = new MiniAccordion('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
 
@@ -27,7 +27,7 @@ class MiniAccordion {
 	}
 
 	initialize($el, options) {
-		let urlHash = location.hash.substring(1) || null;
+		const urlHash = location.hash.substring(1) || null;
 
 		// defaults
 		this.$el = $el;
@@ -49,7 +49,7 @@ class MiniAccordion {
 		this.$panel = this.$el.find(this.options.selectorPanels);
 
 		// properties
-		this.selectedLabel = `<span class="offscreen selected-text"> - ${this.options.selectedText}</span>`;
+		this.selectedLabel = `<span class="sr-only selected-text"> - ${this.options.selectedText}</span>`;
 
 		// state
 		this.state = {
@@ -79,10 +79,10 @@ class MiniAccordion {
 
 	initDOM() {
 
-		this.$el.attr({'role':'tablist', 'aria-live':'polite'});
-		this.$tab.attr({'role':'tab', 'tabindex':'0', 'aria-selected':'false'});
-		this.$panel.attr({'role':'tabpanel', 'aria-hidden':'true'});
-		this.$panel.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
+		this.$el.attr({'role': 'tablist', 'aria-live': 'polite'});
+		this.$tab.attr({'role': 'tab', 'tabindex': '0', 'aria-selected': 'false'});
+		this.$panel.attr({'role': 'tabpanel', 'aria-hidden': 'true'});
+		this.$panel.find(this.options.selectorFocusEls).attr({'tabindex': '-1'});
 
 		if (this.state.isActive) {
 			this.activateTab();
@@ -148,7 +148,7 @@ class MiniAccordion {
 
 	__keydownTab(event) {
 		const { keys } = Constants;
-		let keyCode = event.which;
+		const keyCode = event.which;
 
 		// spacebar; activate tab click
 		if (keyCode === keys.space) {
@@ -164,7 +164,8 @@ class MiniAccordion {
 **/
 
 	animateClosed() {
-		let self = this;
+		const self = this;
+		const { animDuration, animEasing, customEventPrefix } = this.options;
 
 		this.state.isAnimating = true;
 
@@ -174,13 +175,13 @@ class MiniAccordion {
 
 		this.deactivatePanel();
 
-		$.event.trigger(`${this.options.customEventPrefix}:panelPreClose`, [this.$panel]);
+		$.event.trigger(`${customEventPrefix}:panelPreClose`, [this.$panel]);
 
-		TweenMax.to(this.$panel, this.options.animDuration, {
+		TweenMax.to(this.$panel, animDuration, {
 			height: 0,
-			ease: this.options.animEasing,
+			ease: animEasing,
 			onUpdate: function() {
-				$.event.trigger(`${self.options.customEventPrefix}:panelClosing`, [self.$panel]);
+				$.event.trigger(`${customEventPrefix}:panelClosing`, [self.$panel]);
 			},
 			onComplete: function() {
 				self.state.isAnimating = false;
@@ -189,15 +190,16 @@ class MiniAccordion {
 					display: 'none',
 					height: 'auto'
 				});
-				$.event.trigger(`${self.options.customEventPrefix}:panelClosed`, [self.$panel]);
+				$.event.trigger(`${customEventPrefix}:panelClosed`, [self.$panel]);
 			}
 		});
 
 	}
 
 	animateOpen() {
-		let self = this;
-		let panelHeight = this.$panel.outerHeight();
+		const self = this;
+		const { animDuration, animEasing, customEventPrefix } = this.options;
+		const panelHeight = this.$panel.outerHeight();
 
 		this.state.isAnimating = true;
 
@@ -207,14 +209,14 @@ class MiniAccordion {
 
 		this.activatePanel();
 
-		$.event.trigger(`${this.options.customEventPrefix}:panelPreOpen`, [this.$panel]);
+		$.event.trigger(`${customEventPrefix}:panelPreOpen`, [this.$panel]);
 
-		TweenMax.to(this.$panel, this.options.animDuration, {
+		TweenMax.to(this.$panel, animDuration, {
 			display: 'block',
 			height: panelHeight,
-			ease: this.options.animEasing,
+			ease: animEasing,
 			onUpdate: function() {
-				$.event.trigger(`${self.options.customEventPrefix}:panelOpening`, [self.$panel]);
+				$.event.trigger(`${customEventPrefix}:panelOpening`, [self.$panel]);
 			},
 			onComplete: function() {
 				self.state.isAnimating = false;
@@ -222,7 +224,7 @@ class MiniAccordion {
 				TweenMax.set(self.$panel, {
 					height: 'auto'
 				});
-				$.event.trigger(`${self.options.customEventPrefix}:panelOpened`, [self.$panel]);
+				$.event.trigger(`${customEventPrefix}:panelOpened`, [self.$panel]);
 			}
 		});
 
@@ -230,27 +232,27 @@ class MiniAccordion {
 	}
 
 	deactivateTab() {
-		this.$tab.removeClass(this.options.classActive).attr({'aria-selected':'false'});
+		this.$tab.removeClass(this.options.classActive).attr({'aria-selected': 'false'});
 		this.$tab.find('.selected-text').remove();
 	}
 
 	activateTab() {
-		this.$tab.addClass(this.options.classActive).attr({'aria-selected':'true'});
+		this.$tab.addClass(this.options.classActive).attr({'aria-selected': 'true'});
 		this.$tab.append(this.selectedLabel);
 	}
 
 	deactivatePanel() {
-		this.$panel.removeClass(this.options.classActive).attr({'aria-hidden':'true'});
-		this.$panel.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
+		this.$panel.removeClass(this.options.classActive).attr({'aria-hidden': 'true'});
+		this.$panel.find(this.options.selectorFocusEls).attr({'tabindex': '-1'});
 	}
 
 	activatePanel() {
-		this.$panel.addClass(this.options.classActive).attr({'aria-hidden':'false'});
-		this.$panel.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
+		this.$panel.addClass(this.options.classActive).attr({'aria-hidden': 'false'});
+		this.$panel.find(this.options.selectorFocusEls).attr({'tabindex': '0'});
 	}
 
 	focusOnPanel($panel) {
-		let extraTopOffset = this.$tab.outerHeight();
+		const extraTopOffset = this.$tab.outerHeight();
 		focusOnContentEl($panel, extraTopOffset);
 	}
 

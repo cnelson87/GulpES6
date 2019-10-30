@@ -3,9 +3,9 @@
 
 	DESCRIPTION: Auto show / hide a list of elements
 
-	VERSION: 0.2.0
+	VERSION: 0.2.1
 
-	USAGE: let myAutoRotator = new AutoRotator('Element', 'Options')
+	USAGE: const myAutoRotator = new AutoRotator('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
 
@@ -61,7 +61,7 @@ class AutoRotator {
 	}
 
 	setDOM() {
-		let $activeItem = $(this.$items[this.state.currentIndex]);
+		const $activeItem = $(this.$items[this.state.currentIndex]);
 
 		TweenMax.set(this.$items, {
 			left: '100%',
@@ -89,8 +89,8 @@ class AutoRotator {
 	}
 
 	updateDOM() {
-		let $activeItem = this.$items.eq(this.state.currentIndex);
-		let $inactiveItem = this.$items.eq(this.state.previousIndex);
+		const $activeItem = this.$items.eq(this.state.currentIndex);
+		const $inactiveItem = this.$items.eq(this.state.previousIndex);
 
 		TweenMax.set($inactiveItem, {
 			zIndex: 8

@@ -3,9 +3,9 @@
 
 	DESCRIPTION: A range slider widget for selecting a date or time, useful for small ranges, use DualDatepicker for large ranges.
 
-	VERSION: 0.1.2
+	VERSION: 0.2.0
 
-	USAGE: let myDateRangeSlider = new DateRangeSlider('Element', 'Options')
+	USAGE: const myDateRangeSlider = new DateRangeSlider('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
 
@@ -71,7 +71,7 @@ class DateRangeSlider {
 		const slider = this.$slider[0]; // native slider element
 		const { keys } = Constants;
 
-		let formateDate = (date) => {
+		const formateDate = (date) => {
 			return moment(date).format(this.dateFormat);
 		};
 
@@ -84,15 +84,15 @@ class DateRangeSlider {
 			step: this.steps,
 			start: [this.start.getTime(), this.end.getTime()]
 		});
-		slider.noUiSlider.on('update', function(values, index) {
+		slider.noUiSlider.on('update', (values, index) => {
 			this.$outputs.eq(index).html(formateDate(new Date(+values[index])));
-		}.bind(this));
-		slider.noUiSlider.on('change', function(values, index) {
+		});
+		slider.noUiSlider.on('change', (values, index) => {
 			this.$fields.eq(index).val(new Date(+values[index])).change();
-		}.bind(this));
+		});
 		this.$fields.eq(0).val(this.start);
 		this.$fields.eq(1).val(this.end);
-		// this.$fields.on('change', function(event){
+		// this.$fields.on('change', (event) => {
 		// 	console.log('date change:', $(event.currentTarget).val());
 		// });
 

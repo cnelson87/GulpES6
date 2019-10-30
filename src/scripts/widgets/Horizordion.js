@@ -3,9 +3,9 @@
 
 	DESCRIPTION: A horizontal Accordion
 
-	VERSION: 0.2.0
+	VERSION: 0.3.0
 
-	USAGE: let myHorizordion = new Horizordion('Element', 'Options')
+	USAGE: const myHorizordion = new Horizordion('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
 
@@ -26,7 +26,7 @@ class Horizordion {
 	}
 
 	initialize($el, options) {
-		let urlHash = location.hash.substring(1) || null;
+		const urlHash = location.hash.substring(1) || null;
 
 		// defaults
 		this.$el = $el;
@@ -52,7 +52,7 @@ class Horizordion {
 		// properties
 		this._length = this.$panels.length;
 		if (this.options.initialIndex >= this._length) {this.options.initialIndex = 0;}
-		this.selectedLabel = `<span class="offscreen selected-text"> - ${this.options.selectedText}</span>`;
+		this.selectedLabel = `<span class="sr-only selected-text"> - ${this.options.selectedText}</span>`;
 
 		// state
 		this.state = {
@@ -87,20 +87,21 @@ class Horizordion {
 **/
 
 	initDOM() {
-		let highIndex = 9999;
-		let $activeTab = this.$tabs.eq(this.state.currentIndex === -1 ? highIndex : this.state.currentIndex);
-		let $activePanel = this.$panels.eq(this.state.currentIndex === -1 ? highIndex : this.state.currentIndex);
+		const { classInitialized, selectorContent, selectorFocusEls } = this.options;
+		const highIndex = 9999;
+		const $activeTab = this.$tabs.eq(this.state.currentIndex === -1 ? highIndex : this.state.currentIndex);
+		const $activePanel = this.$panels.eq(this.state.currentIndex === -1 ? highIndex : this.state.currentIndex);
 
-		this.$el.attr({'role':'tablist', 'aria-live':'polite'});
-		this.$tabs.attr({'role':'tab', 'tabindex':'0', 'aria-selected':'false'});
-		this.$panels.attr({'role':'tabpanel', 'aria-hidden':'true'});
-		this.$panels.find(this.options.selectorContent).find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
+		this.$el.attr({'role': 'tablist', 'aria-live': 'polite'});
+		this.$tabs.attr({'role': 'tab', 'tabindex': '0', 'aria-selected': 'false'});
+		this.$panels.attr({'role': 'tabpanel', 'aria-hidden': 'true'});
+		this.$panels.find(selectorContent).find(selectorFocusEls).attr({'tabindex': '-1'});
 
 		this.activateTab($activeTab);
 
 		this.activatePanel($activePanel);
 
-		this.$el.addClass(this.options.classInitialized);
+		this.$el.addClass(classInitialized);
 
 		// initial focus on content
 		this.$window.on('load', () => {
@@ -112,21 +113,22 @@ class Horizordion {
 	}
 
 	uninitDOM() {
-		this.$el.removeAttr('role aria-live').removeClass(this.options.classInitialized);
-		this.$tabs.removeAttr('role tabindex aria-selected').removeClass(this.options.classActive);
-		this.$panels.removeAttr('role aria-hidden').removeClass(this.options.classActive);
-		this.$panels.find(this.options.selectorContent).find(this.options.selectorFocusEls).removeAttr('tabindex');
+		const { classInitialized, classActive, selectorContent, selectorFocusEls } = this.options;
+		this.$el.removeAttr('role aria-live').removeClass(classInitialized);
+		this.$tabs.removeAttr('role tabindex aria-selected').removeClass(classActive);
+		this.$panels.removeAttr('role aria-hidden').removeClass(classActive);
+		this.$panels.find(selectorContent).find(selectorFocusEls).removeAttr('tabindex');
 		this.$tabs.find('.selected-text').remove();
 	}
 
 	_addEventListeners() {
-		this.$window.on('resize', this.__onWindowResize.bind(this));
+		// this.$window.on('resize', this.__onWindowResize.bind(this));
 		this.$tabs.on('click', this.__clickTab.bind(this));
 		this.$tabs.on('keydown', this.__keydownTab.bind(this));
 	}
 
 	_removeEventListeners() {
-		this.$window.off('resize', this.__onWindowResize.bind(this));
+		// this.$window.off('resize', this.__onWindowResize.bind(this));
 		this.$tabs.off('click', this.__clickTab.bind(this));
 		this.$tabs.off('keydown', this.__keydownTab.bind(this));
 	}
@@ -136,32 +138,32 @@ class Horizordion {
 *	Event Handlers
 **/
 
-	__onWindowResize(event) {
-		console.log('__onWindowResize');
-	}
+	// __onWindowResize(event) {
+	//
+	// }
 
 	__clickTab(event) {
 		event.preventDefault();
-		let index = this.$tabs.index(event.currentTarget);
-		let $currentTab = this.$tabs.eq(index);
-		// let $currentPanel = this.$panels.eq(index);
+		const { classDisabled } = this.options;
+		const index = this.$tabs.index(event.currentTarget);
+		const $currentTab = this.$tabs.eq(index);
 
-		if (this.isAnimating || $currentTab.hasClass(this.options.classDisabled)) {return;}
+		if (this.isAnimating || $currentTab.hasClass(classDisabled)) {return;}
 
 		// currentIndex is open
 		if (this.state.currentIndex === index) {
 			this.state.previousIndex = null;
 			this.state.currentIndex = -1;
 			this.closePanel(index);
-
+		}
 		// currentIndex is -1, all are closed
-	} else if (this.state.currentIndex === -1) {
+		else if (this.state.currentIndex === -1) {
 			this.state.previousIndex = null;
 			this.state.currentIndex = index;
-			this.openPanel(index);
-
+			this.openPanel(this.state.currentIndex);
+		}
 		// default behaviour
-		} else {
+		else {
 			this.state.previousIndex = this.state.currentIndex;
 			this.state.currentIndex = index;
 			this.closePanel(this.state.previousIndex);
@@ -172,7 +174,7 @@ class Horizordion {
 
 	__keydownTab(event) {
 		const { keys } = Constants;
-		let keyCode = event.which;
+		const keyCode = event.which;
 		let index = this.$tabs.index(event.currentTarget);
 
 		// left/up arrow; emulate tabbing to previous tab
@@ -219,8 +221,8 @@ class Horizordion {
 **/
 
 	closePanel(index) {
-		let $inactiveTab = this.$tabs.eq(index);
-		let $inactivePanel = this.$panels.eq(index);
+		const $inactiveTab = this.$tabs.eq(index);
+		const $inactivePanel = this.$panels.eq(index);
 
 		this.isAnimating = true;
 
@@ -236,8 +238,8 @@ class Horizordion {
 	}
 
 	openPanel(index) {
-		let $activeTab = this.$tabs.eq(index);
-		let $activePanel = this.$panels.eq(index);
+		const $activeTab = this.$tabs.eq(index);
+		const $activePanel = this.$panels.eq(index);
 
 		this.isAnimating = true;
 
@@ -253,23 +255,23 @@ class Horizordion {
 	}
 
 	deactivateTab($tab) {
-		$tab.removeClass(this.options.classActive).attr({'aria-selected':'false'});
+		$tab.removeClass(this.options.classActive).attr({'aria-selected': 'false'});
 		$tab.find('.selected-text').remove();
 	}
 
 	activateTab($tab) {
-		$tab.addClass(this.options.classActive).attr({'aria-selected':'true'});
+		$tab.addClass(this.options.classActive).attr({'aria-selected': 'true'});
 		$tab.append(this.selectedLabel);
 	}
 
 	deactivatePanel($panel) {
-		$panel.removeClass(this.options.classActive).attr({'aria-hidden':'true'});
-		$panel.find(this.options.selectorContent).find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
+		$panel.removeClass(this.options.classActive).attr({'aria-hidden': 'true'});
+		$panel.find(this.options.selectorContent).find(this.options.selectorFocusEls).attr({'tabindex': '-1'});
 	}
 
 	activatePanel($panel) {
-		$panel.addClass(this.options.classActive).attr({'aria-hidden':'false'});
-		$panel.find(this.options.selectorContent).find(this.options.selectorFocusEls).attr({'tabindex':'0'});
+		$panel.addClass(this.options.classActive).attr({'aria-hidden': 'false'});
+		$panel.find(this.options.selectorContent).find(this.options.selectorFocusEls).attr({'tabindex': '0'});
 	}
 
 	focusOnPanel($panel) {
@@ -278,7 +280,7 @@ class Horizordion {
 
 	fireTracking() {
 		if (!this.options.enableTracking) {return;}
-		let $activePanel = this.$panels.eq(this.state.currentIndex);
+		const $activePanel = this.$panels.eq(this.state.currentIndex);
 		$.event.trigger(Events.TRACKING_STATE, [$activePanel]);
 	}
 

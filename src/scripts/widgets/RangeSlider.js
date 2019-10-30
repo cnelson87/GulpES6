@@ -3,9 +3,9 @@
 
 	DESCRIPTION: A range slider widget
 
-	VERSION: 0.1.2
+	VERSION: 0.2.0
 
-	USAGE: let myRangeSlider = new RangeSlider('Element', 'Options')
+	USAGE: const myRangeSlider = new RangeSlider('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
 
@@ -70,15 +70,15 @@ class RangeSlider {
 			step: this.steps,
 			start: [this.start, this.end]
 		});
-		slider.noUiSlider.on('update', function(values, index) {
+		slider.noUiSlider.on('update', (values, index) => {
 			this.$outputs.eq(index).html(+values[index]);
-		}.bind(this));
-		slider.noUiSlider.on('change', function(values, index) {
+		});
+		slider.noUiSlider.on('change', (values, index) => {
 			this.$fields.eq(index).val(+values[index]).change();
-		}.bind(this));
+		});
 		this.$fields.eq(0).val(this.start);
 		this.$fields.eq(1).val(this.end);
-		// this.$fields.on('change', function(event){
+		// this.$fields.on('change', (event) => {
 		// 	console.log('on change:', $(event.currentTarget).val());
 		// });
 

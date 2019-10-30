@@ -3,9 +3,9 @@
 
 	DESCRIPTION: Subclass of TabSwitcher uses a select dropdown instead of tabs
 
-	VERSION: 0.2.0
+	VERSION: 0.3.0
 
-	USAGE: let mySelectTabSwitcher = new SelectTabSwitcher('Element', 'Options')
+	USAGE: const mySelectTabSwitcher = new SelectTabSwitcher('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
 
@@ -52,14 +52,15 @@ class SelectTabSwitcher extends TabSwitcher {
 **/
 
 	__changeSelect(event) {
-		let index = this.$select.prop('selectedIndex');
-		let $currentPanel = this.$panels.eq(index);
+		const index = this.$select.prop('selectedIndex');
+		const $currentPanel = this.$panels.eq(index);
 
 		if (this.state.isAnimating) {return;}
 
 		if (this.state.currentIndex === index) {
 			this.focusOnPanel($currentPanel);
-		} else {
+		}
+		else {
 			this.state.previousIndex = this.state.currentIndex;
 			this.state.currentIndex = index;
 			this.switchPanels(event);

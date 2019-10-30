@@ -3,9 +3,9 @@
 
 	DESCRIPTION: Base class to create modal windows
 
-	VERSION: 0.3.2
+	VERSION: 0.4.0
 
-	USAGE: let myModalWindow = new ModalWindow('Options')
+	USAGE: const myModalWindow = new ModalWindow('Options')
 		@param {jQuery Object}
 		@param {Object}
 
@@ -76,7 +76,7 @@ class ModalWindow {
 		this.$overlay = this.$modalWindow.find(this.options.selectorOverlay);
 
 		this.$modal = this.$modalWindow.find(this.options.selectorModal);
-		this.$modal.attr({'aria-live':'polite'});
+		this.$modal.attr({'aria-live': 'polite'});
 
 		this.$content = this.$modal.find(this.options.selectorContent);
 
@@ -147,31 +147,32 @@ class ModalWindow {
 **/
 
 	openModal() {
+		const { activeClass, activeBodyClass, animDuration, customEventPrefix } = this.options;
 		this.isModalActivated = true;
 		this.windowScrollTop = this.$window.scrollTop();
 
 		this.getContent();
 
-		this.$html.addClass(this.options.activeBodyClass);
-		this.$body.addClass(this.options.activeBodyClass);
+		this.$html.addClass(activeBodyClass);
+		this.$body.addClass(activeBodyClass);
 		this.$modalWindow.appendTo(this.$body);
-		this.$overlay.addClass(this.options.activeClass);
-		this.$modal.addClass(this.options.activeClass);
+		this.$overlay.addClass(activeClass);
+		this.$modal.addClass(activeClass);
 
-		$.event.trigger(`${this.options.customEventPrefix}:modalPreOpen`, [this.$modal]);
+		$.event.trigger(`${customEventPrefix}:modalPreOpen`, [this.$modal]);
 
 		setTimeout(() => {
 			this.modalOpened();
-		}, this.options.animDuration);
+		}, animDuration);
 	}
 
 	// can extend or override getContent, insertContent, and modalOpened
 	// methods in subclass to create custom modal
 
 	getContent() {
-		let targetID = this.$activeTrigger.data('targetid');
-		let targetEl = $(`#${targetID}`);
-		let contentHTML = targetEl.html();
+		const targetID = this.$activeTrigger.data('targetid');
+		const targetEl = $(`#${targetID}`);
+		const contentHTML = targetEl.html();
 		this.insertContent(contentHTML);
 	}
 
@@ -180,43 +181,46 @@ class ModalWindow {
 	}
 
 	modalOpened() {
+		const { customEventPrefix } = this.options;
 		this.setContentFocus();
-		$.event.trigger(`${this.options.customEventPrefix}:modalOpened`, [this.$modal]);
+		$.event.trigger(`${customEventPrefix}:modalOpened`, [this.$modal]);
 	}
 
 	closeModal() {
-		this.$html.removeClass(this.options.activeBodyClass);
-		this.$body.removeClass(this.options.activeBodyClass);
-		this.$overlay.removeClass(this.options.activeClass);
-		this.$modal.removeClass(this.options.activeClass);
+		const { activeClass, activeBodyClass, animDuration, customEventPrefix } = this.options;
+		this.$html.removeClass(activeBodyClass);
+		this.$body.removeClass(activeBodyClass);
+		this.$overlay.removeClass(activeClass);
+		this.$modal.removeClass(activeClass);
 		this.$window.scrollTop(this.windowScrollTop);
 
-		$.event.trigger(`${this.options.customEventPrefix}:modalPreClose`, [this.$modal]);
+		$.event.trigger(`${customEventPrefix}:modalPreClose`, [this.$modal]);
 
 		setTimeout(() => {
 			this.modalClosed();
-		}, this.options.animDuration);
+		}, animDuration);
 	}
 
 	// can extend modalClosed method in subclass
 	// to create custom modal
 
 	modalClosed() {
+		const { customEventPrefix } = this.options;
 		this.$content.empty();
 		this.$modalWindow.detach();
 		if (this.$activeTrigger.length) {
 			this.$activeTrigger.focus();
 		} else {
-			this.$body.find(this.options.selectorContentEls).first().attr({'tabindex':'-1'}).focus();
+			this.$body.find(this.options.selectorContentEls).first().attr({'tabindex': '-1'}).focus();
 		}
 		this.isModalActivated = false;
 		this.windowScrollTop = 0;
-		$.event.trigger(`${this.options.customEventPrefix}:modalClosed`, [this.$modal]);
+		$.event.trigger(`${customEventPrefix}:modalClosed`, [this.$modal]);
 	}
 
 	setContentFocus() {
-		let $focusEl = this.$content.find(this.options.selectorContentEls).first();
-		$focusEl.attr({'tabindex':'-1'}).focus();
+		const $focusEl = this.$content.find(this.options.selectorContentEls).first();
+		$focusEl.attr({'tabindex': '-1'}).focus();
 	}
 
 }
