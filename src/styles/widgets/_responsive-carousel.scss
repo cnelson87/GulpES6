@@ -8,10 +8,10 @@
 ******************************************************************/
 
 .responsive-carousel {
-	width: calc(100% - 80px);
 	height: auto;
 	margin: 1.5em auto;
 	position: relative;
+	width: calc(100% - 80px);
 
 	.arrow-nav {
 		position: absolute;
@@ -26,36 +26,36 @@
 	}
 
 	.carousel--outer-mask {
-		width: 100%;
 		height: 100%;
+		left: 0;
 		overflow: hidden;
 		position: relative;
-		left: 0;
 		top: 0;
+		width: 100%;
 	}
 
 	.carousel--inner-track {
 		@include clearfix;
 		display: block;
-		width: calc(100% * 10);
 		height: 100%;
-		position: relative;
 		left: 0;
+		position: relative;
 		top: 0;
+		width: calc(100% * 10);
 	}
 
 	.carousel--panel {
 		@include clearfix;
 		float: left;
-		width: calc(100% / 10);
 		height: auto;
 		position: relative;
+		width: calc(100% / 10);
 
 		> .carousel--panel-content {
 			@include clearfix;
-			width: 100%;
 			height: auto;
 			position: relative;
+			width: 100%;
 
 			&.padded {
 				padding: 0 5px;

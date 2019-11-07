@@ -5,22 +5,22 @@
 //use either <a>, <button>, or <input> tags
 .button {
 	@include action-transition();
-	display: inline-block;
-	cursor: pointer;
-	min-width: 120px;
+	background: $color-gray-light;
+	border: 1px solid $border-color-dark;
+	border-radius: $border-radius-sm;
 	color: $text-color;
+	cursor: pointer;
+	display: inline-block;
 	font-family: $main-font;
 	font-size: 16px; //1.0em;
 	font-weight: bold;
 	line-height: 1.2;
+	min-width: 120px;
+	outline: 0;
+	padding: 4px 12px;
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
-	background: $color-gray-light;
-	border: 1px solid $border-color-dark;
-	border-radius: $border-radius-sm;
-	outline: 0;
-	padding: 4px 12px;
 
 	&:hover, &:focus {
 		background: $color-gray-xlight;

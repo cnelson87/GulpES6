@@ -17,14 +17,14 @@
 	}
 
 	.flex-column {
-		padding-top: 0.5em;
 		padding-bottom: 0.5em;
+		padding-top: 0.5em;
 	}
 
 	.row > div,
 	.grid .grid-cell {
-		padding-top: 0.5em;
 		padding-bottom: 0.5em;
+		padding-top: 0.5em;
 		&:nth-child(3n+1) {
 			background-color: rgba($color-gray-light, 0.6);
 		}

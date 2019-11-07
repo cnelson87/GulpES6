@@ -13,8 +13,8 @@ legend {
 }
 
 label, .label {
-	display: inline-block;
 	color: $color-gray-dark;
+	display: inline-block;
 	font-size: 16px;
 	font-weight: bold;
 	line-height: 20px;
@@ -31,8 +31,8 @@ label, .label {
 }
 
 output {
-	display: inline-block;
 	color: $color-gray-dark;
+	display: inline-block;
 	font-size: 16px;
 	font-weight: bold;
 	line-height: 20px;
@@ -40,12 +40,12 @@ output {
 }
 
 input, select, textarea, button {
-	display: inline-block;
 	background: $transparent;
 	border: 0;
 	border-radius: 0;
 	box-shadow: none;
 	color: $color-gray-dark;
+	display: inline-block;
 	font-family: $main-font;
 	font-size: 16px;
 	line-height: 20px;
@@ -120,9 +120,9 @@ select,
 textarea {
 	border: 1px solid $border-color-med;
 	border-radius: $border-radius-sm;
+	height: 32px;
 	max-width: 600px;
 	min-width: 100px;
-	height: 32px;
 	padding: 5px 8px;
 	width: 100%;
 }
@@ -163,8 +163,8 @@ input[type='url'][disabled],
 input[type='search'][disabled],
 select[disabled],
 textarea[disabled] {
-	color: $color-gray-light;
 	border-color: $border-color-xlight;
+	color: $color-gray-light;
 }
 
 // input[type='text']:invalid,
@@ -218,9 +218,9 @@ input[type='radio'] {
 
 input[type='range'] {
 	cursor: pointer;
+	height: 32px;
 	max-width: 600px;
 	min-width: 100px;
-	height: 32px;
 	width: 100%;
 
 	&[disabled] {
@@ -250,7 +250,6 @@ button {
 
 // wrapper for form buttons
 .form-btns {
-	clear: both;
 	border-top: 1px solid $border-color-med;
 	margin-bottom: 1.5em;
 	padding-top: 1.0em;

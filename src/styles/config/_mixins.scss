@@ -37,18 +37,18 @@
 }
 
 @mixin offscreen {
+	border: 0;
 	display: block;
 	height: 1px;
-	width: 1px;
-	text-indent: 200%;
-	white-space: nowrap;
-	border: 0;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	position: fixed;
 	left: -1px;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: fixed;
+	text-indent: 200%;
 	top: -1px;
+	white-space: nowrap;
+	width: 1px;
 }
 
 @mixin text-hide {

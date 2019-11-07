@@ -11,6 +11,7 @@
 
 	DEPENDENCIES:
 		- jquery 3.x
+		- jquery.validate
 		- AjaxModal.js
 		- ajaxPost.js
 		- serializeFormFields.js
@@ -42,7 +43,7 @@ class AjaxModalForm extends AjaxModal {
 	modalOpened() {
 		super.modalOpened();
 		this.$form = this.$content.find('form');
-		this.$form.validate();
+		this.$form.validate(); // init jQuery validation
 		this.$form.on('submit', this.onFormPost.bind(this));
 	}
 
@@ -50,18 +51,18 @@ class AjaxModalForm extends AjaxModal {
 		event.preventDefault();
 		const postUrl = this.$form.attr('action');
 		const formData = serializeFormFields(this.$form);
-		// console.log(formData);
 
-		this.ajaxLoader.addLoader();
-
-		Promise.resolve(ajaxPost(postUrl, formData))
-			.then((response) => {
-				console.log('success:', response);
-				this.ajaxLoader.removeLoader();
-			}).catch((error) => {
-				console.log('error:', error);
-				this.ajaxLoader.removeLoader();
-			});
+		if (this.$form.valid()) {
+			this.ajaxLoader.addLoader();
+			ajaxPost(postUrl, formData)
+				.then((response) => {
+					console.log('success:', response);
+					this.ajaxLoader.removeLoader();
+				}).catch((error) => {
+					console.log('error:', error);
+					this.ajaxLoader.removeLoader();
+				});
+		}
 
 	}
 

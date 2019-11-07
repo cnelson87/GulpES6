@@ -9,30 +9,30 @@
 	position: relative;
 
 	.accordion--header {
-		border-top: 2px solid $border-color-dark;
 		border-bottom: 2px solid $border-color-dark;
+		border-top: 2px solid $border-color-dark;
 		margin-bottom: -2px;
 		position: relative;
 		z-index: 2;
 
 		> a {
-			display: block;
-			color: $color-near-black;
-			text-decoration: none;
 			background: $color-near-white;
+			color: $color-near-black;
+			display: block;
 			padding: 0.5em 1.0em;
 			position: relative;
+			text-decoration: none;
 
 			&::after {
-				content: '';
-				display: block;
-				width: 30px;
-				height: 30px;
 				background: rgba($color-gray-dark, 0) url($image-path+'/action-icons.png') no-repeat 0 -30px;
 				background-origin: border-box;
+				content: '';
+				display: block;
+				height: 30px;
 				position: absolute;
 				right: 10px;
 				top: calc(50% - 15px);
+				width: 30px;
 			}
 
 			&:hover, &:focus {
@@ -40,8 +40,8 @@
 			}
 
 			&.is-active {
-				color: $color-white;
 				background: $color-gray-dark;
+				color: $color-white;
 			}
 
 			&.is-active {

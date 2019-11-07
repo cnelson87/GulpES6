@@ -4,9 +4,9 @@
 // sass-lint:disable empty-line-between-blocks, force-element-nesting
 
 @mixin flex-grid {
+	align-items: stretch;
 	display: flex;
 	flex-flow: row wrap;
-	align-items: stretch;
 	margin: 0 -#{$gutter-half-width-mobile};
 	position: relative;
 

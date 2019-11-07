@@ -65,8 +65,8 @@ rules:
   placeholder-in-extend: 1
   placeholder-name-format: 0
   property-sort-order:
-    - 0
-    - ignore-custom-properties: false
+    - 1
+    - ignore-custom-properties: true
   property-units: 0
   pseudo-element: 1
   quotes:

@@ -35,20 +35,20 @@
 .modal {
 	animation: fadeOutToNone $animation-speed;
 	animation-fill-mode: forwards;
-	width: 100%;
 	height: 100%;
 	margin: 0 auto;
 	padding: $gutter-width-mobile;
 	position: relative;
+	width: 100%;
 
 	@media (min-width: $breakpoint-tablet-min) {
-		width: $tablet-container-width - $gutter-width-tablet;
 		padding: $gutter-width-tablet;
+		width: $tablet-container-width - $gutter-width-tablet;
 	}
 
 	@media (min-width: $breakpoint-desktop-min) {
-		width: $desktop-container-width - $gutter-width-desktop;
 		padding: $gutter-width-desktop;
+		width: $desktop-container-width - $gutter-width-desktop;
 	}
 
 	&.is-active {
@@ -57,19 +57,19 @@
 	}
 
 	&.fullscreen-modal {
-		width: 100%;
 		height: 100%;
 		padding: 0;
+		width: 100%;
 	}
 }
 
 .modal--container {
+	background: $color-white;
 	display: flex;
 	flex-direction: column;
-	width: 100%;
 	height: 100%;
-	background: $color-white;
 	position: relative;
+	width: 100%;
 
 	@media (min-width: $breakpoint-tablet-min) {
 		height: auto;
@@ -79,8 +79,8 @@
 		transform: translateY(-50%);
 
 		.fullscreen-modal & {
-			width: 100%;
 			height: 100%;
+			width: 100%;
 		}
 	}
 
@@ -100,8 +100,8 @@
 
 	.modal--content {
 		flex-grow: 1;
-		padding: 20px $gutter-width-mobile;
 		overflow-y: auto;
+		padding: 20px $gutter-width-mobile;
 		position: relative;
 		// sass-lint:disable no-misspelled-properties
 		-webkit-overflow-scrolling: touch;

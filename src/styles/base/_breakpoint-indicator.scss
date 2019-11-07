@@ -6,11 +6,11 @@
 
 
 #breakpoint-indicator {
-	width: 1px;
 	height: 1px;
-	position: absolute;
 	left: -1px;
+	position: absolute;
 	top: -1px;
+	width: 1px;
 	z-index: 1;
 
 	@media (min-width: $breakpoint-tablet-min) {

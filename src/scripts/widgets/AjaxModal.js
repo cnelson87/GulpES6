@@ -46,14 +46,14 @@ class AjaxModal extends ModalWindow {
 	getContent() {
 		const ajaxUrl = this.$activeTrigger.data('ajaxurl');
 		const targetID = ajaxUrl.split('#')[1] || null;
-		let contentHTML;
-		let targetEl;
 
 		this.ajaxLoader.addLoader();
 
-		Promise.resolve(ajaxGet(ajaxUrl, 'html'))
+		ajaxGet(ajaxUrl, 'html')
 			.then((response) => {
 				// console.log(response);
+				let contentHTML;
+				let targetEl;
 				if (targetID) {
 					targetEl = $(response).find('#' + targetID);
 					if (targetEl.length) {
@@ -61,7 +61,6 @@ class AjaxModal extends ModalWindow {
 					} else {
 						contentHTML = $(response).html();
 					}
-
 				} else {
 					contentHTML = response;
 				}

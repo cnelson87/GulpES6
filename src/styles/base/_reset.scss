@@ -21,11 +21,11 @@ figure, figcaption, footer, header, hgroup,
 main, menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	border: 0;
-	margin: 0;
-	padding: 0;
-	outline: 0;
 	font: inherit;
 	font-size: 100%;
+	margin: 0;
+	outline: 0;
+	padding: 0;
 	vertical-align: baseline;
 }
 
@@ -85,12 +85,12 @@ table {
 }
 
 hr {
-	clear: both;
 	background: none;
+	clear: both;
 }
 
 img {
-	width: auto;
-	max-width: 100%;
 	height: auto;
+	max-width: 100%;
+	width: auto;
 }

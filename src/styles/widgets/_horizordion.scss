@@ -59,18 +59,18 @@
 
 				> a {
 					@include text-hide;
-					display: block;
 					background: rgba($color-black, 0.2);
+					display: block;
 					height: 100%;
 					width: 100%;
 
 					&::after {
-						content: '';
-						display: block;
 						background: $color-white url($image-path+'/action-icons.png') no-repeat 0 -30px;
 						background-origin: border-box;
 						border: 2px solid $color-near-black;
 						border-radius: 50%;
+						content: '';
+						display: block;
 						height: 30px;
 						position: absolute;
 						right: 5px;

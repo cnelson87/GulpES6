@@ -20,19 +20,19 @@
 				margin: 0;
 
 				> a {
-					display: block;
-					color: $color-near-black;
-					text-decoration: none;
 					background: $color-near-white;
+					color: $color-near-black;
+					display: block;
 					padding: 0.5em 1.0em;
+					text-decoration: none;
 
 					&:hover, &:focus {
 						background: $color-gray-light;
 					}
 
 					&.is-active {
-						color: $color-white;
 						background: $color-gray-dark;
+						color: $color-white;
 					}
 				}
 			}
@@ -40,8 +40,8 @@
 	}
 
 	.tabswitcher--panels-container {
-		border-top: 2px solid $border-color-dark;
 		border-bottom: 2px solid $border-color-dark;
+		border-top: 2px solid $border-color-dark;
 		position: relative;
 	}
 
@@ -50,20 +50,20 @@
 		overflow: hidden;
 
 		&:not(.is-active) {
+			left: 0;
 			opacity: 0;
 			position: absolute;
-			left: 0;
 			top: 0;
-			z-index: -1;
 			transform: scale(0.95);
+			z-index: -1;
 		}
 
 		&.is-active {
 			opacity: 1.0;
 			position: relative;
-			z-index: 3;
 			transform: scale(1.0);
 			transition: opacity $animation-speed, transform $animation-speed;
+			z-index: 3;
 		}
 
 		> .tabswitcher--panel-content {

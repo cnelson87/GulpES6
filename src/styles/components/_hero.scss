@@ -5,27 +5,19 @@
 
 
 .content.hero {
+	align-items: center;
 	border-color: $color-black;
 	display: flex;
-	align-items: center;
 	min-height: 56.25vw; //16x9 ratio
 	overflow: hidden;
 
 	&.bottom-angle {
 		border-bottom: 0;
-		// sass-lint:disable no-misspelled-properties
-		-webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 50% 100%, 0% 90%);
-		-moz-clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 50% 100%, 0% 90%);
-		// sass-lint:enable no-misspelled-properties
 		clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 50% 100%, 0% 90%);
 	}
 
 	&.top-cutout {
 		border-top: 0;
-		// sass-lint:disable no-misspelled-properties
-		-webkit-clip-path: polygon(0% 0%, 50% 10%, 100% 0%, 100% 100%, 0% 100%);
-		-moz-clip-path: polygon(0% 0%, 50% 10%, 100% 0%, 100% 100%, 0% 100%);
-		// sass-lint:enable no-misspelled-properties
 		clip-path: polygon(0% 0%, 50% 10%, 100% 0%, 100% 100%, 0% 100%);
 	}
 

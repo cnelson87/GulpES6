@@ -4,20 +4,16 @@
 
 
 .auto-rotator {
-	// override width & height
-	width: 100%;
+	// override height & width
 	height: 100%;
 	margin: 1.5em 0;
 	overflow: hidden;
 	position: relative;
+	width: 100%;
 
 	> article,
 	> img {
+		@include absolute-window;
 		display: block;
-		width: 100%;
-		height: 100%;
-		position: absolute;
-		left: 0;
-		top: 0;
 	}
 }
