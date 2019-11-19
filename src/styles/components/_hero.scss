@@ -21,6 +21,52 @@
 		clip-path: polygon(0% 0%, 50% 10%, 100% 0%, 100% 100%, 0% 100%);
 	}
 
+	.hero-content-box {
+		padding: $vertical-pad-mobile $gutter-width-mobile;
+		position: relative;
+
+		@media (min-width: $breakpoint-tablet-min) {
+			padding: $vertical-pad-tablet $gutter-width-tablet;
+			width: 75%;
+		}
+
+		@media (min-width: $breakpoint-desktop-min) {
+			padding: $vertical-pad-desktop $gutter-width-desktop;
+			width: 50%;
+		}
+
+		.hero-content-box-background {
+			@include absolute-window;
+			background: rgba($color-black, 0.65);
+			mix-blend-mode: multiply;
+
+			&.blue-background {
+				background: rgba($color-dark-blue, 0.65);
+			}
+
+			&.red-background {
+				background: rgba($color-red1, 0.65);
+			}
+
+			&.green-background {
+				background: rgba($color-green2, 0.65);
+			}
+		}
+
+		.hero-content-box-body {
+			position: relative;
+
+			> :last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		h1, h2, h3, p {
+			color: $color-white;
+		}
+
+	}
+
 	.hero-background {
 		@include absolute-window;
 		background: $color-white no-repeat center top;
