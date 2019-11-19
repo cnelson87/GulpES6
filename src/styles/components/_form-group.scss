@@ -26,7 +26,7 @@
 		.label-column {
 			label::after,
 			.label::after {
-				color: $required-color;
+				color: $alert-color;
 				content: '*';
 				position: relative;
 				right: -2px;

@@ -13,8 +13,8 @@ $color-gray-med: #999;
 $color-gray-light: #ccc;
 $color-gray-xlight: #dedede;
 $color-gray-xlight-alt: #cdcdcd;
-$color-red1: #900;
-$color-red2: #c00;
+$color-red: #900;
+$color-red-bright: #c00;
 $color-green1: #9c3;
 $color-green2: #693;
 $color-light-blue: #69c;
@@ -22,14 +22,14 @@ $color-dark-blue: #036;
 // Color Usage
 $body-bg: $color-near-white;
 $text-color: $color-near-black;
+$heading-color: $color-gray-dark;
 $link-color: $color-green1;
 $link-hover-color: $color-green2;
 $border-color-dark: $color-gray-dark;
 $border-color-med: $color-gray-med;
 $border-color-light: $color-gray-light;
 $border-color-xlight: $color-gray-xlight;
-$error-color: $color-red1;
-$required-color: $color-red1;
+$alert-color: $color-red;
 $transparent: rgba(0,0,0,0); //iOS friendly transparent
 
 

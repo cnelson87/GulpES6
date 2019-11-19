@@ -34,15 +34,21 @@ a:active, a:focus, a:hover {
 	text-decoration: underline;
 }
 
-p, ul, ol, dl, table, address {
+p, ol, ul, dl, table, address {
 	margin-bottom: 1.5em;
+}
+ol, ul {
+	padding-left: 20px;
+}
+ol ol, ol ul, ul ol, ul ul {
+	margin-bottom: 0.5em;
+	margin-top: 0.5em;
 }
 li {
 	margin-bottom: 0.5em;
 }
 dt {
 	font-weight: bold;
-	margin-bottom: 0.25em;
 }
 dd {
 	margin-bottom: 0.5em;
@@ -59,10 +65,11 @@ td {
 nav ul, nav ol, nav li {
 	list-style: none;
 	margin: 0;
+	padding: 0;
 }
 
 h1, .h1, h2, .h2, h3, .h3 {
-	color: $color-gray-dark;
+	color: $heading-color;
 	font-family: $alt-font;
 	font-weight: normal;
 	line-height: 1.0;
@@ -73,16 +80,16 @@ h1, .h1 {
 }
 h2, .h2 {
 	font-size: 1.5em;
-	margin-bottom: 15px;
+	margin-bottom: 20px;
 }
 h3, .h3 {
-	font-size: 1.2em;
-	margin-bottom: 10px;
+	font-size: 1.25em;
+	margin-bottom: 15px;
 }
 h4, .h4, h5, .h5, h6, .h6 {
 	font-weight: bold;
 	line-height: 1.0;
-	margin-bottom: 0.2em;
+	margin-bottom: 0.25em;
 }
 h4, .h4 {
 	font-size: 1.1em;
@@ -95,9 +102,13 @@ h6, .h6 {
 	font-weight: normal;
 }
 
-big, .big {font-size: 1.2em;}
+big, .big, .intro, .lead, .large {
+	font-size: 1.25em;
+}
 
-small, .small {font-size: 0.85em;}
+small, .small, .caption, .footnote {
+	font-size: 0.75em;
+}
 
 blockquote {
 	// Note: must not leave any whitespace at the beginning of a
@@ -119,6 +130,6 @@ hr {
 // uncomment for testing
 // h1, h2, h3, h4, h5, h6, p, ul, ol, dl, table {
 // 	&:focus {
-// 		background-color: $error-color;
+// 		background-color: $alert-color;
 // 	}
 // }

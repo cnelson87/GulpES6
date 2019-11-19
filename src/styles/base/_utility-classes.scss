@@ -34,6 +34,10 @@
 	margin: 0;
 }
 
+.no-padding {
+	padding: 0;
+}
+
 .pull-left {
 	float: left;
 }
@@ -88,8 +92,6 @@
 
 // Lists
 
-nav ul, nav ol {list-style: none;}
-
 ul.disc-list {list-style-type: disc;}
 ul.circle-list {list-style-type: circle;}
 ul.square-list {list-style-type: square;}
@@ -112,25 +114,20 @@ ul.inline, ol.inline {
 
 // Images
 
-img.block {
-	display: block;
-	margin: 0 0 1.0em;
-}
-
-img.inline {
+img.img-inline {
 	display: inline;
 	margin: 0 0.2em;
 	vertical-align: bottom;
 }
 
-img.inset-left {
+img.img-inset-left {
 	float: left;
-	margin: 0 20px 1.0em 0;
+	margin-right: 20px;
 }
 
-img.inset-right {
+img.img-inset-right {
 	float: right;
-	margin: 0 0 1.0em 20px;
+	margin-left: 20px;
 }
 
 
@@ -140,17 +137,7 @@ script[type='text/template'] {
 	@include hidden;
 }
 
-.error {
-	color: $error-color;
+.error, .required {
+	color: $alert-color;
 	font-weight: bold;
-}
-
-.required {
-	color: $required-color;
-	font-weight: bold;
-}
-
-.intro, .lead {
-	font-size: 1.2em;
-	margin-bottom: 1.5em;
 }

@@ -185,7 +185,7 @@ input[type='url'].invalid,
 input[type='search'].invalid,
 select.invalid,
 textarea.invalid {
-	border-color: $error-color;
+	border-color: $alert-color;
 }
 
 //
@@ -265,11 +265,11 @@ button {
 }
 
 .field-validation-error {
-	color: $error-color;
+	color: $alert-color;
 }
 
 label.error {
-	color: $error-color;
+	color: $alert-color;
 	display: block;
 	font-size: 12px;
 	line-height: 16px;
