@@ -149,21 +149,19 @@ class InfiniteCarousel {
 	}
 
 	uninitDOM() {
-		const { classInitialized, classActiveItem, selectorFocusEls, autoRotate } = this.options;
+		const { classInitialized, classActiveItem, selectorFocusEls } = this.options;
 		this.$el.removeAttr('role aria-live').removeClass(classInitialized);
 		this.$navPrev.removeAttr('role tabindex');
 		this.$navNext.removeAttr('role tabindex');
 		this.$panels.removeAttr('role aria-hidden').removeClass(classActiveItem);
 		this.$panels.find(selectorFocusEls).removeAttr('tabindex');
+		this.cancelAutoRotation();
 		TweenMax.set(this.$outerMask, {
 			x: ''
 		});
 		TweenMax.set(this.$innerTrack, {
 			x: ''
 		});
-		if (autoRotate) {
-			clearInterval(this.setAutoRotation);
-		}
 	}
 
 	_addEventListeners() {
@@ -208,8 +206,7 @@ class InfiniteCarousel {
 		this.updateCarousel();
 		this.autoRotationCounter--;
 		if (this.autoRotationCounter === 0) {
-			clearInterval(this.setAutoRotation);
-			this.options.autoRotate = false;
+			this.cancelAutoRotation();
 		}
 	}
 
@@ -224,14 +221,11 @@ class InfiniteCarousel {
 
 	__clickNavPrev(event) {
 		event.preventDefault();
-		const { classNavDisabled, autoRotate } = this.options;
+		const { classNavDisabled } = this.options;
 
 		if (this.state.isAnimating || this.$navPrev.hasClass(classNavDisabled)) {return;}
 
-		if (autoRotate) {
-			clearInterval(this.setAutoRotation);
-			this.options.autoRotate = false;
-		}
+		this.cancelAutoRotation();
 
 		this.state.previousIndex = this.state.currentIndex;
 		this.state.currentIndex -= this.numItemsToAnimate;
@@ -242,14 +236,11 @@ class InfiniteCarousel {
 
 	__clickNavNext(event) {
 		event.preventDefault();
-		const { classNavDisabled, autoRotate } = this.options;
+		const { classNavDisabled } = this.options;
 
 		if (this.state.isAnimating || this.$navNext.hasClass(classNavDisabled)) {return;}
 
-		if (autoRotate) {
-			clearInterval(this.setAutoRotation);
-			this.options.autoRotate = false;
-		}
+		this.cancelAutoRotation();
 
 		this.state.previousIndex = this.state.currentIndex;
 		this.state.currentIndex += this.numItemsToAnimate;
@@ -331,6 +322,12 @@ class InfiniteCarousel {
 			});
 		}
 
+	}
+
+	cancelAutoRotation() {
+		if (!this.options.autoRotate) {return;}
+		clearInterval(this.setAutoRotation);
+		this.options.autoRotate = false;
 	}
 
 	deactivatePanels() {

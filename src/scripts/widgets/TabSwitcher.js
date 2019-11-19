@@ -134,17 +134,15 @@ class TabSwitcher {
 	}
 
 	uninitDOM() {
-		const { classInitialized, classActive, selectorFocusEls, equalizeHeight, autoRotate } = this.options;
+		const { classInitialized, classActive, selectorFocusEls, equalizeHeight } = this.options;
 		this.$el.removeAttr('role aria-live').removeClass(classInitialized);
 		this.$tabs.removeAttr('role tabindex aria-selected').removeClass(classActive);
 		this.$panels.removeAttr('role aria-hidden').removeClass(classActive);
 		this.$panels.find(selectorFocusEls).removeAttr('tabindex');
 		this.$tabs.find('.selected-text').remove();
+		this.cancelAutoRotation();
 		if (equalizeHeight) {
 			this.heightEqualizer.unInitialize();
-		}
-		if (autoRotate) {
-			clearInterval(this.setAutoRotation);
 		}
 	}
 
@@ -169,8 +167,7 @@ class TabSwitcher {
 		this.autoRotationCounter--;
 
 		if (this.autoRotationCounter === 0) {
-			clearInterval(this.setAutoRotation);
-			this.options.autoRotate = false;
+			this.cancelAutoRotation();
 		}
 
 	}
@@ -187,17 +184,14 @@ class TabSwitcher {
 	__clickTab(event) {
 		event.preventDefault();
 		if ($(event.target).hasClass('ignore-click')) {return;}
-		const { classDisabled, autoRotate } = this.options;
+		const { classDisabled } = this.options;
 		const index = this.$tabs.index(event.currentTarget);
 		const $currentTab = this.$tabs.eq(index);
 		const $currentPanel = this.$panels.eq(index);
 
 		if (this.state.isAnimating || $currentTab.hasClass(classDisabled)) {return;}
 
-		if (autoRotate) {
-			clearInterval(this.setAutoRotation);
-			this.options.autoRotate = false;
-		}
+		this.cancelAutoRotation();
 
 		if (this.state.currentIndex === index) {
 			this.focusOnPanel($currentPanel);
@@ -215,8 +209,14 @@ class TabSwitcher {
 		const keyCode = event.which;
 		let index = this.$tabs.index(event.currentTarget);
 
+		// spacebar; activate tab click
+		if (keyCode === keys.space) {
+			event.preventDefault();
+			this.$tabs.eq(index).click();
+		}
+
 		// left/up arrow; emulate tabbing to previous tab
-		if (keyCode === keys.left || keyCode === keys.up) {
+		else if (keyCode === keys.left || keyCode === keys.up) {
 			event.preventDefault();
 			if (index === 0) {index = this._length;}
 			index--;
@@ -224,7 +224,7 @@ class TabSwitcher {
 		}
 
 		// right/down arrow; emulate tabbing to next tab
-		if (keyCode === keys.right || keyCode === keys.down) {
+		else if (keyCode === keys.right || keyCode === keys.down) {
 			event.preventDefault();
 			index++;
 			if (index === this._length) {index = 0;}
@@ -232,23 +232,17 @@ class TabSwitcher {
 		}
 
 		// home key; emulate jump-tabbing to first tab
-		if (keyCode === keys.home) {
+		else if (keyCode === keys.home) {
 			event.preventDefault();
 			index = 0;
 			this.$tabs.eq(index).focus();
 		}
 
 		// end key; emulate jump-tabbing to last tab
-		if (keyCode === keys.end) {
+		else if (keyCode === keys.end) {
 			event.preventDefault();
 			index = this._length - 1;
 			this.$tabs.eq(index).focus();
-		}
-
-		// spacebar; activate tab click
-		if (keyCode === keys.space) {
-			event.preventDefault();
-			this.$tabs.eq(index).click();
 		}
 
 	}
@@ -287,6 +281,12 @@ class TabSwitcher {
 		}, animDuration);
 
 		this.fireTracking();
+	}
+
+	cancelAutoRotation() {
+		if (!this.options.autoRotate) {return;}
+		clearInterval(this.setAutoRotation);
+		this.options.autoRotate = false;
 	}
 
 	deactivateTab($tab) {

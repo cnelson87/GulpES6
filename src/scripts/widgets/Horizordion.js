@@ -177,8 +177,14 @@ class Horizordion {
 		const keyCode = event.which;
 		let index = this.$tabs.index(event.currentTarget);
 
+		// spacebar; activate tab click
+		if (keyCode === keys.space) {
+			event.preventDefault();
+			this.$tabs.eq(index).click();
+		}
+
 		// left/up arrow; emulate tabbing to previous tab
-		if (keyCode === keys.left || keyCode === keys.up) {
+		else if (keyCode === keys.left || keyCode === keys.up) {
 			event.preventDefault();
 			if (index === 0) {index = this._length;}
 			index--;
@@ -186,7 +192,7 @@ class Horizordion {
 		}
 
 		// right/down arrow; emulate tabbing to next tab
-		if (keyCode === keys.right || keyCode === keys.down) {
+		else if (keyCode === keys.right || keyCode === keys.down) {
 			event.preventDefault();
 			index++;
 			if (index === this._length) {index = 0;}
@@ -194,23 +200,17 @@ class Horizordion {
 		}
 
 		// home key; emulate jump-tabbing to first tab
-		if (keyCode === keys.home) {
+		else if (keyCode === keys.home) {
 			event.preventDefault();
 			index = 0;
 			this.$tabs.eq(index).focus();
 		}
 
 		// end key; emulate jump-tabbing to last tab
-		if (keyCode === keys.end) {
+		else if (keyCode === keys.end) {
 			event.preventDefault();
 			index = this._length - 1;
 			this.$tabs.eq(index).focus();
-		}
-
-		// spacebar; activate tab click
-		if (keyCode === keys.space) {
-			event.preventDefault();
-			this.$tabs.eq(index).click();
 		}
 
 	}

@@ -85,17 +85,14 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 
 	__clickTab(event) {
 		event.preventDefault();
-		const { classNavDisabled, autoRotate } = this.options;
+		const { classNavDisabled } = this.options;
 		const index = this.$tabs.index(event.currentTarget);
 		const $currentTab = this.$tabs.eq(index);
 		const $currentPanel = this.$panels.eq(index);
 
 		if (this.state.isAnimating || $currentTab.hasClass(classNavDisabled)) {return;}
 
-		if (autoRotate) {
-			clearInterval(this.setAutoRotation);
-			autoRotate = false;
-		}
+		this.cancelAutoRotation();
 
 		if (this.state.currentIndex === index) {
 			this.focusOnPanel($currentPanel);
@@ -112,8 +109,14 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 		const keyCode = event.which;
 		let index = this.$tabs.index(event.currentTarget);
 
+		// spacebar; activate tab click
+		if (keyCode === keys.space) {
+			event.preventDefault();
+			this.$tabs.eq(index).click();
+		}
+
 		// left/up arrow; emulate tabbing to previous tab
-		if (keyCode === keys.left || keyCode === keys.up) {
+		else if (keyCode === keys.left || keyCode === keys.up) {
 			event.preventDefault();
 			if (index === 0) {index = this._length;}
 			index--;
@@ -121,7 +124,7 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 		}
 
 		// right/down arrow; emulate tabbing to next tab
-		if (keyCode === keys.right || keyCode === keys.down) {
+		else if (keyCode === keys.right || keyCode === keys.down) {
 			event.preventDefault();
 			index++;
 			if (index === this._length) {index = 0;}
@@ -129,23 +132,17 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 		}
 
 		// home key; emulate jump-tabbing to first tab
-		if (keyCode === keys.home) {
+		else if (keyCode === keys.home) {
 			event.preventDefault();
 			index = 0;
 			this.$tabs.eq(index).focus();
 		}
 
 		// end key; emulate jump-tabbing to last tab
-		if (keyCode === keys.end) {
+		else if (keyCode === keys.end) {
 			event.preventDefault();
 			index = this._length - 1;
 			this.$tabs.eq(index).focus();
-		}
-
-		// spacebar; activate tab click
-		if (keyCode === keys.space) {
-			event.preventDefault();
-			this.$tabs.eq(index).click();
 		}
 
 	}

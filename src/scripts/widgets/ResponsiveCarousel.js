@@ -192,18 +192,16 @@ class ResponsiveCarousel {
 	}
 
 	uninitDOM() {
-		const { classInitialized, classActiveItem, selectorFocusEls, autoRotate } = this.options;
+		const { classInitialized, classActiveItem, selectorFocusEls } = this.options;
 		this.$el.removeAttr('role aria-live').removeClass(classInitialized);
 		this.$navPrev.removeAttr('role tabindex');
 		this.$navNext.removeAttr('role tabindex');
 		this.$panels.removeAttr('role aria-hidden').removeClass(classActiveItem);
 		this.$panels.find(selectorFocusEls).removeAttr('tabindex');
+		this.cancelAutoRotation();
 		TweenMax.set(this.$innerTrack, {
 			left: ''
 		});
-		if (autoRotate) {
-			clearInterval(this.setAutoRotation);
-		}
 	}
 
 	_addEventListeners() {
@@ -246,7 +244,8 @@ class ResponsiveCarousel {
 
 		if (this.state.currentIndex === this.lastIndex) {
 			this.state.currentIndex = 0;
-		} else {
+		}
+		else {
 			this.state.currentIndex += this.numItemsToAnimate;
 			if (this.state.currentIndex > this.lastIndex) {this.state.currentIndex = this.lastIndex;}
 		}
@@ -255,8 +254,7 @@ class ResponsiveCarousel {
 		this.autoRotationCounter--;
 
 		if (this.autoRotationCounter === 0) {
-			clearInterval(this.setAutoRotation);
-			this.options.autoRotate = false;
+			this.cancelAutoRotation();
 		}
 
 	}
@@ -274,14 +272,11 @@ class ResponsiveCarousel {
 
 	__clickNavPrev(event) {
 		event.preventDefault();
-		const { classNavDisabled, autoRotate, loopEndToEnd } = this.options;
+		const { classNavDisabled, loopEndToEnd } = this.options;
 
 		if (this.state.isAnimating || this.$navPrev.hasClass(classNavDisabled)) {return;}
 
-		if (autoRotate) {
-			clearInterval(this.setAutoRotation);
-			this.options.autoRotate = false;
-		}
+		this.cancelAutoRotation();
 
 		if (loopEndToEnd && this.state.currentIndex === 0) {
 			this.state.currentIndex = this.lastIndex;
@@ -296,14 +291,11 @@ class ResponsiveCarousel {
 
 	__clickNavNext(event) {
 		event.preventDefault();
-		const { classNavDisabled, autoRotate, loopEndToEnd } = this.options;
+		const { classNavDisabled, loopEndToEnd } = this.options;
 
 		if (this.state.isAnimating || this.$navNext.hasClass(classNavDisabled)) {return;}
 
-		if (autoRotate) {
-			clearInterval(this.setAutoRotation);
-			this.options.autoRotate = false;
-		}
+		this.cancelAutoRotation();
 
 		if (loopEndToEnd && this.state.currentIndex === this.lastIndex) {
 			this.state.currentIndex = 0;
@@ -369,6 +361,12 @@ class ResponsiveCarousel {
 			}
 
 		}
+	}
+
+	cancelAutoRotation() {
+		if (!this.options.autoRotate) {return;}
+		clearInterval(this.setAutoRotation);
+		this.options.autoRotate = false;
 	}
 
 	deactivateItems() {
