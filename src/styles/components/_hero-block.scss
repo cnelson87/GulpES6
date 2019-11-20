@@ -1,0 +1,65 @@
+//
+// Hero Block
+// -----------------------------------------------------
+// used in .hero-carousel
+
+
+.hero-block {
+	position: relative;
+
+	a.hero-block-link {
+		display: block;
+		position: relative;
+
+		> img {
+			display: block;
+			height: auto;
+			max-width: none;
+			width: 100%;
+		}
+	}
+
+	.hero-block--content-box {
+		padding: $vertical-pad-mobile $gutter-width-mobile;
+		position: relative;
+
+		@media (min-width: $breakpoint-tablet-min) {
+			bottom: ($vertical-pad-tablet * 2);
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding: $vertical-pad-tablet $gutter-width-tablet;
+			position: absolute;
+			top: ($vertical-pad-tablet * 2);
+			width: 75%;
+		}
+
+		@media (min-width: $breakpoint-desktop-min) {
+			bottom: ($vertical-pad-desktop * 2);
+			padding: $vertical-pad-desktop $gutter-width-desktop;
+			top: ($vertical-pad-desktop * 2);
+			width: 50%;
+		}
+
+		&.blue-background {
+			background: rgba($color-dark-blue, 0.65);
+		}
+
+		&.red-background {
+			background: rgba($color-red, 0.65);
+		}
+
+		&.green-background {
+			background: rgba($color-green2, 0.65);
+		}
+
+		h1, h2, h3, h4, p {
+			color: $color-white;
+		}
+		a {
+			color: $color-white;
+		}
+
+	}
+
+}

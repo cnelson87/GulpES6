@@ -6,42 +6,7 @@
 .responsive-carousel.tab-carousel {
 
 	.carousel--tabnav {
-		height: 1.0em;
-		line-height: 1.0em;
 		margin-top: 1.0em;
-		position: relative;
-		text-align: center;
-		width: 100%;
-
-		> ul {
-			list-style: none;
-			margin: 0;
-
-			> li {
-				display: inline-block;
-				height: 1.0em;
-				margin: 0 0.25em;
-				width: 1.0em;
-
-				> a {
-					@include text-hide;
-					background: $color-light-blue;
-					border: 2px solid $color-dark-blue;
-					border-radius: 50%;
-					display: block;
-					height: 100%;
-					width: 100%;
-
-					&:focus, &:hover {
-						background-color: $color-dark-blue;
-					}
-
-					&.is-active {
-						background-color: $color-dark-blue;
-					}
-				}
-			}
-		}
 	}
 
 }

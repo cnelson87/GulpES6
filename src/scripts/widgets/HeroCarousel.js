@@ -1,11 +1,11 @@
 /*
-	TITLE: InfiniteCarousel
+	TITLE: HeroCarousel
 
-	DESCRIPTION: An infinitely looping carousel widget
+	DESCRIPTION: An infinitely looping hero carousel widget
 
-	VERSION: 0.4.0
+	VERSION: 0.1.0
 
-	USAGE: const myCarousel = new InfiniteCarousel('Element', 'Options')
+	USAGE: const myCarousel = new HeroCarousel('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
 
@@ -20,7 +20,9 @@ import Events from 'config/Events';
 import State from 'config/State';
 import focusOnContentEl from 'utilities/focusOnContentEl';
 
-class InfiniteCarousel {
+const PERCENT = 100;
+
+class HeroCarousel {
 
 	constructor($el, options = {}) {
 		this.$window = $(window);
@@ -28,22 +30,22 @@ class InfiniteCarousel {
 	}
 
 	initialize($el, options) {
-		const urlHash = location.hash.substring(1) || null;
 
 		// defaults
 		this.$el = $el;
 		this.options = Object.assign({
 			initialIndex: 0,
-			numItemsToAnimate: 1,
 			selectorNavPrev: '.nav-prev',
 			selectorNavNext: '.nav-next',
+			selectorTabs: '.carousel--tabnav a',
 			selectorOuterMask: '.carousel--outer-mask',
 			selectorInnerTrack: '.carousel--inner-track',
 			selectorPanels: '.carousel--panel',
-			classActiveItem: 'is-active',
+			classActivePanel: 'is-active',
+			classActiveTab: 'is-active',
 			classNavDisabled: 'is-disabled',
 			classInitialized: 'is-initialized',
-			adjOuterTrack: 80,
+			selectedText: 'currently selected',
 			enableSwipe: true,
 			autoRotate: false,
 			autoRotateInterval: Constants.timing.interval,
@@ -52,12 +54,13 @@ class InfiniteCarousel {
 			animEasing: 'Power4.easeInOut',
 			selectorFocusEls: Constants.focusableElements,
 			enableTracking: false,
-			customEventPrefix: 'InfiniteCarousel'
+			customEventPrefix: 'HeroCarousel'
 		}, options);
 
 		// elements
 		this.$navPrev = this.$el.find(this.options.selectorNavPrev);
 		this.$navNext = this.$el.find(this.options.selectorNavNext);
+		this.$tabs = this.$el.find(this.options.selectorTabs);
 		this.$outerMask = this.$el.find(this.options.selectorOuterMask);
 		this.$innerTrack = this.$el.find(this.options.selectorInnerTrack);
 		this.$panels = this.$innerTrack.find(this.options.selectorPanels);
@@ -65,10 +68,8 @@ class InfiniteCarousel {
 		// properties
 		this._length = this.$panels.length;
 		if (this.options.initialIndex >= this._length) {this.options.initialIndex = 0;}
-		this.numItemsToAnimate = this.options.numItemsToAnimate;
-		/* eslint-disable no-magic-numbers */
-		this.scrollAmt = -100 * this.numItemsToAnimate;
-		/* eslint-enable no-magic-numbers */
+		this.selectedLabel = `<span class="sr-only selected-text"> - ${this.options.selectedText}</span>`;
+		this.scrollAmt = -PERCENT;
 		this.setAutoRotation = null;
 
 		// state
@@ -78,18 +79,6 @@ class InfiniteCarousel {
 			isAnimating: false,
 			currentBreakpoint: State.currentBreakpoint,
 		};
-
-		// check url hash to override currentIndex
-		this.setInitialFocus = false;
-		if (urlHash) {
-			for (let i=0; i<this._length; i++) {
-				if (this.$panels.eq(i).data('id') === urlHash) {
-					this.state.currentIndex = i;
-					this.setInitialFocus = true;
-					break;
-				}
-			}
-		}
 
 		this.initDOM();
 
@@ -106,9 +95,9 @@ class InfiniteCarousel {
 
 	initDOM() {
 		const { classInitialized, selectorPanels, autoRotate, autoRotateInterval, maxAutoRotations } = this.options;
-		const $activePanel = this.$panels.eq(this.state.currentIndex);
+		const $activeTab = this.$tabs.eq(this.state.currentIndex - this._length);
 
-		// clone items for looping
+		// clone panels for looping
 		this.$panels.clone().appendTo(this.$innerTrack);
 		this.$panels.clone().appendTo(this.$innerTrack);
 		this.$panels = this.$innerTrack.find(selectorPanels);
@@ -118,18 +107,16 @@ class InfiniteCarousel {
 		this.$navPrev.attr({'role': 'button', 'tabindex': '0'});
 		this.$navNext.attr({'role': 'button', 'tabindex': '0'});
 		this.$panels.attr({'role': 'tabpanel', 'aria-hidden': 'true'});
+		this.$tabs.attr({'role': 'tab', 'tabindex': '0', 'aria-selected': 'false'});
 
 		this.deactivatePanels();
 		this.activatePanels();
+		this.activateTab($activeTab);
 
-		TweenMax.set(this.$outerMask, {
-			x: 0
-		});
 		TweenMax.set(this.$innerTrack, {
-			x: (this.scrollAmt * this.state.currentIndex) + '%'
+			left: (this.scrollAmt * this.state.currentIndex) + '%'
 		});
 
-		// auto-rotate items
 		if (autoRotate) {
 			this.autoRotationCounter = this._length * maxAutoRotations;
 			this.setAutoRotation = setInterval(() => {
@@ -139,24 +126,18 @@ class InfiniteCarousel {
 
 		this.$el.addClass(classInitialized);
 
-		// initial focus on content
-		this.$window.on('load', () => {
-			if (this.setInitialFocus) {
-				this.focusOnPanel($activePanel);
-			}
-		});
-
 	}
 
 	uninitDOM() {
-		const { classInitialized, classActiveItem, selectorFocusEls } = this.options;
+		const { classInitialized, classActivePanel, classActiveTab, selectorFocusEls } = this.options;
 		this.$el.removeAttr('role aria-live').removeClass(classInitialized);
 		this.$navPrev.removeAttr('role tabindex');
 		this.$navNext.removeAttr('role tabindex');
-		this.$panels.removeAttr('role aria-hidden').removeClass(classActiveItem);
+		this.$panels.removeAttr('role aria-hidden').removeClass(classActivePanel);
 		this.$panels.find(selectorFocusEls).removeAttr('tabindex');
+		this.$tabs.removeAttr('role tabindex aria-selected').removeClass(classActiveTab);
+		this.$tabs.find('.selected-text').remove();
 		this.cancelAutoRotation();
-		TweenMax.set(this.$outerMask, {clearProps: 'all'});
 		TweenMax.set(this.$innerTrack, {clearProps: 'all'});
 	}
 
@@ -168,6 +149,10 @@ class InfiniteCarousel {
 		this.$navPrev.on('click', this.__clickNavPrev.bind(this));
 
 		this.$navNext.on('click', this.__clickNavNext.bind(this));
+
+		this.$tabs.on('click', this.__clickTab.bind(this));
+
+		this.$tabs.on('keydown', this.__keydownTab.bind(this));
 
 		if (this.options.enableSwipe) {
 			this.$el.swipe({
@@ -191,6 +176,8 @@ class InfiniteCarousel {
 		this.$window.off(Events.BREAKPOINT_CHANGE, this.__onBreakpointChange.bind(this));
 		this.$navPrev.off('click', this.__clickNavPrev.bind(this));
 		this.$navNext.off('click', this.__clickNavNext.bind(this));
+		this.$tabs.off('click', this.__clickTab.bind(this));
+		this.$tabs.off('keydown', this.__keydownTab.bind(this));
 		if (this.options.enableSwipe) {
 			this.$el.swipe('destroy');
 		}
@@ -198,7 +185,7 @@ class InfiniteCarousel {
 
 	autoRotation() {
 		this.state.previousIndex = this.state.currentIndex;
-		this.state.currentIndex += this.numItemsToAnimate;
+		this.state.currentIndex++;
 		this.updateCarousel();
 		this.autoRotationCounter--;
 		if (this.autoRotationCounter === 0) {
@@ -224,7 +211,7 @@ class InfiniteCarousel {
 		this.cancelAutoRotation();
 
 		this.state.previousIndex = this.state.currentIndex;
-		this.state.currentIndex -= this.numItemsToAnimate;
+		this.state.currentIndex--;
 
 		this.updateCarousel(event);
 
@@ -239,9 +226,71 @@ class InfiniteCarousel {
 		this.cancelAutoRotation();
 
 		this.state.previousIndex = this.state.currentIndex;
-		this.state.currentIndex += this.numItemsToAnimate;
+		this.state.currentIndex++;
 
 		this.updateCarousel(event);
+
+	}
+
+	__clickTab(event) {
+		event.preventDefault();
+		const index = this.$tabs.index(event.currentTarget);
+		const $currentPanel = this.$panels.eq(index);
+
+		if (this.state.isAnimating) {return;}
+
+		this.cancelAutoRotation();
+
+		if (this.state.currentIndex === index) {
+			this.focusOnPanel($currentPanel);
+		}
+		else {
+			this.state.currentIndex = index;
+			this.updateCarousel(event);
+		}
+
+	}
+
+	__keydownTab(event) {
+		const { keys } = Constants;
+		const keyCode = event.which;
+		let index = this.$tabs.index(event.currentTarget);
+
+		// spacebar; activate tab click
+		if (keyCode === keys.space) {
+			event.preventDefault();
+			this.$tabs.eq(index).click();
+		}
+
+		// left/up arrow; emulate tabbing to previous tab
+		else if (keyCode === keys.left || keyCode === keys.up) {
+			event.preventDefault();
+			if (index === 0) {index = this._length;}
+			index--;
+			this.$tabs.eq(index).focus();
+		}
+
+		// right/down arrow; emulate tabbing to next tab
+		else if (keyCode === keys.right || keyCode === keys.down) {
+			event.preventDefault();
+			index++;
+			if (index === this._length) {index = 0;}
+			this.$tabs.eq(index).focus();
+		}
+
+		// home key; emulate jump-tabbing to first tab
+		else if (keyCode === keys.home) {
+			event.preventDefault();
+			index = 0;
+			this.$tabs.eq(index).focus();
+		}
+
+		// end key; emulate jump-tabbing to last tab
+		else if (keyCode === keys.end) {
+			event.preventDefault();
+			index = this._length - 1;
+			this.$tabs.eq(index).focus();
+		}
 
 	}
 
@@ -252,25 +301,28 @@ class InfiniteCarousel {
 
 	updateCarousel(event) {
 		const self = this;
-		const { animDuration, animEasing, customEventPrefix } = this.options;
+		const { classActiveTab, animDuration, animEasing, customEventPrefix } = this.options;
 		let $activePanel;
+		let $activeTab;
+		let $inactiveTab = this.$tabs.filter('.'+classActiveTab);
 
 		this.state.isAnimating = true;
 
 		this.adjustPosition();
-		this.deactivatePanels();
-		this.activatePanels();
+
 
 		$activePanel = this.$panels.eq(this.state.currentIndex);
+		$activeTab = this.$tabs.eq(this.state.currentIndex - this._length);
+		console.log('$activeTab', $activeTab);
+
+		this.deactivatePanels();
+		this.activatePanels();
+		this.deactivateTab($inactiveTab);
+		this.activateTab($activeTab);
 
 		TweenMax.to(this.$innerTrack, animDuration, {
-			x: (this.scrollAmt * this.state.currentIndex) + '%',
-			// delay: 1.0,
+			left: (this.scrollAmt * this.state.currentIndex) + '%',
 			ease: animEasing,
-			// onStart: function() {
-			// 	self.deactivatePanels();
-			// 	self.activatePanels();
-			// },
 			onComplete: function() {
 				self.state.isAnimating = false;
 				if (!!event) {
@@ -285,36 +337,22 @@ class InfiniteCarousel {
 	}
 
 	adjustPosition() {
-		const { animDuration, adjOuterTrack } = this.options;
-		let adjX = adjOuterTrack;
 
+		// if clone set 1 is visible
 		if (this.state.currentIndex < this._length) {
 			this.state.previousIndex += this._length;
 			this.state.currentIndex += this._length;
-			if (this.state.currentBreakpoint !== 'mobile') {
-				TweenMax.fromTo(this.$outerMask, animDuration, {
-					x: -adjX
-				},{
-					x: 0
-				});
-			}
 			TweenMax.set(this.$innerTrack, {
-				x: (this.scrollAmt * this.state.previousIndex) + '%'
+				left: (this.scrollAmt * this.state.previousIndex) + '%'
 			});
 		}
 
+		// if clone set 2 is visible
 		if (this.state.currentIndex > (this._length + this._length) - 1) {
 			this.state.previousIndex -= this._length;
 			this.state.currentIndex -= this._length;
-			if (this.state.currentBreakpoint !== 'mobile') {
-				TweenMax.fromTo(this.$outerMask, animDuration, {
-					x: adjX
-				},{
-					x: 0
-				});
-			}
 			TweenMax.set(this.$innerTrack, {
-				x: (this.scrollAmt * this.state.previousIndex) + '%'
+				left: (this.scrollAmt * this.state.previousIndex) + '%'
 			});
 		}
 
@@ -326,22 +364,32 @@ class InfiniteCarousel {
 		this.options.autoRotate = false;
 	}
 
+	deactivateTab($tab) {
+		$tab.removeClass(this.options.classActiveTab).attr({'aria-selected': 'false'});
+		$tab.find('.selected-text').remove();
+	}
+
+	activateTab($tab) {
+		$tab.addClass(this.options.classActiveTab).attr({'aria-selected': 'true'});
+		$tab.append(this.selectedLabel);
+	}
+
 	deactivatePanels() {
-		const { classActiveItem, selectorFocusEls } = this.options;
-		this.$panels.removeClass(classActiveItem).attr({'aria-hidden': 'true'});
+		const { classActivePanel, selectorFocusEls } = this.options;
+		this.$panels.removeClass(classActivePanel).attr({'aria-hidden': 'true'});
 		this.$panels.find(selectorFocusEls).attr({'tabindex': '-1'});
 	}
 
 	activatePanels() {
-		const { classActiveItem, selectorFocusEls } = this.options;
+		const { classActivePanel, selectorFocusEls } = this.options;
 		const $activePanel = this.$panels.eq(this.state.currentIndex);
 		const $activeClonePanel1 = this.$panels.eq(this.state.currentIndex - this._length);
 		const $activeClonePanel2 = this.$panels.eq(this.state.currentIndex + this._length);
 
-		$activePanel.addClass(classActiveItem).attr({'aria-hidden': 'false'});
+		$activePanel.addClass(classActivePanel).attr({'aria-hidden': 'false'});
 		$activePanel.find(selectorFocusEls).attr({'tabindex': '0'});
-		$activeClonePanel1.addClass(classActiveItem);
-		$activeClonePanel2.addClass(classActiveItem);
+		$activeClonePanel1.addClass(classActivePanel);
+		$activeClonePanel2.addClass(classActivePanel);
 
 	}
 
@@ -364,9 +412,10 @@ class InfiniteCarousel {
 		this.$outerMask = null;
 		this.$innerTrack = null;
 		this.$panels = null;
+		this.$tabs = null;
 		$.event.trigger(`${this.options.customEventPrefix}:unInitialized`);
 	}
 
 }
 
-export default InfiniteCarousel;
+export default HeroCarousel;

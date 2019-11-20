@@ -35,11 +35,14 @@
 @import 'components/form-group';
 @import 'components/cb-rb-group';
 @import 'components/mediablock';
+@import 'components/hero-block';
 @import 'components/image-card';
+@import 'components/dot-nav';
 @import 'components/datepicker';
 
 // JS widgets
 @import 'widgets/loader-spinner';
+@import 'widgets/hero-carousel';
 @import 'widgets/infinite-carousel';
 @import 'widgets/responsive-carousel';
 @import 'widgets/tab-carousel';

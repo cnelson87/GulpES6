@@ -19,6 +19,7 @@ import MiniAccordion from 'widgets/MiniAccordion';
 import ResponsiveCarousel from 'widgets/ResponsiveCarousel';
 import ResponsiveTabCarousel from 'widgets/ResponsiveTabCarousel';
 import InfiniteCarousel from 'widgets/InfiniteCarousel';
+import HeroCarousel from 'widgets/HeroCarousel';
 import TabSwitcher from 'widgets/TabSwitcher';
 import SelectTabSwitcher from 'widgets/SelectTabSwitcher';
 import Horizordion from 'widgets/Horizordion';
@@ -154,6 +155,8 @@ const Application = {
 		});
 
 		new InfiniteCarousel($('#infinite-carousel'));
+
+		new HeroCarousel($('#hero-carousel'));
 
 		$miniAccordions.each((index) => {
 			new MiniAccordion($miniAccordions.eq(index), {

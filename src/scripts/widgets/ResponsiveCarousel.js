@@ -20,6 +20,8 @@ import Events from 'config/Events';
 import State from 'config/State';
 import focusOnContentEl from 'utilities/focusOnContentEl';
 
+const PERCENT = 100;
+
 class ResponsiveCarousel {
 
 	constructor($el, options = {}) {
@@ -140,7 +142,6 @@ class ResponsiveCarousel {
 
 	setOptions() {
 		// console.log(State.currentBreakpoint);
-		const percent = 100;
 
 		switch(State.currentBreakpoint) {
 			case 'mobile':
@@ -161,9 +162,9 @@ class ResponsiveCarousel {
 
 		this.lastIndex = this._length - this.numVisibleItems;
 		if (this.state.currentIndex > this.lastIndex) {this.state.currentIndex = this.lastIndex;}
-		this.itemWidth = percent / this._length;
-		this.scrollAmt = (percent / this.numVisibleItems) * -1;
-		this.trackWidth = (1 / this.numVisibleItems) * (this._length * percent);
+		this.itemWidth = PERCENT / this._length;
+		this.scrollAmt = (PERCENT / this.numVisibleItems) * -1;
+		this.trackWidth = (1 / this.numVisibleItems) * (this._length * PERCENT);
 
 	}
 
@@ -199,9 +200,7 @@ class ResponsiveCarousel {
 		this.$panels.removeAttr('role aria-hidden').removeClass(classActiveItem);
 		this.$panels.find(selectorFocusEls).removeAttr('tabindex');
 		this.cancelAutoRotation();
-		TweenMax.set(this.$innerTrack, {
-			left: ''
-		});
+		TweenMax.set(this.$innerTrack, {clearProps: 'all'});
 	}
 
 	_addEventListeners() {

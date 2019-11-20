@@ -1,0 +1,77 @@
+//
+// Hero Carousel
+// -----------------------------------------------------
+
+
+.hero-carousel {
+	height: auto;
+	margin: 1.5em auto;
+	padding: 20px 0;
+	position: relative;
+	width: 100%;
+
+	.carousel--tabnav {
+		margin-top: 1.0em;
+	}
+
+	.arrow-nav {
+		position: absolute;
+		top: calc(50% - 20px);
+
+		&.nav-prev {
+			left: 0;
+		}
+		&.nav-next {
+			right: 0;
+		}
+	}
+
+	.carousel--outer-mask {
+		margin: 0 auto;
+		// max-width: 1600px;
+		position: relative;
+		width: 100%;
+	}
+
+	.carousel--inner-track {
+		display: flex;
+		flex-wrap: nowrap;
+		position: relative;
+		width: 100%;
+	}
+
+	.carousel--panel {
+		flex-shrink: 0;
+		padding: 0 40px;
+		position: relative;
+		width: 100%;
+	}
+
+}
+
+@media (min-width: $breakpoint-tablet-min) {
+	.hero-carousel {
+		padding: 40px 0;
+
+		.arrow-nav {
+			top: calc(50% - 20px);
+		}
+
+		.carousel--panel {
+			transform: scale(0.9) translateY(-40px);
+			transform-origin: center top;
+			transition: transform $animation-speed;
+
+			&.is-active {
+				transform: scale(1.0) translateY(0);
+			}
+		}
+
+	}
+}
+
+// @media (min-width: $breakpoint-desktop-min) {
+// 	.hero-carousel {
+// 		min-height: 418px;
+// 	}
+// }
