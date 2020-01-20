@@ -134,8 +134,10 @@ gulp.task('scripts', () => {
 			.bundle()
 			.pipe(source('app.js'))
 			.pipe(buffer())
-			.pipe(gulpif(isProd(), uglify()))
 			.pipe(rename(APP_NAME+'.js'))
+			// .pipe(gulpif(isDev(), sourcemaps.init()))
+			.pipe(gulpif(isProd(), uglify()))
+			// .pipe(gulpif(isDev(), sourcemaps.write('./')
 			.pipe(out(DEST.SCRIPTS))
 			.pipe(gulpif(isDev(), connect.reload()))
 	);
@@ -144,12 +146,12 @@ gulp.task('scripts', () => {
 gulp.task('styles', () => {
 	return (
 		gulp.src(SRC.STYLES_ENTRY)
+			.pipe(rename(APP_NAME+'.css'))
 			.pipe(gulpif(isDev(), sourcemaps.init()))
 			.pipe(sass())
 			.pipe(autoprefixer())
 			.pipe(gulpif(isDev(), sourcemaps.write('.')))
 			.pipe(gulpif(isProd(), cssmin()))
-			.pipe(rename(APP_NAME+'.css'))
 			.pipe(out(DEST.STYLES))
 			.pipe(gulpif(isDev(), connect.reload()))
 	);
@@ -158,10 +160,8 @@ gulp.task('styles', () => {
 gulp.task('print', () => {
 	return (
 		gulp.src(SRC.PRINT_STYLES_ENTRY)
-			.pipe(gulpif(isDev(), sourcemaps.init()))
 			.pipe(sass())
 			.pipe(autoprefixer())
-			.pipe(gulpif(isDev(), sourcemaps.write('.')))
 			.pipe(gulpif(isProd(), cssmin()))
 			.pipe(out(DEST.STYLES))
 			.pipe(gulpif(isDev(), connect.reload()))
