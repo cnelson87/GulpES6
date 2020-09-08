@@ -50,7 +50,6 @@ const Application = {
 
 		this.params = null;
 
-		if (Constants.isIE10) {this.$html.addClass('ie10');}
 		if (Constants.isIE11) {this.$html.addClass('ie11');}
 		if (Constants.isEdge) {this.$html.addClass('edge');}
 		if (Constants.isAndroid) {this.$html.addClass('android');}

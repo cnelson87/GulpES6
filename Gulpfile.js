@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const gulp = require('gulp');
 const argv = require('yargs').argv;
-const autoprefixer = require('gulp-autoprefixer');
+const autoprefixer = require('autoprefixer');
 const babelify = require('babelify');
 const browserify = require('browserify');
 const buffer = require('vinyl-buffer');
@@ -18,6 +18,7 @@ const fileinclude = require('gulp-file-include');
 const gulpif = require('gulp-if');
 const hbsfy = require('hbsfy');
 const pathmodify = require('pathmodify');
+const postcss = require('gulp-postcss');
 const rename = require('gulp-rename');
 const sass = require('gulp-sass');
 const sasslint = require('gulp-sass-lint');
@@ -62,7 +63,8 @@ function out(path) {
 
 gulp.task('clean', () => {
 	return (
-		gulp.src(SITE_ROOT, {read: false, allowEmpty: true}).pipe(clean())
+		gulp.src(SITE_ROOT, {read: false, allowEmpty: true})
+			.pipe(clean())
 	);
 });
 
@@ -100,18 +102,20 @@ gulp.task('html', () => {
 gulp.task('eslint', () => {
 	return (
 		gulp.src([SRC.SCRIPTS])
-			.pipe(gulpif(isDev(), eslint()))
-			.pipe(gulpif(isDev(), eslint.format()))
-			.pipe(gulpif(isDev(), eslint.failOnError()))
+			.pipe(eslint())
+			.pipe(eslint.format())
+			// .pipe(gulpif(isDev(), eslint.failOnError()))
+			.pipe(eslint.failOnError())
 	);
 });
 
 gulp.task('sasslint', () => {
 	return (
 		gulp.src([SRC.STYLES, '!'+SRC.STYLES_VENDOR])
-			.pipe(gulpif(isDev(), sasslint()))
-			.pipe(gulpif(isDev(), sasslint.format()))
-			.pipe(gulpif(isDev(), sasslint.failOnError()))
+			.pipe(sasslint())
+			.pipe(sasslint.format())
+			// .pipe(gulpif(isDev(), sasslint.failOnError()))
+			.pipe(sasslint.failOnError())
 	);
 });
 
@@ -130,7 +134,7 @@ gulp.task('scripts', () => {
 		})
 			.plugin(pathmodify, {mods: mods})
 			.transform(hbsfy, {extensions: ['hbs']})
-			.transform(babelify, {presets: ['@babel/preset-env']})
+			.transform(babelify)
 			.bundle()
 			.pipe(source('app.js'))
 			.pipe(buffer())
@@ -144,12 +148,15 @@ gulp.task('scripts', () => {
 });
 
 gulp.task('styles', () => {
+	const plugins = [
+		autoprefixer()
+	];
 	return (
 		gulp.src(SRC.STYLES_ENTRY)
 			.pipe(rename(APP_NAME+'.css'))
 			.pipe(gulpif(isDev(), sourcemaps.init()))
 			.pipe(sass())
-			.pipe(autoprefixer())
+			.pipe(postcss(plugins))
 			.pipe(gulpif(isDev(), sourcemaps.write('.')))
 			.pipe(gulpif(isProd(), cssmin()))
 			.pipe(out(DEST.STYLES))
@@ -161,7 +168,6 @@ gulp.task('print', () => {
 	return (
 		gulp.src(SRC.PRINT_STYLES_ENTRY)
 			.pipe(sass())
-			.pipe(autoprefixer())
 			.pipe(gulpif(isProd(), cssmin()))
 			.pipe(out(DEST.STYLES))
 			.pipe(gulpif(isDev(), connect.reload()))

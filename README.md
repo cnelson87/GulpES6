@@ -7,13 +7,13 @@ A Gulp-based ES6 sandbox. Scripts are compiled using Browserify and transpiled u
 
 - [Install Node.js:](https://nodejs.org/)
 - [Install Gulp-CLI:](https://gulpjs.com/), `npm install gulp-cli -g`
-- Optional / Recommended: [Install Yarn:](https://yarnpkg.com/en/)
+- Optional: [Install Yarn:](https://yarnpkg.com/en/)
 
 
 ## NPM Modules
 
-- CD into the root directory containing 'package.json'
-- Install dependencies: `yarn install` or `npm install`
+- `cd` into the root directory containing 'package.json'
+- Install dependencies: `npm install` or `yarn install`
 
 
 ## Workflow

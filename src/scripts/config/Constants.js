@@ -10,7 +10,6 @@ if (!window.location.origin) {
 const Constants = {
 
 	siteUrl: window.location.origin,
-	isIE10: navigator.userAgent.indexOf('MSIE 10') !== -1,
 	isIE11: (navigator.userAgent.indexOf('Windows NT') !== -1 && navigator.userAgent.indexOf('rv:11') !== -1),
 	isEdge: /Edge/.test(navigator.userAgent),
 	isAndroid: /android/i.test(navigator.userAgent),

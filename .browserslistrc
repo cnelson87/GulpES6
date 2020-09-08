@@ -1,5 +1,4 @@
 # supported browsers
 
-last 5 versions
-Safari >= 11
-IE >= 10
+last 3 versions
+not ie < 11
