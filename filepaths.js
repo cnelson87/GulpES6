@@ -5,10 +5,10 @@ const FILEPATHS = {
 		HTML: 'src/html/**/*.html',
 		HTML_INCLUDES: 'src/html/_includes/**/*.html',
 		SCRIPTS: 'src/scripts/**/*.js',
-		SCRIPTS_ENTRY: './src/scripts/initialize.js',
+		SCRIPTS_ENTRY: './src/scripts/index.js',
 		STYLES: 'src/styles/**/*.scss',
 		STYLES_VENDOR: 'src/styles/vendor/*.scss',
-		STYLES_ENTRY: './src/styles/app.scss',
+		STYLES_ENTRY: './src/styles/index.scss',
 		PRINT_STYLES_ENTRY: './src/styles/print.scss',
 		TEMPLATES: 'src/templates/**/*.hbs',
 		VENDOR: [
@@ -34,8 +34,8 @@ const FILEPATHS = {
 		]
 	},
 	DEST: {
-		DEV: './_builds/local',
-		PROD: './_builds/public',
+		DEV: './_builds/dev',
+		PROD: './_builds/prod',
 		ASSETS: '_assets',
 		DATA: '_assets/data',
 		SCRIPTS: '_assets/scripts',
