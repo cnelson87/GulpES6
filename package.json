@@ -24,7 +24,7 @@
 		"babelify": "^10.0.0",
 		"browserify": "^16.5.2",
 		"browserslist": "^4.14.5",
-		"eslint": "^7.10.0",
+		"eslint": "^7.11.0",
 		"gulp-clean": "^0.4.0",
 		"gulp-concat": "^2.6.1",
 		"gulp-connect": "^5.7.0",
@@ -44,7 +44,7 @@
 		"node-sass": "^4.14.1",
 		"pathmodify": "^0.5.0",
 		"postcss": "^8.1.1",
-		"uglify-js": "^3.11.1",
+		"uglify-js": "^3.11.2",
 		"vinyl-buffer": "^1.0.1",
 		"vinyl-source-stream": "^2.0.0",
 		"yargs": "^16.0.3"
