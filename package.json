@@ -6,8 +6,8 @@
 	"appName": "gulpes6",
 	"main": "Gulpfile.js",
 	"readmeFilename": "README.md",
-	"portNumber": 8376,
-	"livereloadPort": 30376,
+	"portNumber": 8048,
+	"livereloadPort": 30048,
 	"scripts": {
 		"start": "clear && gulp --dev",
 		"build": "gulp"
@@ -18,8 +18,8 @@
 	},
 	"devDependencies": {
 		"gulp": "^4.0.2",
-		"@babel/core": "^7.11.6",
-		"@babel/preset-env": "^7.11.5",
+		"@babel/core": "^7.12.1",
+		"@babel/preset-env": "^7.12.1",
 		"autoprefixer": "^10.0.1",
 		"babelify": "^10.0.0",
 		"browserify": "^16.5.2",
