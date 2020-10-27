@@ -79,7 +79,7 @@ class DualDatepicker {
 			const dpDate = Date.parse(date);
 			const data = ( dpDate >= dpStart && dpDate <= dpEnd ) ? [true, 'ui-state-active', ''] : [true, '', ''];
 			return data;
-		};
+		}
 
 		$startDatepicker.datepicker({
 			minDate: 0,

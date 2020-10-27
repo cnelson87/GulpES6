@@ -273,7 +273,7 @@ class InfiniteCarousel {
 			// },
 			onComplete: function() {
 				self.state.isAnimating = false;
-				if (!!event) {
+				if (event) {
 					self.focusOnPanel($activePanel);
 				}
 			}

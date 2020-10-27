@@ -316,7 +316,7 @@ class Accordion {
 		const { animDuration, animEasing, equalizeHeight, customEventPrefix } = this.options;
 		const $activeTab = this.$tabs.eq(index);
 		const $activePanel = this.$panels.eq(index);
-		const panelHeight = $activePanel.outerHeight();
+		let panelHeight = $activePanel.outerHeight();
 
 		this.state.isAnimating = true;
 

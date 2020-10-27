@@ -335,7 +335,7 @@ class ResponsiveCarousel {
 			onComplete: function() {
 				self.state.isAnimating = false;
 				self.activateItems();
-				if (!!event) {
+				if (event) {
 					self.focusOnPanel($activePanel);
 				}
 				$.event.trigger(`${customEventPrefix}:carouselUpdated`, {activePanel: $activePanel});

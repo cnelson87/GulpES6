@@ -18,13 +18,13 @@
 	},
 	"devDependencies": {
 		"gulp": "^4.0.2",
-		"@babel/core": "^7.12.1",
+		"@babel/core": "^7.12.3",
 		"@babel/preset-env": "^7.12.1",
 		"autoprefixer": "^10.0.1",
 		"babelify": "^10.0.0",
-		"browserify": "^16.5.2",
+		"browserify": "^17.0.0",
 		"browserslist": "^4.14.5",
-		"eslint": "^7.11.0",
+		"eslint": "^7.12.1",
 		"gulp-clean": "^0.4.0",
 		"gulp-concat": "^2.6.1",
 		"gulp-connect": "^5.7.0",
@@ -43,11 +43,11 @@
 		"lodash": "^4.17.20",
 		"node-sass": "^4.14.1",
 		"pathmodify": "^0.5.0",
-		"postcss": "^8.1.1",
-		"uglify-js": "^3.11.2",
+		"postcss": "^8.1.4",
+		"uglify-js": "^3.11.4",
 		"vinyl-buffer": "^1.0.1",
 		"vinyl-source-stream": "^2.0.0",
-		"yargs": "^16.0.3"
+		"yargs": "^16.1.0"
 	},
 	"repository": {
 		"type": "git",

@@ -18,13 +18,13 @@ A Gulp-based ES6 sandbox. Scripts are compiled using Browserify and transpiled u
 
 ## Workflow
 
-All development work should be done in the 'src' directory. Use the gulp commands below for running the project locally and processing for handoff to QA/Staging/Production.
+All development work should be done in the 'src' directory. Use the gulp commands below for running the project locally and compiling for production.
 
 
 ## Gulp Commands
 
-- `gulp` : Default task packages all files for delivery to staging or production, and outputs to a 'public' folder. Copies all static assets, lints and compiles javascript, lints and compiles SASS, optimizes JS and CSS
-- `gulp --dev` : Same as default gulp command minus JS and CSS optimization, and outputs to a 'local' folder. Runs a local static server with automatic live-reloading, watches all files for changes.
+- `gulp` : Default task packages all files for delivery to staging or production, and outputs to a 'prod' folder. Copies all static assets, lints and compiles javascript, lints and compiles SASS, optimizes JS and CSS.
+- `gulp --dev` : Same as default gulp command minus JS and CSS optimization, and outputs to a 'dev' folder. Runs a local static server with automatic live-reloading, watches all files for changes.
 
 
 ## NPM scripts

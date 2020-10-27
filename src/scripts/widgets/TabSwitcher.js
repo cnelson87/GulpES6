@@ -273,7 +273,7 @@ class TabSwitcher {
 
 		setTimeout(() => {
 			this.state.isAnimating = false;
-			if (!!event) {
+			if (event) {
 				this.focusOnPanel($activePanel);
 			}
 			$.event.trigger(`${customEventPrefix}:panelClosed`, {inactivePanel: $inactivePanel});

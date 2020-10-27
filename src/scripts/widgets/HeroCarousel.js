@@ -310,10 +310,8 @@ class HeroCarousel {
 
 		this.adjustPosition();
 
-
 		$activePanel = this.$panels.eq(this.state.currentIndex);
 		$activeTab = this.$tabs.eq(this.state.currentIndex - this._length);
-		console.log('$activeTab', $activeTab);
 
 		this.deactivatePanels();
 		this.activatePanels();
@@ -325,7 +323,7 @@ class HeroCarousel {
 			ease: animEasing,
 			onComplete: function() {
 				self.state.isAnimating = false;
-				if (!!event) {
+				if (event) {
 					self.focusOnPanel($activePanel);
 				}
 			}

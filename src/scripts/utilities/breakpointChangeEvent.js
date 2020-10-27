@@ -14,7 +14,7 @@ const breakpointChangeEvent = function() {
 		State.isMobileView = State.currentBreakpoint === 'mobile';
 		State.isTabletView = State.currentBreakpoint === 'tablet';
 		State.isDesktopView = State.currentBreakpoint === 'desktop';
-	};
+	}
 
 	const $elIndicator = $('<div></div>',{
 		'id': 'breakpoint-indicator'
