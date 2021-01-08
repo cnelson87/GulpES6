@@ -84,20 +84,20 @@ $desktop-wide-container-width: $max-width;
 
 
 // Grid System
-$gutter-base: 20px;
+$gutter-base: 16px;
 $gutter-half: $gutter-base / 2;
 $gutter-width-mobile: $gutter-base;
-$gutter-width-tablet: $gutter-base * 1.5;
-$gutter-width-desktop: $gutter-base * 2;
+$gutter-width-tablet: $gutter-base * 1.5; //24px
+$gutter-width-desktop: $gutter-base * 2; //32px
 $gutter-half-width-mobile: $gutter-width-mobile / 2;
 $gutter-half-width-tablet: $gutter-width-tablet / 2;
 $gutter-half-width-desktop: $gutter-width-desktop / 2;
 $gutter-double-width-mobile: $gutter-width-mobile * 2;
 $gutter-double-width-tablet: $gutter-width-tablet * 2;
 $gutter-double-width-desktop: $gutter-width-desktop * 2;
-$vertical-pad-mobile: 20px;
-$vertical-pad-tablet: 40px;
-$vertical-pad-desktop: 60px;
+$vertical-pad-mobile: $gutter-base;
+$vertical-pad-tablet: $gutter-base * 2; //32px
+$vertical-pad-desktop: $gutter-base * 3; //48px
 $vertical-half-pad-mobile: $vertical-pad-mobile / 2;
 $vertical-half-pad-tablet: $vertical-pad-tablet / 2;
 $vertical-half-pad-desktop: $vertical-pad-desktop / 2;
