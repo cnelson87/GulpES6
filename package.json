@@ -13,18 +13,18 @@
 		"build": "gulp"
 	},
 	"dependencies": {
-		"core-js": "^3.8.2",
+		"core-js": "^3.8.3",
 		"regenerator-runtime": "^0.13.7"
 	},
 	"devDependencies": {
 		"gulp": "^4.0.2",
 		"@babel/core": "^7.12.10",
 		"@babel/preset-env": "^7.12.11",
-		"autoprefixer": "^10.2.1",
+		"autoprefixer": "^10.2.4",
 		"babelify": "^10.0.0",
 		"browserify": "^17.0.0",
-		"browserslist": "^4.16.1",
-		"eslint": "^7.17.0",
+		"browserslist": "^4.16.3",
+		"eslint": "^7.19.0",
 		"gulp-clean": "^0.4.0",
 		"gulp-concat": "^2.6.1",
 		"gulp-connect": "^5.7.0",
@@ -43,8 +43,8 @@
 		"lodash": "^4.17.20",
 		"node-sass": "^4.14.1",
 		"pathmodify": "^0.5.0",
-		"postcss": "^8.2.3",
-		"uglify-js": "^3.12.4",
+		"postcss": "^8.2.4",
+		"uglify-js": "^3.12.6",
 		"vinyl-buffer": "^1.0.1",
 		"vinyl-source-stream": "^2.0.0",
 		"yargs": "^16.2.0"
