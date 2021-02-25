@@ -22,16 +22,14 @@
 	}
 
 	.hero-content-box {
-		padding: $vertical-pad-mobile $gutter-width-mobile;
+		padding: var(--gutter);
 		position: relative;
 
 		@media (min-width: $breakpoint-tablet-min) {
-			padding: $vertical-pad-tablet $gutter-width-tablet;
 			width: 75%;
 		}
 
 		@media (min-width: $breakpoint-desktop-min) {
-			padding: $vertical-pad-desktop $gutter-width-desktop;
 			width: 50%;
 		}
 
@@ -41,7 +39,7 @@
 			mix-blend-mode: multiply;
 
 			&.blue-background {
-				background: rgba($color-dark-blue, 0.65);
+				background: rgba($color-blue-dark, 0.65);
 			}
 
 			&.red-background {
@@ -64,7 +62,6 @@
 		h1, h2, h3, p {
 			color: $color-white;
 		}
-
 	}
 
 	.hero-background {
@@ -85,7 +82,6 @@
 	.hero-background-3 {
 		background-image: url($image-path+'/media/hero-3.jpg');
 	}
-
 }
 
 .content.hero.bottom-angle + .content.hero.top-cutout {

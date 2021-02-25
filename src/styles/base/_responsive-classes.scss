@@ -20,6 +20,7 @@
 .show-desktop-inline-block {
 	@include hidden;
 }
+
 // iOS
 html.ios {
 	.hide-ios {@include hidden;}
@@ -27,6 +28,7 @@ html.ios {
 	.show-ios-inline {@include visible(inline);}
 	.show-ios-inline-block {@include visible(inline-block);}
 }
+
 // Android
 html.android {
 	.hide-android {@include hidden;}
@@ -34,6 +36,7 @@ html.android {
 	.show-android-inline {@include visible(inline);}
 	.show-android-inline-block {@include visible(inline-block);}
 }
+
 // Mobile
 @media (max-width: $breakpoint-mobile-max) {
 	.hide-mobile {@include hidden;}
@@ -44,13 +47,16 @@ html.android {
 	.mobile-only-block {
 		display: block;
 	}
+
 	.mobile-only-inline {
 		display: inline;
 	}
+
 	.mobile-only-inline-block {
 		display: inline-block;
 	}
 }
+
 // Tablet
 @media (min-width: $breakpoint-tablet-min) and (max-width: $breakpoint-tablet-max) {
 	.hide-tablet {@include hidden;}
@@ -58,6 +64,7 @@ html.android {
 	.show-tablet-inline {@include visible(inline);}
 	.show-tablet-inline-block {@include visible(inline-block);}
 }
+
 // Desktop
 @media (min-width: $breakpoint-desktop-min) {
 	.hide-desktop {@include hidden;}

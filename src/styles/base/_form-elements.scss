@@ -73,34 +73,41 @@ textarea:invalid {
 	outline: 0;
 }
 
-::-webkit-input-placeholder {
-	color: $color-gray-med;
-	opacity: 1;
-}
-::-moz-placeholder {
-	color: $color-gray-med;
-	opacity: 1;
-}
-:-ms-input-placeholder {
-	color: $color-gray-med;
-	opacity: 1;
-}
+// ::-webkit-input-placeholder {
+// 	color: $color-gray-med;
+// 	opacity: 1;
+// }
+//
+// ::-moz-placeholder {
+// 	color: $color-gray-med;
+// 	opacity: 1;
+// }
+//
+// :-ms-input-placeholder {
+// 	color: $color-gray-med;
+// 	opacity: 1;
+// }
+
 ::placeholder {
 	color: $color-gray-med;
 	opacity: 1;
 }
-:focus::-webkit-input-placeholder {
-	color: transparent;
-	opacity: 0;
-}
-:focus::-moz-placeholder {
-	color: transparent;
-	opacity: 0;
-}
-:focus:-ms-input-placeholder {
-	color: transparent;
-	opacity: 0;
-}
+
+// :focus::-webkit-input-placeholder {
+// 	color: transparent;
+// 	opacity: 0;
+// }
+//
+// :focus::-moz-placeholder {
+// 	color: transparent;
+// 	opacity: 0;
+// }
+//
+// :focus:-ms-input-placeholder {
+// 	color: transparent;
+// 	opacity: 0;
+// }
+
 :focus::placeholder {
 	color: transparent;
 	opacity: 0;
@@ -132,6 +139,7 @@ select {
 	background: $transparent url($image-path+'/select-btn.png') no-repeat right 8px top 50%;
 	padding-right: 24px;
 }
+
 select::-ms-expand {
 	display: none;
 }
@@ -204,7 +212,7 @@ input[type='radio'] {
 	&[disabled] {
 		cursor: default;
 
-		& + label {
+		+ label {
 			color: $color-gray-light;
 		}
 	}

@@ -1,13 +1,7 @@
 //
 // Mixins
 // -----------------------------------------------------
-// sass-lint:disable no-important
 
-@mixin accelerate {
-	backface-visibility: hidden;
-	perspective: 1000;
-	transform: translate3d(0,0,0);
-}
 
 @mixin center-block {
 	display: block;
@@ -32,21 +26,22 @@
 }
 
 @mixin fixed-window {
-	@include absolute-window;
+	bottom: 0;
+	left: 0;
 	position: fixed;
+	right: 0;
+	top: 0;
 }
 
-@mixin offscreen {
+@mixin sr-only {
 	border: 0;
-	display: block;
+	clip: rect(0, 0, 0, 0);
 	height: 1px;
-	left: -1px;
-	margin: 0;
+	margin: -1px;
 	overflow: hidden;
 	padding: 0;
-	position: fixed;
+	position: absolute;
 	text-indent: 200%;
-	top: -1px;
 	white-space: nowrap;
 	width: 1px;
 }
@@ -59,12 +54,10 @@
 
 @mixin hidden {
 	display: none !important;
-	visibility: hidden !important;
 }
 
 @mixin visible($display: block) {
 	display: $display;
-	visibility: visible;
 }
 
 // Standard Action-Element Transition

@@ -5,32 +5,33 @@
 
 // Color Definitions
 $color-black: #000;
-$color-white: #fff;
 $color-near-black: #1a1a1a;
-$color-near-white: #efefef;
 $color-gray-dark: #333;
 $color-gray-med: #999;
 $color-gray-light: #ccc;
 $color-gray-xlight: #dedede;
 $color-gray-xlight-alt: #cdcdcd;
+$color-near-white: #efefef;
+$color-white: #fff;
 $color-red: #900;
 $color-red-bright: #c00;
 $color-green1: #9c3;
 $color-green2: #693;
-$color-light-blue: #69c;
-$color-dark-blue: #036;
-// Color Usage
-$body-bg: $color-near-white;
-$text-color: $color-near-black;
+$color-blue-light: #69c;
+$color-blue-dark: #036;
+$transparent: rgba(0, 0, 0, 0); //iOS friendly transparent
+// Default Theme Color Usage
+$bg-color: $color-white;
+$text-color: $color-black;
 $heading-color: $color-gray-dark;
-$link-color: $color-green1;
-$link-hover-color: $color-green2;
+$link-color: $color-blue-dark;
+$link-hover-color: $color-blue-light;
+// Misc Color Usage
 $border-color-dark: $color-gray-dark;
 $border-color-med: $color-gray-med;
 $border-color-light: $color-gray-light;
 $border-color-xlight: $color-gray-xlight;
 $alert-color: $color-red;
-$transparent: rgba(0,0,0,0); //iOS friendly transparent
 
 
 // Fonts
@@ -45,66 +46,72 @@ $font-path: '/_assets/fonts';
 
 
 // Animation
-$slow-anim-speed:  0.8s;
-$animation-speed:  0.4s;
-$transition-speed: 0.2s;
+$slow-anim-speed: 800ms;
+$animation-speed: 400ms;
+$transition-speed: 200ms;
 
 
 // Z-Indexes
 $spinner-zindex: 10;
 $tooltip-zindex: 90;
-$modal-zindex:  100;
+$modal-zindex: 100;
 
 
 // Misc
-$border-radius-sm:  4px;
+$border-radius-sm: 4px;
 $border-radius-lg: 10px;
 
 
 // Media Queries
 $breakpoint-mobile-wide: 540px;
-$breakpoint-mobile-max:  767px;
-$breakpoint-tablet-min:  768px;
+$breakpoint-mobile-max: 767px;
+$breakpoint-tablet-min: 768px;
 $breakpoint-tablet-wide: 920px;
-$breakpoint-tablet-max:  1079px;
+$breakpoint-tablet-max: 1079px;
 $breakpoint-desktop-min: 1080px;
 $breakpoint-desktop-wide: 1360px;
-$breakpoint-desktop-xwide: 1920px;
-//background stretch
-$breakpoint-max-background-width: 2560px;
 
 
 // Container Sizes
-$min-width: 360px;
-$max-width: 1280px;
-$mobile-container-max-width: 640px;
-$tablet-container-width: 740px;
-$desktop-container-width: 1000px;
-$desktop-wide-container-width: $max-width;
+$mobile-container-max-width: 600px;
+$container-width-tablet: 720px;
+$container-width-desktop: 1000px;
+$container-width-desktop-wide: 1280px;
 
 
 // Grid System
 $gutter-base: 16px;
+$gutter: $gutter-base;
 $gutter-half: $gutter-base / 2;
-$gutter-width-mobile: $gutter-base;
+$gutter-double: $gutter-base * 2;
+//mobile
+$gutter-width-mobile: $gutter-base; //16px
+$gutter-half-width-mobile: $gutter-width-mobile / 2; //8px
+$gutter-double-width-mobile: $gutter-width-mobile * 2; //32px
+$neg-gutter-width-mobile: $gutter-width-mobile * -1; //-16px
+$neg-gutter-half-width-mobile: $gutter-half-width-mobile * -1; //-8px
+$neg-gutter-double-width-mobile: $gutter-double-width-mobile * -1; //-32px
+//tablet
 $gutter-width-tablet: $gutter-base * 1.5; //24px
+$gutter-half-width-tablet: $gutter-width-tablet / 2; //12px
+$gutter-double-width-tablet: $gutter-width-tablet * 2; //48px
+$neg-gutter-width-tablet: $gutter-width-tablet * -1; //-24px
+$neg-gutter-half-width-tablet: $gutter-half-width-tablet * -1; //-12px
+$neg-gutter-double-width-tablet: $gutter-double-width-tablet * -1; //-48px
+//desktop
 $gutter-width-desktop: $gutter-base * 2; //32px
-$gutter-half-width-mobile: $gutter-width-mobile / 2;
-$gutter-half-width-tablet: $gutter-width-tablet / 2;
-$gutter-half-width-desktop: $gutter-width-desktop / 2;
-$gutter-double-width-mobile: $gutter-width-mobile * 2;
-$gutter-double-width-tablet: $gutter-width-tablet * 2;
-$gutter-double-width-desktop: $gutter-width-desktop * 2;
-$vertical-pad-mobile: $gutter-base;
-$vertical-pad-tablet: $gutter-base * 2; //32px
-$vertical-pad-desktop: $gutter-base * 3; //48px
-$vertical-half-pad-mobile: $vertical-pad-mobile / 2;
-$vertical-half-pad-tablet: $vertical-pad-tablet / 2;
-$vertical-half-pad-desktop: $vertical-pad-desktop / 2;
-$vertical-double-pad-mobile: $vertical-pad-mobile * 2;
-$vertical-double-pad-tablet: $vertical-pad-tablet * 2;
-$vertical-double-pad-desktop: $vertical-pad-desktop * 2;
+$gutter-half-width-desktop: $gutter-width-desktop / 2; //16px
+$gutter-double-width-desktop: $gutter-width-desktop * 2; //64px
+$neg-gutter-width-desktop: $gutter-width-desktop * -1; //-32px
+$neg-gutter-half-width-desktop: $gutter-half-width-desktop * -1; //-16px
+$neg-gutter-double-width-desktop: $gutter-double-width-desktop * -1; //-64px
+//desktop-wide
+$gutter-width-desktop-wide: $gutter-base * 2.5; //40px
+$gutter-half-width-desktop-wide: $gutter-width-desktop-wide / 2; //20px
+$gutter-double-width-desktop-wide: $gutter-width-desktop-wide * 2; //80px
+$neg-gutter-width-desktop-wide: $gutter-width-desktop-wide * -1; //-40px
+$neg-gutter-half-width-desktop-wide: $gutter-half-width-desktop-wide * -1; //-20px
+$neg-gutter-double-width-desktop-wide: $gutter-double-width-desktop-wide * -1; //-80px
 
 
-// iPad address & tab bars
-$tablet-chrome-height: 102;
+//**

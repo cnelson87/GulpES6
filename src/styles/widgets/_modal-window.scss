@@ -13,9 +13,7 @@
 	@include fixed-window;
 	overflow: auto;
 	// use overscroll-behavior-y to stop page scrolling when the overlay's scroll limits are reached.
-	// sass-lint:disable no-misspelled-properties
 	overscroll-behavior-y: contain;
-	// sass-lint:enable no-misspelled-properties
 	z-index: $modal-zindex;
 }
 
@@ -37,18 +35,12 @@
 	animation-fill-mode: forwards;
 	height: 100%;
 	margin: 0 auto;
-	padding: $gutter-width-mobile;
+	padding: var(--gutter);
 	position: relative;
 	width: 100%;
 
 	@media (min-width: $breakpoint-tablet-min) {
-		padding: $gutter-width-tablet;
-		width: $tablet-container-width - $gutter-width-tablet;
-	}
-
-	@media (min-width: $breakpoint-desktop-min) {
-		padding: $gutter-width-desktop;
-		width: $desktop-container-width - $gutter-width-desktop;
+		width: calc(var(--container-width) - var(--gutter));
 	}
 
 	&.is-active {
@@ -84,7 +76,7 @@
 		}
 	}
 
-	.btn-closeX {
+	.btn-close {
 		position: absolute;
 		right: 5px;
 		top: 5px;
@@ -94,28 +86,15 @@
 	.modal--footer {
 		flex-grow: 0;
 		flex-shrink: 0;
-		min-height: 40px; //set height to .btn-closeX + 10px
+		min-height: 40px; //set height to .btn-close + 10px
 		position: relative;
 	}
 
 	.modal--content {
 		flex-grow: 1;
-		overflow-y: auto;
-		padding: 20px $gutter-width-mobile;
-		position: relative;
-		// sass-lint:disable no-misspelled-properties
 		-webkit-overflow-scrolling: touch;
-		// sass-lint:enable no-misspelled-properties
-
-		@media (min-width: $breakpoint-tablet-min) {
-			padding-left: $gutter-width-tablet;
-			padding-right: $gutter-width-tablet;
-		}
-
-		@media (min-width: $breakpoint-desktop-min) {
-			padding-left: $gutter-width-desktop;
-			padding-right: $gutter-width-desktop;
-		}
+		overflow-y: auto;
+		padding: 20px var(--gutter);
+		position: relative;
 	}
-
 }

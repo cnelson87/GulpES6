@@ -1,0 +1,52 @@
+//
+// Themes
+// -----------------------------------------------------
+
+
+.theme-default {
+	--bg-color: #{$bg-color};
+	--text-color: #{$text-color};
+	--heading-color: #{$heading-color};
+	--link-color: #{$link-color};
+	--link-hover-color: #{$link-hover-color};
+}
+
+.theme-black-white {
+	--bg-color: #{$color-black};
+	--text-color: #{$color-white};
+	--heading-color: #{$color-white};
+	--link-color: #{$color-white};
+	--link-hover-color: #{$color-white};
+}
+
+.theme-blue-white {
+	--bg-color: #{$color-blue-dark};
+	--text-color: #{$color-white};
+	--heading-color: #{$color-white};
+	--link-color: #{$color-white};
+	--link-hover-color: #{$color-white};
+}
+
+.theme-gray-black {
+	--bg-color: #{$color-gray-light};
+	--text-color: #{$color-black};
+	--heading-color: #{$color-black};
+	--link-color: #{$color-black};
+	--link-hover-color: #{$color-black};
+}
+
+.theme-gray-white {
+	--bg-color: #{$color-gray-dark};
+	--text-color: #{$color-white};
+	--heading-color: #{$color-white};
+	--link-color: #{$color-white};
+	--link-hover-color: #{$color-white};
+}
+
+.themed-elem {
+	background: var(--bg-color);
+	color: var(--text-color);
+	//need vert padding to contain inner elements margins
+	padding-bottom: 1px;
+	padding-top: 1px;
+}

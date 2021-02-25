@@ -3,7 +3,7 @@
 // -----------------------------------------------------
 // An element that changes z-index when a breakpoint is crossed
 // Used in conjunction with /scripts/utiities/breakpointChange.js
-
+// stylelint-disable selector-max-id
 
 #breakpoint-indicator {
 	height: 1px;

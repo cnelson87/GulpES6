@@ -28,6 +28,7 @@
 		&.nav-prev {
 			left: -15px;
 		}
+
 		&.nav-next {
 			right: -15px;
 		}
@@ -58,10 +59,10 @@
 		// 	opacity: 1.0;
 		// }
 	}
-
 }
 
 @media (min-width: $breakpoint-tablet-min) {
+
 	.infinite-carousel {
 		min-height: 414px;
 		padding: 40px 0 4px;
@@ -72,6 +73,7 @@
 			&.nav-prev {
 				left: calc(50% - 300px);
 			}
+
 			&.nav-next {
 				right: calc(50% - 300px);
 			}
@@ -91,11 +93,11 @@
 				width: calc(100% + 80px);
 			}
 		}
-
 	}
 }
 
 @media (min-width: $breakpoint-desktop-min) {
+
 	.infinite-carousel {
 		min-height: 424px;
 	}

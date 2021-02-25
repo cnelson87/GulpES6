@@ -42,9 +42,7 @@
 			&.is-active {
 				background: $color-gray-dark;
 				color: $color-white;
-			}
 
-			&.is-active {
 				&::after {
 					background-position: 0 -330px;
 				}
@@ -64,5 +62,4 @@
 			position: relative;
 		}
 	}
-
 }

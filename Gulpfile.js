@@ -21,7 +21,7 @@ const pathmodify = require('pathmodify');
 const postcss = require('gulp-postcss');
 const rename = require('gulp-rename');
 const sass = require('gulp-sass');
-const sasslint = require('gulp-sass-lint');
+const stylelint = require('gulp-stylelint');
 const source = require('vinyl-source-stream');
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
@@ -104,18 +104,18 @@ gulp.task('eslint', () => {
 		gulp.src([SRC.SCRIPTS])
 			.pipe(eslint())
 			.pipe(eslint.format())
-			// .pipe(gulpif(isDev(), eslint.failOnError()))
 			.pipe(eslint.failOnError())
 	);
 });
 
-gulp.task('sasslint', () => {
+gulp.task('stylelint', () => {
 	return (
 		gulp.src([SRC.STYLES, '!'+SRC.STYLES_VENDOR])
-			.pipe(sasslint())
-			.pipe(sasslint.format())
-			// .pipe(gulpif(isDev(), sasslint.failOnError()))
-			.pipe(sasslint.failOnError())
+			.pipe(stylelint({
+				reporters: [
+					{formatter: 'string', console: true}
+				]
+			}))
 	);
 });
 
@@ -199,13 +199,13 @@ gulp.task('watch', gulp.series((done) => {
 	gulp.watch(SRC.DATA, gulp.series(['data']));
 	gulp.watch(SRC.HTML, gulp.series(['html']));
 	gulp.watch(SRC.SCRIPTS, gulp.series(['eslint', 'scripts']));
-	gulp.watch(SRC.STYLES, gulp.series(['sasslint', 'styles']));
+	gulp.watch(SRC.STYLES, gulp.series(['stylelint', 'styles']));
 	gulp.watch(SRC.TEMPLATES, gulp.series(['scripts']));
 	done();
 }));
 
 // build task
-let tasks = ['clean', 'assets', 'data', 'html', 'eslint', 'scripts', 'sasslint', 'styles', 'print', 'vendor'];
+let tasks = ['clean', 'assets', 'data', 'html', 'eslint', 'scripts', 'stylelint', 'styles', 'print', 'vendor'];
 if (isDev()) {
 	tasks.push('server', 'watch');
 }

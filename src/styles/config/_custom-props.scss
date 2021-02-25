@@ -1,0 +1,59 @@
+//
+// Custom Props
+// -----------------------------------------------------
+
+
+:root {
+	--bg-color: #{$bg-color};
+	--text-color: #{$text-color};
+	--heading-color: #{$heading-color};
+	--link-color: #{$link-color};
+	--link-hover-color: #{$link-hover-color};
+	--font-size: 1.0em; //16px
+	--h1-size: 2.5em;
+	--h2-size: 2.0em;
+	--h3-size: 1.5em;
+	--h4-size: 1.25em;
+	--h5-size: 1.1em;
+	--h6-size: 1.0em;
+	--container-width: 100%;
+	--gutter: #{$gutter-width-mobile};
+	--gutter-half: #{$gutter-half-width-mobile};
+	--gutter-double: #{$gutter-double-width-mobile};
+	--neg-gutter: #{$neg-gutter-width-mobile};
+	--neg-gutter-half: #{$neg-gutter-half-width-mobile};
+	--neg-gutter-double: #{$neg-gutter-double-width-mobile};
+
+	@media (min-width: $breakpoint-tablet-min) {
+		--font-size: 1.125em; //18px
+		--container-width: #{$container-width-tablet};
+		--gutter: #{$gutter-width-tablet};
+		--gutter-half: #{$gutter-half-width-tablet};
+		--gutter-double: #{$gutter-double-width-tablet};
+		--neg-gutter: #{$neg-gutter-width-tablet};
+		--neg-gutter-half: #{$neg-gutter-half-width-tablet};
+		--neg-gutter-double: #{$neg-gutter-double-width-tablet};
+	}
+
+	@media (min-width: $breakpoint-desktop-min) {
+		--font-size: 1.25em; //20px
+		--container-width: #{$container-width-desktop};
+		--gutter: #{$gutter-width-desktop};
+		--gutter-half: #{$gutter-half-width-desktop};
+		--gutter-double: #{$gutter-double-width-desktop};
+		--neg-gutter: #{$neg-gutter-width-desktop};
+		--neg-gutter-half: #{$neg-gutter-half-width-desktop};
+		--neg-gutter-double: #{$neg-gutter-double-width-desktop};
+	}
+
+	@media (min-width: $breakpoint-desktop-wide) {
+		--font-size: 1.375em; //22px
+		--container-width: #{$container-width-desktop-wide};
+		--gutter: #{$gutter-width-desktop-wide};
+		--gutter-half: #{$gutter-half-width-desktop-wide};
+		--gutter-double: #{$gutter-double-width-desktop-wide};
+		--neg-gutter: #{$neg-gutter-width-desktop-wide};
+		--neg-gutter-half: #{$neg-gutter-half-width-desktop-wide};
+		--neg-gutter-double: #{$neg-gutter-double-width-desktop-wide};
+	}
+}

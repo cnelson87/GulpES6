@@ -4,60 +4,56 @@
 
 
 body {
-	color: $text-color;
+	background: var(--bg-color);
+	color: var(--text-color);
 	font-family: $main-font;
-	// uncomment appropriate line to set default type size
-	font-size: 100%; //16px
-	// font-size: 87.5%; //14px
-	// font-size: 75.0%; //12px
-	// font-size: 62.5%; //10px
-	line-height: 1.5; //24px
-
-	@media (min-width: $breakpoint-tablet-min) {
-		font-size: 112.5%; //18px
-		// line-height: 1.5; //27px
-	}
-
-	@media (min-width: $breakpoint-desktop-min) {
-		font-size: 125%; //20px
-		// line-height: 1.5; //30px
-	}
+	font-size: var(--font-size);
+	line-height: 1.5;
 }
 
 a {
 	@include action-transition();
-	color: $link-color;
+	color: var(--link-color);
 	text-decoration: none;
-}
-a:active, a:focus, a:hover {
-	color: $link-hover-color;
-	text-decoration: underline;
+
+	&:focus, &:hover {
+		color: var(--link-hover-color);
+		text-decoration: underline;
+	}
 }
 
 p, ol, ul, dl, table, address {
 	margin-bottom: 1.5em;
-}
-ol, ul {
-	padding-left: 20px;
-}
-ol ol, ol ul, ul ol, ul ul {
-	margin-bottom: 0.5em;
 	margin-top: 0.5em;
 }
+
 li {
 	margin-bottom: 0.5em;
 }
+
+ol, ul {
+	padding-left: 2.0em;
+
+	ol, ul {
+		margin-bottom: 0.5em;
+	}
+}
+
 dt {
 	font-weight: bold;
+	margin-bottom: 0.5em;
 }
+
 dd {
 	margin-bottom: 0.5em;
 }
+
 th {
 	font-weight: bold;
 	text-align: left;
 	vertical-align: bottom;
 }
+
 td {
 	vertical-align: top;
 }
@@ -69,40 +65,44 @@ nav ul, nav ol, nav li {
 }
 
 h1, .h1, h2, .h2, h3, .h3 {
-	color: $heading-color;
+	color: var(--heading-color);
 	font-family: $alt-font;
-	font-weight: normal;
+	font-weight: 400;
 	line-height: 1.0;
+	margin-bottom: 0.5em;
 }
+
 h1, .h1 {
-	font-size: 2.0em;
-	margin-bottom: 20px;
+	font-size: var(--h1-size);
 }
+
 h2, .h2 {
-	font-size: 1.5em;
-	margin-bottom: 20px;
+	font-size: var(--h2-size);
 }
+
 h3, .h3 {
-	font-size: 1.25em;
-	margin-bottom: 15px;
+	font-size: var(--h3-size);
 }
+
 h4, .h4, h5, .h5, h6, .h6 {
 	font-weight: bold;
 	line-height: 1.0;
 	margin-bottom: 0.25em;
 }
+
 h4, .h4 {
-	font-size: 1.1em;
-}
-h5, .h5 {
-	font-size: 1.0em;
-}
-h6, .h6 {
-	font-size: 1.0em;
-	font-weight: normal;
+	font-size: var(--h4-size);
 }
 
-big, .big, .intro, .lead, .large {
+h5, .h5 {
+	font-size: var(--h5-size);
+}
+
+h6, .h6 {
+	font-size: var(--h6-size);
+}
+
+.intro, .lead {
 	font-size: 1.25em;
 }
 
@@ -111,20 +111,20 @@ small, .small, .caption, .footnote {
 }
 
 blockquote {
-	// Note: must not leave any whitespace at the beginning of a
-	// blockquote in markup - Safari will render it.
-	color: $color-gray-dark;
+	color: var(--heading-color);
 	font-family: $serif-font;
-	font-size: 20px;
-	font-weight: normal;
-	line-height: 1.0;
-	margin-bottom: 20px;
-	padding: 0 20px;
+	font-size: var(--h2-size);
+	font-weight: 400;
+	line-height: 1.2;
+	margin: 1.0em 0;
+	padding-left: var(--gutter-double);
+	padding-right: var(--gutter-double);
 }
 
 hr {
-	border-top: 2px solid $color-gray-light;
+	border-top: 2px solid var(--text-color);
 	margin: 1.5em 0;
+	width: 100%;
 }
 
 // uncomment for testing

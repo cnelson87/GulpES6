@@ -6,8 +6,6 @@
 
 @import '../config/variables';
 
- // sass-lint:disable-all
-
 .noUi-target,
 .noUi-target * {
 	-webkit-touch-callout: none;
@@ -118,7 +116,7 @@
 	border-radius: 3px;
 }
 .noUi-connect {
-	background: $color-light-blue;
+	background: $color-blue-light;
 }
 /* Handles and cursors;
  */

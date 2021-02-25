@@ -24,7 +24,9 @@
 }
 
 .inline-cb-rb-group-container {
+
 	@media (min-width: $breakpoint-tablet-min) {
+
 		.cb-rb-group {
 			display: inline-block;
 			margin-right: $gutter-base;

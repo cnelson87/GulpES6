@@ -23,7 +23,9 @@
 	}
 
 	&.required-field {
+
 		.label-column {
+
 			label::after,
 			.label::after {
 				color: $alert-color;
@@ -36,6 +38,7 @@
 	}
 
 	&.horizontal-form-group {
+
 		@media (min-width: $breakpoint-tablet-min) {
 			display: flex;
 
@@ -53,6 +56,7 @@
 		}
 
 		@media (min-width: $breakpoint-desktop-min) {
+
 			.label-column {
 				width: 20%;
 			}
@@ -60,6 +64,7 @@
 	}
 
 	&.inline-form-group {
+
 		@media (min-width: $breakpoint-tablet-min) {
 			display: inline-flex;
 			margin: 0 0 1.0em;
@@ -71,5 +76,4 @@
 			}
 		}
 	}
-
 }

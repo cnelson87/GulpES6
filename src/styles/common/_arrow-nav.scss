@@ -27,47 +27,54 @@
 	}
 
 	&.nav-prev .arrow {
-		background-position: 0px 0px;
+		background-position: 0 0;
 	}
+
 	&.nav-prev:hover .arrow,
 	&.nav-prev:focus .arrow {
-		background-position: 0px -40px;
+		background-position: 0 -40px;
 	}
+
 	&.nav-prev.is-disabled .arrow {
-		background-position: 0px -80px;
+		background-position: 0 -80px;
 	}
 
 	&.nav-next .arrow {
-		background-position: -40px 0px;
+		background-position: -40px 0;
 	}
+
 	&.nav-next:hover .arrow,
 	&.nav-next:focus .arrow {
 		background-position: -40px -40px;
 	}
+
 	&.nav-next.is-disabled .arrow {
 		background-position: -40px -80px;
 	}
 
 	&.nav-up .arrow {
-		background-position: -80px 0px;
+		background-position: -80px 0;
 	}
+
 	&.nav-up:hover .arrow,
 	&.nav-up:focus .arrow {
 		background-position: -80px -40px;
 	}
+
 	&.nav-up.is-disabled .arrow {
 		background-position: -80px -80px;
 	}
 
 	&.nav-down .arrow {
-		background-position: -120px 0px;
+		background-position: -120px 0;
 	}
+
 	&.nav-down:hover .arrow,
 	&.nav-down:focus .arrow {
 		background-position: -120px -40px;
 	}
+
 	&.nav-down.is-disabled .arrow {
 		background-position: -120px -80px;
 	}
-
 }

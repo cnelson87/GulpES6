@@ -1,9 +1,9 @@
 //
-// Btn CloseX
+// Btn Close
 // -----------------------------------------------------
 
 //use either <a href="#close"> or <button type="button"> tags
-.btn-closeX {
+.btn-close {
 	@include action-transition();
 	@include text-hide;
 	background: $color-white url($image-path+'/action-icons.png') no-repeat 0 0;

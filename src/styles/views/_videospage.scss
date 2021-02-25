@@ -1,7 +1,7 @@
 //
 // Videos Page View
 // -----------------------------------------------------
-
+// stylelint-disable selector-max-id
 
 #videospage {
 
@@ -10,19 +10,7 @@
 	}
 
 	.primary-video {
-		margin-bottom: $vertical-pad-mobile;
-	}
-
-	@media (min-width: $breakpoint-tablet-min) {
-		.primary-video {
-			margin-bottom: $vertical-pad-tablet;
-		}
-	}
-
-	@media (min-width: $breakpoint-desktop-min) {
-		.primary-video {
-			margin-bottom: $vertical-pad-desktop;
-		}
+		margin-bottom: var(--gutter);
 	}
 
 	.videos-grid {
@@ -39,5 +27,4 @@
 			}
 		}
 	}
-
 }

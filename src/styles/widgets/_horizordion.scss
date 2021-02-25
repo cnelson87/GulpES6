@@ -1,6 +1,7 @@
 //
 // Horizordion
 // -----------------------------------------------------
+// stylelint-disable color-named, max-nesting-depth
 // Assumes 4 items
 
 .horizordion {
@@ -33,20 +34,21 @@
 		}
 
 		// Test Colors
-		// sass-lint:disable no-color-literals
 		&:nth-child(1) {
 			background-color: rgba(red, 0.2);
 		}
+
 		&:nth-child(2) {
 			background-color: rgba(yellow, 0.2);
 		}
+
 		&:nth-child(3) {
 			background-color: rgba(blue, 0.2);
 		}
+
 		&:nth-child(4) {
 			background-color: rgba(green, 0.2);
 		}
-		// sass-lint:enable no-color-literals
 
 		> .horizordion--tab {
 
@@ -102,10 +104,10 @@
 			@media (min-width: $breakpoint-tablet-min) {
 				width: calc(100% - 40px); //minus tab width
 			}
-
 		}
 
 		&.is-active {
+
 			> .horizordion--content {
 				opacity: 1.0;
 				transition: opacity $transition-speed;
@@ -113,5 +115,4 @@
 			}
 		}
 	}
-
 }

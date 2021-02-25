@@ -46,10 +46,6 @@
 	float: right;
 }
 
-.accelerate {
-	@include accelerate;
-}
-
 .center-block {
 	@include center-block;
 }
@@ -66,9 +62,8 @@
 	@include fixed-window;
 }
 
-.offscreen,
 .sr-only {
-	@include offscreen;
+	@include sr-only;
 }
 
 .text-hide {
@@ -105,6 +100,7 @@ ul.plain, ol.plain {list-style: none;}
 
 ul.inline, ol.inline {
 	list-style: none;
+
 	> li {
 		display: inline-block;
 		margin: 0 0.2em;

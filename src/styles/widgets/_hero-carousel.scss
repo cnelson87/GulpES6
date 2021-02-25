@@ -21,6 +21,7 @@
 		&.nav-prev {
 			left: 0;
 		}
+
 		&.nav-next {
 			right: 0;
 		}
@@ -46,10 +47,10 @@
 		position: relative;
 		width: 100%;
 	}
-
 }
 
 @media (min-width: $breakpoint-tablet-min) {
+
 	.hero-carousel {
 		padding: 40px 0;
 
@@ -66,7 +67,6 @@
 				transform: scale(1.0) translateY(0);
 			}
 		}
-
 	}
 }
 

@@ -23,19 +23,19 @@
 
 			> a {
 				@include text-hide;
-				background: $color-light-blue;
-				border: 2px solid $color-dark-blue;
+				background: $color-blue-light;
+				border: 2px solid $color-blue-dark;
 				border-radius: 50%;
 				display: block;
 				height: 100%;
 				width: 100%;
 
 				&:focus, &:hover {
-					background-color: $color-dark-blue;
+					background-color: $color-blue-dark;
 				}
 
 				&.is-active {
-					background-color: $color-dark-blue;
+					background-color: $color-blue-dark;
 				}
 			}
 		}

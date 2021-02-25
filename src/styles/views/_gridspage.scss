@@ -1,15 +1,18 @@
 //
 // Grids Page View
 // -----------------------------------------------------
-
+// stylelint-disable selector-max-id
 
 #gridspage {
 
 	.flex-grid {
+
 		&.shaded {
+
 			.flex-column:nth-child(odd) {
 				background-color: $color-gray-xlight;
 			}
+
 			.flex-column:nth-child(even) {
 				background-color: $color-gray-xlight-alt;
 			}
@@ -20,20 +23,4 @@
 		padding-bottom: 0.5em;
 		padding-top: 0.5em;
 	}
-
-	.row > div,
-	.grid .grid-cell {
-		padding-bottom: 0.5em;
-		padding-top: 0.5em;
-		&:nth-child(3n+1) {
-			background-color: rgba($color-gray-light, 0.6);
-		}
-		&:nth-child(3n+2) {
-			background-color: rgba($color-gray-light, 0.4);
-		}
-		&:nth-child(3n+3) {
-			background-color: rgba($color-gray-light, 0.2);
-		}
-	}
-
 }

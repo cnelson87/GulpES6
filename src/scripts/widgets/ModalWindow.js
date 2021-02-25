@@ -36,7 +36,7 @@ class ModalWindow {
 			selectorOverlay: '.modal-overlay', //must match element in template
 			selectorModal: '.modal', //must match element in template
 			selectorContent: '.modal--content', //must match element in template
-			selectorCloseBtn: '.btn-closeX', //must match close button in template
+			selectorCloseBtn: '.btn-close', //must match close button in template
 			selectorCloseLinks: '.close-modal', //close links within modal content
 			activeClass: 'is-active',
 			activeBodyClass: 'modal-active',

@@ -5,19 +5,20 @@
 // 3rd party
 @import 'vendor/font-awesome';
 @import 'vendor/jquery-ui';
-@import 'vendor/nouislider';
+@import 'vendor/nouislider.custom';
 
 // configuration
 @import 'config/variables';
 @import 'config/mixins';
 @import 'config/animations';
-@import 'config/flex-grid';
-@import 'config/grid';
+@import 'config/custom-props';
 
 // base styles
 @import 'base/reset';
+@import 'base/flex-grid';
 @import 'base/breakpoint-indicator';
 @import 'base/typography';
+@import 'base/themes';
 @import 'base/form-elements';
 @import 'base/utility-classes';
 @import 'base/responsive-classes';
@@ -27,7 +28,7 @@
 @import 'common/arrow-link';
 @import 'common/arrow-nav';
 @import 'common/buttons';
-@import 'common/btn-closeX';
+@import 'common/btn-close';
 @import 'common/responsive-iframe';
 
 // components used for a specific purpose
