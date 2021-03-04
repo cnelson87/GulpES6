@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+@@include('./_includes/head.html', {
+	"title": "RangeSlider Page",
+	"description": "Description for the RangeSlider page",
+	"keywords": "rangeslider"
+})
+<body class="contentpage" id="rangesliderpage">
+
+	<style>
+		.output {color:#81b949;}
+		.pad-box {
+			border: 1px solid #000;
+			padding: 1em;
+		}
+		.pad-box + .pad-box {
+			margin-top: 1em;
+		}
+	</style>
+	<script>
+		$(function() {
+			// elements
+			var $sliderRange = $('#slider-range');
+			var $amountOutput = $('#amount-output');
+			// jQuery-UI slider
+			$sliderRange.slider({
+				range: true,
+				min: 0,
+				max: 500,
+				values: [ 75, 300 ],
+				slide: function(event, ui) {
+					$amountOutput.val( '$' + ui.values[ 0 ] + ' - $' + ui.values[ 1 ] );
+				}
+			});
+			$amountOutput.val( '$' + $sliderRange.slider('values', 0) + ' - $' + $sliderRange.slider('values', 1) );
+		});
+	</script>
+
+	<div class="page-container">
+
+@@include('./_includes/header.html' {})
+
+		<main class="site-main" id="main">
+
+			<section class="content">
+				<div class="container">
+					<h1>RangeSlider Page</h1>
+					<div class="intro">
+						<p>This is the RangeSlider page intro content.</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="content">
+				<div class="container">
+
+					<h2>jQuery-UI slider</h2>
+
+					<div class="pad-box">
+						<p>
+							Price Range: <output id="amount-output" class="output"></output>
+						</p>
+						<div id="slider-range"></div>
+					</div>
+
+					<br /><br />
+
+					<h2>noUiSlider</h2>
+
+					<div class="pad-box range-slider" id="range-slider">
+						<h3>Range 1-100 <span class="small">(10-90 pre-selected)</span></h3>
+						<p>
+							Start (on 'update' event): <span class="range-slider--output output"></span>
+							<br />
+							End (on 'update' event): <span class="range-slider--output output"></span>
+							<br />
+							Start (on 'change' event): <input type="text" readonly class="input-xlong range-slider--field" />
+							<br />
+							End (on 'change' event): <input type="text" readonly class="input-xlong range-slider--field" />
+						</p>
+						<div class="noUiSlider" data-min="1" data-max="100" data-start="10" data-end="90"></div>
+					</div>
+
+					<div class="pad-box range-slider" id="date-range-slider">
+						<h3>Start/End Date <span class="small">(in 1hr increments)</span></h3>
+						<p>
+							Start Date (on 'update' event): <span class="range-slider--output output"></span>
+							<br />
+							End Date (on 'update' event): <span class="range-slider--output output"></span>
+							<br />
+							Start Date (on 'change' event): <input type="text" readonly class="input-xlong range-slider--field" />
+							<br />
+							End Date (on 'change' event): <input type="text" readonly class="input-xlong range-slider--field" />
+						</p>
+						<div class="noUiSlider date-slider" data-min="Sep 20 2017 22:00:00" data-max="Sep 27 2017 6:00:00"></div>
+					</div>
+
+					<div class="pad-box range-slider" id="time-range-slider">
+						<h3>Start/End Time <span class="small">(in 15min increments)</span></h3>
+						<p>
+							Start Time (on 'update' event): <span class="range-slider--output output"></span>
+							<br />
+							End Time (on 'update' event): <span class="range-slider--output output"></span>
+							<br />
+							Start Time (on 'change' event): <input type="text" readonly class="input-xlong range-slider--field" />
+							<br />
+							End Time (on 'change' event): <input type="text" readonly class="input-xlong range-slider--field" />
+						</p>
+						<div class="noUiSlider time-slider" data-min="Sep 27 2017 6:00:00" data-max="Sep 27 2017 22:00:00"></div>
+					</div>
+
+				</div>
+			</section>
+
+		</main>
+
+@@include('./_includes/footer.html' {})
+
+	</div>
+
+</body>
+</html>
