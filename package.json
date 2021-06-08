@@ -13,18 +13,18 @@
 		"build": "gulp"
 	},
 	"dependencies": {
-		"core-js": "^3.9.1",
+		"core-js": "^3.14.0",
 		"regenerator-runtime": "^0.13.7"
 	},
 	"devDependencies": {
 		"gulp": "^4.0.2",
-		"@babel/core": "^7.13.8",
-		"@babel/preset-env": "^7.13.9",
-		"autoprefixer": "^10.2.4",
+		"@babel/core": "^7.14.3",
+		"@babel/preset-env": "^7.14.4",
+		"autoprefixer": "^10.2.6",
 		"babelify": "^10.0.0",
 		"browserify": "^17.0.0",
-		"browserslist": "^4.16.3",
-		"eslint": "^7.21.0",
+		"browserslist": "^4.16.6",
+		"eslint": "^7.28.0",
 		"gulp-clean": "^0.4.0",
 		"gulp-concat": "^2.6.1",
 		"gulp-connect": "^5.7.0",
@@ -43,13 +43,13 @@
 		"lodash": "^4.17.21",
 		"node-sass": "^4.14.1",
 		"pathmodify": "^0.5.0",
-		"postcss": "^8.2.7",
-		"stylelint": "^13.11.0",
+		"postcss": "^8.3.0",
+		"stylelint": "^13.13.1",
 		"stylelint-config-sass-guidelines": "^8.0.0",
-		"uglify-js": "^3.13.0",
+		"uglify-js": "^3.13.9",
 		"vinyl-buffer": "^1.0.1",
 		"vinyl-source-stream": "^2.0.0",
-		"yargs": "^16.2.0"
+		"yargs": "^17.0.1"
 	},
 	"repository": {
 		"type": "git",
