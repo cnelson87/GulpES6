@@ -1,5 +1,6 @@
 {
 	"root": true,
+	"parser": "@babel/eslint-parser",
 	"parserOptions": {
 		"ecmaVersion": 2020,
 		"sourceType": "module"
@@ -11,7 +12,9 @@
 	},
 	"extends": "eslint:recommended",
 	"rules": {
-		"no-unused-vars": ["error", { "args": "none" }]
+		"no-unused-vars": ["error", { "args": "none" }],
+		"curly": ["error", "all"],
+		"semi": ["error", "always"]
 	},
 	"globals": {
 		"module": true,

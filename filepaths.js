@@ -12,11 +12,9 @@ const FILEPATHS = {
 		PRINT_STYLES_ENTRY: './src/styles/print.scss',
 		TEMPLATES: 'src/templates/**/*.hbs',
 		VENDOR: [
-			// 'src/vendor/modernizr.custom.min.js',
 			'src/vendor/jquery.min.js',
 			'src/vendor/jquery-ui.custom.min.js',
 			'src/vendor/jquery.touchSwipe.min.js',
-			'src/vendor/picturefill.min.js',
 			'src/vendor/nouislider.min.js',
 			'src/vendor/greensock/TweenMax.min.js',
 			'src/vendor/greensock/ScrollToPlugin.min.js',

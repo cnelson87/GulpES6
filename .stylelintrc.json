@@ -9,8 +9,9 @@
 		"rule-empty-line-before": ["always-multi-line", {
 			"ignore": ["after-comment", "first-nested", "inside-block"]
 		}],
-		"selector-max-compound-selectors": 5,
+		"selector-class-pattern": null,
 		"selector-no-qualifying-type": null,
-		"selector-list-comma-newline-after": "always-multi-line"
+		"selector-list-comma-newline-after": "always-multi-line",
+		"selector-max-compound-selectors": 5
 	}
 }
