@@ -1,11 +1,12 @@
-/*! jQuery UI - v1.12.1 - 2017-09-14
+/*! jQuery UI - v1.13.1 - 2022-04-27
 * http://jqueryui.com
 * Includes: draggable.css, core.css, resizable.css, selectable.css, sortable.css, autocomplete.css, menu.css, datepicker.css, slider.css, tooltip.css, theme.css
 * To view and modify this theme, visit http://jqueryui.com/themeroller/?scope=&folderName=smoothness&cornerRadiusShadow=8px&offsetLeftShadow=-8px&offsetTopShadow=-8px&thicknessShadow=8px&opacityShadow=30&bgImgOpacityShadow=0&bgTextureShadow=flat&bgColorShadow=aaaaaa&opacityOverlay=30&bgImgOpacityOverlay=0&bgTextureOverlay=flat&bgColorOverlay=aaaaaa&iconColorError=cd0a0a&fcError=cd0a0a&borderColorError=cd0a0a&bgImgOpacityError=95&bgTextureError=glass&bgColorError=fef1ec&iconColorHighlight=2e83ff&fcHighlight=363636&borderColorHighlight=fcefa1&bgImgOpacityHighlight=55&bgTextureHighlight=glass&bgColorHighlight=fbf9ee&iconColorActive=454545&fcActive=212121&borderColorActive=aaaaaa&bgImgOpacityActive=65&bgTextureActive=glass&bgColorActive=ffffff&iconColorHover=454545&fcHover=212121&borderColorHover=999999&bgImgOpacityHover=75&bgTextureHover=glass&bgColorHover=dadada&iconColorDefault=888888&fcDefault=555555&borderColorDefault=d3d3d3&bgImgOpacityDefault=75&bgTextureDefault=glass&bgColorDefault=e6e6e6&iconColorContent=222222&fcContent=222222&borderColorContent=aaaaaa&bgImgOpacityContent=75&bgTextureContent=flat&bgColorContent=ffffff&iconColorHeader=222222&fcHeader=222222&borderColorHeader=aaaaaa&bgImgOpacityHeader=75&bgTextureHeader=highlight_soft&bgColorHeader=cccccc&cornerRadius=4px&fsDefault=1.1em&fwDefault=normal&ffDefault=Verdana%2CArial%2Csans-serif
 * Copyright jQuery Foundation and other contributors; Licensed MIT */
 
+@import '../config/variables';
+
 .ui-draggable-handle {
-	-ms-touch-action: none;
 	touch-action: none;
 }
 /* Layout helpers
@@ -100,7 +101,6 @@
 	position: absolute;
 	font-size: 0.1px;
 	display: block;
-	-ms-touch-action: none;
 	touch-action: none;
 }
 .ui-resizable-disabled .ui-resizable-handle,
@@ -164,7 +164,6 @@
 	top: -5px;
 }
 .ui-selectable {
-	-ms-touch-action: none;
 	touch-action: none;
 }
 .ui-selectable-helper {
@@ -173,7 +172,6 @@
 	border: 1px dotted #000000;
 }
 .ui-sortable-handle {
-	-ms-touch-action: none;
 	touch-action: none;
 }
 .ui-autocomplete {
@@ -420,8 +418,7 @@
 	z-index: 2;
 	width: 1.2em;
 	height: 1.2em;
-	cursor: default;
-	-ms-touch-action: none;
+	cursor: pointer;
 	touch-action: none;
 }
 .ui-slider .ui-slider-range {
@@ -515,7 +512,7 @@ body .ui-tooltip {
 }
 .ui-widget-header {
 	border: 1px solid #aaaaaa;
-	background: #cccccc url('../images/jquery-ui/ui-bg_highlight-soft_75_cccccc_1x100.png') 50% 50% repeat-x;
+	background: #cccccc url($image-path+'/jquery-ui/ui-bg_highlight-soft_75_cccccc_1x100.png') 50% 50% repeat-x;
 	color: #222222;
 	font-weight: bold;
 }
@@ -535,7 +532,7 @@ works properly when clicked or hovered */
 html .ui-button.ui-state-disabled:hover,
 html .ui-button.ui-state-disabled:active {
 	border: 1px solid #d3d3d3;
-	background: #e6e6e6 url('../images/jquery-ui/ui-bg_glass_75_e6e6e6_1x400.png') 50% 50% repeat-x;
+	background: #e6e6e6 url($image-path+'/jquery-ui/ui-bg_glass_75_e6e6e6_1x400.png') 50% 50% repeat-x;
 	font-weight: normal;
 	color: #555555;
 }
@@ -558,7 +555,7 @@ a:visited.ui-button,
 .ui-button:hover,
 .ui-button:focus {
 	border: 1px solid #999999;
-	background: #dadada url('../images/jquery-ui/ui-bg_glass_75_dadada_1x400.png') 50% 50% repeat-x;
+	background: #dadada url($image-path+'/jquery-ui/ui-bg_glass_75_dadada_1x400.png') 50% 50% repeat-x;
 	font-weight: normal;
 	color: #212121;
 }
@@ -586,7 +583,7 @@ a.ui-button:active,
 .ui-button:active,
 .ui-button.ui-state-active:hover {
 	border: 1px solid #aaaaaa;
-	background: #ffffff url('../images/jquery-ui/ui-bg_glass_65_ffffff_1x400.png') 50% 50% repeat-x;
+	background: #ffffff url($image-path+'/jquery-ui/ui-bg_glass_65_ffffff_1x400.png') 50% 50% repeat-x;
 	font-weight: normal;
 	color: #212121;
 }
@@ -608,7 +605,7 @@ a.ui-button:active,
 .ui-widget-content .ui-state-highlight,
 .ui-widget-header .ui-state-highlight {
 	border: 1px solid #fcefa1;
-	background: #fbf9ee url('../images/jquery-ui/ui-bg_glass_55_fbf9ee_1x400.png') 50% 50% repeat-x;
+	background: #fbf9ee url($image-path+'/jquery-ui/ui-bg_glass_55_fbf9ee_1x400.png') 50% 50% repeat-x;
 	color: #363636;
 }
 .ui-state-checked {
@@ -624,7 +621,7 @@ a.ui-button:active,
 .ui-widget-content .ui-state-error,
 .ui-widget-header .ui-state-error {
 	border: 1px solid #cd0a0a;
-	background: #fef1ec url('../images/jquery-ui/ui-bg_glass_95_fef1ec_1x400.png') 50% 50% repeat-x;
+	background: #fef1ec url($image-path+'/jquery-ui/ui-bg_glass_95_fef1ec_1x400.png') 50% 50% repeat-x;
 	color: #cd0a0a;
 }
 .ui-state-error a,
@@ -665,35 +662,38 @@ a.ui-button:active,
 }
 .ui-icon,
 .ui-widget-content .ui-icon {
-	background-image: url('../images/jquery-ui/ui-icons_222222_256x240.png');
+	background-image: url($image-path+'/jquery-ui/ui-icons_222222_256x240.png');
 }
 .ui-widget-header .ui-icon {
-	background-image: url('../images/jquery-ui/ui-icons_222222_256x240.png');
+	background-image: url($image-path+'/jquery-ui/ui-icons_222222_256x240.png');
 }
 .ui-state-hover .ui-icon,
 .ui-state-focus .ui-icon,
 .ui-button:hover .ui-icon,
 .ui-button:focus .ui-icon {
-	background-image: url('../images/jquery-ui/ui-icons_454545_256x240.png');
+	background-image: url($image-path+'/jquery-ui/ui-icons_454545_256x240.png');
 }
 .ui-state-active .ui-icon,
 .ui-button:active .ui-icon {
-	background-image: url('../images/jquery-ui/ui-icons_454545_256x240.png');
+	background-image: url($image-path+'/jquery-ui/ui-icons_454545_256x240.png');
 }
 .ui-state-highlight .ui-icon,
 .ui-button .ui-state-highlight.ui-icon {
-	background-image: url('../images/jquery-ui/ui-icons_2e83ff_256x240.png');
+	background-image: url($image-path+'/jquery-ui/ui-icons_2e83ff_256x240.png');
 }
 .ui-state-error .ui-icon,
 .ui-state-error-text .ui-icon {
-	background-image: url('../images/jquery-ui/ui-icons_cd0a0a_256x240.png');
+	background-image: url($image-path+'/jquery-ui/ui-icons_cd0a0a_256x240.png');
 }
 .ui-button .ui-icon {
-	background-image: url('../images/jquery-ui/ui-icons_888888_256x240.png');
+	background-image: url($image-path+'/jquery-ui/ui-icons_888888_256x240.png');
 }
 
 /* positioning */
-.ui-icon-blank { background-position: 16px 16px; }
+/* Three classes needed to override `.ui-button:hover .ui-icon` */
+.ui-icon-blank.ui-icon-blank.ui-icon-blank {
+	background-image: none;
+}
 .ui-icon-caret-1-n { background-position: 0 0; }
 .ui-icon-caret-1-ne { background-position: -16px 0; }
 .ui-icon-caret-1-e { background-position: -32px 0; }

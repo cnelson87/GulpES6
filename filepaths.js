@@ -28,7 +28,7 @@ const FILEPATHS = {
 			'src/vendor/validation/additional-methods.min.js',
 			'src/vendor/moment.min.js',
 			'src/vendor/moment-timezone-with-data-10-year-range.min.js',
-			'src/vendor/underscore.min.js'
+			'src/vendor/underscore-umd.min.js'
 		]
 	},
 	DEST: {
