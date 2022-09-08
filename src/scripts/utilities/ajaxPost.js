@@ -7,13 +7,14 @@
 
 const ajaxPost = function(url, data, contentType, dataType) {
 	if (!url || !data) {return;}
-	return $.ajax({
+	const options = {
 		type: 'POST',
 		url: url,
 		data: data,
 		contentType: contentType || 'application/json; charset=utf-8',
-		dataType: dataType || 'json'
-	});
+		dataType: dataType || 'json',
+	};
+	return $.ajax(options);
 };
 
 export default ajaxPost;

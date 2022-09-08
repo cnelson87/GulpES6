@@ -17,24 +17,6 @@
 			margin-top: 1em;
 		}
 	</style>
-	<script>
-		$(function() {
-			// elements
-			var $sliderRange = $('#slider-range');
-			var $amountOutput = $('#amount-output');
-			// jQuery-UI slider
-			$sliderRange.slider({
-				range: true,
-				min: 0,
-				max: 500,
-				values: [ 75, 300 ],
-				slide: function(event, ui) {
-					$amountOutput.val( '$' + ui.values[ 0 ] + ' - $' + ui.values[ 1 ] );
-				}
-			});
-			$amountOutput.val( '$' + $sliderRange.slider('values', 0) + ' - $' + $sliderRange.slider('values', 1) );
-		});
-	</script>
 
 	<div class="page-container">
 
@@ -92,7 +74,7 @@
 							<br />
 							End Date (on 'change' event): <input type="text" readonly class="input-xlong range-slider--field" />
 						</p>
-						<div class="noUiSlider date-slider" data-min="Sep 20 2017 22:00:00" data-max="Sep 27 2017 6:00:00"></div>
+						<div class="noUiSlider date-slider" data-min="Sep 20 2022 22:00:00" data-max="Sep 27 2022 6:00:00"></div>
 					</div>
 
 					<div class="pad-box range-slider" id="time-range-slider">
@@ -106,7 +88,7 @@
 							<br />
 							End Time (on 'change' event): <input type="text" readonly class="input-xlong range-slider--field" />
 						</p>
-						<div class="noUiSlider time-slider" data-min="Sep 27 2017 6:00:00" data-max="Sep 27 2017 22:00:00"></div>
+						<div class="noUiSlider time-slider" data-min="Sep 27 2022 6:00:00" data-max="Sep 27 2022 22:00:00"></div>
 					</div>
 
 				</div>

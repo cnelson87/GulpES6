@@ -3,53 +3,52 @@
 
 	DESCRIPTION: A single Accordion item
 
-	VERSION: 0.5.0
-
 	USAGE: const myAccordion = new MiniAccordion('Element', 'Options')
-		@param {jQuery Object}
+		@param {HTMLElement}
 		@param {Object}
 
 	DEPENDENCIES:
-		- jquery 3.x
-		- greensock
+		jquery 3.x
 
 */
 
 import Constants from 'config/Constants';
 import Events from 'config/Events';
 import focusOnContentEl from 'utilities/focusOnContentEl';
+import parseDatasetToObject from 'utilities/parseDatasetToObject';
 
 class MiniAccordion {
 
-	constructor($el, options = {}) {
-		this.$window = $(window);
-		this.initialize($el, options);
+	constructor(rootEl, options = {}) {
+		if (!rootEl) {
+			console.warn('MiniAccordion cannot initialize without rootEl');
+			return;
+		}
+		this.initialize(rootEl, options);
 	}
 
-	initialize($el, options) {
+	initialize(rootEl, options) {
 		const urlHash = location.hash.substring(1) || null;
+		const dataOptions = rootEl.dataset.options ? parseDatasetToObject(rootEl.dataset.options) : {};
 
 		// defaults
-		this.$el = $el;
+		this.rootEl = rootEl;
 		this.options = Object.assign({
 			initialOpen: false,
-			selectorTabs: '.accordion--header a',
-			selectorPanels: '.accordion--panel',
+			selectorTab: '.accordion--header a',
+			selectorPanel: '.accordion--panel',
 			classActive: 'is-active',
-			animDuration: (Constants.timing.standard / 1000),
-			animEasing: 'Power4.easeOut',
+			animDuration: Constants.timing.standard,
+			animEasing: 'easeOutQuint',
 			selectorFocusEls: Constants.focusableElements,
-			selectedText: 'currently selected',
 			enableTracking: false,
 			customEventPrefix: 'MiniAccordion'
-		}, options);
+		}, options, dataOptions);
 
 		// elements
-		this.$tab = this.$el.find(this.options.selectorTabs);
-		this.$panel = this.$el.find(this.options.selectorPanels);
-
-		// properties
-		this.selectedLabel = `<span class="sr-only selected-text"> - ${this.options.selectedText}</span>`;
+		this.tabEl = this.rootEl.querySelector(this.options.selectorTab);
+		this.panelEl = this.rootEl.querySelector(this.options.selectorPanel);
+		this.$panelEl = $(this.panelEl); //need $element for jQuery animations
 
 		// state
 		this.state = {
@@ -59,7 +58,7 @@ class MiniAccordion {
 
 		// check url hash to override isActive
 		this.setInitialFocus = false;
-		if (urlHash && this.$panel.data('id') === urlHash) {
+		if (urlHash && this.panelEl.dataset.id === urlHash) {
 			this.state.isActive = true;
 			this.setInitialFocus = true;
 		}
@@ -68,82 +67,95 @@ class MiniAccordion {
 
 		this._addEventListeners();
 
-		$.event.trigger(`${this.options.customEventPrefix}:isInitialized`, [this.$el]);
-
+		window.dispatchEvent(new CustomEvent(`${this.options.customEventPrefix}:isInitialized`, {detail: {rootEl: this.rootEl}} ));
 	}
 
 
-/**
-*	Private Methods
-**/
+	/**
+	*	Private Methods
+	**/
 
 	initDOM() {
+		const { classInitialized, selectorFocusEls } = this.options;
 
-		this.$el.attr({'role': 'tablist', 'aria-live': 'polite'});
-		this.$tab.attr({'role': 'tab', 'tabindex': '0', 'aria-selected': 'false'});
-		this.$panel.attr({'role': 'tabpanel', 'aria-hidden': 'true'});
-		this.$panel.find(this.options.selectorFocusEls).attr({'tabindex': '-1'});
+		this.rootEl.setAttribute('role', 'tablist');
+		this.rootEl.setAttribute('aria-live', 'polite');
+
+		this.tabEl.setAttribute('role', 'tab');
+		this.tabEl.setAttribute('tabindex', '0');
+		this.tabEl.setAttribute('aria-selected', 'false');
+
+		this.panelEl.setAttribute('role', 'tabpanel');
+		this.panelEl.setAttribute('aria-hidden', 'true');
+		this.panelEl.querySelectorAll(selectorFocusEls).forEach((focusEl) => {
+			focusEl.setAttribute('tabindex', '-1');
+		});
 
 		if (this.state.isActive) {
 			this.activateTab();
 			this.activatePanel();
+			this.$panelEl.show();
+		} else {
+			this.$panelEl.hide();
 		}
 
-		TweenMax.set(this.$panel, {
-			display: this.state.isActive ? 'block' : 'none',
-			height: 'auto'
-		});
+		this.rootEl.classList.add(classInitialized);
 
 		// initial focus on content
-		this.$window.on('load', () => {
+		window.onload = () => {
 			if (this.setInitialFocus) {
-				this.focusOnPanel(this.$panel);
+				this.focusOnPanel();
 			}
-		});
-
+		};
 	}
 
 	uninitDOM() {
+		const { classInitialized, classActive, selectorFocusEls } = this.options;
 
-		this.$el.removeAttr('role aria-live');
-		this.$tab.removeAttr('role tabindex aria-selected').removeClass(this.options.classActive);
-		this.$panel.removeAttr('role aria-hidden').removeClass(this.options.classActive);
-		this.$panel.find(this.options.selectorFocusEls).removeAttr('tabindex');
-		this.$tab.find('.selected-text').remove();
+		this.rootEl.removeAttribute('role');
+		this.rootEl.removeAttribute('aria-live');
 
-		TweenMax.set(this.$panel, {
-			display: '',
-			height: ''
+		this.tabEl.removeAttribute('role');
+		this.tabEl.removeAttribute('tabindex');
+		this.tabEl.removeAttribute('aria-selected');
+		this.tabEl.classList.remove(classActive);
+
+		this.panelEl.removeAttribute('role');
+		this.panelEl.removeAttribute('aria-hidden');
+		this.panelEl.removeAttribute('style'); //remove jQuery css
+		this.panelEl.classList.remove(classActive);
+		this.panelEl.querySelectorAll(selectorFocusEls).forEach((focusEl) => {
+			focusEl.removeAttribute('tabindex');
 		});
 
+		this.rootEl.classList.remove(classInitialized);
 	}
 
 	_addEventListeners() {
-		this.$tab.on('click', this.__clickTab.bind(this));
-		this.$tab.on('keydown', this.__keydownTab.bind(this));
+		this.tabEl.addEventListener('click', this.__clickTab.bind(this));
+		this.tabEl.addEventListener('keydown', this.__keydownTab.bind(this));
 	}
 
 	_removeEventListeners() {
-		this.$tab.off('click', this.__clickTab.bind(this));
-		this.$tab.off('keydown', this.__keydownTab.bind(this));
+		this.tabEl.removeEventListener('click', this.__clickTab.bind(this));
+		this.tabEl.removeEventListener('keydown', this.__keydownTab.bind(this));
 	}
 
 
-/**
-*	Event Handlers
-**/
+	/**
+	*	Event Handlers
+	**/
 
 	__clickTab(event) {
 		event.preventDefault();
-		if ($(event.target).hasClass('ignore-click')) {return;}
-		if (this.state.isAnimating) {return;}
+		if (event.target.classList.contains('ignore-click')) { return; }
+		if (this.state.isAnimating) { return; }
 
 		if (this.state.isActive) {
 			this.animateClosed();
 		} else {
 			this.animateOpen();
 		}
-
 	}
 
 	__keydownTab(event) {
@@ -153,19 +165,18 @@ class MiniAccordion {
 		// spacebar; activate tab click
 		if (keyCode === keys.space) {
 			event.preventDefault();
-			this.$tab.click();
+			this.tabEl.click();
 		}
-
 	}
 
 
-/**
-*	Public Methods
-**/
+	/**
+	*	Public Methods
+	**/
 
 	animateClosed() {
-		const self = this;
 		const { animDuration, animEasing, customEventPrefix } = this.options;
+		const panelEl = this.panelEl;
 
 		this.state.isAnimating = true;
 
@@ -175,31 +186,25 @@ class MiniAccordion {
 
 		this.deactivatePanel();
 
-		$.event.trigger(`${customEventPrefix}:panelPreClose`, [this.$panel]);
+		window.dispatchEvent(new CustomEvent(`${customEventPrefix}:panelWillClose`, {detail: {inactivePanelEl: panelEl}} ));
 
-		TweenMax.to(this.$panel, animDuration, {
-			height: 0,
-			ease: animEasing,
-			onUpdate: function() {
-				$.event.trigger(`${customEventPrefix}:panelClosing`, [self.$panel]);
-			},
-			onComplete: function() {
-				self.state.isAnimating = false;
-				self.$tab.focus();
-				TweenMax.set(self.$panel, {
-					display: 'none',
-					height: 'auto'
-				});
-				$.event.trigger(`${customEventPrefix}:panelClosed`, [self.$panel]);
+		this.$panelEl.slideUp({
+			duration: animDuration,
+			easing: animEasing,
+			// step: () => {
+			// 	window.dispatchEvent(new CustomEvent(`${customEventPrefix}:panelClosing`, {detail: {inactivePanelEl: panelEl}} ));
+			// },
+			complete: () => {
+				this.state.isAnimating = false;
+				this.tabEl.focus();
+				window.dispatchEvent(new CustomEvent(`${customEventPrefix}:panelDidClose`, {detail: {inactivePanelEl: panelEl}} ));
 			}
 		});
-
 	}
 
 	animateOpen() {
-		const self = this;
 		const { animDuration, animEasing, customEventPrefix } = this.options;
-		const panelHeight = this.$panel.outerHeight();
+		const panelEl = this.panelEl;
 
 		this.state.isAnimating = true;
 
@@ -209,22 +214,18 @@ class MiniAccordion {
 
 		this.activatePanel();
 
-		$.event.trigger(`${customEventPrefix}:panelPreOpen`, [this.$panel]);
+		window.dispatchEvent(new CustomEvent(`${customEventPrefix}:panelWillOpen`, {detail: {activePanelEl: panelEl}} ));
 
-		TweenMax.to(this.$panel, animDuration, {
-			display: 'block',
-			height: panelHeight,
-			ease: animEasing,
-			onUpdate: function() {
-				$.event.trigger(`${customEventPrefix}:panelOpening`, [self.$panel]);
-			},
-			onComplete: function() {
-				self.state.isAnimating = false;
-				self.focusOnPanel(self.$panel);
-				TweenMax.set(self.$panel, {
-					height: 'auto'
-				});
-				$.event.trigger(`${customEventPrefix}:panelOpened`, [self.$panel]);
+		this.$panelEl.slideDown({
+			duration: animDuration,
+			easing: animEasing,
+			// step: () => {
+			// 	window.dispatchEvent(new CustomEvent(`${customEventPrefix}:panelOpening`, {detail: {activePanelEl: panelEl}} ));
+			// },
+			complete: () => {
+				this.state.isAnimating = false;
+				this.focusOnPanel();
+				window.dispatchEvent(new CustomEvent(`${customEventPrefix}:panelDidOpen`, {detail: {activePanelEl: panelEl}} ));
 			}
 		});
 
@@ -232,42 +233,49 @@ class MiniAccordion {
 	}
 
 	deactivateTab() {
-		this.$tab.removeClass(this.options.classActive).attr({'aria-selected': 'false'});
-		this.$tab.find('.selected-text').remove();
+		const tabEl = this.tabEl;
+		tabEl.classList.remove(this.options.classActive);
+		tabEl.setAttribute('aria-selected', 'false');
 	}
 
 	activateTab() {
-		this.$tab.addClass(this.options.classActive).attr({'aria-selected': 'true'});
-		this.$tab.append(this.selectedLabel);
+		const tabEl = this.tabEl;
+		tabEl.classList.add(this.options.classActive);
+		tabEl.setAttribute('aria-selected', 'true');
 	}
 
 	deactivatePanel() {
-		this.$panel.removeClass(this.options.classActive).attr({'aria-hidden': 'true'});
-		this.$panel.find(this.options.selectorFocusEls).attr({'tabindex': '-1'});
+		const panelEl = this.panelEl;
+		panelEl.classList.remove(this.options.classActive);
+		panelEl.setAttribute('aria-hidden', 'true');
+		panelEl.querySelectorAll(this.options.selectorFocusEls).forEach((focusEl) => {
+			focusEl.setAttribute('tabindex', '-1');
+		});
 	}
 
 	activatePanel() {
-		this.$panel.addClass(this.options.classActive).attr({'aria-hidden': 'false'});
-		this.$panel.find(this.options.selectorFocusEls).attr({'tabindex': '0'});
+		const panelEl = this.panelEl;
+		panelEl.classList.add(this.options.classActive);
+		panelEl.setAttribute('aria-hidden', 'false');
+		panelEl.querySelectorAll(this.options.selectorFocusEls).forEach((focusEl) => {
+			focusEl.setAttribute('tabindex', '0');
+		});
 	}
 
-	focusOnPanel($panel) {
-		const extraTopOffset = this.$tab.outerHeight();
-		focusOnContentEl($panel, extraTopOffset);
+	focusOnPanel() {
+		const extraTopOffset = this.rootEl.offsetHeight;
+		focusOnContentEl(this.$panelEl, extraTopOffset); //focusOnContentEl requires jQuery $element
 	}
 
 	fireTracking() {
-		if (!this.options.enableTracking) {return;}
-		$.event.trigger(Events.TRACKING_STATE, [this.$el]);
+		if (!this.options.enableTracking) { return; }
+		window.dispatchEvent(new CustomEvent(Events.TRACKING_STATE, {detail: {activePanelEl: this.panelEl}} ));
 	}
 
 	unInitialize() {
 		this._removeEventListeners();
 		this.uninitDOM();
-		this.$el = null;
-		this.$tab = null;
-		this.$panel = null;
-		$.event.trigger(`${this.options.customEventPrefix}:unInitialized`);
+		window.dispatchEvent(new CustomEvent(`${this.options.customEventPrefix}:unInitialized`, {detail: {rootEl: this.rootEl}} ));
 	}
 
 }

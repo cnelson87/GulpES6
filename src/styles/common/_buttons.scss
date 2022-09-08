@@ -2,27 +2,40 @@
 // Buttons
 // -----------------------------------------------------
 
-//use either <a>, <button>, or <input> tags
-.button {
+//recommended to use <a> or <button> tags
+.btn {
 	@include action-transition();
 	background: $color-gray-light;
-	border: 1px solid $border-color-dark;
+	border: 2px solid $border-color-dark;
 	border-radius: $border-radius-sm;
 	color: $text-color;
 	cursor: pointer;
 	display: inline-block;
 	font-family: $main-font;
-	font-size: 16px; //1.0em;
+	font-size: $input-font-size;
 	font-weight: bold;
-	line-height: 1.2;
+	line-height: $input-line-height;
 	min-width: 120px;
 	outline: 0;
 	padding: 4px 12px;
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
+	white-space: nowrap;
 
 	&:hover, &:focus {
 		background: $color-gray-xlight;
+	}
+
+	&.btn-sm {
+		font-size: $input-font-size-sm;
+		line-height: $input-line-height-sm;
+		padding: 2px 8px;
+	}
+
+	&.btn-lg {
+		font-size: $input-font-size-sm;
+		line-height: $input-line-height-sm;
+		padding: 8px 20px;
 	}
 }

@@ -11,104 +11,99 @@
 
 	@media (min-width: $breakpoint-tablet-min) {
 		display: flex;
-		// flex-flow: row nowrap;
-		// align-items: stretch;
 		height: 600px; // set as needed
 	}
 
-	> .horizordion--panel {
-		// display: block;
-		// height: 100%;
-		overflow: hidden;
-		position: relative;
+	.horizordion--header {
+		display: none;
 
 		@media (min-width: $breakpoint-tablet-min) {
-			flex: 1;
-			// flex-grow: 1;
-			// flex-shrink: 1;
-			transition: flex-grow $animation-speed;
+			display: block;
+			flex-grow: 0;
+			flex-shrink: 0;
+			position: relative;
+			width: 44px;
+		}
+	}
+
+	.horizordion--tab {
+		display: none;
+
+		@media (min-width: $breakpoint-tablet-min) {
+			align-items: flex-start;
+			background: $color-near-white;
+			color: $color-near-black;
+			display: flex;
+			height: 100%;
+			justify-content: center;
+			padding: 0.5em 0;
+			text-decoration: none;
+			width: 100%;
+
+			.horizordion--tab-text {
+				@include text-hide;
+				display: block;
+				position: absolute;
+				top: 0;
+				width: 100%;
+			}
+
+			&:hover, &:focus {
+				background: $color-gray-light;
+			}
 
 			&.is-active {
-				flex-grow: 7;
-			}
-		}
+				background: $color-gray-dark;
+				color: $color-white;
 
-		// Test Colors
-		&:nth-child(1) {
-			background-color: rgba(red, 0.2);
-		}
-
-		&:nth-child(2) {
-			background-color: rgba(yellow, 0.2);
-		}
-
-		&:nth-child(3) {
-			background-color: rgba(blue, 0.2);
-		}
-
-		&:nth-child(4) {
-			background-color: rgba(green, 0.2);
-		}
-
-		> .horizordion--tab {
-
-			@media (min-width: $breakpoint-tablet-min) {
-				height: 100%;
-				position: absolute;
-				right: 0;
-				top: 0;
-				width: 40px;
-
-				> a {
-					@include text-hide;
-					background: rgba($color-black, 0.2);
-					display: block;
-					height: 100%;
-					width: 100%;
-
-					&::after {
-						background: $color-white url($image-path+'/action-icons.png') no-repeat 0 -30px;
-						background-origin: border-box;
-						border: 2px solid $color-near-black;
-						border-radius: 50%;
-						content: '';
-						display: block;
-						height: 30px;
-						position: absolute;
-						right: 5px;
-						top: 5px;
-						width: 30px;
-					}
-
-					&:hover, &:focus {
-						background: rgba($color-black, 0.1);
-					}
-
-					&.is-active {
-						background: rgba($color-black, 0.1);
-
-						&::after {
-							background-position: 0 0;
-						}
+				.fa-plus {
+					&::before {
+						content: '\f00d';
 					}
 				}
 			}
 		}
+	}
 
-		> .horizordion--content {
-			opacity: 0;
-			padding: 40px 20px 20px;
-			position: relative;
-			// transition: opacity $animation-speed;
+	.horizordion--panel {
+		overflow: hidden;
+		position: relative;
 
-			@media (min-width: $breakpoint-tablet-min) {
-				width: calc(100% - 40px); //minus tab width
+		@media (min-width: $breakpoint-tablet-min) {
+			flex: 0 1 0;
+			transition: flex-grow $animation-speed;
+
+			&.is-active {
+				flex-grow: 10;
 			}
+		}
+
+		// Test Colors
+		//&:nth-child(1) {
+		//	background-color: rgba(red, 0.2);
+		//}
+		//
+		//&:nth-child(2) {
+		//	background-color: rgba(yellow, 0.2);
+		//}
+		//
+		//&:nth-child(3) {
+		//	background-color: rgba(blue, 0.2);
+		//}
+		//
+		//&:nth-child(4) {
+		//	background-color: rgba(green, 0.2);
+		//}
+
+		.horizordion--content {
+			opacity: 0;
+			padding: 1.5em;
+			position: relative;
 		}
 
 		&.is-active {
 
-			> .horizordion--content {
+			.horizordion--content {
 				opacity: 1.0;
 				transition: opacity $transition-speed;
 				transition-delay: $animation-speed;

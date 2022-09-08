@@ -3,14 +3,11 @@
 
 	DESCRIPTION: Base class to create modal windows
 
-	VERSION: 0.4.0
-
 	USAGE: const myModalWindow = new ModalWindow('Options')
-		@param {jQuery Object}
 		@param {Object}
 
 	DEPENDENCIES:
-		- jquery 3.x
+		jquery 3.x
 
 */
 
@@ -32,7 +29,7 @@ class ModalWindow {
 		// defaults
 		this.options = Object.assign({
 			selectorTriggers: 'a.modal-trigger[data-targetID]',
-			templateModal: modalTemplate(), //.hbs files return a function which returns html
+			modalTemplate: modalTemplate(), //.hbs files return a function which returns html
 			selectorOverlay: '.modal-overlay', //must match element in template
 			selectorModal: '.modal', //must match element in template
 			selectorContent: '.modal--content', //must match element in template
@@ -40,7 +37,7 @@ class ModalWindow {
 			selectorCloseLinks: '.close-modal', //close links within modal content
 			activeClass: 'is-active',
 			activeBodyClass: 'modal-active',
-			enableOverlayCloseClick: false,
+			enableOverlayCloseClick: true,
 			animDuration: Constants.timing.standard,
 			selectorContentEls: Constants.contentElements,
 			customEventPrefix: 'ModalWindow'
@@ -61,27 +58,20 @@ class ModalWindow {
 		this.initDOM();
 
 		this._addEventListeners();
-
 	}
 
 
-/**
-*	Private Methods
-**/
+	/**
+	*	Private Methods
+	**/
 
 	initDOM() {
-
-		this.$modalWindow = $(this.options.templateModal);
-
+		this.$modalWindow = $(this.options.modalTemplate);
 		this.$overlay = this.$modalWindow.find(this.options.selectorOverlay);
-
 		this.$modal = this.$modalWindow.find(this.options.selectorModal);
 		this.$modal.attr({'aria-live': 'polite'});
-
 		this.$content = this.$modal.find(this.options.selectorContent);
-
 		this.$closeBtn = this.$modal.find(this.options.selectorCloseBtn);
-
 	}
 
 	_addEventListeners() {
@@ -142,9 +132,9 @@ class ModalWindow {
 	}
 
 
-/**
-*	Public Methods
-**/
+	/**
+	*	Public Methods
+	**/
 
 	openModal() {
 		const { activeClass, activeBodyClass, animDuration, customEventPrefix } = this.options;
@@ -159,7 +149,7 @@ class ModalWindow {
 		this.$overlay.addClass(activeClass);
 		this.$modal.addClass(activeClass);
 
-		$.event.trigger(`${customEventPrefix}:modalPreOpen`, [this.$modal]);
+		$.event.trigger(`${customEventPrefix}:modalWillOpen`, [this.$modal]);
 
 		setTimeout(() => {
 			this.modalOpened();
@@ -183,7 +173,7 @@ class ModalWindow {
 	modalOpened() {
 		const { customEventPrefix } = this.options;
 		this.setContentFocus();
-		$.event.trigger(`${customEventPrefix}:modalOpened`, [this.$modal]);
+		$.event.trigger(`${customEventPrefix}:modalDidOpen`, [this.$modal]);
 	}
 
 	closeModal() {
@@ -194,7 +184,7 @@ class ModalWindow {
 		this.$modal.removeClass(activeClass);
 		this.$window.scrollTop(this.windowScrollTop);
 
-		$.event.trigger(`${customEventPrefix}:modalPreClose`, [this.$modal]);
+		$.event.trigger(`${customEventPrefix}:modalWillClose`, [this.$modal]);
 
 		setTimeout(() => {
 			this.modalClosed();
@@ -208,19 +198,20 @@ class ModalWindow {
 		const { customEventPrefix } = this.options;
 		this.$content.empty();
 		this.$modalWindow.detach();
+		this.isModalActivated = false;
+		this.windowScrollTop = 0;
 		if (this.$activeTrigger.length) {
 			this.$activeTrigger.focus();
 		} else {
 			this.$body.find(this.options.selectorContentEls).first().attr({'tabindex': '-1'}).focus();
 		}
-		this.isModalActivated = false;
-		this.windowScrollTop = 0;
-		$.event.trigger(`${customEventPrefix}:modalClosed`, [this.$modal]);
+		$.event.trigger(`${customEventPrefix}:modalDidClose`, [this.$modal]);
 	}
 
 	setContentFocus() {
-		const $focusEl = this.$content.find(this.options.selectorContentEls).first();
-		$focusEl.attr({'tabindex': '-1'}).focus();
+		// const $focusEl = this.$content.find(this.options.selectorContentEls).first();
+		// $focusEl.attr({'tabindex': '-1'}).focus();
+		this.$closeBtn.focus();
 	}
 
 }

@@ -1,7 +1,3 @@
-/**
- * @module PromisePage
- */
-
 import Constants from 'config/Constants';
 import ajaxGet from 'utilities/ajaxGet';
 import PromiseDataListing from 'templates/PromiseDataListing.hbs';
@@ -15,7 +11,7 @@ const PromisePage = {
 	},
 
 	fetch() {
-		let xhrs = [
+		const xhrs = [
 			ajaxGet(Constants.urls.fibonacci),
 			ajaxGet(Constants.urls.primes),
 			ajaxGet(Constants.urls.triangle)
@@ -26,25 +22,25 @@ const PromisePage = {
 				this.process(response);
 			})
 			.catch((error) => {
-				// console.log(error);
+				console.warn(error);
 			});
 	},
 
 	process(response) {
 		console.log(response);
 		//combine response data into single array
-		let list = [].concat(...response);
+		const list = [].concat(...response);
 		//sort array numerically
-		let sorted = list.slice().sort(function(a,b) {return a - b;});
+		const sorted = list.slice().sort(function(a,b) {return a - b;});
 		//convert to Set to remove duplicates
-		let viewData = [...new Set(sorted)];
+		const viewData = [...new Set(sorted)];
 
 		this.render(viewData);
 	},
 
 	render(viewData) {
 		// console.log(viewData);
-		let html = this.template(viewData);
+		const html = this.template(viewData);
 		this.$el.html(html);
 	}
 

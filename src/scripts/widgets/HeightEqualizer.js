@@ -3,54 +3,42 @@
 
 	DESCRIPTION: Sets equal height on a collection of DOM ELs
 
-	VERSION: 0.2.5
-
 	USAGE: const myHeightEqualizer = new HeightEqualizer('Element', 'Options')
-		@param {jQuery Object}
+		@param {HTMLElement}
 		@param {Object}
-
-	DEPENDENCIES:
-		- jquery 3.x
 
 */
 
 class HeightEqualizer {
 
-	constructor($el, options = {}) {
-		this.$window = $(window);
-		this.initialize($el, options);
+	constructor(rootEl, options = {}) {
+		if (!rootEl) {
+			console.warn('HeightEqualizer cannot initialize without rootEl');
+			return;
+		}
+		this.initialize(rootEl, options);
 	}
 
-	initialize($el, options) {
+	initialize(rootEl, options) {
 
-		this.$el = $el;
+		this.rootEl = rootEl;
 		this.options = Object.assign({
 			selectorItems: '> div',
 			setParentHeight: false
 		}, options);
 
 		// elements
-		this.$items = this.$el.find(this.options.selectorItems);
+		this.itemEls = this.rootEl.querySelectorAll(this.options.selectorItems);
 
 		// properties
-		this._length = this.$items.length;
+		this._length = this.itemEls.length;
 		this.maxHeight = 0;
-
-		if (this._length <= 1) {return;}
+		if (this._length <= 1) { return; }
 
 		this.calcHeight();
 		this.setHeight();
 
-		this.$window.on('resize', this.__onWindowResize.bind(this));
-	}
-
-
-	/**
-	*	Event Handlers
-	**/
-
-	__onWindowResize(event) {
-		this.resetHeight();
+		window.addEventListener('resize', this.resetHeight.bind(this));
 	}
 
 
@@ -60,26 +48,35 @@ class HeightEqualizer {
 
 	calcHeight() {
 		let heightCheck = 0;
-		for (let i=0; i<this._length; i++) {
-			//outerHeight includes height + padding + border
-			heightCheck = this.$items.eq(i).outerHeight();
+		this.itemEls.forEach((itemEl) => {
+			if (itemEl.style.display === 'none') {
+				itemEl.style.display = '';
+				heightCheck = itemEl.offsetHeight;
+				itemEl.style.display = 'none';
+			} else {
+				heightCheck = itemEl.offsetHeight;
+			}
 			if (heightCheck > this.maxHeight) {
 				this.maxHeight = heightCheck;
 			}
-		}
+		});
 	}
 
 	setHeight() {
-		this.$items.css({height: this.maxHeight});
+		this.itemEls.forEach((itemEl) => {
+			itemEl.style.height = this.maxHeight + 'px';
+		});
 		if (this.options.setParentHeight) {
-			this.$el.css({height: this.maxHeight});
+			this.rootEl.style.height = this.maxHeight + 'px';
 		}
 	}
 
 	unsetHeight() {
-		this.$items.css({height: ''});
+		this.itemEls.forEach((itemEl) => {
+			itemEl.style.height = 'auto';
+		});
 		if (this.options.setParentHeight) {
-			this.$el.css({height: ''});
+			this.rootEl.style.height = 'auto';
 		}
 	}
 
@@ -91,10 +88,8 @@ class HeightEqualizer {
 	}
 
 	unInitialize() {
-		this.$window.off('resize', this.__onWindowResize.bind(this));
+		window.removeEventListener('resize', this.resetHeight.bind(this));
 		this.unsetHeight();
-		this.$items = null;
-		this.$el = null;
 	}
 
 }

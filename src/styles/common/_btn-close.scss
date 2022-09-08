@@ -2,22 +2,28 @@
 // Btn Close
 // -----------------------------------------------------
 
-//use either <a href="#close"> or <button type="button"> tags
+//use either <a href="#"> or <button type="button"> tags
 .btn-close {
-	@include action-transition();
-	@include text-hide;
-	background: $color-white url($image-path+'/action-icons.png') no-repeat 0 0;
-	background-origin: border-box;
-	border: 1px solid $border-color-light;
+	//@include action-transition();
+	border: 1px solid $color-near-black;
 	border-radius: $border-radius-sm;
+	color: $color-near-black;
 	display: inline-block;
+	font-size: 16px;
 	height: 30px;
+	line-height: 1;
 	padding: 0;
+	text-align: center;
 	width: 30px;
+
+	//.fa {
+	//
+	//}
 
 	&:focus, &:hover {
 		background-color: $color-gray-dark;
 		background-position: 0 -180px;
-		border-color: $border-color-dark;
+		border-color: $color-gray-dark;
+		color: $color-white;
 	}
 }

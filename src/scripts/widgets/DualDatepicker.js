@@ -3,28 +3,30 @@
 
 	DESCRIPTION: jQuery-UI DualDatepicker widget
 
-	VERSION: 0.2.0
-
 	USAGE: const myDualDatepicker = new DualDatepicker('Element', 'Options')
-		@param {jQuery Object}
+		@param {HTMLElement}
 		@param {Object}
 
 	DEPENDENCIES:
-		- jquery 3.x
-		- jquery-ui 1.12.1
+		jquery 3.x
+		jQuery-ui 1.12.1
 
 */
 
 class DualDatepicker {
 
-	constructor($el, options = {}) {
-		this.initialize($el, options);
+	constructor(rootEl, options = {}) {
+		if (!rootEl) {
+			console.warn('DualDatepicker cannot initialize without rootEl');
+			return;
+		}
+		this.initialize(rootEl, options);
 	}
 
-	initialize($el, options) {
+	initialize(rootEl, options) {
 
 		// defaults
-		this.$el = $el;
+		this.rootEl = rootEl;
 		this.options = Object.assign({
 			selectorStartDatepicker: '.start-date',
 			selectorEndDatepicker: '.end-date',
@@ -36,8 +38,8 @@ class DualDatepicker {
 		}, options);
 
 		// elements
-		this.$startDatepicker = this.$el.find(this.options.selectorStartDatepicker);
-		this.$endDatepicker = this.$el.find(this.options.selectorEndDatepicker);
+		this.$startDatepicker = $(this.rootEl.querySelector(this.options.selectorStartDatepicker));
+		this.$endDatepicker = $(this.rootEl.querySelector(this.options.selectorEndDatepicker));
 
 		this.$startDatepicker.prop('readonly', true);
 		this.$startDatepicker.attr('readonly', 'readonly');
@@ -46,12 +48,11 @@ class DualDatepicker {
 
 		this.initDatepickers();
 
-		$.event.trigger(`${this.options.customEventPrefix}:isInitialized`, [this.$el]);
-
+		window.dispatchEvent(new CustomEvent(`${this.options.customEventPrefix}:isInitialized`, {detail: {rootEl: this.rootEl}} ));
 	}
 
 	initDatepickers() {
-		// const $thisEl = this.$el;
+		// const $el = $(this.this.rootEl);
 		const $startDatepicker = this.$startDatepicker;
 		const $endDatepicker = this.$endDatepicker;
 		const bindEndDate = this.options.bindEndDateToStartDate;
@@ -67,7 +68,7 @@ class DualDatepicker {
 		// 		top: '-20px',
 		// 		left: '5px'
 		// 	});
-		// 	$thisEl.append($datepicker);
+		// 	$el.append($datepicker);
 		// 	$datepicker.hide();
 		// };
 

@@ -18,11 +18,11 @@
 		position: absolute;
 		top: calc(50% - 20px);
 
-		&.nav-prev {
+		&.carousel--nav-prev {
 			left: 0;
 		}
 
-		&.nav-next {
+		&.carousel--nav-next {
 			right: 0;
 		}
 	}

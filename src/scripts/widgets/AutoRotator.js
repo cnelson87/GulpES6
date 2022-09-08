@@ -3,15 +3,13 @@
 
 	DESCRIPTION: Auto show / hide a list of elements
 
-	VERSION: 0.2.1
-
 	USAGE: const myAutoRotator = new AutoRotator('Element', 'Options')
-		@param {jQuery Object}
+		@param {HTMLElement}
 		@param {Object}
 
 	DEPENDENCIES:
-		- jquery 3.x
-		- greensock
+		jquery 3.x
+		greensock 3.x
 
 */
 
@@ -19,28 +17,32 @@ import Constants from 'config/Constants';
 
 class AutoRotator {
 
-	constructor($el, options = {}) {
-		this.initialize($el, options);
+	constructor(rootEl, options = {}) {
+		if (!rootEl) {
+			console.warn('AutoRotator cannot initialize without rootEl');
+			return;
+		}
+		this.initialize(rootEl, options);
 	}
 
-	initialize($el, options) {
+	initialize(rootEl, options) {
 
 		// defaults
-		this.$el = $el;
+		this.rootEl = rootEl;
 		this.options = Object.assign({
 			initialIndex: 0,
-			selectorItems: 'article',
+			selectorPanels: 'article',
 			autoRotateInterval: Constants.timing.interval,
 			animDuration: (Constants.timing.fast / 1000),
-			animEasing: 'Power4.easeOut',
+			animEasing: 'power4.inOut',
 			customEventPrefix: 'AutoRotator'
 		}, options);
 
 		// elements
-		this.$items = this.$el.children(this.options.selectorItems);
+		this.panelEls = this.rootEl.querySelectorAll(this.options.selectorPanels);
 
 		// properties
-		this._length = this.$items.length;
+		this._length = this.panelEls.length;
 		if (this.options.initialIndex >= this._length) {this.options.initialIndex = 0;}
 		this.rotationInterval = this.options.autoRotateInterval;
 
@@ -52,31 +54,28 @@ class AutoRotator {
 
 		this.setDOM();
 
-		$.event.trigger(`${this.options.customEventPrefix}:isInitialized`, [this.$el]);
-
-		this.setAutoRotation = setInterval(() => {
-			this.autoRotation();
-		}, this.rotationInterval);
-
+		window.dispatchEvent(new CustomEvent(`${this.options.customEventPrefix}:isInitialized`, {detail: {rootEl: this.rootEl}} ));
 	}
 
 	setDOM() {
-		const $activeItem = $(this.$items[this.state.currentIndex]);
+		const activePanelEl = this.panelEls[this.state.currentIndex];
 
-		TweenMax.set(this.$items, {
+		gsap.set(this.panelEls, {
 			left: '100%',
 			zIndex: 1
 		});
 
-		TweenMax.set($activeItem, {
+		gsap.set(activePanelEl, {
 			left: '0',
 			zIndex: 9
 		});
 
+		this.setAutoRotation = setInterval(() => {
+			this.autoRotation();
+		}, this.rotationInterval);
 	}
 
 	autoRotation() {
-
 		this.state.previousIndex = this.state.currentIndex;
 		this.state.currentIndex++;
 
@@ -85,26 +84,26 @@ class AutoRotator {
 		}
 
 		this.updateDOM();
-
 	}
 
 	updateDOM() {
-		const $activeItem = this.$items.eq(this.state.currentIndex);
-		const $inactiveItem = this.$items.eq(this.state.previousIndex);
+		const activePanelEl = this.panelEls[this.state.currentIndex];
+		const inactivePanelEl = this.panelEls[this.state.previousIndex];
 
-		TweenMax.set($inactiveItem, {
+		gsap.set(inactivePanelEl, {
 			zIndex: 8
 		});
 
-		TweenMax.set($activeItem, {
+		gsap.set(activePanelEl, {
 			zIndex: 9
 		});
 
-		TweenMax.to($activeItem, this.options.animDuration, {
-			left: 0,
+		gsap.to(activePanelEl, {
+			duration: this.options.animDuration,
 			ease: this.options.animEasing,
+			left: 0,
 			onComplete: function() {
-				TweenMax.set($inactiveItem, {
+				gsap.set(inactivePanelEl, {
 					left: '100%',
 					zIndex: 1
 				});

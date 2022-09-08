@@ -3,37 +3,27 @@
 // -----------------------------------------------------
 
 
-// html, body {
-// 	max-width: 100%;
-// 	overflow-x: hidden;
-// 	width: 100%;
-// }
-
-body {
-	background: var(--bg-color) url($image-path+'/bg-main-mobi.jpg') no-repeat fixed center top;
-	background-size: cover;
-	// CAUTION: experimental, may need to remove overflow from html & body, may not work in Safari.
-	// use overscroll-behavior to stop the "bounce" or refresh effect
-	// when getting to the top or bottom scroll limits of the page.
-	// overscroll-behavior: none;
-
-	@media (min-width: $breakpoint-tablet-min) {
-		background-image: url($image-path+'/bg-main-tabt.jpg');
-	}
-
-	@media (min-width: $breakpoint-desktop-min) {
-		background-image: url($image-path+'/bg-main-desk.jpg');
-	}
-}
-
-.page-container {
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-	position: relative;
+html, body {
+	max-width: 100%;
+	min-height: 100%;
+	overflow-x: hidden;
 	width: 100%;
 }
 
+body {
+	background: var(--bg-color) url($image-path + '/bg-main-sma.jpg') no-repeat fixed center top;
+	background-size: cover;
+
+	@media (min-width: $breakpoint-tablet-min) {
+		background-image: url($image-path + '/bg-main-med.jpg');
+	}
+
+	@media (min-width: $breakpoint-desktop-min) {
+		background-image: url($image-path + '/bg-main-lrg.jpg');
+	}
+}
+
+.page-container,
 .site-header,
 .site-footer,
 .site-main,
@@ -43,9 +33,21 @@ body {
 	position: relative;
 }
 
+.page-container {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	width: 100%;
+}
+
+.site-header,
+.site-footer {
+	padding: $gutter-half 0;
+}
+
 .site-main {
 	flex-grow: 1;
-	padding: var(--gutter) 0;
+	padding: var(--gutter-double) 0;
 }
 
 .container,
@@ -71,5 +73,5 @@ body {
 }
 
 .content + .content {
-	margin-top: var(--gutter);
+	margin-top: var(--gutter-double);
 }

@@ -6,12 +6,12 @@
 import Events from 'config/Events';
 
 const resizeBeginEndEvents = function() {
+	const customResizeBeginEvent = new Event(Events.WINDOW_RESIZE_BEGIN);
+	let customResizeEndEvent = new Event(Events.WINDOW_RESIZE_END);
 	const timerDelay = 100;
 	let timer = null;
 
 	window.addEventListener('resize', (event) => {
-		let customResizeBeginEvent = new Event(Events.WINDOW_RESIZE_BEGIN);
-		let customResizeEndEvent = new Event(Events.WINDOW_RESIZE_END);
 		if (timer) {
 			clearTimeout(timer);
 		} else {

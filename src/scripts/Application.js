@@ -1,11 +1,7 @@
-/**
- * @module Application
- */
-
 import Constants from 'config/Constants';
 import Events from 'config/Events';
 import State from 'config/State';
-import getQueryStringParams from 'utilities/getQueryStringParams';
+import parseParamsToObject from 'utilities/parseParamsToObject';
 import breakpointChangeEvent from 'utilities/breakpointChangeEvent';
 import resizeBeginEndEvents from 'utilities/resizeBeginEndEvents';
 import scrollBeginEndEvents from 'utilities/scrollBeginEndEvents';
@@ -13,6 +9,7 @@ import HomePage from 'views/HomePage';
 import FormsPage from 'views/FormsPage';
 import HeroPage from 'views/HeroPage';
 import PromisePage from 'views/PromisePage';
+import RangeSliderPage from 'views/RangeSliderPage';
 import VideosPage from 'views/VideosPage';
 import Accordion from 'widgets/Accordion';
 import MiniAccordion from 'widgets/MiniAccordion';
@@ -26,184 +23,100 @@ import Horizordion from 'widgets/Horizordion';
 import ModalWindow from 'widgets/ModalWindow';
 import AjaxModal from 'widgets/AjaxModal';
 import AjaxModalForm from 'widgets/AjaxModalForm';
-import RangeSlider from 'widgets/RangeSlider';
-import DateRangeSlider from 'widgets/DateRangeSlider';
 // import { SuperClass, SubClass } from 'widgets/SuperSubClass';
-import { SubClass } from 'widgets/SuperSubClass';
+// import { SubClass } from 'widgets/SuperSubClass';
 
 const Application = {
 
 	initialize() {
 		// console.log('Application:initialize');
+		const urlSearch = decodeURIComponent(location.search.substring(1)) || null;
 		const urlHash = location.hash.substring(1) || null;
-		const hashParams = urlHash ? getQueryStringParams(urlHash) : null;
-		const queryParams = getQueryStringParams();
-
-		this.$window = $(window);
-		this.$document = $(document);
-		this.$html = $('html');
-		this.$body = $('body');
-		this.$header = $('#header');
-		this.$footer = $('#footer');
-
-		this.bodyID = this.$body.attr('id');
+		const searchParams = urlSearch ? parseParamsToObject(urlSearch) : null;
+		const hashParams = urlHash ? parseParamsToObject(urlHash) : null;
 
 		this.params = null;
 
-		if (Constants.isIE11) {this.$html.addClass('ie11');}
-		if (Constants.isEdge) {this.$html.addClass('edge');}
-		if (Constants.isAndroid) {this.$html.addClass('android');}
-		if (Constants.isIOS) {this.$html.addClass('ios');}
+		if (Constants.isAndroid) {document.documentElement.classList.add('android');}
+		if (Constants.isIOS) {document.documentElement.classList.add('ios');}
 
-		if (!!queryParams || !!hashParams) {
-			this.params = Object.assign({}, queryParams, hashParams);
+		if (!!searchParams || !!hashParams) {
+			this.params = Object.assign({}, searchParams, hashParams);
+			// console.log(searchParams);
 			// console.log(hashParams);
-			// console.log(queryParams);
 			// console.log(this.params);
 		}
+
+		this._addEventListeners();
 
 		// Initialize custom events
 		breakpointChangeEvent();
 		resizeBeginEndEvents();
 		scrollBeginEndEvents();
 
-		this._addEventListeners();
-
 		this.setTopOffset();
 
-		// init specific page view
-		if (typeof this.pagemap[this.bodyID] !== 'undefined') {
-			this[this.pagemap[this.bodyID]]();
+		// init widgets globally
+		this.initWidgets();
+		this.initModals();
+
+		// init specific page views
+		this.initPageViews();
+
+	},
+
+	widgetsMap: {
+		'Accordion': Accordion,
+		'HeroCarousel': HeroCarousel,
+		'Horizordion': Horizordion,
+		'InfiniteCarousel': InfiniteCarousel,
+		'MiniAccordion': MiniAccordion,
+		'ResponsiveCarousel': ResponsiveCarousel,
+		'ResponsiveTabCarousel': ResponsiveTabCarousel,
+		'SelectTabSwitcher': SelectTabSwitcher,
+		'TabSwitcher': TabSwitcher,
+	},
+
+	pageViewsMap: {
+		homepage: HomePage,
+		formspage: FormsPage,
+		heropage: HeroPage,
+		promisepage: PromisePage,
+		rangesliderpage: RangeSliderPage,
+		videospage: VideosPage,
+	},
+
+	initPageViews() {
+		const bodyID = document.body.id;
+		const PageView = bodyID && this.pageViewsMap[bodyID] || null;
+		if (PageView) {
+			PageView.initialize();
 		}
 	},
 
-	pagemap: {
-		homepage: 'initHomePage',
-		formspage: 'initFormsPage',
-		heropage: 'initHeroPage',
-		promisepage: 'initPromisePage',
-		videospage: 'initVideosPage',
-		widgetspage: 'initWidgetsPage',
-		horizordionpage: 'initHorizordionPage',
-		modalspage: 'initModalsPage',
-		rangesliderpage: 'initRangeSliderPage',
-		testpage: 'initTestPage',
+	initWidgets() {
+		// init all nested widgets first since they can affect parent size & position
+		document.querySelectorAll('[data-widget] [data-widget]:not(.is-initialized)').forEach((elem) => {
+			const Widget = this.widgetsMap[elem.dataset.widget] || null;
+			if (Widget) {
+				new Widget(elem);
+			}
+		});
+		// then init all top-level widgets
+		document.querySelectorAll('[data-widget]:not(.is-initialized)').forEach((elem) => {
+			const Widget = this.widgetsMap[elem.dataset.widget] || null;
+			if (Widget) {
+				new Widget(elem);
+			}
+		});
+		// Super / Sub class demo
+		// new SubClass();
 	},
 
-	initHomePage() {
-		HomePage.initialize();
-	},
-
-	initFormsPage() {
-		FormsPage.initialize();
-	},
-
-	initHeroPage() {
-		HeroPage.initialize();
-	},
-
-	initPromisePage() {
-		PromisePage.initialize();
-	},
-
-	initVideosPage() {
-		VideosPage.initialize();
-	},
-
-	initWidgetsPage() {
-		const $miniAccordions = $('.mini-accordion');
-
-		new Accordion($('#accordion-default'));
-
-		new Accordion($('#accordion-custom'), {
-			initialIndex: -1,
-			equalizeHeight: true
-		});
-
-		new ResponsiveCarousel($('#carousel-m1-t1-d1'), {
-			loopEndToEnd: false,
-			autoRotate: true
-		});
-
-		new ResponsiveCarousel($('#carousel-m1-t2-d3'), {
-			numVisibleItemsMobile: 1,
-			numItemsToAnimateMobile: 1,
-			numVisibleItemsTablet: 2,
-			numItemsToAnimateTablet: 1,
-			numVisibleItemsDesktop: 3,
-			numItemsToAnimateDesktop: 2,
-			loopEndToEnd: true,
-			autoRotate: false
-		});
-
-		new ResponsiveCarousel($('#carousel-m1-t3-d5'), {
-			numVisibleItemsMobile: 1,
-			numItemsToAnimateMobile: 1,
-			numVisibleItemsTablet: 3,
-			numItemsToAnimateTablet: 2,
-			numVisibleItemsDesktop: 5,
-			numItemsToAnimateDesktop: 4,
-			loopEndToEnd: true,
-			staggerActiveItems: true,
-			autoRotate: false
-		});
-
-		new ResponsiveTabCarousel($('#tabcarousel-m1-t1-d1'), {
-			loopEndToEnd: false,
-			autoRotate: true
-		});
-
-		new InfiniteCarousel($('#infinite-carousel'));
-
-		new HeroCarousel($('#hero-carousel'));
-
-		$miniAccordions.each((index) => {
-			new MiniAccordion($miniAccordions.eq(index), {
-				initialOpen: (index === 0) ? true : false,
-			});
-		});
-
-		new TabSwitcher($('#tabswitcher-default'));
-
-		new TabSwitcher($('#tabswitcher-custom'), {
-			equalizeHeight: true,
-			autoRotate: true
-		});
-
-		new SelectTabSwitcher($('#select-tabswitcher'));
-
-	},
-
-	initHorizordionPage() {
-		new Horizordion($('#horizordion-default'));
-		new Horizordion($('#horizordion-custom'), {
-			initialIndex: -1
-		});
-	},
-
-	initModalsPage() {
+	initModals() {
 		new ModalWindow();
 		new AjaxModal();
 		new AjaxModalForm();
-	},
-
-	initRangeSliderPage() {
-		/* eslint-disable no-magic-numbers */
-		new RangeSlider($('#range-slider'), {
-			sliderSteps: 1
-		});
-		new DateRangeSlider($('#date-range-slider'), {
-			sliderSteps: (60 * 60 * 1000) // 1 hr
-		});
-		new DateRangeSlider($('#time-range-slider'), {
-			sliderSteps: (15 * 60 * 1000) // 15 min
-		});
-		/* eslint-enable no-magic-numbers */
-	},
-
-	initTestPage() {
-		// Super / Sub class demo
-		new SubClass();
 	},
 
 	_addEventListeners() {
@@ -238,13 +151,14 @@ const Application = {
 		// console.log('onWindowScrollEnd');
 	},
 
-	onBreakpointChange(params) {
-		// console.log('onBreakpointChange', params);
+	onBreakpointChange(event) {
+		// console.log('onBreakpointChange', event.detail);
+		// console.log('State.currentBreakpoint', State.currentBreakpoint);
 		this.setTopOffset();
 	},
 
 	setTopOffset() {
-		State.topOffset = this.$header.height();
+		State.topOffset = document.getElementById('header').offsetHeight;
 	}
 
 };

@@ -1,7 +1,3 @@
-/**
- * @module HomePage
- */
-
 import Constants from 'config/Constants';
 import ajaxGet from 'utilities/ajaxGet';
 import HomepageContent from 'templates/HomepageContent.hbs';
@@ -15,19 +11,19 @@ const HomePage = {
 	},
 
 	fetch() {
-		let xhr = ajaxGet(Constants.urls.homepageContent);
+		const xhr = ajaxGet(Constants.urls.homepageContent);
 
 		Promise.resolve(xhr)
 			.then((response) => {
 				this.render(response);
 			})
 			.catch((error) => {
-				// console.log(error);
+				console.warn(error);
 			});
 	},
 
 	render(viewData) {
-		let html = this.template(viewData);
+		const html = this.template(viewData);
 		this.$el.html(html);
 	}
 

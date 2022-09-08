@@ -9,13 +9,13 @@ const truncateText = function() {
 
 	$els.each((i, el) => {
 		const $el = $(el);
+		const len = $el.data('truncate') || defaultLength;
 		let text = $el.text();
-		let len = $el.data('truncate') || defaultLength;
 		if (text.length > len) {
 			text = text.substring(0, len);
 			text += '&hellip;';
 		}
-		$el.html(text);
+		$el.text(text);
 	});
 
 };

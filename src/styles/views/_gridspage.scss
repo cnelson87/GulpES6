@@ -9,17 +9,17 @@
 
 		&.shaded {
 
-			.flex-column:nth-child(odd) {
+			.flex-col:nth-child(odd) {
 				background-color: $color-gray-xlight;
 			}
 
-			.flex-column:nth-child(even) {
+			.flex-col:nth-child(even) {
 				background-color: $color-gray-xlight-alt;
 			}
 		}
 	}
 
-	.flex-column {
+	.flex-col {
 		padding-bottom: 0.5em;
 		padding-top: 0.5em;
 	}

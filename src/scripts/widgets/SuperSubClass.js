@@ -3,8 +3,6 @@
 
 	DESCRIPTION: A contrived example of ES6 class inheritance.
 
-	VERSION: 0.1.0
-
 */
 
 class SuperClass {
@@ -34,12 +32,12 @@ class SubClass extends SuperClass {
 
 	constructor() {
 		//CANNOT use 'this' keyword in subclass constructor BEFORE calling super().
-		// this.foo = "bar";
+		// this.foo = 'bar';
 		console.log('SubClass:constructor:pre:super:1');
 		//subclass constructor MUST call super()!
 		super();
 		//the 'this' keyword is OK to use AFTER calling super().
-		this.qux = "zot";
+		this.qux = 'zot';
 		//note how these logs gets called last; it is almost pointless to add
 		//anything to the subclass constructor after calling super().
 		console.log('SubClass:constructor:post:super:9');
@@ -48,7 +46,7 @@ class SubClass extends SuperClass {
 
 	initialize() {
 		console.log('SubClass:initialize:pre:super:3');
-		this.foo = "bar";
+		this.foo = 'bar';
 		super.initialize();
 		console.log('SubClass:initialize:post:super:8');
 	}

@@ -1,17 +1,15 @@
 /*
 	TITLE: ResponsiveCarousel
 
-	DESCRIPTION: A carousel widget that responds to mobile, tablet, and desaktop media queries
-
-	VERSION: 0.5.0
+	DESCRIPTION: A carousel widget that responds to mobile, tablet, and desktop media queries
 
 	USAGE: const myCarousel = new ResponsiveCarousel('Element', 'Options')
-		@param {jQuery Object}
+		@param {HTMLElement}
 		@param {Object}
 
 	DEPENDENCIES:
-		- jquery 3.x
-		- greensock
+		jquery 3.x
+		greensock 3.x
 
 */
 
@@ -19,21 +17,27 @@ import Constants from 'config/Constants';
 import Events from 'config/Events';
 import State from 'config/State';
 import focusOnContentEl from 'utilities/focusOnContentEl';
+import parseDatasetToObject from 'utilities/parseDatasetToObject';
 
 const PERCENT = 100;
 
 class ResponsiveCarousel {
 
-	constructor($el, options = {}) {
-		this.$window = $(window);
-		this.initialize($el, options);
+	constructor(rootEl, options = {}) {
+		if (!rootEl) {
+			console.warn('ResponsiveCarousel cannot initialize without rootEl');
+			return;
+		}
+		this.initialize(rootEl, options);
 	}
 
-	initialize($el, options) {
+	initialize(rootEl, options) {
 		const urlHash = location.hash.substring(1) || null;
+		const dataOptions = rootEl.dataset.options ? parseDatasetToObject(rootEl.dataset.options) : {};
 
 		// defaults
-		this.$el = $el;
+		this.rootEl = rootEl;
+		this.$rootEl = $(rootEl); //need $element for jQuery.swipe
 		this.options = Object.assign({
 			initialIndex: 0,
 			numVisibleItemsMobile: 1,
@@ -43,33 +47,33 @@ class ResponsiveCarousel {
 			numVisibleItemsDesktop: 1,
 			numItemsToAnimateDesktop: 1,
 			enableSwipe: true,
-			loopEndToEnd: false,
+			loopEndToEnd: true,
 			staggerActiveItems: false,
-			selectorNavPrev: '.nav-prev',
-			selectorNavNext: '.nav-next',
+			selectorNavPrev: '.carousel--nav-prev',
+			selectorNavNext: '.carousel--nav-next',
 			selectorInnerTrack: '.carousel--inner-track',
 			selectorPanels: '.carousel--panel',
-			classActiveItem: 'is-active',
+			classPanelActive: 'is-active',
 			classNavDisabled: 'is-disabled',
 			classInitialized: 'is-initialized',
 			autoRotate: false,
 			autoRotateInterval: Constants.timing.interval,
 			maxAutoRotations: 5,
 			animDuration: (Constants.timing.standard / 1000),
-			animEasing: 'Power4.easeInOut',
+			animEasing: 'power4.inOut',
 			selectorFocusEls: Constants.focusableElements,
 			enableTracking: false,
 			customEventPrefix: 'ResponsiveCarousel'
-		}, options);
+		}, options, dataOptions);
 
 		// elements
-		this.$navPrev = this.$el.find(this.options.selectorNavPrev);
-		this.$navNext = this.$el.find(this.options.selectorNavNext);
-		this.$innerTrack = this.$el.find(this.options.selectorInnerTrack);
-		this.$panels = this.$innerTrack.children(this.options.selectorPanels);
+		this.navPrevEl = this.rootEl.querySelector(this.options.selectorNavPrev);
+		this.navNextEl = this.rootEl.querySelector(this.options.selectorNavNext);
+		this.innerTrackEl = this.rootEl.querySelector(this.options.selectorInnerTrack);
+		this.panelEls = this.innerTrackEl.querySelectorAll(this.options.selectorPanels);
 
 		// properties
-		this._length = this.$panels.length;
+		this._length = this.panelEls.length;
 		if (this.options.initialIndex >= this._length) {this.options.initialIndex = 0;}
 		this.lastIndex = null;
 		this.itemWidth = null;
@@ -77,6 +81,7 @@ class ResponsiveCarousel {
 		this.trackWidth = null;
 		this.numVisibleItems = null;
 		this.numItemsToAnimate = null;
+		this.setInitialFocus = false;
 
 		// state
 		this.state = {
@@ -85,10 +90,9 @@ class ResponsiveCarousel {
 		};
 
 		// check url hash to override currentIndex
-		this.setInitialFocus = false;
 		if (urlHash) {
 			for (let i=0; i<this._length; i++) {
-				if (this.$panels.eq(i).data('id') === urlHash) {
+				if (this.panelEls[i].dataset.id === urlHash) {
 					this.state.currentIndex = i;
 					this.setInitialFocus = true;
 					break;
@@ -100,47 +104,55 @@ class ResponsiveCarousel {
 
 		this._addEventListeners();
 
-		$.event.trigger(`${this.options.customEventPrefix}:isInitialized`, [this.$el]);
-
+		window.dispatchEvent(new CustomEvent(`${this.options.customEventPrefix}:isInitialized`, {detail: {rootEl: this.rootEl}} ));
 	}
 
 
-/**
-*	Private Methods
-**/
+	/**
+	*	Private Methods
+	**/
 
 	initDOM() {
-		const $activePanel = this.$panels.eq(this.state.currentIndex);
+		const { classInitialized, autoRotate, autoRotateInterval, maxAutoRotations } = this.options;
+		const activePanelEl = this.panelEls[this.state.currentIndex];
 
-		this.$el.attr({'role': 'tablist', 'aria-live': 'polite'});
-		this.$navPrev.attr({'role': 'button', 'tabindex': '0'});
-		this.$navNext.attr({'role': 'button', 'tabindex': '0'});
-		this.$panels.attr({'role': 'tabpanel', 'aria-hidden': 'true'});
+		this.rootEl.setAttribute('role', 'tablist');
+		this.rootEl.setAttribute('aria-live', 'polite');
 
-		this.setOptions();
+		this.navPrevEl.setAttribute('role', 'button');
+		this.navPrevEl.setAttribute('tabindex', '0');
+
+		this.navNextEl.setAttribute('role', 'button');
+		this.navNextEl.setAttribute('tabindex', '0');
+
+		this.panelEls.forEach((panelEl) => {
+			panelEl.setAttribute('role', 'tabpanel');
+			panelEl.setAttribute('aria-hidden', 'true');
+		});
+
+		this.setProperties();
 
 		this.setDOM();
 
 		// auto-rotate items
-		if (this.options.autoRotate) {
-			this.autoRotationCounter = this._length * this.options.maxAutoRotations;
+		if (autoRotate) {
+			this.autoRotationCounter = this._length * maxAutoRotations;
 			this.setAutoRotation = setInterval(() => {
 				this.autoRotation();
-			}, this.options.autoRotateInterval);
+			}, autoRotateInterval);
 		}
 
-		this.$el.addClass(this.options.classInitialized);
+		this.rootEl.classList.add(classInitialized);
 
 		// initial focus on content
-		this.$window.on('load', () => {
+		window.onload = () => {
 			if (this.setInitialFocus) {
-				this.focusOnPanel($activePanel);
+				this.focusOnPanel(activePanelEl);
 			}
-		});
-
+		};
 	}
 
-	setOptions() {
+	setProperties() {
 		// console.log(State.currentBreakpoint);
 
 		switch(State.currentBreakpoint) {
@@ -176,71 +188,83 @@ class ResponsiveCarousel {
 		// disable nav links if not enough visible items
 		this.updateNav();
 		if (this._length <= this.numVisibleItems) {
-			this.$navPrev.addClass(this.options.classNavDisabled).attr({'tabindex': '-1'});
-			this.$navNext.addClass(this.options.classNavDisabled).attr({'tabindex': '-1'});
+			this.navPrevEl.classList.add(this.options.classNavDisabled);
+			this.navPrevEl.setAttribute('tabindex', '-1');
+			this.navNextEl.classList.add(this.options.classNavDisabled);
+			this.navNextEl.setAttribute('tabindex', '-1');
 		}
 
 		// adjust initial position
-		this.$panels.css({width: itemWidth});
-		TweenMax.set(this.$innerTrack, {
+		this.panelEls.forEach((panelEl) => {
+			panelEl.style.width = itemWidth;
+		});
+		gsap.set(this.innerTrackEl, {
+			left: leftPos,
 			width: trackWidth,
-			left: leftPos
 		});
 
-		this.deactivateItems();
-		this.activateItems();
-
+		this.deactivatePanels();
+		this.activatePanels();
 	}
 
 	uninitDOM() {
-		const { classInitialized, classActiveItem, selectorFocusEls } = this.options;
-		this.$el.removeAttr('role aria-live').removeClass(classInitialized);
-		this.$navPrev.removeAttr('role tabindex');
-		this.$navNext.removeAttr('role tabindex');
-		this.$panels.removeAttr('role aria-hidden').removeClass(classActiveItem);
-		this.$panels.find(selectorFocusEls).removeAttr('tabindex');
-		this.cancelAutoRotation();
-		TweenMax.set(this.$innerTrack, {clearProps: 'all'});
+		const { classInitialized, classPanelActive, selectorFocusEls } = this.options;
+
+		this.rootEl.removeAttribute('role');
+		this.rootEl.removeAttribute('aria-live');
+
+		this.navPrevEl.removeAttribute('role');
+		this.navPrevEl.removeAttribute('tabindex');
+
+		this.navNextEl.removeAttribute('role');
+		this.navNextEl.removeAttribute('tabindex');
+
+		this.panelEls.forEach((panelEl) => {
+			panelEl.removeAttribute('role');
+			panelEl.removeAttribute('aria-hidden');
+			panelEl.removeAttribute('style'); //remove jQuery/greensock css
+			panelEl.classList.remove(classPanelActive);
+			panelEl.querySelectorAll(selectorFocusEls).forEach((focusEl) => {
+				focusEl.removeAttribute('tabindex');
+			});
+		});
+
+		gsap.set(this.innerTrackEl, {clearProps: 'all'});
+
+		this.rootEl.classList.remove(classInitialized);
 	}
 
 	_addEventListeners() {
-		const self = this;
-
-		this.$window.on(Events.BREAKPOINT_CHANGE, this.__onBreakpointChange.bind(this));
-
-		this.$navPrev.on('click', this.__clickNavPrev.bind(this));
-
-		this.$navNext.on('click', this.__clickNavNext.bind(this));
-
+		window.addEventListener(Events.BREAKPOINT_CHANGE, this.__onBreakpointChange.bind(this));
+		this.navPrevEl.addEventListener('click', this.__clickNavPrev.bind(this));
+		this.navNextEl.addEventListener('click', this.__clickNavNext.bind(this));
 		if (this.options.enableSwipe) {
-			this.$el.swipe({
-				fingers: 'all',
+			this.$rootEl.swipe({
+				allowPageScroll: 'vertical',
 				excludedElements: '.noSwipe',
+				fingers: 'all',
 				threshold: 50,
 				triggerOnTouchEnd: false, // triggers on threshold
-				swipeLeft: function(event) {
-					self.$navNext.click();
+				swipeLeft: () => {
+					this.navNextEl.click();
 				},
-				swipeRight: function(event) {
-					self.$navPrev.click();
+				swipeRight: () => {
+					this.navPrevEl.click();
 				},
-				allowPageScroll: 'vertical'
 			});
 		}
-
 	}
 
 	_removeEventListeners() {
-		this.$window.off(Events.BREAKPOINT_CHANGE, this.__onBreakpointChange.bind(this));
-		this.$navPrev.off('click', this.__clickNavPrev.bind(this));
-		this.$navNext.off('click', this.__clickNavNext.bind(this));
+		window.removeEventListener(Events.BREAKPOINT_CHANGE, this.__onBreakpointChange.bind(this));
+		this.navPrevEl.removeEventListener('click', this.__clickNavPrev.bind(this));
+		this.navNextEl.removeEventListener('click', this.__clickNavNext.bind(this));
 		if (this.options.enableSwipe) {
-			this.$el.swipe('destroy');
+			this.$rootEl.swipe('destroy');
 		}
 	}
 
 	autoRotation() {
-
 		if (this.state.currentIndex === this.lastIndex) {
 			this.state.currentIndex = 0;
 		}
@@ -255,90 +279,82 @@ class ResponsiveCarousel {
 		if (this.autoRotationCounter === 0) {
 			this.cancelAutoRotation();
 		}
-
 	}
 
 
-/**
-*	Event Handlers
-**/
+	/**
+	*	Event Handlers
+	**/
 
-	__onBreakpointChange(event, params) {
-		// console.log(params);
-		this.setOptions();
+	__onBreakpointChange() {
+		this.setProperties();
 		this.setDOM();
 	}
 
 	__clickNavPrev(event) {
 		event.preventDefault();
-		const { classNavDisabled, loopEndToEnd } = this.options;
-
-		if (this.state.isAnimating || this.$navPrev.hasClass(classNavDisabled)) {return;}
+		if (this.state.isAnimating || this.navPrevEl.classList.contains(this.options.classNavDisabled)) { return; }
 
 		this.cancelAutoRotation();
 
-		if (loopEndToEnd && this.state.currentIndex === 0) {
+		if (this.options.loopEndToEnd && this.state.currentIndex === 0) {
 			this.state.currentIndex = this.lastIndex;
-		} else {
+		}
+		else {
 			this.state.currentIndex -= this.numItemsToAnimate;
 			if (this.state.currentIndex < 0) {this.state.currentIndex = 0;}
 		}
 
 		this.updateCarousel(event);
-
 	}
 
 	__clickNavNext(event) {
 		event.preventDefault();
-		const { classNavDisabled, loopEndToEnd } = this.options;
-
-		if (this.state.isAnimating || this.$navNext.hasClass(classNavDisabled)) {return;}
+		if (this.state.isAnimating || this.navNextEl.classList.contains(this.options.classNavDisabled)) { return; }
 
 		this.cancelAutoRotation();
 
-		if (loopEndToEnd && this.state.currentIndex === this.lastIndex) {
+		if (this.options.loopEndToEnd && this.state.currentIndex === this.lastIndex) {
 			this.state.currentIndex = 0;
-		} else {
+		}
+		else {
 			this.state.currentIndex += this.numItemsToAnimate;
 			if (this.state.currentIndex > this.lastIndex) {this.state.currentIndex = this.lastIndex;}
 		}
 
 		this.updateCarousel(event);
-
 	}
 
 
-/**
-*	Public Methods
-**/
+	/**
+	*	Public Methods
+	**/
 
 	updateCarousel(event) {
-		const self = this;
 		const { customEventPrefix, animDuration, animEasing } = this.options;
-		const $activePanel = this.$panels.eq(this.state.currentIndex);
-		const leftPos = (this.scrollAmt * this.state.currentIndex) + '%';
+		const { currentIndex } = this.state;
+		const activePanelEl = this.panelEls[currentIndex];
+		const leftPos = (this.scrollAmt * currentIndex) + '%';
 
 		this.state.isAnimating = true;
 
-		this.deactivateItems();
+		this.deactivatePanels();
 
 		this.updateNav();
 
-		$.event.trigger(`${customEventPrefix}:carouselPreUpdate`, {activePanel: $activePanel});
+		window.dispatchEvent(new CustomEvent(`${customEventPrefix}:carouselWillUpdate`, {detail: {activePanelEl: activePanelEl}} ));
 
-		TweenMax.to(this.$innerTrack, animDuration, {
-			left: leftPos,
+		gsap.to(this.innerTrackEl, {
+			duration: animDuration,
 			ease: animEasing,
-			onUpdate: function() {
-				$.event.trigger(`${customEventPrefix}:carouselOpening`, {activePanel: $activePanel});
-			},
-			onComplete: function() {
-				self.state.isAnimating = false;
-				self.activateItems();
+			left: leftPos,
+			onComplete: () => {
+				this.state.isAnimating = false;
+				this.activatePanels();
 				if (event) {
-					self.focusOnPanel($activePanel);
+					this.focusOnPanel(activePanelEl);
 				}
-				$.event.trigger(`${customEventPrefix}:carouselUpdated`, {activePanel: $activePanel});
+				window.dispatchEvent(new CustomEvent(`${customEventPrefix}:carouselDidUpdate`, {detail: {activePanelEl: activePanelEl}} ));
 			}
 		});
 
@@ -349,16 +365,19 @@ class ResponsiveCarousel {
 		const { loopEndToEnd, classNavDisabled } = this.options;
 
 		if (!loopEndToEnd) {
-			this.$navPrev.removeClass(classNavDisabled).attr({'tabindex': '0'});
-			this.$navNext.removeClass(classNavDisabled).attr({'tabindex': '0'});
+			this.navPrevEl.classList.remove(classNavDisabled);
+			this.navPrevEl.setAttribute('tabindex', '0');
+			this.navNextEl.classList.remove(classNavDisabled);
+			this.navNextEl.setAttribute('tabindex', '0');
 
 			if (this.state.currentIndex <= 0) {
-				this.$navPrev.addClass(classNavDisabled).attr({'tabindex': '-1'});
+				this.navPrevEl.classList.add(classNavDisabled);
+				this.navPrevEl.setAttribute('tabindex', '-1');
 			}
 			if (this.state.currentIndex >= this.lastIndex) {
-				this.$navNext.addClass(classNavDisabled).attr({'tabindex': '-1'});
+				this.navNextEl.classList.add(classNavDisabled);
+				this.navNextEl.setAttribute('tabindex', '-1');
 			}
-
 		}
 	}
 
@@ -368,57 +387,67 @@ class ResponsiveCarousel {
 		this.options.autoRotate = false;
 	}
 
-	deactivateItems() {
-		const { classActiveItem, selectorFocusEls } = this.options;
-		this.$panels.removeClass(classActiveItem).attr({'aria-hidden': 'true'});
-		this.$panels.find(selectorFocusEls).attr({'tabindex': '-1'});
+	deactivatePanels() {
+		const { classPanelActive, selectorFocusEls } = this.options;
+		this.panelEls.forEach((panelEl) => {
+			panelEl.setAttribute('aria-hidden', 'true');
+			panelEl.classList.remove(classPanelActive);
+			panelEl.querySelectorAll(selectorFocusEls).forEach((focusEl) => {
+				focusEl.setAttribute('tabindex', '-1');
+			});
+		});
 	}
 
-	activateItems() {
-		const { staggerActiveItems, selectorFocusEls, classActiveItem } = this.options;
+	activatePanels() {
+		const { staggerActiveItems, selectorFocusEls, classPanelActive } = this.options;
 		const first = this.state.currentIndex;
 		const last = this.state.currentIndex + this.numVisibleItems;
-		const $activeItems = this.$panels.slice(first, last);
+		const activePanelEls = [...this.panelEls].slice(first, last);
 		let delay = 100;
 
 		if (staggerActiveItems) {
 			//activate all current items incrementally
-			$activeItems.each(function(index) {
-				let $item = $(this);
-				$item.delay(delay*index).queue(function() {
-					$item.find(selectorFocusEls).attr({'tabindex': '0'});
-					$item.addClass(classActiveItem).attr({'aria-hidden': 'false'}).dequeue();
+			activePanelEls.forEach((panelEl, index) => {
+				const $panelEl = $(panelEl);
+				$panelEl.delay(delay*index).queue(() => {
+					panelEl.classList.add(classPanelActive);
+					panelEl.setAttribute('aria-hidden', 'false');
+					panelEl.querySelectorAll(selectorFocusEls).forEach((focusEl) => {
+						focusEl.setAttribute('tabindex', '0');
+					});
+					$panelEl.dequeue();
 				});
 			});
-
 		}
 		else {
 			//activate all current items at once
-			$activeItems.addClass(classActiveItem).attr({'aria-hidden': 'false'});
-			$activeItems.find(selectorFocusEls).attr({'tabindex': '0'});
+			activePanelEls.forEach((panelEl) => {
+				panelEl.classList.add(classPanelActive);
+				panelEl.setAttribute('aria-hidden', 'false');
+				panelEl.querySelectorAll(selectorFocusEls).forEach((focusEl) => {
+					focusEl.setAttribute('tabindex', '0');
+				});
+			});
 		}
 
 	}
 
-	focusOnPanel($panel) {
-		focusOnContentEl($panel);
+	focusOnPanel(panelEl) {
+		if (!panelEl) { console.warn('focusOnPanel: !panelEl'); return; }
+		focusOnContentEl($(panelEl)); //focusOnContentEl requires jQuery $element
 	}
 
 	fireTracking() {
-		if (!this.options.enableTracking) {return;}
-		const $activePanel = this.$panels.eq(this.state.currentIndex);
-		$.event.trigger(Events.TRACKING_STATE, [$activePanel]);
+		if (!this.options.enableTracking) { return; }
+		const activePanelEl = this.panelEls[this.state.currentIndex];
+		window.dispatchEvent(new CustomEvent(Events.TRACKING_STATE, {detail: {activePanelEl: activePanelEl}} ));
 	}
 
 	unInitialize() {
 		this._removeEventListeners();
+		this.cancelAutoRotation();
 		this.uninitDOM();
-		this.$el = null;
-		this.$navPrev = null;
-		this.$navNext = null;
-		this.$innerTrack = null;
-		this.$panels = null;
-		$.event.trigger(`${this.options.customEventPrefix}:unInitialized`);
+		window.dispatchEvent(new CustomEvent(`${this.options.customEventPrefix}:unInitialized`, {detail: {rootEl: this.rootEl}} ));
 	}
 
 }

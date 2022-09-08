@@ -3,62 +3,59 @@
 
 	DESCRIPTION: Subclass of TabSwitcher uses a select dropdown instead of tabs
 
-	VERSION: 0.3.0
-
 	USAGE: const mySelectTabSwitcher = new SelectTabSwitcher('Element', 'Options')
-		@param {jQuery Object}
+		@param {HTMLElement}
 		@param {Object}
-
-	DEPENDENCIES:
-		- jquery 3.x
 
 */
 
+import parseDatasetToObject from 'utilities/parseDatasetToObject';
 import TabSwitcher from 'widgets/TabSwitcher';
 
 class SelectTabSwitcher extends TabSwitcher {
 
-	initialize($el, options) {
+	initialize(rootEl, options) {
+		const dataOptions = rootEl.dataset.options ? parseDatasetToObject(rootEl.dataset.options) : {};
 
-		let subclassOptions = Object.assign({
+		const subclassOptions = Object.assign({
 			initialIndex: 0,
 			selectorSelect: '.tabswitcher--tabnav select',
-			autoRotate: false,
+			autoRotate: false, //DO NOT SET TRUE
 			customEventPrefix: 'SelectTabSwitcher'
-		}, options);
+		}, options, dataOptions);
 
 		// elements
-		this.$select = $el.find(subclassOptions.selectorSelect);
+		this.selectEl = rootEl.querySelector(subclassOptions.selectorSelect);
 
-		super.initialize($el, subclassOptions);
+		super.initialize(rootEl, subclassOptions);
 	}
 
 
-/**
-*	Private Methods
-**/
+	/**
+	*	Private Methods
+	**/
 
 	_addEventListeners() {
-		this.$select.on('change', this.__changeSelect.bind(this));
+		this.selectEl.addEventListener('change', this.__changeSelect.bind(this));
 	}
 
 	_removeEventListeners() {
-		this.$select.off('change', this.__changeSelect.bind(this));
+		this.selectEl.removeEventListener('change', this.__changeSelect.bind(this));
 	}
 
 
-/**
-*	Event Handlers
-**/
+	/**
+	*	Event Handlers
+	**/
 
 	__changeSelect(event) {
-		const index = this.$select.prop('selectedIndex');
-		const $currentPanel = this.$panels.eq(index);
+		const index = this.selectEl.selectedIndex;
+		const currentPanelEl = this.panelEls[index];
 
 		if (this.state.isAnimating) {return;}
 
 		if (this.state.currentIndex === index) {
-			this.focusOnPanel($currentPanel);
+			this.focusOnPanel(currentPanelEl);
 		}
 		else {
 			this.state.previousIndex = this.state.currentIndex;
@@ -66,6 +63,15 @@ class SelectTabSwitcher extends TabSwitcher {
 			this.switchPanels(event);
 		}
 	}
+
+
+	/**
+	 *	Public Methods
+	 **/
+
+	deactivateTab() {}
+
+	activateTab() {}
 
 }
 

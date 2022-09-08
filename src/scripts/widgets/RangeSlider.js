@@ -3,15 +3,12 @@
 
 	DESCRIPTION: A range slider widget
 
-	VERSION: 0.2.0
-
 	USAGE: const myRangeSlider = new RangeSlider('Element', 'Options')
-		@param {jQuery Object}
+		@param {HTMLElement}
 		@param {Object}
 
 	DEPENDENCIES:
-		- jquery 3.x
-		- noUiSlider 10.1.0
+		noUiSlider 14.x
 
 */
 
@@ -19,14 +16,18 @@ import Constants from 'config/Constants';
 
 class RangeSlider {
 
-	constructor($el, options = {}) {
-		this.initialize($el, options);
+	constructor(rootEl, options = {}) {
+		if (!rootEl) {
+			console.warn('RangeSlider cannot initialize without rootEl');
+			return;
+		}
+		this.initialize(rootEl, options);
 	}
 
-	initialize($el, options) {
+	initialize(rootEl, options) {
 
 		// defaults
-		this.$el = $el;
+		this.rootEl = rootEl;
 		this.options = Object.assign({
 			selectorSlider: '.noUiSlider',
 			selectorOutputs: '.range-slider--output',
@@ -37,74 +38,85 @@ class RangeSlider {
 		}, options);
 
 		// elements
-		this.$slider = this.$el.find(this.options.selectorSlider).first(); //must be only 1
-		this.$outputs = this.$el.find(this.options.selectorOutputs); //must be exactly 2 (start & end)
-		this.$fields = this.$el.find(this.options.selectorFields); //must be exactly 2 (start & end)
+		this.sliderEl = this.rootEl.querySelector(this.options.selectorSlider); //must be only 1
+		this.outputEls = this.rootEl.querySelectorAll(this.options.selectorOutputs); //must be exactly 2 (start & end)
+		this.fieldEls = this.rootEl.querySelectorAll(this.options.selectorFields); //must be exactly 2 (start & end)
 
 		// properties
-		this.data = this.$slider.data();
+		this.data = this.sliderEl.dataset;
 		this.steps = this.data.steps || this.options.sliderSteps;
-		this.min = this.data.min; //data-min is required
-		this.max = this.data.max; //data-max is required
-		this.start = this.data.start || this.min; //data-start is optional
-		this.end = this.data.end || this.max; //data-end is optional
+		this.min = Number(this.data.min); //data-min is required
+		this.max = Number(this.data.max); //data-max is required
+		this.start = this.data.start ? Number(this.data.start) : this.min; //data-start is optional
+		this.end = this.data.end ? Number(this.data.end) : this.max; //data-end is optional
 
 		this.initSlider();
 
-		this.$el.addClass(this.options.classInitialized);
+		this.rootEl.classList.add(this.options.classInitialized);
 
-		$.event.trigger(`${this.options.customEventPrefix}:isInitialized`, [this.$el]);
-
+		window.dispatchEvent(new CustomEvent(`${this.options.customEventPrefix}:isInitialized`, {detail: {rootEl: this.rootEl}} ));
 	}
 
 	initSlider() {
-		const slider = this.$slider[0]; // native slider element
+		const sliderEl = this.sliderEl;
 		const { keys } = Constants;
 
-		noUiSlider.create(slider, {
+		this.fieldEls[0].value = this.start;
+		this.fieldEls[1].value = this.end;
+
+		noUiSlider.create(sliderEl, {
+			start: [this.start, this.end],
 			connect: [false, true, false],
 			range: {
 				min: this.min,
 				max: this.max
 			},
 			step: this.steps,
-			start: [this.start, this.end]
+			// snap: true,
 		});
-		slider.noUiSlider.on('update', (values, index) => {
-			this.$outputs.eq(index).html(+values[index]);
+
+		sliderEl.noUiSlider.on('update', (values, index) => {
+			this.outputEls[index].innerHTML = +values[index];
 		});
-		slider.noUiSlider.on('change', (values, index) => {
-			this.$fields.eq(index).val(+values[index]).change();
+
+		sliderEl.noUiSlider.on('change', (values, index) => {
+			this.fieldEls[index].value = +values[index];
+			this.fieldEls[index].dispatchEvent(new Event('change'));
 		});
-		this.$fields.eq(0).val(this.start);
-		this.$fields.eq(1).val(this.end);
-		// this.$fields.on('change', (event) => {
-		// 	console.log('on change:', $(event.currentTarget).val());
+
+		sliderEl.querySelector('.noUi-handle.noUi-handle-lower').addEventListener('keydown', (event) => {
+			let value = Number(sliderEl.noUiSlider.get()[0]);
+			switch (event.which) {
+				case keys.left: value -= this.steps;
+					break;
+				case keys.right: value += this.steps;
+					break;
+			}
+			sliderEl.noUiSlider.set([value, null]);
+			this.fieldEls[0].value = value;
+			this.fieldEls[0].dispatchEvent(new Event('change'));
+		});
+
+		sliderEl.querySelector('.noUi-handle.noUi-handle-upper').addEventListener('keydown', (event) => {
+			let value = Number(sliderEl.noUiSlider.get()[1]);
+			switch (event.which) {
+				case keys.left: value -= this.steps;
+					break;
+				case keys.right: value += this.steps;
+					break;
+			}
+			sliderEl.noUiSlider.set([null, value]);
+			this.fieldEls[1].value = value;
+			this.fieldEls[1].dispatchEvent(new Event('change'));
+		});
+
+		// for testing:
+		// this.fieldEls[0].addEventListener('change', (event) => {
+		// 	console.log('on min change:', event.currentTarget.value);
 		// });
-
-		slider.querySelector('.noUi-handle.noUi-handle-lower').addEventListener('keydown', (event) => {
-			let value = Number(slider.noUiSlider.get()[0]);
-			switch (event.which) {
-				case keys.left: value -= this.steps;
-					break;
-				case keys.right: value += this.steps;
-					break;
-			}
-			slider.noUiSlider.set([value, null]);
-			this.$fields.eq(0).val(value).change();
-		});
-
-		slider.querySelector('.noUi-handle.noUi-handle-upper').addEventListener('keydown', (event) => {
-			let value = Number(slider.noUiSlider.get()[1]);
-			switch (event.which) {
-				case keys.left: value -= this.steps;
-					break;
-				case keys.right: value += this.steps;
-					break;
-			}
-			slider.noUiSlider.set([null, value]);
-			this.$fields.eq(1).val(value).change();
-		});
+		// this.fieldEls[1].addEventListener('change', (event) => {
+		// 	console.log('on max change:', event.currentTarget.value);
+		// });
 
 	}
 

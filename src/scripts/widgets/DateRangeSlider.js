@@ -3,16 +3,13 @@
 
 	DESCRIPTION: A range slider widget for selecting a date or time, useful for small ranges, use DualDatepicker for large ranges.
 
-	VERSION: 0.2.0
-
 	USAGE: const myDateRangeSlider = new DateRangeSlider('Element', 'Options')
-		@param {jQuery Object}
+		@param {HTMLElement}
 		@param {Object}
 
 	DEPENDENCIES:
-		- jquery 3.x
-		- moment 2.18.1
-		- noUiSlider 10.1.0
+		noUiSlider 14.x
+		moment 2.x
 
 */
 
@@ -20,11 +17,15 @@ import Constants from 'config/Constants';
 
 class DateRangeSlider {
 
-	constructor($el, options = {}) {
-		this.initialize($el, options);
+	constructor(rootEl, options = {}) {
+		if (!rootEl) {
+			console.warn('DateRangeSlider cannot initialize without rootEl');
+			return;
+		}
+		this.initialize(rootEl, options);
 	}
 
-	initialize($el, options) {
+	initialize(rootEl, options) {
 		const steps = {
 			day: 86400000, //(24 * 60 * 60 * 1000)
 			hour: 3600000, //(60 * 60 * 1000)
@@ -34,7 +35,7 @@ class DateRangeSlider {
 		};
 
 		// defaults
-		this.$el = $el;
+		this.rootEl = rootEl;
 		this.options = Object.assign({
 			selectorSlider: '.noUiSlider',
 			selectorOutputs: '.range-slider--output',
@@ -46,12 +47,12 @@ class DateRangeSlider {
 		}, options);
 
 		// elements
-		this.$slider = this.$el.find(this.options.selectorSlider).first(); //must be only 1
-		this.$outputs = this.$el.find(this.options.selectorOutputs); //must be exactly 2 (start & end)
-		this.$fields = this.$el.find(this.options.selectorFields); //must be exactly 2 (start & end)
+		this.sliderEl = this.rootEl.querySelector(this.options.selectorSlider); //must be only 1
+		this.outputEls = this.rootEl.querySelectorAll(this.options.selectorOutputs); //must be exactly 2 (start & end)
+		this.fieldEls = this.rootEl.querySelectorAll(this.options.selectorFields); //must be exactly 2 (start & end)
 
 		// properties
-		this.data = this.$slider.data();
+		this.data = this.sliderEl.dataset;
 		this.steps = this.data.steps || this.options.sliderSteps;
 		this.min = new Date(this.data.min); //data-min is required
 		this.max = new Date(this.data.max); //data-max is required
@@ -61,64 +62,75 @@ class DateRangeSlider {
 
 		this.initSlider();
 
-		this.$el.addClass(this.options.classInitialized);
+		this.rootEl.classList.add(this.options.classInitialized);
 
-		$.event.trigger(`${this.options.customEventPrefix}:isInitialized`, [this.$el]);
-
+		window.dispatchEvent(new CustomEvent(`${this.options.customEventPrefix}:isInitialized`, {detail: {rootEl: this.rootEl}} ));
 	}
 
 	initSlider() {
-		const slider = this.$slider[0]; // native slider element
+		const sliderEl = this.sliderEl;
 		const { keys } = Constants;
 
 		const formateDate = (date) => {
 			return moment(date).format(this.dateFormat);
 		};
 
-		noUiSlider.create(slider, {
+		this.fieldEls[0].value = this.start;
+		this.fieldEls[1].value = this.end;
+
+		noUiSlider.create(sliderEl, {
+			start: [this.start.getTime(), this.end.getTime()],
 			connect: [false, true, false],
 			range: {
 				min: this.min.getTime(),
 				max: this.max.getTime()
 			},
 			step: this.steps,
-			start: [this.start.getTime(), this.end.getTime()]
+			// snap: true,
 		});
-		slider.noUiSlider.on('update', (values, index) => {
-			this.$outputs.eq(index).html(formateDate(new Date(+values[index])));
+
+		sliderEl.noUiSlider.on('update', (values, index) => {
+			this.outputEls[index].innerHTML = formateDate(new Date(+values[index]));
 		});
-		slider.noUiSlider.on('change', (values, index) => {
-			this.$fields.eq(index).val(new Date(+values[index])).change();
+
+		sliderEl.noUiSlider.on('change', (values, index) => {
+			this.fieldEls[index].value = new Date(+values[index]);
+			this.fieldEls[index].dispatchEvent(new Event('change'));
 		});
-		this.$fields.eq(0).val(this.start);
-		this.$fields.eq(1).val(this.end);
-		// this.$fields.on('change', (event) => {
-		// 	console.log('date change:', $(event.currentTarget).val());
+
+		sliderEl.querySelector('.noUi-handle.noUi-handle-lower').addEventListener('keydown', (event) => {
+			let value = Number(sliderEl.noUiSlider.get()[0]);
+			switch (event.which) {
+				case keys.left: value -= this.steps;
+					break;
+				case keys.right: value += this.steps;
+					break;
+			}
+			sliderEl.noUiSlider.set([value, null]);
+			this.fieldEls[0].value = new Date(value);
+			this.fieldEls[0].dispatchEvent(new Event('change'));
+		});
+
+		sliderEl.querySelector('.noUi-handle.noUi-handle-upper').addEventListener('keydown', (event) => {
+			let value = Number(sliderEl.noUiSlider.get()[1]);
+			switch (event.which) {
+				case keys.left: value -= this.steps;
+					break;
+				case keys.right: value += this.steps;
+					break;
+			}
+			sliderEl.noUiSlider.set([null, value]);
+			this.fieldEls[1].value = new Date(value);
+			this.fieldEls[1].dispatchEvent(new Event('change'));
+		});
+
+		// for testing:
+		// this.fieldEls[0].addEventListener('change', (event) => {
+		// 	console.log('on min change:', event.currentTarget.value);
 		// });
-
-		slider.querySelector('.noUi-handle.noUi-handle-lower').addEventListener('keydown', (event) => {
-			let value = Number(slider.noUiSlider.get()[0]);
-			switch (event.which) {
-				case keys.left: value -= this.steps;
-					break;
-				case keys.right: value += this.steps;
-					break;
-			}
-			slider.noUiSlider.set([value, null]);
-			this.$fields.eq(0).val(new Date(value)).change();
-		});
-
-		slider.querySelector('.noUi-handle.noUi-handle-upper').addEventListener('keydown', (event) => {
-			let value = Number(slider.noUiSlider.get()[1]);
-			switch (event.which) {
-				case keys.left: value -= this.steps;
-					break;
-				case keys.right: value += this.steps;
-					break;
-			}
-			slider.noUiSlider.set([null, value]);
-			this.$fields.eq(1).val(new Date(value)).change();
-		});
+		// this.fieldEls[1].addEventListener('change', (event) => {
+		// 	console.log('on max change:', event.currentTarget.value);
+		// });
 
 	}
 

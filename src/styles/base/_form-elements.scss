@@ -40,18 +40,33 @@ output {
 }
 
 input, select, textarea, button {
-	background: $transparent;
+	background: $color-white;
 	border: 0;
 	border-radius: 0;
 	box-shadow: none;
 	color: $color-gray-dark;
 	display: inline-block;
 	font-family: $main-font;
-	font-size: 16px;
-	line-height: 20px;
+	font-size: $input-font-size;
+	line-height: $input-line-height;
 	margin: 0;
 	outline: 0;
 	padding: 0;
+
+	&.input-sm {
+		font-size: $input-font-size-sm;
+		line-height: $input-line-height-sm;
+	}
+
+	&.input-lg {
+		font-size: $input-font-size-sm;
+		line-height: $input-line-height-sm;
+	}
+}
+
+button {
+	appearance: none;
+	background: none;
 }
 
 // Remove dotted line from input on Firefox
@@ -73,40 +88,10 @@ textarea:invalid {
 	outline: 0;
 }
 
-// ::-webkit-input-placeholder {
-// 	color: $color-gray-med;
-// 	opacity: 1;
-// }
-//
-// ::-moz-placeholder {
-// 	color: $color-gray-med;
-// 	opacity: 1;
-// }
-//
-// :-ms-input-placeholder {
-// 	color: $color-gray-med;
-// 	opacity: 1;
-// }
-
 ::placeholder {
 	color: $color-gray-med;
 	opacity: 1;
 }
-
-// :focus::-webkit-input-placeholder {
-// 	color: transparent;
-// 	opacity: 0;
-// }
-//
-// :focus::-moz-placeholder {
-// 	color: transparent;
-// 	opacity: 0;
-// }
-//
-// :focus:-ms-input-placeholder {
-// 	color: transparent;
-// 	opacity: 0;
-// }
 
 :focus::placeholder {
 	color: transparent;
@@ -136,7 +121,7 @@ textarea {
 
 select {
 	appearance: none;
-	background: $transparent url($image-path+'/select-btn.png') no-repeat right 8px top 50%;
+	background: $transparent url($image-path + '/select-btn.png') no-repeat right 8px top 50%;
 	padding-right: 24px;
 }
 

@@ -5,11 +5,11 @@
 
 .loader-spinner-overlay {
 	@include absolute-window;
-	background: rgba($color-white, 0.6) url($image-path+'/spinner.gif') no-repeat center center;
+	background: rgba($color-white, 0.6) url($image-path + '/spinner.gif') no-repeat center center;
 	z-index: $spinner-zindex;
 
 	&.dark-overlay {
 		background-color: rgba($color-black, 0.8);
-		background-image: url($image-path+'/spinner-dark.gif');
+		background-image: url($image-path + '/spinner-dark.gif');
 	}
 }

@@ -8,10 +8,15 @@
 	position: relative;
 
 	.tabswitcher--tabnav {
-		margin-bottom: 1.0em;
 		position: relative;
 
+		select {
+			margin-bottom: 1.0em;
+		}
+
 		> ul {
+			display: flex;
+			gap: 0.5em;
 			list-style: none;
 			margin: 0;
 
@@ -46,28 +51,10 @@
 	}
 
 	.tabswitcher--panel {
-		@include clearfix;
 		overflow: hidden;
+		position: relative;
 
-		&:not(.is-active) {
-			left: 0;
-			opacity: 0;
-			position: absolute;
-			top: 0;
-			transform: scale(0.95);
-			z-index: -1;
-		}
-
-		&.is-active {
-			opacity: 1.0;
-			position: relative;
-			transform: scale(1.0);
-			transition: opacity $animation-speed, transform $animation-speed;
-			z-index: 3;
-		}
-
-		> .tabswitcher--panel-content {
-			@include clearfix;
+		.tabswitcher--content {
 			padding: 1.5em;
 			position: relative;
 		}

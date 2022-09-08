@@ -6,12 +6,12 @@
 import Events from 'config/Events';
 
 const scrollBeginEndEvents = function() {
+	const customScrollBeginEvent = new Event(Events.WINDOW_SCROLL_BEGIN);
+	const customScrollEndEvent = new Event(Events.WINDOW_SCROLL_END);
 	const timerDelay = 100;
 	let timer = null;
 
 	window.addEventListener('scroll', (event) => {
-		let customScrollBeginEvent = new Event(Events.WINDOW_SCROLL_BEGIN);
-		let customScrollEndEvent = new Event(Events.WINDOW_SCROLL_END);
 		if (timer) {
 			clearTimeout(timer);
 		} else {

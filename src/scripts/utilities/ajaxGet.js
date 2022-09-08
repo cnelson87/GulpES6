@@ -7,12 +7,13 @@
 
 const ajaxGet = function(url, dataType, data) {
 	if (!url) {return;}
-	return $.ajax({
+	const options = {
 		type: 'GET',
 		url: url,
 		dataType: dataType || 'json',
-		data: data || null
-	});
+		data: data || null,
+	};
+	return $.ajax(options);
 };
 
 export default ajaxGet;

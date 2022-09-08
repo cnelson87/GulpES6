@@ -3,15 +3,9 @@
  * @description Defines application constants
  */
 
-if (!window.location.origin) {
-	window.location.origin = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
-}
-
 const Constants = {
 
 	siteUrl: window.location.origin,
-	isIE11: (navigator.userAgent.indexOf('Windows NT') !== -1 && navigator.userAgent.indexOf('rv:11') !== -1),
-	isEdge: /Edge/.test(navigator.userAgent),
 	isAndroid: /android/i.test(navigator.userAgent),
 	isIOS: /iPad|iPhone|iPod/i.test(navigator.userAgent),
 	hasFormValidation: typeof document.createElement('input').checkValidity === 'function',
@@ -24,10 +18,9 @@ const Constants = {
 	focusableElements: 'a, button, input, select, textarea, iframe, audio, video',
 
 	// breakpoints used throughout
-	breakpoints: {
-		1: 'mobile',
-		2: 'tablet',
-		3: 'desktop'
+	mediaQueries: {
+		tablet: 768,
+		desktop: 1080,
 	},
 
 	// timing used throughout
@@ -35,7 +28,7 @@ const Constants = {
 		fast: 200,
 		standard: 400,
 		slow: 800,
-		interval: 8000
+		interval: 8000,
 	},
 
 	// keyboard key codes
@@ -48,7 +41,7 @@ const Constants = {
 		left: 37,
 		up: 38,
 		right: 39,
-		down: 40
+		down: 40,
 	},
 
 	// ajax endpoints
@@ -58,7 +51,7 @@ const Constants = {
 		triangle: '/_assets/data/promises/triangle.json',
 		videosPlaylistLIVE: 'https://www.googleapis.com/youtube/v3/playlistItems',
 		videosPlaylistDEV: '/_assets/data/videos/playlist.json',
-		homepageContent: '/_assets/data/homepage/content.json'
+		homepageContent: '/_assets/data/homepage/content.json',
 	},
 
 	youtubePlaylistId: 'PLyYlLs02rgBYRWBzYpoHz7m2SE8mEZ68w',

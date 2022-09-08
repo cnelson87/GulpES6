@@ -47,7 +47,7 @@
 	}
 
 	@media (min-width: $breakpoint-desktop-wide) {
-		--font-size: 1.375em; //22px
+		--font-size: 1.5em; //24px
 		--container-width: #{$container-width-desktop-wide};
 		--gutter: #{$gutter-width-desktop-wide};
 		--gutter-half: #{$gutter-half-width-desktop-wide};

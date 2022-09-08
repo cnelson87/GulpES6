@@ -1,7 +1,3 @@
-/**
- * @module VideosPage
- */
-
 import Constants from 'config/Constants';
 import ajaxGet from 'utilities/ajaxGet';
 import youtubeVideoControl from 'utilities/youtubeVideoControl';
@@ -16,27 +12,27 @@ const VideosPage = {
 	},
 
 	fetch() {
-		let params = {
+		const params = {
 			part: 'id,snippet,contentDetails',
 			maxResults: 50,
 			playlistId: Constants.youtubePlaylistId,
 			key: Constants.youtubeApiKey
 		};
-		let xhr = ajaxGet(Constants.urls.videosPlaylistLIVE, 'json', params);
+		const xhr = ajaxGet(Constants.urls.videosPlaylistLIVE, 'json', params);
 
 		Promise.resolve(xhr)
 			.then((response) => {
 				this.process(response);
 			})
 			.catch((error) => {
-				// console.log(error);
+				console.warn(error);
 			});
 	},
 
 	process(response) {
 		// console.log(response);
-		// let kind = response.kind; //not needed
-		let viewData = response.items.map((item) => {
+		// const kind = response.kind; //not needed
+		const viewData = response.items.map((item) => {
 			return {
 				videoId: item.contentDetails.videoId,
 				title: item.snippet.title,
@@ -49,7 +45,7 @@ const VideosPage = {
 
 	render(viewData) {
 		// console.log(viewData);
-		let html = this.template(viewData);
+		const html = this.template(viewData);
 		this.$el.html(html);
 		youtubeVideoControl();
 	}

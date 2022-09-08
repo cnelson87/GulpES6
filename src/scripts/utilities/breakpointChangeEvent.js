@@ -8,33 +8,29 @@ import Events from 'config/Events';
 import State from 'config/State';
 
 const breakpointChangeEvent = function() {
+	const { mediaQueries } = Constants;
+	const mobileMediaQuery = window.matchMedia(`(max-width: ${mediaQueries.tablet-1}px)`);
+	const tabletMediaQuery = window.matchMedia(`(min-width: ${mediaQueries.tablet}px) and (max-width: ${mediaQueries.desktop-1}px)`);
+	const desktopMediaQuery = window.matchMedia(`(min-width: ${mediaQueries.desktop}px)`);
 
-	function updateState(zIndex) {
-		State.currentBreakpoint = Constants.breakpoints[zIndex];
-		State.isMobileView = State.currentBreakpoint === 'mobile';
-		State.isTabletView = State.currentBreakpoint === 'tablet';
-		State.isDesktopView = State.currentBreakpoint === 'desktop';
+	function onMediaQueryChange(event, breakpoint) {
+		if (event.matches) {
+			State.currentBreakpoint = breakpoint;
+			State.isMobileView = State.currentBreakpoint === 'mobile';
+			State.isTabletView = State.currentBreakpoint === 'tablet';
+			State.isDesktopView = State.currentBreakpoint === 'desktop';
+			window.dispatchEvent(new CustomEvent(Events.BREAKPOINT_CHANGE, {detail: {breakpoint: State.currentBreakpoint}} ));
+		}
 	}
 
-	const $elIndicator = $('<div></div>',{
-		'id': 'breakpoint-indicator'
-	}).appendTo($('body'));
+	mobileMediaQuery.addEventListener('change', (event) => onMediaQueryChange(event, 'mobile'));
+	tabletMediaQuery.addEventListener('change', (event) => onMediaQueryChange(event, 'tablet'));
+	desktopMediaQuery.addEventListener('change', (event) => onMediaQueryChange(event, 'desktop'));
 
-	let zIndex = $elIndicator.css('z-index');
+	onMediaQueryChange(mobileMediaQuery, 'mobile');
+	onMediaQueryChange(tabletMediaQuery, 'tablet');
+	onMediaQueryChange(desktopMediaQuery, 'desktop');
 
-	updateState(zIndex);
-
-	window.addEventListener('resize', (event) => {
-		let newZI = $elIndicator.css('z-index');
-		if (newZI !== zIndex) {
-			zIndex = newZI;
-			updateState(zIndex);
-			let customChangeEvent = new CustomEvent(Events.BREAKPOINT_CHANGE, {
-				breakpoint: State.currentBreakpoint
-			});
-			window.dispatchEvent(customChangeEvent);
-		}
-	});
 };
 
 export default breakpointChangeEvent;

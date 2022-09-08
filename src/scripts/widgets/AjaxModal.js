@@ -3,17 +3,14 @@
 
 	DESCRIPTION: Subclass of ModalWindow GETs Ajax content
 
-	VERSION: 0.4.0
-
 	USAGE: const myAjaxModal = new AjaxModal('Options')
-		@param {jQuery Object}
 		@param {Object}
 
 	DEPENDENCIES:
-		- jquery 3.x
-		- ModalWindow.js
-		- LoaderSpinner.js
-		- ajaxGet.js
+		jquery 3.x
+		ModalWindow
+		LoaderSpinner
+		ajaxGet
 
 */
 
@@ -25,7 +22,7 @@ class AjaxModal extends ModalWindow {
 
 	initialize(options) {
 
-		let subclassOptions = Object.assign({
+		const subclassOptions = Object.assign({
 			selectorTriggers: 'a.modal-trigger[data-ajaxUrl]',
 			ajaxErrorMsg: '<div class="errormessage"><p>Sorry. Ajax request failed.</p></div>',
 			customEventPrefix: 'AjaxModal'
@@ -35,12 +32,11 @@ class AjaxModal extends ModalWindow {
 		this.ajaxLoader = null;
 
 		super.initialize(subclassOptions);
-
 	}
 
 	initDOM() {
 		super.initDOM();
-		this.ajaxLoader = new LoaderSpinner(this.$modal);
+		this.ajaxLoader = new LoaderSpinner(this.$content);
 	}
 
 	getContent() {
@@ -71,7 +67,7 @@ class AjaxModal extends ModalWindow {
 
 			})
 			.catch((error) => {
-				// console.log(error);
+				console.warn(error);
 				this.ajaxLoader.removeLoader();
 				this.$content.html(this.options.ajaxErrorMsg);
 			});

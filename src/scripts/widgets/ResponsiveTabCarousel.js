@@ -4,27 +4,22 @@
 	DESCRIPTION: Subclass of ResponsiveTabCarousel adds tab navigation
 	NOTE: The tabs only work if mobile/tablet/desktop views all display one 'panel' at a time.
 
-	VERSION: 0.5.0
-
 	USAGE: const myTabCarousel = new ResponsiveTabCarousel('Element', 'Options')
-		@param {jQuery Object}
+		@param {HTMLElement}
 		@param {Object}
-
-	DEPENDENCIES:
-		- jquery 3.x
-		- greensock
-		- ResponsiveCarousel.js
 
 */
 
 import Constants from 'config/Constants';
+import parseDatasetToObject from 'utilities/parseDatasetToObject';
 import ResponsiveCarousel from 'widgets/ResponsiveCarousel';
 
 class ResponsiveTabCarousel extends ResponsiveCarousel {
 
-	initialize($el, options) {
+	initialize(rootEl, options) {
+		const dataOptions = rootEl.dataset.options ? parseDatasetToObject(rootEl.dataset.options) : {};
 
-		let subclassOptions = Object.assign({
+		const subclassOptions = Object.assign({
 			initialIndex: 0,
 			numVisibleItemsMobile: 1,
 			numItemsToAnimateMobile: 1,
@@ -33,86 +28,94 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 			numVisibleItemsDesktop: 1,
 			numItemsToAnimateDesktop: 1,
 			selectorTabs: '.carousel--tabnav a',
-			classActiveNav: 'is-active',
-			selectedText: 'currently selected',
+			classTabActive: 'is-active',
 			customEventPrefix: 'ResponsiveTabCarousel'
-		}, options);
+		}, options, dataOptions);
 
 		// elements
-		this.$tabs = $el.find(subclassOptions.selectorTabs);
+		this.tabEls = rootEl.querySelectorAll(subclassOptions.selectorTabs);
 
-		// properties
-		this.selectedLabel = `<span class="sr-only selected-text"> - ${subclassOptions.selectedText}</span>`;
-
-		super.initialize($el, subclassOptions);
+		super.initialize(rootEl, subclassOptions);
 	}
 
 
-/**
-*	Private Methods
-**/
+	/**
+	*	Private Methods
+	**/
 
 	initDOM() {
-		const $activeTab = this.$tabs.eq(this.state.currentIndex);
-		this.$tabs.attr({'role': 'tab', 'tabindex': '0', 'aria-selected': 'false'});
-		$activeTab.addClass(this.options.classActiveNav).attr({'aria-selected': 'true'});
-		$activeTab.append(this.selectedLabel);
+		const activeTabEl = this.tabEls[this.state.currentIndex];
+		this.tabEls.forEach((tabEl) => {
+			tabEl.setAttribute('role', 'tab');
+			tabEl.setAttribute('tabindex', '0');
+			tabEl.setAttribute('aria-selected', 'false');
+		});
+		activeTabEl.classList.add(this.options.classTabActive);
+		activeTabEl.setAttribute('aria-selected', 'true');
 		super.initDOM();
 	}
 
 	uninitDOM() {
-		this.$tabs.removeAttr('role tabindex aria-selected').removeClass(this.options.classActiveNav);
-		this.$tabs.find('.selected-text').remove();
+		this.tabEls.forEach((tabEl) => {
+			tabEl.removeAttribute('role');
+			tabEl.removeAttribute('tabindex');
+			tabEl.removeAttribute('aria-selected');
+			tabEl.classList.remove(this.options.classTabActive);
+		});
 		super.uninitDOM();
 	}
 
 	_addEventListeners() {
-		this.$tabs.on('click', this.__clickTab.bind(this));
-		this.$tabs.on('keydown', this.__keydownTab.bind(this));
+		this.tabEls.forEach((tabEl) => {
+			tabEl.addEventListener('click', this.__clickTab.bind(this));
+			tabEl.addEventListener('keydown', this.__keydownTab.bind(this));
+		});
 		super._addEventListeners();
 	}
 
 	_removeEventListeners() {
-		this.$tabs.off('click', this.__clickTab.bind(this));
-		this.$tabs.off('keydown', this.__keydownTab.bind(this));
+		this.tabEls.forEach((tabEl) => {
+			tabEl.removeEventListener('click', this.__clickTab.bind(this));
+			tabEl.removeEventListener('keydown', this.__keydownTab.bind(this));
+		});
 		super._removeEventListeners();
 	}
 
 
-/**
-*	Event Handlers
-**/
+	/**
+	*	Event Handlers
+	**/
 
 	__clickTab(event) {
 		event.preventDefault();
-		const { classNavDisabled } = this.options;
-		const index = this.$tabs.index(event.currentTarget);
-		const $currentTab = this.$tabs.eq(index);
-		const $currentPanel = this.$panels.eq(index);
+		if (this.state.isAnimating) { return; }
+		const currentTabEl = event.currentTarget;
+		const index = [...this.tabEls].indexOf(currentTabEl);
+		const currentPanelEl = this.panelEls[index];
 
-		if (this.state.isAnimating || $currentTab.hasClass(classNavDisabled)) {return;}
+		if (currentTabEl.classList.contains(this.options.classNavDisabled)) { return; }
 
 		this.cancelAutoRotation();
 
 		if (this.state.currentIndex === index) {
-			this.focusOnPanel($currentPanel);
+			this.focusOnPanel(currentPanelEl);
 		}
 		else {
 			this.state.currentIndex = index;
 			this.updateCarousel(event);
 		}
-
 	}
 
 	__keydownTab(event) {
 		const { keys } = Constants;
 		const keyCode = event.which;
-		let index = this.$tabs.index(event.currentTarget);
+		const currentTabEl = event.currentTarget;
+		let index = [...this.tabEls].indexOf(currentTabEl);
 
 		// spacebar; activate tab click
 		if (keyCode === keys.space) {
 			event.preventDefault();
-			this.$tabs.eq(index).click();
+			currentTabEl.click();
 		}
 
 		// left/up arrow; emulate tabbing to previous tab
@@ -120,7 +123,7 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 			event.preventDefault();
 			if (index === 0) {index = this._length;}
 			index--;
-			this.$tabs.eq(index).focus();
+			this.tabEls[index].focus();
 		}
 
 		// right/down arrow; emulate tabbing to next tab
@@ -128,39 +131,40 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 			event.preventDefault();
 			index++;
 			if (index === this._length) {index = 0;}
-			this.$tabs.eq(index).focus();
+			this.tabEls[index].focus();
 		}
 
 		// home key; emulate jump-tabbing to first tab
 		else if (keyCode === keys.home) {
 			event.preventDefault();
 			index = 0;
-			this.$tabs.eq(index).focus();
+			this.tabEls[index].focus();
 		}
 
 		// end key; emulate jump-tabbing to last tab
 		else if (keyCode === keys.end) {
 			event.preventDefault();
 			index = this._length - 1;
-			this.$tabs.eq(index).focus();
+			this.tabEls[index].focus();
 		}
 
 	}
 
 
-/**
-*	Public Methods
-**/
+	/**
+	*	Public Methods
+	**/
 
 	updateNav() {
-		const { classActiveNav } = this.options;
-		const $inactiveTab = this.$tabs.filter('.'+classActiveNav);
-		const $activeTab = this.$tabs.eq(this.state.currentIndex);
+		const { classTabActive } = this.options;
+		const inactiveTabEl = this.rootEl.querySelector(this.options.selectorTabs+'.'+classTabActive);
+		const activeTabEl = this.tabEls[this.state.currentIndex];
 
-		$inactiveTab.removeClass(classActiveNav).attr({'aria-selected': 'false'});
-		$activeTab.addClass(classActiveNav).attr({'aria-selected': 'true'});
-		$inactiveTab.find('.selected-text').remove();
-		$activeTab.append(this.selectedLabel);
+		inactiveTabEl.classList.remove(classTabActive);
+		inactiveTabEl.setAttribute('aria-selected', 'false');
+
+		activeTabEl.classList.add(classTabActive);
+		activeTabEl.setAttribute('aria-selected', 'true');
 
 		super.updateNav();
 	}

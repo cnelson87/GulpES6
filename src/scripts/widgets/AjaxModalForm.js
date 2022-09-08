@@ -3,18 +3,15 @@
 
 	DESCRIPTION: Subclass of AjaxModal also POSTs Ajax data
 
-	VERSION: 0.2.0
-
 	USAGE: const myAjaxModalForm = new AjaxModalForm('Options')
-		@param {jQuery Object}
 		@param {Object}
 
 	DEPENDENCIES:
-		- jquery 3.x
-		- jquery.validate
-		- AjaxModal.js
-		- ajaxPost.js
-		- serializeFormFields.js
+		jquery 3.x
+		jquery.validate
+		AjaxModal
+		ajaxPost
+		serializeFormFields
 
 */
 
@@ -27,9 +24,10 @@ class AjaxModalForm extends AjaxModal {
 
 	initialize(options) {
 
-		let subclassOptions = Object.assign({
+		const subclassOptions = Object.assign({
 			selectorTriggers: 'a.modal-form-trigger[data-ajaxUrl]',
-			templateModal: modalFullscreenTemplate(),
+			modalTemplate: modalFullscreenTemplate(),
+			enableOverlayCloseClick: false,
 			customEventPrefix: 'AjaxModalForm'
 		}, options);
 
@@ -37,17 +35,16 @@ class AjaxModalForm extends AjaxModal {
 		this.$form = null;
 
 		super.initialize(subclassOptions);
-
 	}
 
 	modalOpened() {
 		super.modalOpened();
 		this.$form = this.$content.find('form');
 		this.$form.validate(); // init jQuery validation
-		this.$form.on('submit', this.onFormPost.bind(this));
+		this.$form.on('submit', this.onFormSubmit.bind(this));
 	}
 
-	onFormPost(event) {
+	onFormSubmit(event) {
 		event.preventDefault();
 		const postUrl = this.$form.attr('action');
 		const formData = serializeFormFields(this.$form);
@@ -59,7 +56,7 @@ class AjaxModalForm extends AjaxModal {
 					console.log('success:', response);
 					this.ajaxLoader.removeLoader();
 				}).catch((error) => {
-					console.log('error:', error);
+					console.warn('error:', error);
 					this.ajaxLoader.removeLoader();
 				});
 		}

@@ -17,11 +17,11 @@
 		position: absolute;
 		top: calc(50% - 20px);
 
-		&.nav-prev {
+		&.carousel--nav-prev {
 			left: -40px;
 		}
 
-		&.nav-next {
+		&.carousel--nav-next {
 			right: -40px;
 		}
 	}

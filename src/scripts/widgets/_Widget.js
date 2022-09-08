@@ -3,30 +3,28 @@
 
 	DESCRIPTION: Widget widget
 
-	VERSION: 0.1.0
-
 	USAGE: const myWidget = new Widget('Element', 'Options')
-		@param {jQuery Object}
+		@param {HTMLElement}
 		@param {Object}
-
-	DEPENDENCIES:
-		- jquery 3.x
 
 */
 
 class Widget {
 
-	constructor($el, options = {}) {
-		this.initialize($el, options);
+	constructor(rootEl, options = {}) {
+		if (!rootEl) {
+			console.warn('Widget cannot initialize without rootEl');
+			return;
+		}
+		this.initialize(rootEl, options);
 	}
 
-	initialize($el, options) {
+	initialize(rootEl, options) {
 
 		// defaults
-		this.$el = $el;
+		this.rootEl = rootEl;
 		this.options = Object.assign({
-			selectorFoobars: '.widget--foobar',
-			selectorThings: '.widget--thing',
+			selectorChilds: '.widget--child',
 			classActive: 'is-active',
 			classDisabled: 'is-disabled',
 			classInitialized: 'is-initialized',
@@ -34,28 +32,31 @@ class Widget {
 		}, options);
 
 		// elements
-		this.$foobars = this.$el.find(this.options.selectorFoobars);
-		this.$things = this.$el.find(this.options.selectorThings);
+		this.childEls = this.rootEl.querySelectorAll(this.options.selectorChilds);
 
 		// properties
-		this._length = this.$things.length;
+		this._length = this.childEls.length;
+
+		// state
+		this.state = {
+			something: true,
+		};
 
 		this.initDOM();
 
 		this._addEventListeners();
 
-		$.event.trigger(`${this.options.customEventPrefix}:isInitialized`, [this.$el]);
-
+		window.dispatchEvent(new CustomEvent(`${this.options.customEventPrefix}:isInitialized`, {detail: {rootEl: this.rootEl}} ));
 	}
 
 	initDOM() {
 
-		this.$el.addClass(this.options.classInitialized);
+		this.rootEl.classList.add(this.options.classInitialized);
 	}
 
 	uninitDOM() {
 
-		this.$el.removeClass(this.options.classInitialized);
+		this.rootEl.classList.remove(this.options.classInitialized);
 	}
 
 	_addEventListeners() {
@@ -69,10 +70,7 @@ class Widget {
 	unInitialize() {
 		this._removeEventListeners();
 		this.uninitDOM();
-		this.$el = null;
-		this.$foobars = null;
-		this.$things = null;
-		$.event.trigger(`${this.options.customEventPrefix}:unInitialized`);
+		window.dispatchEvent(new CustomEvent(`${this.options.customEventPrefix}:unInitialized`, {detail: {rootEl: this.rootEl}} ));
 	}
 
 }

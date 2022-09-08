@@ -80,10 +80,6 @@
 	@include visible;
 }
 
-.flex-box {
-	display: flex;
-}
-
 
 // Lists
 
@@ -96,10 +92,14 @@ ol.upper-alpha {list-style: upper-alpha;}
 ol.lower-roman {list-style: lower-roman;}
 ol.upper-roman {list-style: upper-roman;}
 
-ul.plain, ol.plain {list-style: none;}
+ul.plain, ol.plain {
+	list-style: none;
+	padding: 0;
+}
 
 ul.inline, ol.inline {
 	list-style: none;
+	padding: 0;
 
 	> li {
 		display: inline-block;

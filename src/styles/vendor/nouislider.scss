@@ -1,4 +1,4 @@
-/*! nouislider - 14.6.2 - 9/16/2020 */
+/*! nouislider - 14.7.0 - 4/6/2021 */
 /* Functional styling;
  * These styles are required for noUiSlider to function.
  * You don't need to change these rules to apply your design.
@@ -135,34 +135,34 @@
 }
 /* Handle stripes;
  */
-.noUi-handle:before,
-.noUi-handle:after {
-	content: "";
+.noUi-handle::before,
+.noUi-handle::after {
+	content: '';
 	display: block;
 	position: absolute;
 	height: 14px;
 	width: 1px;
-	background: #E8E7E6;
+	background: #e8e7e6;
 	left: 14px;
 	top: 6px;
 }
-.noUi-handle:after {
+.noUi-handle::after {
 	left: 17px;
 }
-.noUi-vertical .noUi-handle:before,
-.noUi-vertical .noUi-handle:after {
+.noUi-vertical .noUi-handle::before,
+.noUi-vertical .noUi-handle::after {
 	width: 14px;
 	height: 1px;
 	left: 6px;
 	top: 14px;
 }
-.noUi-vertical .noUi-handle:after {
+.noUi-vertical .noUi-handle::after {
 	top: 17px;
 }
 /* Disabled state;
  */
 [disabled] .noUi-connect {
-	background: #B8B8B8;
+	background: #b8b8b8;
 }
 [disabled].noUi-target,
 [disabled].noUi-handle,
@@ -197,13 +197,13 @@
  */
 .noUi-marker {
 	position: absolute;
-	background: #CCC;
+	background: #ccc;
 }
 .noUi-marker-sub {
-	background: #AAA;
+	background: #aaa;
 }
 .noUi-marker-large {
-	background: #AAA;
+	background: #aaa;
 }
 /* Horizontal layout;
  *

@@ -4,60 +4,46 @@
 
 
 .accordion {
-	border-bottom: 2px solid $border-color-dark;
 	margin: 1.5em 0;
 	position: relative;
 
 	.accordion--header {
-		border-bottom: 2px solid $border-color-dark;
-		border-top: 2px solid $border-color-dark;
-		margin-bottom: -2px;
 		position: relative;
 		z-index: 2;
+	}
 
-		> a {
-			background: $color-near-white;
-			color: $color-near-black;
-			display: block;
-			padding: 0.5em 1.0em;
-			position: relative;
-			text-decoration: none;
+	.accordion--tab {
+		align-items: center;
+		background: $color-near-white;
+		color: $color-near-black;
+		display: flex;
+		justify-content: space-between;
+		padding: 0.5em 1.0em;
+		position: relative;
+		text-decoration: none;
 
-			&::after {
-				background: rgba($color-gray-dark, 0) url($image-path+'/action-icons.png') no-repeat 0 -30px;
-				background-origin: border-box;
-				content: '';
-				display: block;
-				height: 30px;
-				position: absolute;
-				right: 10px;
-				top: calc(50% - 15px);
-				width: 30px;
-			}
+		&:hover, &:focus {
+			background: $color-gray-light;
+		}
 
-			&:hover, &:focus {
-				background: $color-gray-light;
-			}
+		&.is-active {
+			background: $color-gray-dark;
+			color: $color-white;
 
-			&.is-active {
-				background: $color-gray-dark;
-				color: $color-white;
-
-				&::after {
-					background-position: 0 -330px;
+			.fa-plus {
+				&::before {
+					content: '\f068';
 				}
 			}
 		}
 	}
 
 	.accordion--panel {
-		@include clearfix;
 		overflow: hidden;
 		position: relative;
 		z-index: 1;
 
-		> .accordion--panel-content {
-			@include clearfix;
+		.accordion--content {
 			padding: 1.5em;
 			position: relative;
 		}

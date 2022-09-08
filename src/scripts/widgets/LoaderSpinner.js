@@ -1,54 +1,47 @@
 /*
 	TITLE: LoaderSpinner
 
-	DESCRIPTION: Universal Ajax loader & spinner overlay
-
-	VERSION: 0.2.5
+	DESCRIPTION: Universal loader & spinner overlay
 
 	USAGE: const myLoaderSpinner = new LoaderSpinner('Element', 'Options')
-		@param {jQuery Object}
+		@param {HTMLElement}
 		@param {Object}
-
-	DEPENDENCIES:
-		- jquery 3.x
 
 */
 
 class LoaderSpinner {
 
-	constructor($el, options = {}) {
-		this.initialize($el, options);
+	constructor(rootEl, options = {}) {
+		if (!rootEl) {
+			console.warn('LoaderSpinner cannot initialize without rootEl');
+			return;
+		}
+		this.initialize(rootEl, options);
 	}
 
-	initialize($el, options) {
+	initialize(rootEl, options) {
 
-		this.$el = $el;
+		this.rootEl = rootEl[0];
 		this.options = Object.assign({
 			overlayTemplate: '<div class="loader-spinner-overlay"></div>'
 		}, options);
 
 		// elements
-		this.$elOverlay = $(this.options.overlayTemplate);
-
+		this.overlayEl = new DOMParser().parseFromString(this.options.overlayTemplate, 'text/html').querySelector('.loader-spinner-overlay');
 	}
 
 	addLoader() {
-		const delay = 10;
-		this.$el.append(this.$elOverlay);
-		setTimeout(() => {
-			//spinner gif gets 'stuck' and needs a click
-			this.$elOverlay.click();
-		}, delay);
+		this.rootEl.appendChild(this.overlayEl);
 	}
 
 	removeLoader() {
-		this.$elOverlay.remove();
+		this.rootEl.removeChild(this.overlayEl);
 	}
 
 	unInitialize() {
-		this.$elOverlay.remove();
-		this.$elOverlay = null;
-		this.$el = null;
+		this.removeLoader();
+		this.overlayEl = null;
+		this.rootEl = null;
 	}
 
 }

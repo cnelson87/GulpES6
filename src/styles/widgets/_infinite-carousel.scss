@@ -25,11 +25,11 @@
 		position: absolute;
 		top: calc(35% - 25px);
 
-		&.nav-prev {
+		&.carousel--nav-prev {
 			left: -15px;
 		}
 
-		&.nav-next {
+		&.carousel--nav-next {
 			right: -15px;
 		}
 	}
@@ -50,14 +50,9 @@
 
 	.carousel--panel {
 		flex-shrink: 0;
-		// opacity: 0.5;
 		padding: 0 10px;
 		position: relative;
 		width: 100%;
-
-		// &.is-active {
-		// 	opacity: 1.0;
-		// }
 	}
 }
 
@@ -65,39 +60,38 @@
 
 	.infinite-carousel {
 		min-height: 414px;
-		padding: 40px 0 4px;
+		padding: 40px 0 20px;
 
 		.arrow-nav {
 			top: 120px;
 
-			&.nav-prev {
+			&.carousel--nav-prev {
 				left: calc(50% - 300px);
 			}
 
-			&.nav-next {
+			&.carousel--nav-next {
 				right: calc(50% - 300px);
 			}
 		}
 
 		.carousel--outer-mask {
-			left: -120px;
 			max-width: 400px;
 			width: 100%;
 		}
 
 		.carousel--panel {
-			transition: transform 0.6s, width 0.6s;
+			transition: margin $animation-speed, width $animation-speed;
 
 			&.is-active {
-				transform: translateY(-20px);
+				margin: -20px -40px 0;
 				width: calc(100% + 80px);
+				z-index: 9;
 			}
 		}
 	}
 }
 
 @media (min-width: $breakpoint-desktop-min) {
-
 	.infinite-carousel {
 		min-height: 424px;
 	}

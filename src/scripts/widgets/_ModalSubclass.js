@@ -10,8 +10,8 @@
 		@param {Object}
 
 	DEPENDENCIES:
-		- jquery 3.x
-		- ModalWindow.js
+		jquery 3.x
+		ModalWindow.js
 
 */
 
