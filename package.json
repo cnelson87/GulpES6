@@ -13,19 +13,19 @@
 		"build": "gulp"
 	},
 	"dependencies": {
-		"core-js": "^3.25.1",
+		"core-js": "^3.25.2",
 		"regenerator-runtime": "^0.13.9"
 	},
 	"devDependencies": {
 		"gulp": "^4.0.2",
-		"@babel/core": "^7.19.0",
-		"@babel/eslint-parser": "^7.18.9",
-		"@babel/preset-env": "^7.19.0",
-		"autoprefixer": "^10.4.8",
+		"@babel/core": "^7.19.1",
+		"@babel/eslint-parser": "^7.19.1",
+		"@babel/preset-env": "^7.19.1",
+		"autoprefixer": "^10.4.12",
 		"babelify": "^10.0.0",
 		"browserify": "^17.0.0",
-		"browserslist": "^4.21.3",
-		"eslint": "^8.23.0",
+		"browserslist": "^4.21.4",
+		"eslint": "^8.23.1",
 		"gulp-clean": "^0.4.0",
 		"gulp-concat": "^2.6.1",
 		"gulp-connect": "^5.7.0",
@@ -47,7 +47,7 @@
 		"postcss": "^8.4.16",
 		"stylelint": "^13.13.1",
 		"stylelint-config-sass-guidelines": "^8.0.0",
-		"uglify-js": "^3.17.0",
+		"uglify-js": "^3.17.1",
 		"vinyl-buffer": "^1.0.1",
 		"vinyl-source-stream": "^2.0.0",
 		"yargs": "^17.5.1"
