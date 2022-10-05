@@ -17,10 +17,23 @@
 				background-color: $color-gray-xlight-alt;
 			}
 		}
+
+		.flex-col {
+			padding-bottom: 0.5em;
+			padding-top: 0.5em;
+		}
 	}
 
-	.flex-col {
-		padding-bottom: 0.5em;
-		padding-top: 0.5em;
+	.grid {
+		&.shaded {
+
+			.grid-cell:nth-child(odd) {
+				background-color: $color-gray-xlight;
+			}
+
+			.grid-cell:nth-child(even) {
+				background-color: $color-gray-xlight-alt;
+			}
+		}
 	}
 }
