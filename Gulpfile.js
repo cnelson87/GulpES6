@@ -1,7 +1,6 @@
 //
 // Packages
 ////////////////////////////////////////////////////////////////////////////
-const fs = require('fs');
 const path = require('path');
 const gulp = require('gulp');
 const argv = require('yargs').argv;
@@ -29,7 +28,6 @@ const uglify = require('gulp-uglify');
 //
 // CONSTANTS
 ////////////////////////////////////////////////////////////////////////////
-const PACKAGE = JSON.parse(fs.readFileSync('./package.json'));
 const FILEPATHS = require('./filepaths.js');
 const SRC = FILEPATHS.SRC;
 const DEST = FILEPATHS.DEST;
@@ -37,9 +35,9 @@ const DEV = 'dev';
 const PROD = 'prod';
 const ENVIRONMENT = (argv.dev) ? DEV : PROD;
 const SITE_ROOT = ENVIRONMENT === DEV ? DEST.DEV : DEST.PROD;
-const APP_NAME = PACKAGE.appName;
-const PORT = PACKAGE.portNumber;
-const LIVERELOAD_PORT = PACKAGE.livereloadPort;
+const APP_NAME = 'gulpes6';
+const PORT = 8048;
+const LIVERELOAD_PORT = 30048;
 
 //
 // Utils

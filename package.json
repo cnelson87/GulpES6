@@ -1,31 +1,28 @@
 {
-	"name": "gulp-es6",
+	"name": "GulpES6",
 	"version": "1.0.0",
 	"title": "Gulp ES6",
 	"description": "A Gulp ES6 sandbox.",
-	"appName": "gulpes6",
 	"main": "Gulpfile.js",
 	"readmeFilename": "README.md",
-	"portNumber": 8048,
-	"livereloadPort": 30048,
 	"scripts": {
 		"start": "clear && gulp --dev",
 		"build": "gulp"
 	},
 	"dependencies": {
-		"core-js": "^3.25.5",
-		"regenerator-runtime": "^0.13.10"
+		"core-js": "^3.26.1",
+		"regenerator-runtime": "^0.13.11"
 	},
 	"devDependencies": {
 		"gulp": "^4.0.2",
-		"@babel/core": "^7.19.3",
+		"@babel/core": "^7.20.5",
 		"@babel/eslint-parser": "^7.19.1",
-		"@babel/preset-env": "^7.19.4",
-		"autoprefixer": "^10.4.12",
+		"@babel/preset-env": "^7.20.2",
+		"autoprefixer": "^10.4.13",
 		"babelify": "^10.0.0",
 		"browserify": "^17.0.0",
 		"browserslist": "^4.21.4",
-		"eslint": "^8.25.0",
+		"eslint": "^8.29.0",
 		"gulp-clean": "^0.4.0",
 		"gulp-concat": "^2.6.1",
 		"gulp-connect": "^5.7.0",
@@ -42,15 +39,15 @@
 		"handlebars": "^4.7.7",
 		"hbsfy": "^2.8.1",
 		"lodash": "^4.17.21",
-		"node-sass": "^6.0.1",
+		"node-sass": "^8.0.0",
 		"pathmodify": "^0.5.0",
-		"postcss": "^8.4.18",
-		"stylelint": "^13.13.1",
-		"stylelint-config-sass-guidelines": "^8.0.0",
-		"uglify-js": "^3.17.3",
+		"postcss": "^8.4.20",
+		"stylelint": "^14.16.0",
+		"stylelint-config-sass-guidelines": "^9.0.1",
+		"uglify-js": "^3.17.4",
 		"vinyl-buffer": "^1.0.1",
 		"vinyl-source-stream": "^2.0.0",
-		"yargs": "^17.6.0"
+		"yargs": "^17.6.2"
 	},
 	"repository": {
 		"type": "git",
